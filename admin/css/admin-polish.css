@@ -1,0 +1,262 @@
+/* =========================================================
+   ECHO ARENA — ADMIN POLISH LAYER
+   Camada visual complementar para módulos operacionais que
+   ainda usam marcação antiga. Não substitui regras de negócio.
+   ========================================================= */
+
+body.admin-shell-body{
+  --admin-polish-surface:linear-gradient(145deg,rgba(18,29,49,.96),rgba(9,16,29,.98));
+  --admin-polish-line:rgba(130,151,190,.18);
+  --admin-polish-focus:rgba(139,92,246,.22);
+  background:
+    radial-gradient(circle at 82% 0%,rgba(113,72,211,.08),transparent 32rem),
+    radial-gradient(circle at 12% 8%,rgba(53,217,238,.045),transparent 28rem),
+    var(--admin-bg,#070b14);
+}
+
+body.admin-shell-body .admin-shell-content{
+  width:min(100%,1680px);
+  margin:0 auto;
+}
+
+body.admin-shell-body .admin-shell-content > [data-admin-content],
+body.admin-shell-body .admin-shell-content > main,
+body.admin-shell-body .admin-shell-content > section{
+  min-width:0;
+}
+
+body.admin-shell-body :where(button,a,input,select,textarea){
+  -webkit-tap-highlight-color:transparent;
+}
+
+body.admin-shell-body :where(button,a.admin-button,.eq-btn,.btn){
+  touch-action:manipulation;
+}
+
+body.admin-shell-body :where(button,a.admin-button,.eq-btn,.btn):focus-visible,
+body.admin-shell-body :where(input,select,textarea):focus-visible{
+  outline:2px solid var(--admin-purple-light,#b99eff);
+  outline-offset:2px;
+}
+
+/* Alvos confortáveis em telas touch/iPad sem inflar controles internos. */
+@media (pointer:coarse){
+  body.admin-shell-body .admin-shell-nav :where(a,button),
+  body.admin-shell-body :where(.admin-button,.eq-btn,.btn),
+  body.admin-shell-body .content-hub-tab{
+    min-height:44px;
+  }
+}
+
+/* Superfícies recorrentes dos módulos antigos. */
+body.admin-shell-body :where(
+  .eq-panel,
+  .settings-card,
+  .hero-import-card,
+  .content-module-panel,
+  .classes-list > *,
+  .users-summary-card,
+  .user-row
+){
+  border-color:var(--admin-polish-line,var(--admin-line));
+  box-shadow:0 16px 42px rgba(0,0,0,.12);
+}
+
+body.admin-shell-body :where(.eq-panel,.settings-card,.hero-import-card,.content-module-panel){
+  background:var(--admin-polish-surface,var(--admin-panel));
+}
+
+body.admin-shell-body :where(input:not([type="checkbox"]):not([type="radio"]):not([type="color"]),select,textarea){
+  max-width:100%;
+}
+
+/* Toolbars antigas passam a conversar com a topbar do Shell. */
+body.admin-shell-body :where(
+  .settings-toolbar,
+  .classes-toolbar,
+  .users-toolbar,
+  .hero-import-toolbar,
+  .eq-head
+){
+  gap:14px;
+}
+
+body.admin-shell-body :where(.settings-toolbar,.classes-toolbar,.users-toolbar) {
+  position:relative;
+  top:auto;
+  z-index:auto;
+  padding:0;
+  background:transparent;
+}
+
+/* Navegação editorial: estado ativo impossível de confundir com botão inerte. */
+body.admin-shell-body .content-hub-tabs{
+  gap:8px;
+  padding:5px;
+  border:1px solid var(--admin-polish-line);
+  border-radius:13px;
+  background:rgba(7,13,24,.72);
+}
+
+body.admin-shell-body .content-hub-tab{
+  position:relative;
+  min-height:44px;
+  padding:10px 15px;
+  cursor:pointer;
+}
+
+body.admin-shell-body .content-hub-tab.active,
+body.admin-shell-body .content-hub-tab[aria-selected="true"]{
+  border-color:#7656d8;
+  background:linear-gradient(180deg,#211941,#16102f);
+  color:#fff;
+  box-shadow:0 10px 24px -16px rgba(139,92,246,.9);
+}
+
+body.admin-shell-body .content-hub-tab.active::after,
+body.admin-shell-body .content-hub-tab[aria-selected="true"]::after{
+  content:"";
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:4px;
+  height:2px;
+  border-radius:999px;
+  background:#a98cff;
+}
+
+body.admin-shell-body .content-hub-view[hidden]{display:none!important}
+
+/* Importador OCR modernizado dentro do Shell. */
+.ocr-import-page{
+  display:grid;
+  gap:16px;
+  min-width:0;
+}
+
+.ocr-import-hero{
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:18px;
+  align-items:end;
+  padding:24px;
+  border:1px solid var(--admin-polish-line,var(--admin-line));
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 88% 18%,rgba(53,217,238,.12),transparent 24rem),
+    radial-gradient(circle at 70% 100%,rgba(139,92,246,.17),transparent 26rem),
+    linear-gradient(145deg,#101a2c,#09111e);
+}
+
+.ocr-import-hero small{
+  display:block;
+  color:#8fe9ff;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.ocr-import-hero h2{
+  margin:7px 0 0;
+  font-size:clamp(25px,4vw,38px);
+}
+
+.ocr-import-hero p{
+  max-width:760px;
+  margin:9px 0 0;
+  color:var(--admin-muted,#9da8bd);
+  font-size:12px;
+  line-height:1.65;
+}
+
+.ocr-import-hero-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+
+.ocr-import-note{
+  padding:13px 15px;
+  border:1px solid #28583a;
+  border-radius:11px;
+  background:#0c1c14;
+  color:#9be7b6;
+  font-size:11px;
+  line-height:1.6;
+}
+
+.ocr-import-note strong{color:#c8f7d8}
+
+.ocr-import-page .import-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:14px;
+}
+
+.ocr-import-page .eq-panel{
+  min-width:0;
+  padding:18px;
+  border:1px solid var(--admin-polish-line,var(--admin-line));
+  border-radius:14px;
+}
+
+.ocr-import-page .eq-panel h2{margin:0 0 13px;font-size:17px}
+.ocr-import-page .eq-panel label{display:grid;gap:7px;color:#c7d0df;font-size:11px;font-weight:700}
+.ocr-import-page .eq-panel input[type="file"],
+.ocr-import-page .eq-panel textarea{
+  width:100%;
+  border:1px solid var(--admin-line,#26344f);
+  border-radius:10px;
+  background:#07101d;
+  color:#eef2f8;
+}
+.ocr-import-page .eq-panel input[type="file"]{min-height:44px;padding:10px}
+.ocr-import-page .eq-panel textarea{min-height:260px;padding:12px;resize:vertical;font:11px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}
+.ocr-import-page .dropzone{min-height:180px;margin-top:12px;border-radius:12px}
+.ocr-import-page .eq-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 15px;border-radius:10px}
+.ocr-import-page .ocr-status{min-height:22px;margin-top:12px;color:var(--admin-muted,#9da8bd);font-size:11px;line-height:1.55}
+
+/* Hub real de status de heróis. */
+.hero-status-page{display:grid;gap:16px}
+.hero-status-hero{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:18px;
+  align-items:end;
+  padding:22px;
+  border:1px solid var(--admin-polish-line,var(--admin-line));
+  border-radius:17px;
+  background:radial-gradient(circle at 88% 12%,rgba(139,92,246,.16),transparent 25rem),linear-gradient(145deg,#10192c,#09111e);
+}
+.hero-status-hero small{color:#b99eff;font-size:9px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+.hero-status-hero h2{margin:6px 0 0;font-size:30px}
+.hero-status-hero p{max-width:760px;margin:8px 0 0;color:var(--admin-muted);font-size:11.5px;line-height:1.6}
+.hero-status-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.hero-status-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.hero-status-card{padding:16px;border:1px solid var(--admin-polish-line,var(--admin-line));border-radius:13px;background:var(--admin-polish-surface,var(--admin-panel))}
+.hero-status-card span{display:block;color:var(--admin-muted);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.hero-status-card strong{display:block;margin-top:7px;font-size:27px;line-height:1}
+.hero-status-card small{display:block;margin-top:6px;color:var(--admin-faint);font-size:9px;line-height:1.45}
+.hero-status-card.warn strong{color:#ffd76d}.hero-status-card.error strong{color:#ff9aaa}
+.hero-status-message{padding:12px 14px;border:1px solid var(--admin-line);border-radius:11px;background:#09111f;color:var(--admin-muted);font-size:11px;line-height:1.55}
+.hero-status-message.error{border-color:#71303b;background:#2a1016;color:#ffb4bd}
+.hero-status-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hero-status-tool{display:grid;gap:7px;min-height:132px;padding:16px;border:1px solid var(--admin-polish-line,var(--admin-line));border-radius:13px;background:var(--admin-polish-surface,var(--admin-panel));transition:.16s}
+.hero-status-tool:hover{border-color:#6c50b7;transform:translateY(-1px);color:inherit}
+.hero-status-tool strong{font-size:14px}.hero-status-tool span{color:var(--admin-muted);font-size:10.5px;line-height:1.55}.hero-status-tool b{align-self:end;color:#b99eff;font-size:10px;text-transform:uppercase}
+
+@media(max-width:1050px){
+  .ocr-import-hero,.hero-status-hero{grid-template-columns:1fr}
+  .ocr-import-hero-actions,.hero-status-actions{justify-content:flex-start}
+  .hero-status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-status-tools{grid-template-columns:1fr}
+}
+
+@media(max-width:820px){
+  .ocr-import-page .import-layout{grid-template-columns:1fr}
+}
+
+@media(max-width:560px){
+  .hero-status-grid{grid-template-columns:1fr}
+  .ocr-import-hero-actions,.hero-status-actions{width:100%}
+  .ocr-import-hero-actions .admin-button,.hero-status-actions .admin-button{flex:1 1 100%}
+}

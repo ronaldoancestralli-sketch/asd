@@ -1,0 +1,493 @@
+/* =========================================================
+   ECHO ARENA — CASCA DO PAINEL ADMINISTRATIVO
+   Layout, barra lateral, topo e área de conteúdo.
+   As variáveis e componentes base ficam em admin.css.
+   ========================================================= */
+
+body.admin-shell-body{
+  margin:0;
+  background:var(--admin-bg,#070b14);
+  color:var(--admin-text,#f5f7ff);
+}
+
+body.admin-shell-lock{overflow:hidden}
+
+/* ---------------------------------------------------------
+   ESTRUTURA
+--------------------------------------------------------- */
+
+.admin-shell-app{
+  display:grid;
+  grid-template-columns:292px minmax(0,1fr);
+  min-height:100vh;
+}
+
+.admin-shell-workspace{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
+/* ---------------------------------------------------------
+   BARRA LATERAL
+--------------------------------------------------------- */
+
+.admin-shell-sidebar{
+  position:sticky;
+  top:0;
+  align-self:start;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  height:100vh;
+  padding:20px 16px 16px;
+  overflow-y:auto;
+  border-right:1px solid var(--admin-line,#26344f);
+  background:var(--admin-panel,#0f1728);
+}
+
+.admin-shell-brand{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:7px;
+  padding:0 8px 2px;
+  font-size:21px;
+  font-weight:800;
+  letter-spacing:.02em;
+  color:var(--admin-text,#f5f7ff);
+  text-decoration:none;
+}
+
+.admin-shell-brand:hover{color:var(--admin-text,#f5f7ff)}
+.admin-shell-brand strong{color:var(--admin-purple-light,#b99eff)}
+.admin-shell-brand small{
+  flex:0 0 100%;
+  color:var(--admin-faint,#65718a);
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.admin-shell-search{display:grid;gap:6px;padding:0 2px}
+.admin-shell-search label{
+  color:var(--admin-faint,#65718a);
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.admin-shell-search>div{position:relative}
+.admin-shell-search input{
+  width:100%;
+  min-height:42px;
+  padding:10px 58px 10px 12px;
+  border:1px solid var(--admin-line,#26344f);
+  border-radius:10px;
+  outline:0;
+  background:#080f1d;
+  color:var(--admin-text,#f5f7ff);
+  font-family:inherit;
+  font-size:11px;
+  font-weight:500;
+  line-height:1.2;
+  appearance:none;
+}
+.admin-shell-search input::-webkit-search-cancel-button{display:none}
+.admin-shell-search input::placeholder{color:#65718a}
+.admin-shell-search input:focus{border-color:#8061df;box-shadow:0 0 0 3px rgba(128,97,223,.14)}
+.admin-shell-search button{
+  position:absolute;
+  top:50%;
+  right:32px;
+  width:28px;
+  height:32px;
+  transform:translateY(-50%);
+  border:0;
+  background:transparent;
+  color:#aeb7c9;
+  font-size:18px;
+  cursor:pointer;
+}
+.admin-shell-search kbd{
+  position:absolute;
+  top:50%;
+  right:9px;
+  transform:translateY(-50%);
+  padding:3px 6px;
+  border:1px solid #2c3850;
+  border-radius:5px;
+  background:#111a2a;
+  color:#748097;
+  font-family:inherit;
+  font-size:9px;
+  font-weight:700;
+  line-height:1;
+}
+
+.admin-shell-nav{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.admin-shell-nav [hidden],.admin-shell-search-empty[hidden]{display:none!important}
+
+/* itens simples */
+.admin-shell-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  min-height:48px;
+  padding:9px 11px;
+  border:1px solid transparent;
+  border-radius:10px;
+  color:var(--admin-muted,#9da8bd);
+  text-decoration:none;
+  transition:background .15s ease,color .15s ease;
+}
+
+.admin-shell-item:hover{
+  background:var(--admin-panel-2,#111c31);
+  color:var(--admin-text,#f5f7ff);
+}
+
+.admin-shell-item.is-active{
+  background:linear-gradient(180deg,var(--admin-purple,#8b5cf6),var(--admin-purple-dark,#6d28d9));
+  border-color:transparent;
+  color:#fff;
+  box-shadow:0 8px 22px -12px rgba(139,92,246,.9);
+}
+
+.admin-shell-item-copy{display:block;min-width:0;flex:1}
+.admin-shell-item-copy strong{
+  display:block;
+  color:inherit;
+  font-size:12px;
+  font-style:normal;
+  font-weight:750;
+  line-height:1.25;
+}
+.admin-shell-item-copy small{
+  display:block;
+  margin-top:3px;
+  overflow:hidden;
+  color:var(--admin-faint,#65718a);
+  font-size:8.5px;
+  font-weight:500;
+  line-height:1.3;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.admin-shell-item>em,.admin-shell-subitem>em{
+  flex:0 0 auto;
+  padding:3px 6px;
+  border:1px solid #44346f;
+  border-radius:999px;
+  background:#1a1430;
+  color:#c8b8ff;
+  font-size:6.5px;
+  font-style:normal;
+  font-weight:900;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+.admin-shell-item.is-active .admin-shell-item-copy small{color:rgba(255,255,255,.72)}
+.admin-shell-item.is-priority{
+  border-color:rgba(255,169,56,.38);
+  background:radial-gradient(circle at 100% 0,rgba(255,113,34,.18),transparent 55%),#17120f;
+  color:#fff0d4;
+  box-shadow:inset 3px 0 #ff8a2a;
+}
+.admin-shell-item.is-priority:hover{border-color:rgba(255,169,56,.7);background-color:#211711}
+.admin-shell-item.is-priority .admin-shell-item-copy small{color:#c89b72}
+.admin-shell-item.is-priority>em{border-color:#74451f;background:#2a190d;color:#ffb35e}
+.admin-shell-item.is-priority.is-active{background:linear-gradient(135deg,#b64618,#f07b20);box-shadow:0 10px 25px -14px rgba(255,118,31,.95)}
+
+/* grupos com submenu */
+.admin-shell-group{display:flex;flex-direction:column}
+
+.admin-shell-group-trigger{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  width:100%;
+  min-height:48px;
+  padding:9px 11px;
+  border:0;
+  border-radius:10px;
+  background:transparent;
+  color:var(--admin-muted,#9da8bd);
+  font-family:inherit;
+  text-align:left;
+  cursor:pointer;
+  transition:background .15s ease,color .15s ease;
+}
+
+.admin-shell-group-trigger:hover{
+  background:var(--admin-panel-2,#111c31);
+  color:var(--admin-text,#f5f7ff);
+}
+
+.admin-shell-group-trigger.is-active{color:var(--admin-text,#f5f7ff)}
+.admin-shell-group-trigger.is-active .admin-shell-item-copy small{color:#8996ad}
+
+.admin-shell-chevron{
+  font-size:13px;
+  line-height:1;
+  transition:transform .2s ease;
+}
+
+.admin-shell-group.is-open .admin-shell-chevron{transform:rotate(180deg)}
+
+.admin-shell-submenu{
+  display:none;
+  flex-direction:column;
+  margin:3px 0 6px 12px;
+  padding:3px 0 3px 10px;
+  border-left:1px solid var(--admin-line,#26344f);
+}
+
+.admin-shell-group.is-open .admin-shell-submenu{display:flex}
+
+.admin-shell-subitem{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  min-height:44px;
+  padding:8px 10px;
+  margin-top:2px;
+  border-radius:8px;
+  color:var(--admin-faint,#65718a);
+  text-decoration:none;
+  transition:background .15s ease,color .15s ease;
+}
+
+.admin-shell-subitem:hover{
+  background:var(--admin-panel-2,#111c31);
+  color:var(--admin-text,#f5f7ff);
+}
+
+.admin-shell-subitem.is-active{
+  background:var(--admin-panel-2,#111c31);
+  color:var(--admin-purple-light,#b99eff);
+  font-weight:700;
+}
+.admin-shell-subitem.is-active .admin-shell-item-copy small{color:#8173ad}
+.admin-shell-search-empty{
+  margin:0;
+  padding:13px;
+  border:1px dashed var(--admin-line,#26344f);
+  border-radius:10px;
+  color:var(--admin-faint,#65718a);
+  font-size:10px;
+  line-height:1.5;
+  text-align:center;
+}
+
+/* rodapé da lateral */
+.admin-shell-sidebar-footer{
+  padding-top:16px;
+  border-top:1px solid var(--admin-line,#26344f);
+}
+
+.admin-shell-site-link{
+  display:block;
+  padding:11px;
+  border:1px solid var(--admin-line-2,#33415f);
+  border-radius:10px;
+  background:var(--admin-panel-2,#111c31);
+  color:var(--admin-muted,#9da8bd);
+  font-size:12px;
+  font-weight:700;
+  text-align:center;
+  text-decoration:none;
+  transition:background .15s ease,color .15s ease;
+}
+
+.admin-shell-site-link:hover{
+  background:#17213a;
+  color:var(--admin-text,#f5f7ff);
+}
+
+/* ---------------------------------------------------------
+   TOPO
+--------------------------------------------------------- */
+
+.admin-shell-topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:16px 28px;
+  border-bottom:1px solid var(--admin-line,#26344f);
+  background:rgba(7,11,20,.92);
+  backdrop-filter:blur(8px);
+}
+
+.admin-shell-mobile-toggle{
+  display:none;
+  width:40px;
+  height:40px;
+  flex:0 0 40px;
+  border:1px solid var(--admin-line-2,#33415f);
+  border-radius:10px;
+  background:var(--admin-panel-2,#111c31);
+  color:var(--admin-text,#f5f7ff);
+  font-size:17px;
+  cursor:pointer;
+}
+
+.admin-shell-heading{flex:1;min-width:0}
+
+.admin-shell-heading span{
+  display:block;
+  color:var(--admin-purple-light,#b99eff);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.admin-shell-heading h1{
+  margin:4px 0 0;
+  font-size:30px;
+  font-weight:700;
+  line-height:1.1;
+  word-break:break-word;
+}
+
+.admin-shell-user{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:0 0 auto;
+}
+
+.admin-shell-user-copy{
+  min-width:0;
+  text-align:right;
+}
+
+.admin-shell-user-copy strong{
+  display:block;
+  font-size:13px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:190px;
+}
+
+.admin-shell-user-copy span{
+  display:block;
+  margin-top:2px;
+  color:var(--admin-faint,#65718a);
+  font-size:11px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:190px;
+}
+
+.admin-shell-logout{
+  min-height:40px;
+  padding:10px 16px;
+  border:1px solid var(--admin-line-2,#33415f);
+  border-radius:10px;
+  background:var(--admin-panel-2,#111c31);
+  color:var(--admin-text,#f5f7ff);
+  font-family:inherit;
+  font-size:12.5px;
+  font-weight:700;
+  cursor:pointer;
+  transition:background .15s ease;
+}
+
+.admin-shell-logout:hover{background:#17213a}
+
+/* ---------------------------------------------------------
+   CONTEÚDO
+--------------------------------------------------------- */
+
+.admin-shell-main{
+  flex:1;
+  min-width:0;
+  padding:28px;
+}
+
+.admin-shell-content{min-width:0}
+
+/* ---------------------------------------------------------
+   FUNDO MÓVEL
+--------------------------------------------------------- */
+
+.admin-shell-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:40;
+  display:none;
+  background:rgba(3,7,15,.72);
+  backdrop-filter:blur(3px);
+}
+
+.admin-shell-backdrop.is-visible{display:block}
+
+/* ---------------------------------------------------------
+   RESPONSIVO
+--------------------------------------------------------- */
+
+@media(max-width:1200px){
+  .admin-shell-app{grid-template-columns:264px minmax(0,1fr)}
+  .admin-shell-main{padding:22px}
+  .admin-shell-topbar{padding:15px 22px}
+  .admin-shell-heading h1{font-size:26px}
+}
+
+@media(max-width:900px){
+  .admin-shell-app{grid-template-columns:minmax(0,1fr)}
+
+  .admin-shell-sidebar{
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    z-index:50;
+    width:min(340px,92vw);
+    height:100vh;
+    transform:translateX(-100%);
+    transition:transform .22s ease;
+    box-shadow:0 0 60px rgba(0,0,0,.5);
+  }
+
+  .admin-shell-sidebar.is-mobile-open{transform:translateX(0)}
+
+  .admin-shell-mobile-toggle{display:grid;place-items:center}
+
+  .admin-shell-user-copy{display:none}
+
+  .admin-shell-topbar{padding:13px 16px}
+  .admin-shell-main{padding:16px}
+  .admin-shell-heading h1{font-size:22px}
+}
+
+@media(max-width:520px){
+  .admin-shell-heading span{font-size:9px}
+  .admin-shell-heading h1{font-size:19px}
+  .admin-shell-logout{padding:9px 12px;font-size:11.5px}
+  .admin-shell-sidebar{padding-bottom:max(16px,env(safe-area-inset-bottom))}
+}
+
+@media(pointer:coarse){
+  .admin-shell-item,.admin-shell-group-trigger,.admin-shell-subitem,.admin-shell-search input,.admin-shell-search button,.admin-shell-site-link{min-height:44px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .admin-shell-sidebar,.admin-shell-item,.admin-shell-subitem,.admin-shell-group-trigger,.admin-shell-chevron{transition:none!important}
+}

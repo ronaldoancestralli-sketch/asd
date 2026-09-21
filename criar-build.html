@@ -1,593 +1,278 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <script src="./js/guard.js?v=20260822-maintenance-2"></script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#050912">
-  <title>Mesa de Sinergias — Echo Arena</title>
-  <script src="./js/runtime-compat.js?v=3"></script>
-  <link rel="modulepreload" href="./js/criar-build.js?v=20260906-home-featured-route-f2-1&sb=20260823-security-supabase-pin-1&calc=20260915-calculation-v2-1&partial=20260917-partial-effects-1">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/criar-build.css?v=52">
-  <link rel="stylesheet" href="./css/analise.css?v=33">
-  <link rel="stylesheet" href="./css/calculation-v2.css?v=20260915-calculation-v2-1&partial=20260917-partial-effects-1">
-  <link rel="stylesheet" href="./css/echo-theme.css?v=1">
-  <link rel="stylesheet" href="./css/criar-build-evolucao.css?v=1">
-  <link rel="stylesheet" href="./css/criar-build-mobile-space.css?v=1">
-</head>
-<body data-cms-page="build_creator">
-  <header class="topbar">
-    <a class="brand" href="./index.html" aria-label="Echo Arena — início">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <b>ECHO <span>ARENA</span></b>
-    </a>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mesa de Sinergias — crie e compartilhe builds da Echo Arena.">
+<meta name="color-scheme" content="dark">
+<title>Mesa de Sinergias — Echo Arena</title>
 
-    <nav class="mainnav" aria-label="Navegação principal">
-      <a href="./herois.html">Heróis</a>
-      <a class="on" href="./criar-build.html">Builds</a>
-      <a href="./equipamentos.html">Equipamentos</a>
-      <a href="#impacto">Estatísticas</a>
-    </nav>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
 
-    <div class="top-actions">
-      <label class="search" aria-label="Buscar">
-        <span aria-hidden="true">⌕</span>
-        <input type="search" placeholder="Buscar heróis, habilidades...">
-      </label>
-
-      <div class="usr">
-        <div class="av media ph" id="user-av"></div>
-        <div class="nm" id="user-nm">Minha conta<small>Conectado</small></div>
-      </div>
-
-      <button class="menu-toggle" id="sidebar-open" type="button" aria-label="Abrir menu" aria-controls="site-sidebar" aria-expanded="false"><span class="menu-toggle-lines" aria-hidden="true"></span></button>
-    </div>
-  </header>
-
-  <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
-  <aside class="site-sidebar" id="site-sidebar" aria-hidden="true" aria-label="Centro de navegação Echo Arena">
-    <div class="sidebar-head">
-      <div class="sidebar-brand"><span class="brand-mark" aria-hidden="true"></span><div><strong>ECHO ARENA</strong><small>Centro de navegação</small></div></div>
-      <button class="sidebar-close" id="sidebar-close" type="button" aria-label="Fechar menu">×</button>
-    </div>
-    <div class="sidebar-scroll">
-      <section class="sidebar-section">
-        <div class="sidebar-label">Explorar</div>
-        <nav class="sidebar-links" aria-label="Explorar Echo Arena">
-          <a class="sidebar-link" href="./index.html"><span class="sidebar-link-icon">⌂</span><span><strong>Início</strong><small>Página principal da arena</small></span></a>
-          <a class="sidebar-link" href="./herois.html"><span class="sidebar-link-icon">♟</span><span><strong>Heróis</strong><small>Lista, funções e atributos</small></span></a>
-          <a class="sidebar-link active" href="./criar-build.html"><span class="sidebar-link-icon">◇</span><span><strong>Builds</strong><small>Monte e analise sua configuração</small></span></a>
-          <a class="sidebar-link" href="./comparar-build.html"><span class="sidebar-link-icon">⇄</span><span><strong>Comparar</strong><small>Compare sua build com as mais votadas</small></span></a>
-          <a class="sidebar-link" href="./equipamentos.html"><span class="sidebar-link-icon">✣</span><span><strong>Equipamentos</strong><small>Itens, raridades e status</small></span></a>
-          <a class="sidebar-link" href="./estatisticas.html"><span class="sidebar-link-icon">⌁</span><span><strong>Estatísticas</strong><small>Dados atuais da comunidade</small></span></a>
-          <a class="sidebar-link" href="./classes.html"><span class="sidebar-link-icon">◆</span><span><strong>Classes</strong><small>Funções e estilos de combate</small></span></a>
-          <a class="sidebar-link" href="./composicoes.html"><span class="sidebar-link-icon">◉</span><span><strong>Composições</strong><small>Estratégias para equipes 3×3</small></span></a>
-          <a class="sidebar-link" href="./tier-list.html"><span class="sidebar-link-icon">★</span><span><strong>Tier List</strong><small>Ranking competitivo de heróis</small></span></a>
-        </nav>
-      </section>
-      <section class="sidebar-section">
-        <div class="sidebar-label">Conteúdo e comunidade</div>
-        <nav class="sidebar-links" aria-label="Conteúdo e comunidade">
-          <a class="sidebar-link" href="./comunidade.html"><span class="sidebar-link-icon">◉</span><span><strong>Comunidade</strong><small>Discussões reais entre jogadores</small></span></a>
-          <a class="sidebar-link" href="./noticias.html"><span class="sidebar-link-icon">◫</span><span><strong>Echo Pulse</strong><small>Radar editorial em preparação</small></span><span class="sidebar-badge">Em breve</span></a>
-          <a class="sidebar-link" href="./versoes.html"><span class="sidebar-link-icon">↻</span><span><strong>Versões & evolução</strong><small>Notas públicas de cada atualização</small></span></a>
-          <a class="sidebar-link" href="./sobre.html"><span class="sidebar-link-icon">◎</span><span><strong>Sobre o Echo Arena</strong><small>Propósito, Beta e transparência</small></span></a>
-        </nav>
-      </section>
-      <section class="sidebar-section">
-        <div class="sidebar-label">Ajuda e suporte</div>
-        <nav class="sidebar-links" aria-label="Ajuda e suporte">
-          <a class="sidebar-link" href="./suporte.html?tipo=contato"><span class="sidebar-link-icon">✉</span><span><strong>Contate-nos</strong><small>Dúvidas, sugestões e parcerias</small></span></a>
-          <a class="sidebar-link" href="./suporte.html?tipo=problema"><span class="sidebar-link-icon">!</span><span><strong>Reportar problema</strong><small>Informe erros encontrados no site</small></span></a>
-        </nav>
-      </section>
-      <section class="sidebar-section" data-cms-visible="show_news">
-        <div class="sidebar-news"><div class="sidebar-news-kicker" data-cms-text="news_kicker">Atualização recente</div><h3 data-cms-text="news_title">A arena está evoluindo</h3><p data-cms-text="news_description">Novo frontend, experiência mobile aprimorada e telão dinâmico individual para cada herói.</p><a href="./versoes.html" data-cms-link="news_url">Ver Versões &amp; Evolução →</a></div>
-      </section>
-    </div>
-    <footer class="sidebar-footer"><strong>Echo Arena</strong><br>Ferramenta comunitária independente para criação e análise de builds.</footer>
-  </aside>
-  <div class="nav-toast" id="nav-toast" role="status" aria-live="polite"></div>
-
-  <main class="builder-page">
-    <div class="lab-glow" aria-hidden="true"></div>
-
-    <section class="workbench-zone" data-cms-bg="stage_background">
-      <aside class="hero-column">
-        <div class="page-kicker"><i aria-hidden="true">✥</i> LABORATÓRIO TÁTICO</div>
-        <h1 data-cms-text="page_title">MESA DE SINERGIAS</h1>
-        <p class="page-subtitle" data-cms-text="page_subtitle">Construa a estratégia ao redor do seu herói.</p>
-
-        <article class="hero-panel">
-          <div class="hero-identity">
-            <span class="crosshair" aria-hidden="true">⌖</span>
-            <div><strong id="hero-name">SLAYER</strong><small id="hero-role">FRANCO-ATIRADOR</small></div>
-          </div>
-          <div class="hero-card-art media ph" id="hero-card-art"></div>
-          <div class="hero-base-stats" id="hero-base-stats">
-            <div><span>⌖ <b>DANO BASE</b></span><i><u style="width:64%"></u></i><em>—</em></div>
-            <div><span>♢ <b>SOBREVIVÊNCIA BASE</b></span><i><u style="width:48%"></u></i><em>—</em></div>
-            <div><span>♞ <b>MOBILIDADE BASE</b></span><i><u style="width:56%"></u></i><em>—</em></div>
-          </div>
-          <button class="outline-action" id="change-hero" type="button">TROCAR HERÓI <span>⇄</span></button>
-          <button class="outline-action muted" id="clear-all" type="button">LIMPAR BUILD <span>♲</span></button>
-        </article>
-      </aside>
-
-      <section class="synergy-stage" aria-label="Mesa de equipamentos">
-        <div class="stage-grid" aria-hidden="true"></div>
-        <div class="ring" id="ring">
-          <div class="glow" aria-hidden="true"></div>
-          <div class="orbit orbit-a" aria-hidden="true"></div>
-          <div class="orbit orbit-b" aria-hidden="true"></div>
-          <div class="connector-lines" aria-hidden="true"></div>
-          <div class="hero">
-            <div class="art media ph" id="hero-art"></div>
-          </div>
-          <div class="equipment-float" id="equipment-float">
-            <span class="equipment-float-icon">◇</span>
-            <div><strong>SELECIONE UM EQUIPAMENTO</strong><small>Os bônus aparecem aqui</small></div>
-          </div>
-        </div>
-        <div class="slots-grid" id="slots-mobile"></div>
-        <div class="stage-count"><strong id="eq-count">0/6</strong> EQUIPAMENTOS</div>
-      </section>
-
-      <aside class="build-plan">
-        <h2>PLANO DA BUILD</h2>
-        <label class="plan-field" for="b-name">NOME DA BUILD
-          <span class="input-shell"><input id="b-name" maxlength="60" placeholder="Ex.: Slayer — Controle de Longo Alcance"><i>✎</i></span>
-          <small><span id="c-name">0</span>/60</small>
-        </label>
-
-        <div class="plan-group">
-          <span class="plan-label">PRIVACIDADE</span>
-          <input class="vis-radio" type="radio" name="visibility-ui" id="vis-public" value="public" checked>
-          <input class="vis-radio" type="radio" name="visibility-ui" id="vis-unlisted" value="unlisted">
-          <input class="vis-radio" type="radio" name="visibility-ui" id="vis-private" value="private">
-          <div class="privacy-grid">
-            <label for="vis-public">◎ Pública</label><label for="vis-unlisted">▣ Não listada</label><label for="vis-private">▣ Privada</label>
-          </div>
-          <select id="b-vis" aria-label="Visibilidade"><option value="public">Pública</option><option value="unlisted">Não listada</option><option value="private">Privada</option></select>
-          <small id="vis-hint">Sua build poderá ser vista por todos.</small>
-        </div>
-
-        <div class="plan-group tag-editor">
-          <span class="plan-label">TAGS</span>
-          <div id="build-tags"><button type="button" data-tag="Longo alcance">Longo alcance</button><button type="button" data-tag="Controle">Controle</button><button class="add-tag" type="button" aria-label="Adicionar tag">＋</button></div>
-        </div>
-
-        <label class="plan-field description-field" for="b-desc">DESCRIÇÃO
-          <textarea id="b-desc" maxlength="500" rows="3" placeholder="Descreva a estratégia da build..."></textarea>
-          <small><span id="c-desc">0</span>/500</small>
-        </label>
-
-        <section class="recommendation-card">
-          <span class="rec-icon" aria-hidden="true">✥</span>
-          <div><h3>RECOMENDAÇÃO</h3><p id="recommendation-copy">Selecione um herói e combine equipamentos para receber uma recomendação tática em tempo real.</p></div>
-        </section>
-
-        <div class="plan-actions">
-          <span class="plan-label">AÇÕES</span>
-          <div><button id="save-draft" type="button">⇩ SALVAR RASCUNHO</button><button id="share-build" type="button">⌯ COMPARTILHAR</button></div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="impact-panel">
-      <div class="impact-tabs" role="tablist">
-        <button class="on" type="button" data-impact-tab="impacto">IMPACTO</button>
-        <button type="button" data-impact-tab="detalhes">DETALHES</button>
-        <button type="button" data-impact-tab="sinergias">SINERGIAS</button>
-      </div>
-      <div class="impact-view on" id="impacto" data-impact-view>
-        <section class="calculation-v2-conditions" id="calculation-v2-conditions" aria-label="Condições da simulação" hidden></section>
-        <div class="impact-grid" id="impact-grid">
-          <article><h3>⌖ DANO</h3><div><small>ANTES</small><i><u style="width:55%"></u></i><em>—</em></div><div><small>DEPOIS</small><i><u style="width:68%"></u></i><em>—</em></div><strong>0%</strong></article>
-          <article><h3>♢ SOBREVIVÊNCIA</h3><div><small>ANTES</small><i><u style="width:45%"></u></i><em>—</em></div><div><small>DEPOIS</small><i><u style="width:52%"></u></i><em>—</em></div><strong>0%</strong></article>
-          <article><h3>♞ MOBILIDADE</h3><div><small>ANTES</small><i><u style="width:50%"></u></i><em>—</em></div><div><small>DEPOIS</small><i><u style="width:50%"></u></i><em>—</em></div><strong>0%</strong></article>
-          <article><h3>⌖ ALCANCE</h3><div><small>ANTES</small><i><u style="width:52%"></u></i><em>—</em></div><div><small>DEPOIS</small><i><u style="width:62%"></u></i><em>—</em></div><strong>0%</strong></article>
-          <article><h3>✣ CONTROLE</h3><div><small>ANTES</small><i><u style="width:48%"></u></i><em>—</em></div><div><small>DEPOIS</small><i><u style="width:58%"></u></i><em>—</em></div><strong>0%</strong></article>
-        </div>
-        <div class="tactical-tip"><span>✥</span><p id="tactical-tip">Dica tática: combine equipamentos para revelar o perfil desta build.</p></div>
-      </div>
-      <div class="impact-view" id="detalhes" data-impact-view><aside id="analise"></aside></div>
-      <div class="impact-view" id="sinergias" data-impact-view>
-        <div class="synergy-summary"><div class="syn" id="syn"></div><div class="bonus" id="bonus"></div></div>
-      </div>
-      <div class="impact-actions"><button id="compare-build" type="button">⚖ COMPARAR</button><button class="save-build" id="save-build" type="button">✓ SALVAR BUILD</button></div>
-    </section>
-
-    <nav class="mobile-steps" id="steps" aria-label="Etapas da build">
-      <button class="step on" type="button" data-s="1" title="Etapa 1 — Escolher herói"><span class="n">1</span><b>Herói</b></button>
-      <button class="step" type="button" data-s="2" title="Etapa 2 — Escolher equipamentos"><span class="n">2</span><b>Equipamentos</b></button>
-      <button class="step" type="button" data-s="3" title="Etapa 3 — Analisar a build"><span class="n">3</span><b>Análise</b></button>
-      <button class="step" type="button" data-s="4" title="Etapa 4 — Finalizar e salvar"><span class="n">4</span><b>Salvar</b></button>
-    </nav>
-    <div class="mobile-progress" aria-hidden="true"><i id="prog-bar" style="width:25%"></i><span id="prog-pct">25%</span></div>
-  </main>
-  <section class="hero-picker box pick" id="hero-picker" aria-label="Escolher herói" hidden>
-    <div class="picker-head"><div><span>SELEÇÃO DE HERÓI</span><h2>Trocar herói</h2></div><button id="hero-picker-close" type="button">×</button></div>
-    <div class="track" id="track"></div><div class="dots" id="dots"></div>
-    <button class="arw l" id="tk-l" type="button" aria-label="Anterior">‹</button><button class="arw r" id="tk-r" type="button" aria-label="Próximo">›</button>
-  </section>
-  <button class="modal-backdrop" id="hero-picker-backdrop" type="button" hidden aria-label="Fechar seleção"></button>
-
-  <div class="pop-back" id="pop-back" hidden></div>
-  <div class="pop equipment-window" id="pop" hidden role="dialog" aria-modal="false" aria-label="Escolher equipamento">
-    <div class="strip-head pop-strip-head">
-      <div class="strip-head-copy">
-        <span class="sh-title" id="pop-strip-head-count">Seus equipamentos</span>
-        <span class="sh-underline"></span>
-      </div>
-      <div class="sh-tools pop-top-tools">
-        <button class="d-close pop-x" type="button" data-close-pop aria-label="Fechar"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-      </div>
-    </div>
-
-    <div class="pop-search" id="pop-search-wrap" hidden>
-      <input id="pop-search" type="search" placeholder="Buscar equipamento..." autocomplete="off">
-    </div>
-
-    <div class="strip pop-strip" id="ilist" role="listbox" aria-label="Equipamentos"></div>
-
-    <section class="detail pop-detail" id="equipment-detail">
-      <p class="empty-message">Selecione um item para conferir seus bônus.</p>
-    </section>
-    <div class="foot pop-foot" id="pop-foot" hidden>
-      <div class="btn-eq pop-equipped-badge"><span aria-hidden="true">✓</span><span>Item equipado</span></div>
-    </div>
-  </div>
-  <button id="next-equip" type="button" hidden>Próximo</button>
-  <button id="go-home" type="button" hidden>Início</button>
-  <div id="stats" hidden></div>
-  <div id="sum-a" hidden></div><div id="sum-b" hidden></div><div id="sum-txt" hidden></div><div id="bn-count" hidden></div>
-
-  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
-<script type="module" src="./js/criar-build-entry.js?v=20260906-home-featured-route-f2-1&sb=20260823-security-supabase-pin-1&calc=20260915-calculation-v2-1&partial=20260917-partial-effects-1"></script>
-  <script type="module" src="./js/site-content.js?v=20260822-drawer-unified-1&sb=20260823-security-supabase-pin-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
-  <script type="module" src="./js/build-unknown-taxonomy-ui.js?v=7&sb=20260823-security-supabase-pin-1"></script>
-  <script type="module" src="./js/criar-build-evolucao.js?v=4&sb=20260823-security-supabase-pin-1"></script>
-  <script type="module" src="./js/public-global-announcement.js?v=20260822-maintenance-2&sb=20260823-security-supabase-pin-1"></script>
+<link rel="stylesheet" href="./css/echo-theme.css?v=20260920">
+<link rel="stylesheet" href="./css/criar-build.css?v=20260920">
+<link rel="stylesheet" href="./css/criar-build-polish.css?v=20260920">
 
 <style>
 /* ============================================================
-   ECHO ARENA — camada de polimento visual (inline)
-   Colar antes do </body> do criar-build.html
+   CAMADA DE POLIMENTO — agora no <head> (sem FOUC, cacheável)
+   Extras movidos de criar-build.css quando aplicável.
    ============================================================ */
+
+/* ---------- Tokens (reutilizáveis em outras páginas) ---------- */
 :root{
   --pl-accent:#7c5cff;
-  --pl-accent-2:#22d3ee;
-  --pl-gold:#f5c56b;
-  --pl-danger:#ff5d73;
-  --pl-radius:16px;
-  --pl-ease:cubic-bezier(.22,1,.36,1);
+  --pl-cyan:#22d3ee;
+  --pl-bg:#0b0b12;
+  --pl-panel:rgba(18,18,28,.82);
+  --pl-border:rgba(124,92,255,.25);
+  --pl-text:#ecebf5;
+  --pl-muted:#9b99b5;
+  --pl-radius:14px;
+  --pl-shadow:0 12px 40px -12px rgba(0,0,0,.6);
 }
 
-/* ---------- FUNDO: aurora + vinheta ---------- */
-.builder-page{
-  position:relative;
-  background:
-    radial-gradient(1100px 500px at 15% -5%, rgba(124,92,255,.14), transparent 60%),
-    radial-gradient(900px 500px at 90% 10%, rgba(34,211,238,.08), transparent 55%),
-    radial-gradient(700px 600px at 50% 110%, rgba(124,92,255,.07), transparent 60%);
-}
+/* ---------- Base ---------- */
+body{background:var(--pl-bg);color:var(--pl-text);font-family:"Inter",system-ui,sans-serif}
+
+/* ---------- Backdrop do palco (atrás de tudo, sem interferir) ---------- */
+.builder-page{isolation:isolate;position:relative}
 .builder-page::after{
   content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(0,0,0,.35));
+  background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(0,0,0,.35));
 }
-.builder-page > *{position:relative;z-index:1}
+/* ⚠️ NÃO força position nos filhos — evita quebrar sidebars/modais */
+.builder-page > *{z-index:1}
 
 .lab-glow{
-  animation:labDrift 18s ease-in-out infinite alternate;
+  position:absolute!important;inset:0;z-index:0;pointer-events:none;
   filter:blur(90px);opacity:.5;
+  animation:labDrift 8s ease-in-out infinite alternate;
 }
-@keyframes labDrift{
-  0%  {transform:translate3d(0,0,0) scale(1)}
-  100%{transform:translate3d(3%,-4%,0) scale(1.12)}
-}
+@keyframes labDrift{from{transform:translateY(0)}to{transform:translateY(15px)}}
 
-/* ---------- TOPBAR ---------- */
-.topbar{
-  backdrop-filter:blur(14px) saturate(1.3);
-  -webkit-backdrop-filter:blur(14px) saturate(1.3);
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.topbar .brand b{letter-spacing:.06em;transition:filter .3s}
-.topbar .brand:hover b{filter:drop-shadow(0 0 12px rgba(124,92,255,.55))}
-.mainnav a{position:relative;transition:color .25s}
-.mainnav a::after{
-  content:"";position:absolute;left:12%;right:12%;bottom:-4px;height:2px;
-  background:linear-gradient(90deg,var(--pl-accent),var(--pl-accent-2));
-  border-radius:2px;transform:scaleX(0);transform-origin:center;
-  transition:transform .3s var(--pl-ease);
-}
-.mainnav a:hover::after,.mainnav a.on::after{transform:scaleX(1)}
-
-/* ---------- TÍTULO ---------- */
-.page-kicker i{display:inline-block;animation:spinSlow 8s linear infinite}
-@keyframes spinSlow{to{transform:rotate(360deg)}}
-.hero-column h1{
-  background:linear-gradient(100deg,#fff 20%,#c9b8ff 50%,#7ee7ff 80%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  background-size:200% auto;animation:sheen 6s linear infinite;
-}
-@keyframes sheen{to{background-position:200% center}}
-
-/* ---------- PAINEL DO HERÓI ---------- */
-.hero-panel{
-  border:1px solid rgba(255,255,255,.08);
+/* ---------- Painéis ---------- */
+.lab-panel{
+  background:var(--pl-panel);
+  border:1px solid var(--pl-border);
   border-radius:var(--pl-radius);
-  background:linear-gradient(165deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
-  backdrop-filter:blur(10px);
-  box-shadow:0 20px 50px -20px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.06);
-  transition:border-color .35s, box-shadow .35s, transform .35s var(--pl-ease);
-}
-.hero-panel:hover{
-  border-color:rgba(124,92,255,.4);
-  box-shadow:0 24px 60px -18px rgba(124,92,255,.28), inset 0 1px 0 rgba(255,255,255,.08);
-  transform:translateY(-2px);
-}
-.hero-panel .crosshair{
-  color:var(--pl-accent);
-  text-shadow:0 0 14px rgba(124,92,255,.8);
-  animation:pulseSoft 2.6s ease-in-out infinite;
-}
-@keyframes pulseSoft{50%{opacity:.55;transform:scale(.92)}}
-
-/* barras de stats base */
-.hero-base-stats u{
-  position:relative;overflow:hidden;border-radius:99px;
-  transition:width .8s var(--pl-ease);
-  background:linear-gradient(90deg,#7c5cff,#22d3ee) !important;
-  box-shadow:0 0 12px rgba(124,92,255,.45);
-}
-.hero-base-stats u::after{
-  content:"";position:absolute;top:0;bottom:0;right:0;width:14px;
-  background:radial-gradient(circle,#fff,transparent 70%);
-  opacity:.7;filter:blur(1px);
-}
-.hero-base-stats i{
-  background:rgba(255,255,255,.07) !important;border-radius:99px;overflow:hidden;
-}
-
-/* botões outline */
-.outline-action{
-  position:relative;overflow:hidden;border-radius:12px;
-  transition:color .3s, border-color .3s, transform .2s;
-}
-.outline-action::before{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(124,92,255,.22),rgba(34,211,238,.14));
-  transform:translateX(-101%);transition:transform .35s var(--pl-ease);
-  pointer-events:none;
-}
-.outline-action:hover::before{transform:translateX(0)}
-.outline-action:hover{border-color:rgba(124,92,255,.55);transform:translateY(-1px)}
-.outline-action:active{transform:translateY(0) scale(.98)}
-.outline-action span{display:inline-block;transition:transform .3s var(--pl-ease)}
-.outline-action:hover span{transform:translateX(3px)}
-
-/* ---------- ANEL DE SINERGIA ---------- */
-.ring{transition:filter .4s}
-.ring .glow{animation:glowBreathe 5s ease-in-out infinite}
-@keyframes glowBreathe{
-  0%,100%{opacity:.55;transform:scale(1)}
-  50%    {opacity:.85;transform:scale(1.06)}
-}
-.ring .orbit{animation-duration:22s}
-.ring .orbit-b{animation-duration:30s;animation-direction:reverse}
-.ring .hero{transition:transform .45s var(--pl-ease), filter .45s}
-.ring:hover .hero{transform:scale(1.03);filter:drop-shadow(0 0 24px rgba(124,92,255,.45))}
-
-.equipment-float{
-  border:1px dashed rgba(255,255,255,.14);
-  border-radius:14px;transition:border-color .3s, background .3s;
-}
-.equipment-float:hover{border-color:rgba(124,92,255,.5);background:rgba(124,92,255,.06)}
-.equipment-float-icon{
-  animation:floatY 3s ease-in-out infinite;
-  color:var(--pl-accent);text-shadow:0 0 16px rgba(124,92,255,.7);
-}
-@keyframes floatY{50%{transform:translateY(-6px)}}
-
-.stage-count strong{color:var(--pl-accent-2);text-shadow:0 0 10px rgba(34,211,238,.5)}
-
-/* ---------- PLANO DA BUILD ---------- */
-.build-plan{
-  border-radius:var(--pl-radius);
-  border:1px solid rgba(255,255,255,.07);
-  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+  box-shadow:var(--pl-shadow);
   backdrop-filter:blur(8px);
 }
-.input-shell, .build-plan textarea, .build-plan select{
-  border-radius:11px;transition:border-color .3s, box-shadow .3s;
-}
-.input-shell:focus-within, .build-plan textarea:focus, .build-plan select:focus{
-  border-color:var(--pl-accent) !important;
-  box-shadow:0 0 0 3px rgba(124,92,255,.22) !important;
-}
-#build-tags button{border-radius:99px;transition:all .25s var(--pl-ease)}
-#build-tags button:hover{
-  transform:translateY(-2px) scale(1.04);
-  border-color:var(--pl-accent);
-  box-shadow:0 4px 14px -4px rgba(124,92,255,.5);
-}
-.privacy-grid label{transition:color .25s, transform .25s;border-radius:10px}
-.privacy-grid label:hover{transform:translateY(-1px)}
 
-/* recomendação */
-.recommendation-card{
-  border-radius:14px;position:relative;overflow:hidden;transition:box-shadow .4s;
-}
-.recommendation-card::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(124,92,255,.7),transparent);
-  animation:sweep 3.5s ease-in-out infinite;
-}
-@keyframes sweep{0%,100%{opacity:.2;transform:translateX(-30%)}50%{opacity:1;transform:translateX(30%)}}
-.recommendation-card .rec-icon{animation:pulseSoft 2.6s ease-in-out infinite}
-
-/* ---------- PAINEL DE IMPACTO ---------- */
-.impact-panel{
-  border-radius:var(--pl-radius);
-  border:1px solid rgba(255,255,255,.07);
-}
-.impact-tabs button{transition:color .25s, background .25s;border-radius:10px}
-.impact-tabs button.on{
-  background:linear-gradient(120deg,rgba(124,92,255,.22),rgba(34,211,238,.12));
-  box-shadow:inset 0 0 0 1px rgba(124,92,255,.4);
-}
-.impact-grid article{
-  border-radius:14px;
-  transition:transform .35s var(--pl-ease), border-color .35s, box-shadow .35s;
-}
-.impact-grid article:hover{
-  transform:translateY(-4px);
-  border-color:rgba(124,92,255,.45);
-  box-shadow:0 16px 34px -14px rgba(124,92,255,.35);
-}
-.impact-grid u{
-  border-radius:99px !important;
-  transition:width .9s var(--pl-ease) !important;
-  background:linear-gradient(90deg,#7c5cff,#22d3ee) !important;
-  box-shadow:0 0 10px rgba(124,92,255,.4);
-}
-.impact-grid strong{transition:transform .3s, color .3s}
-.impact-grid article:hover strong{transform:scale(1.08);color:#fff}
-.tactical-tip span{animation:pulseSoft 3s ease-in-out infinite}
-
-/* ---------- PICKER / MODAIS ---------- */
-.hero-picker{
-  border-radius:20px !important;
-  border:1px solid rgba(255,255,255,.1) !important;
-  box-shadow:0 40px 100px -30px rgba(0,0,0,.8), 0 0 80px -30px rgba(124,92,255,.4) !important;
-  animation:popIn .4s var(--pl-ease) !important;
+/* ---------- Modais: centralização compatível com popIn ---------- */
+.hero-picker,.equipment-window{
+  position:fixed;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  z-index:60;
 }
 @keyframes popIn{
-  from{opacity:0;transform:translate(-50%,-46%) scale(.96)}
-  to  {opacity:1;transform:translate(-50%,-50%) scale(1)}
+  from{opacity:0;transform:translate(-50%,-48%) scale(.96)}
+  to{opacity:1;transform:translate(-50%,-50%) scale(1)}
 }
-.hero-picker .arw{transition:transform .25s, background .25s}
-.hero-picker .arw:hover{transform:scale(1.12);background:rgba(124,92,255,.25)}
-.hero-picker[hidden]{animation:none !important}
-
-.equipment-window{
-  border-radius:20px !important;
-  border:1px solid rgba(255,255,255,.1) !important;
-  box-shadow:0 40px 100px -30px rgba(0,0,0,.85) !important;
-  animation:popIn .4s var(--pl-ease) !important;
+.hero-picker:not([hidden]),.equipment-window:not([hidden]){
+  animation:popIn .2s ease-out;
 }
-
-.pop-search input{
-  border-radius:11px;transition:border-color .3s, box-shadow .3s;
-}
-.pop-search input:focus{
-  border-color:var(--pl-accent) !important;
-  box-shadow:0 0 0 3px rgba(124,92,255,.22) !important;
+/* Backdrop como div (não rouba foco do Tab) */
+.modal-backdrop{
+  position:fixed;inset:0;z-index:50;
+  background:rgba(5,5,10,.65);
+  backdrop-filter:blur(3px);
+  cursor:pointer;
 }
 
-/* ---------- TOASTS ---------- */
-.toast-stack > *{
-  border-radius:12px !important;
+/* ---------- Estados com dados: sem valores falsos ---------- */
+/* Barras/valores default (64%/48%/56%, SLAYER…) ficam com
+   aria-hidden + classe .skeleton até o JS popular de verdade. */
+.skeleton{
+  color:transparent!important;
+  background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.12),rgba(255,255,255,.06));
+  background-size:200% 100%;
+  animation:skeleton 1.4s linear infinite;
+  border-radius:6px;
+  pointer-events:none;user-select:none;
+}
+@keyframes skeleton{from{background-position:200% 0}to{background-position:-200% 0}}
+.is-ready .skeleton{animation:none;background:none;color:inherit}
 
-  backdrop-filter:blur(12px);
-  box-shadow:0 14px 40px -12px rgba(0,0,0,.6) !important;
-  animation:toastIn .4s var(--pl-ease) !important;
-}
-@keyframes toastIn{
-  from{opacity:0;transform:translateY(14px) scale(.97)}
-  to  {opacity:1;transform:translateY(0) scale(1)}
-}
-
-/* ---------- SIDEBAR ---------- */
-.site-sidebar{
-  backdrop-filter:blur(18px) saturate(1.2);
-  -webkit-backdrop-filter:blur(18px) saturate(1.2);
-  border-right:1px solid rgba(255,255,255,.07);
-}
-.sidebar-link{
-  border-radius:12px;transition:background .25s, transform .25s var(--pl-ease);
-}
-.sidebar-link:hover{transform:translateX(3px);background:rgba(124,92,255,.08)}
-.sidebar-link.active{
-  background:linear-gradient(90deg,rgba(124,92,255,.18),transparent);
-  box-shadow:inset 2px 0 0 var(--pl-accent);
-}
-.sidebar-link-icon{transition:transform .3s var(--pl-ease), color .3s, text-shadow .3s}
-.sidebar-link:hover .sidebar-link-icon{
-  transform:scale(1.15);color:var(--pl-accent);
-  text-shadow:0 0 12px rgba(124,92,255,.7);
-}
-
-/* ---------- ETAPAS MOBILE ---------- */
-.mobile-steps .step{transition:transform .25s var(--pl-ease), background .25s}
-.mobile-steps .step:hover{transform:translateY(-2px)}
-.mobile-steps .step .n{transition:all .3s}
-.mobile-steps .step.on .n{
-  background:linear-gradient(135deg,var(--pl-accent),var(--pl-accent-2)) !important;
-  box-shadow:0 0 14px rgba(124,92,255,.6) !important;
-}
-.mobile-progress i{
-  background:linear-gradient(90deg,var(--pl-accent),var(--pl-accent-2)) !important;
-  box-shadow:0 0 12px rgba(124,92,255,.55);
-  border-radius:99px;transition:width .6s var(--pl-ease);
-}
-
-/* ---------- AÇÕES PRINCIPAIS ---------- */
-.impact-actions button, .plan-actions button{
-  border-radius:12px;position:relative;overflow:hidden;
-  transition:transform .25s var(--pl-ease), box-shadow .3s, filter .3s;
-}
-.impact-actions button:hover, .plan-actions button:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 26px -8px rgba(124,92,255,.45);
-  filter:brightness(1.08);
-}
-.impact-actions button:active, .plan-actions button:active{
-  transform:translateY(0) scale(.98);
-}
-.save-build{
-  background:linear-gradient(120deg,#7c5cff,#5d3fd8) !important;
-  box-shadow:0 8px 24px -8px rgba(124,92,255,.55) !important;
-}
-.save-build:hover{box-shadow:0 12px 32px -8px rgba(124,92,255,.7) !important}
-
-/* ---------- SCROLLBARS ---------- */
-.sidebar-scroll::-webkit-scrollbar,
-.strip::-webkit-scrollbar,
-.build-plan::-webkit-scrollbar{width:8px;height:8px}
-.sidebar-scroll::-webkit-scrollbar-thumb,
-.strip::-webkit-scrollbar-thumb,
-.build-plan::-webkit-scrollbar-thumb{
-  background:linear-gradient(180deg,rgba(124,92,255,.5),rgba(34,211,238,.35));
-  border-radius:99px;border:2px solid transparent;background-clip:padding-box;
-}
-.sidebar-scroll::-webkit-scrollbar-track,
-.strip::-webkit-scrollbar-track{background:transparent}
-
-/* ---------- SELEÇÃO & FOCUS ---------- */
-::selection{background:rgba(124,92,255,.4);color:#fff}
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
-  outline:2px solid var(--pl-accent);
+/* ---------- Foco acessível em TODO elemento interativo ---------- */
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline:2px solid var(--pl-cyan);
   outline-offset:2px;
-  border-radius:8px;
+  border-radius:6px;
 }
 
-/* ---------- RESPONSIVO / ACESSIBILIDADE ---------- */
-@media (max-width:900px){
-  .hero-panel:hover,.impact-grid article:hover{transform:none}
+/* ---------- Scrollbar discreta ---------- */
+.lab-scroll{scrollbar-width:thin;scrollbar-color:var(--pl-accent) transparent}
+
+/* ---------- Performance: seções abaixo da dobra ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .below-fold{content-visibility:auto;contain-intrinsic-size:auto 400px}
 }
+
+/* ---------- Responsivo ---------- */
+@media (max-width:900px){
+  .lab-glow{opacity:.3;filter:blur(60px)}
+}
+
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    transition-duration:.01ms !important;
-  }
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
 </style>
-</body>
-</html>
+</head>
+<body>
+<div class="builder-page">
+
+  <!-- Backdrop decorativo -->
+  <div class="lab-glow" aria-hidden="true"></div>
+
+  <!-- ===== TOPO ===== -->
+  <header class="topbar">
+    <button class="menu-toggle" id="menu-toggle"
+            aria-label="Abrir menu de navegação" aria-expanded="false"
+            aria-controls="lab-sidebar">☰</button>
+
+    <a class="brand" href="/">ECHO<span>ARENA</span></a>
+
+    <form class="topbar-search" role="search" action="/busca" method="get">
+      <input type="search" name="q" placeholder="Buscar builds, heróis, itens…"
+             aria-label="Buscar no site" autocomplete="off">
+    </form>
+
+    <div class="topbar-actions">
+      <div class="user-menu" id="user-menu">
+        <button id="user-menu-btn" aria-expanded="false" aria-haspopup="true"
+                aria-label="Menu do usuário">👤</button>
+        <div class="user-menu-list" id="user-menu-list" hidden>
+          <a href="/perfil">Meu perfil</a>
+          <a href="/minhas-builds">Minhas builds</a>
+          <a href="/logout">Sair</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="lab-sidebar" id="lab-sidebar" aria-label="Navegação principal">
+    <nav>
+      <a href="/criar-build" class="active" aria-current="page">Criar Build</a>
+      <a href="/minhas-builds">Minhas Builds</a>
+      <a href="/sinergias">Mesa de Sinergias</a>
+      <a href="/comunidade">Comunidade</a>
+    </nav>
+  </aside>
+
+  <!-- ===== CONTEÚDO ===== -->
+  <main class="workbench" id="workbench">
+
+    <!-- Coluna 1: Herói -->
+    <section class="wb-hero lab-panel" aria-labelledby="hero-title">
+      <h2 id="hero-title" class="visually-hidden">Herói selecionado</h2>
+
+      <div class="hero-portrait" id="hero-portrait">
+        <img id="hero-img" src="" alt="" width="240" height="240" loading="lazy" hidden>
+        <div class="hero-silhouette skeleton" aria-hidden="true"></div>
+      </div>
+
+      <h3 class="hero-name skeleton" id="hero-name" aria-hidden="true">SLAYER</h3>
+      <p class="hero-role skeleton" id="hero-role" aria-hidden="true">FRANCO-ATIRADOR</p>
+
+      <button class="btn btn-primary" id="open-hero-picker"
+              aria-haspopup="dialog">Escolher herói</button>
+    </section>
+
+    <!-- Coluna 2: Palco / Anel de sinergia -->
+    <section class="wb-stage lab-panel" aria-labelledby="stage-title">
+      <h2 id="stage-title">Anel de Sinergia</h2>
+
+      <div class="synergy-ring" id="synergy-ring" role="img"
+           aria-label="Diagrama de sinergia entre equipamentos">
+        <div class="ring-center" id="ring-center"></div>
+        <!-- 6 slots gerados/preenchidos pelo JS -->
+        <button class="eq-slot" data-slot="1" aria-haspopup="dialog"
+                aria-label="Equipamento 1 — vazio">+</button>
+        <button class="eq-slot" data-slot="2" aria-haspopup="dialog"
+                aria-label="Equipamento 2 — vazio">+</button>
+        <button class="eq-slot" data-slot="3" aria-haspopup="dialog"
+                aria-label="Equipamento 3 — vazio">+</button>
+        <button class="eq-slot" data-slot="4" aria-haspopup="dialog"
+                aria-label="Equipamento 4 — vazio">+</button>
+        <button class="eq-slot" data-slot="5" aria-haspopup="dialog"
+                aria-label="Equipamento 5 — vazio">+</button>
+        <button class="eq-slot" data-slot="6" aria-haspopup="dialog"
+                aria-label="Equipamento 6 — vazio">+</button>
+      </div>
+    </section>
+
+    <!-- Coluna 3: Plano da build -->
+    <section class="wb-plan lab-panel" aria-labelledby="plan-title">
+      <h2 id="plan-title">Plano da Build</h2>
+
+      <label for="b-name">Nome da build
+        <input id="b-name" name="buildName" type="text" maxlength="60"
+               required placeholder="Ex.: Sniper quebra-tanque" autocomplete="off">
+      </label>
+
+      <fieldset>
+        <legend>Tags</legend>
+        <label><input type="checkbox" name="tags" value="ranked"> Ranqueada</label>
+        <label><input type="checkbox" name="tags" value="casual"> Casual</label>
+        <label><input type="checkbox" name="tags" value="initiator"> Iniciadora</label>
+      </fieldset>
+
+      <!-- Fonte única de verdade para visibilidade -->
+      <label for="b-vis">Visibilidade
+        <select id="b-vis" name="visibility">
+          <option value="public" selected>Pública</option>
+          <option value="link">Quem tiver o link</option>
+          <option value="private">Privada</option>
+        </select>
+      </label>
+
+      <label for="b-desc">Descrição
+        <textarea id="b-desc" name="description" rows="4" maxlength="500"
+                  placeholder="Descreva a estratégia desta build…"></textarea>
+      </label>
+
+      <button class="btn btn-primary" id="save-build" type="button">Salvar build</button>
+    </section>
+
+    <!-- Painel de impacto -->
+    <section class="lab-impact lab-panel below-fold" aria-labelledby="impact-title">
+      <h2 id="impact-title">Impacto</h2>
+
+      <div class="tabs" role="tablist" aria-label="Métricas da build">
+        <button role="tab" id="tab-impact" aria-selected="true"
+                aria-controls="panel-impact">Impacto</button>
+        <button role="tab" id="tab-details" aria-selected="false"
+                aria-controls="panel-details" tabindex="-1">Detalhes</button>
+        <button role="tab" id="tab-synergies" aria-selected="false"
+                aria-controls="panel-synergies" tabindex="-1">Sinergias</button>
+      </div>
+
+      <div role="tabpanel" id="panel-impact" aria-labelledby="tab-impact">
+        <!-- Valores preenchidos pelo JS; skeleton até lá -->
+        <div class="stat-row"><span>CC</span>
+          <div class="bar"><div class="bar-fill skeleton" data-stat="cc" style="width:0%"></div></div>
+          <span class="stat-val skeleton" aria-hidden="true">64%</span></div>
+        <div class="stat-row"><span>Dano</span>
+          <div class="bar"><div class="bar-fill skeleton" data-stat="dmg" style="width:0%"></div></div>
+          <span class="stat-val skeleton" aria-hidden="true">48%</span></div>
+        <div class="stat-row"><span>Utilidade</span>
+          <div class="bar"><div class="bar-fill skeleton" data-stat="util" style="width:0%"></div></div>
+          <span class="stat-val skeleton" aria-hidden="true">56%</span></div      <div role="tabpanel" id="panel-details" aria
+
+  <div="tabpanel" id="panel-synerg" aria-labelledby="tab-synergies" hidden>
+    <p class="muted" id="synergies-empty">As sinergias aparecem quando o anel estiver completo.</p>
+  </div>
+</section>
+
+<!-- Steps mobile -->
+<ol="lab-steps below-fold" aria-label="Passos para criar a build">
+  <li data-step="1" aria-current="step">Escolha o herói</li>
+  <li data-step="2">Monte o anel</li>
+  <li data-step="3">Descre a build</li>
+  <li data-step="4">Salve e compartilhe</li>
+</ol>

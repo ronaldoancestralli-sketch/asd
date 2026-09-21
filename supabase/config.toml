@@ -1,0 +1,4 @@
+project_id = "echo-arena-restaurado"
+
+[functions.echo-brain-item-fit]
+verify_jwt = false

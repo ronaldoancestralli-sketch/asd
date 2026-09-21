@@ -3,276 +3,367 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Mesa de Sinergias — crie e compartilhe builds da Echo Arena.">
-<meta name="color-scheme" content="dark">
-<title>Mesa de Sinergias — Echo Arena</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
-
-<link rel="stylesheet" href="./css/echo-theme.css?v=20260920">
-<link rel="stylesheet" href="./css/criar-build.css?v=20260920">
-<link rel="stylesheet" href="./css/criar-build-polish.css?v=20260920">
-
+<title>Aurora Forge — Echo Arena</title>
 <style>
-/* ============================================================
-   CAMADA DE POLIMENTO — agora no <head> (sem FOUC, cacheável)
-   Extras movidos de criar-build.css quando aplicável.
-   ============================================================ */
-
-/* ---------- Tokens (reutilizáveis em outras páginas) ---------- */
 :root{
-  --pl-accent:#7c5cff;
-  --pl-cyan:#22d3ee;
-  --pl-bg:#0b0b12;
-  --pl-panel:rgba(18,18,28,.82);
-  --pl-border:rgba(124,92,255,.25);
-  --pl-text:#ecebf5;
-  --pl-muted:#9b99b5;
-  --pl-radius:14px;
-  --pl-shadow:0 12px 40px -12px rgba(0,0,0,.6);
+  --af-1:#a855f7;--af-2:#22d3ee;--af-3:#f472b6;
+  --af-bg:#07070f;---text:#e8e8f5;--af-muted:#8a8aa3;
+  --af-glass:rgba(255255,255,.05);--af-glass-b:rgba(255,,255,.12);
+ --af-font-d:'Segoe UI',system-ui,sans-serif;
 }
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--af-bg);color:var(--af-text);font-family:var(--af-font-d);min-height:100vh}
 
-/* ---------- Base ---------- */
-body{background:var(--pl-bg);color:var(--pl-text);font-family:"Inter",system-ui,sans-serif}
+/* CÉU */
+.af-sky{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.af-aurora i{position:absolute;width:60vw;height:60vh;border-radius:50%;filter:blur(120px);opacity:.25;animation:afFloat 18s ease-in-out infinite alternate}
+.af-aurora i:nth-child(1){background:var(--af-1);top:-20%;left:-10%}
+.af-aurora i:nth-child(2){background:var(--af-2);bottom:-20%;right:-10%;animation-delay:-6s}
+.af-aurora i:nth-child(3){background:var(--af-3);top:30%;left:40%;animation-delay:-12s}
+@keyframes afFloat{to{transform:translate(60px,-40px) scale(1.15)}}
+.af-stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 10% 20%,#fff,transparent),radial-gradient(1px 1px at 30% 70%,#fff,transparent),radial-gradient(2px 2px at 60% 30%,fff,transparentradial-gradient(1px 1px at 80% 60%,#fff,transparent),radial-gradient(1px 1px at 50% 90%,#fff,transparent);opacity:.5}
+.af-grid{position:absolute;inset:auto 0 0 0;height:40vh;background:linear-gradient(transparent,rgba(34,211,238,.06)),repeating-linear-gradient(90deg,rgba(34,211,238,.08) 0 1px,transparent 1px 60px),repeating-linear-gradient(0deg,rgba(34,211,238,.08) 0 1px,transparent 1px 60px);transform:perspective(400px) rotateX(60deg);transform-origin:bottom}
 
-/* ---------- Backdrop do palco (atrás de tudo, sem interferir) ---------- */
-.builder-page{isolation:isolate;position:relative}
-.builder-page::after{
-  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(0,0,0,.35));
-}
-/* ⚠️ NÃO força position nos filhos — evita quebrar sidebars/modais */
-.builder-page > *{z-index:1}
+/* LAYOUT */
+.af-page{display:grid;grid-template-columns:240px 1fr;min-height:100vh;max-width:1400px;margin:0 auto}
+.af-side{padding:28px 20px;border-right:1px solid var(--af-glass-b);backdrop-filter:blur(8px)}
+.af-logo{font-family:var(--af-font-d);font-weight:900;font-size:1.3rem;letter-spacing:.2em;background:linear-gradient(90deg,var(--af-1),var(--af-2),var(--af-3));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:32px}
+.af-nav{display:flex;flex-direction:column;gap:6px}
+.af-nav a{color:var(--af-muted);text-decoration:none;padding:12px 16px;border-radius:12px;font-weight:600;font-size:.9rem;transition:all .25s}
+.af-nav a:hover{color:#fff;background:var(--af-glass)}
+.af-nav a.active{color:#fff;background:linear-gradient(90deg,rgba(168,85,247,.25),rgba(34,211,238,.12));border:1px solid var(--af-glass-b)}
+.af-main{padding:40px 36px}
 
-.lab-glow{
-  position:absolute!important;inset:0;z-index:0;pointer-events:none;
-  filter:blur(90px);opacity:.5;
-  animation:labDrift 8s ease-in-out infinite alternate;
-}
-@keyframes labDrift{from{transform:translateY(0)}to{transform:translateY(15px)}}
+.af-title{font-family:var(--af-font-d);font-weight:900;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:.05em;background:linear-gradient(90deg,var(--af-1),var(--af-2),var(--af-3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.af-sub{:var(--af);margin:10px 0 32px;max-width:60ch}
 
-/* ---------- Painéis ---------- */
-.lab-panel{
-  background:var(--pl-panel);
-  border:1px solid var(--pl-border);
-  border-radius:var(--pl-radius);
-  box-shadow:var(--pl-shadow);
-  backdrop-filter:blur(8px);
-}
+.glassbackground:var(--af-glass);border:1px solid var(--af-glass-b);border-radius:22px;backdrop-filter:blur(12px)}
 
-/* ---------- Modais: centralização compatível com popIn ---------- */
-.hero-picker,.equipment-window{
-  position:fixed;left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  z-index:60;
-}
-@keyframes popIn{
-  from{opacity:0;transform:translate(-50%,-48%) scale(.96)}
-  to{opacity:1;transform:translate(-50%,-50%) scale(1)}
-}
-.hero-picker:not([hidden]),.equipment-window:not([hidden]){
-  animation:popIn .2s ease-out;
-}
-/* Backdrop como div (não rouba foco do Tab) */
-.modal-backdrop{
-  position:fixed;inset:0;z-index:50;
-  background:rgba(5,5,10,.65);
-  backdrop-filter:blur(3px);
-  cursor:pointer;
-}
+/* FORGE */
+.forge{display:grid;grid-template-columns280px 1fr;gap:24px;margin:28px}
+.hero-card{padding:28px;text-align:center}
+.hero-card h2{font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;color:var(--af-3);margin-bottom:20px}
+.hero-orb{width:140px;height:140px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;font-size:4rem;background:radial-gradient(circle at 35% 30%,rgba(168,85,247,.4),rgba(34,211,238,.15));border:2px solid var(--af-1);box-shadow:0 0 40px -8px var(--af-1);animation:afPulse 3s ease-in-out infinite}
+@keyframes afPulse{50%{box-shadow:0 0 60px -4px var(--af-2)}}
+.hero-name{font-weight:800;font-size:1.rem}
+.hero-role{color:var(--af-muted);font-size:.85rem;margin-bottom:18px}
+.btn-forge{padding:12px 28px;border-radius:99px;border:1px solid var(--af-2);background:rgba(34,211,238,.12);color:var(--af-2);font-weight:700;letter-spacing:.1em;cursor:pointer;transition:all .3s;text-transform:uppercase;font-size:.8rem}
+.btn-forge:hover{background:var(--af-2);color:#050510;box-shadow:0 0 24px -4px var(--af-2)}
 
-/* ---------- Estados com dados: sem valores falsos ---------- */
-/* Barras/valores default (64%/48%/56%, SLAYER…) ficam com
-   aria-hidden + classe .skeleton até o JS popular de verdade. */
-.skeleton{
-  color:transparent!important;
-  background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.12),rgba(255,255,255,.06));
-  background-size:200% 100%;
-  animation:skeleton 1.4s linear infinite;
-  border-radius:6px;
-  pointer-events:none;user-select:none;
-}
-@keyframes skeleton{from{background-position:200% 0}to{background-position:-200% 0}}
-.is-ready .skeleton{animation:none;background:none;color:inherit}
+/* ANEL 3D */
+.ring-wrap{display:grid;place-items:center;min-height:480px;perspective:900px;overflow:hidden}
+.ring3d{position:relative;width:420px;height:420px;transform-style:preserve-3d;animation:afSpin 30s linear infinite}
+@keyframes afSpin{from{transform:rotateX(58deg) rotateZ(0)}to{transform:rotateX(58deg) rotateZ(-360deg)}}
+.ring-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotateX(-58deg);padding:22px 34px;border-radius:50%;font-weight:900;letter-spacing:.3em;font-size:.8rem;color:var(--af-2);border:2px solid var(--af-2);background:radial-gradient(circle,rgba(34,211,238,.25),transparent 70%);box-shadow:0 0 50px -6px var(--af-2);white-space:nowrap}
+.slot{position:absolute;left:50%;top:50%;width:60px;height:60px;margin:-30px;border-radius:18px;font-size:1.5rem;color:var(--af-3);background:(10,10,25,.85);border:1px solid var(--af-glass-b);cursor:pointer;transform:rotateZ(var(--a)) translateY(-190px) rotateX(-58deg);transition:all .3s;backdrop-filter:blur(6px)}
+.slot:hover{border-color:var(--af-3);box-shadow:0 0 22px -4px var(--af-3);color:#fff}
+.slot.filled{border-color:var(--af-2);box-shadow:0 0 18px -4px var(--af-2)}
 
-/* ---------- Foco acessível em TODO elemento interativo ---------- */
-:where(a,button,input,select,textarea,[tabindex]):focus-visible{
-  outline:2px solid var(--pl-cyan);
-  outline-offset:2px;
-  border-radius:6px;
-}
+/* PLAN */
+.plan{padding:32px;margin-bottom:28px}
+.plan h2{font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;color:var(--af-3);margin-bottom:24px}
+.af-field{margin-bottom:20px}
+.af-field labelaf-label{display:block;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--af-muted);font-weight:700;margin-bottom:8px}
+.af-field input,.af-field textarea,.af-field select{width:%;padding:14px 16px;border-radius:14px;background:rgba(0,0,0,.35);border:1px solid var(--af-glass);color:var(--af-text);font-family:inherit;font-size:.95rem;transition:all .3s}
+.af-field input:focus,.af-field textarea:focus,.af-field select:focus{outline:none;border-color:var(--af-2);box-shadow:0 0 0 3px rgba(34,211,238,.15),0 0 20px -8px var(--af-2)}
+.af-field textarea{resize:vertical;min-height:100px}
 
-/* ---------- Scrollbar discreta ---------- */
-.lab-scroll{scrollbar-width:thin;scrollbar-color:var(--pl-accent) transparent}
+.chips{display:flex;flex-wrap:;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.chip span{display:inline-block;padding:8px 18px;border-radius:99px;font-size:.8rem;font-weight:600;letter-spacing:.05em;color:var(--af-muted);border:1px solid var(--af-glass-b);transition:all .3s;cursor:pointer}
+.chip input:checked + span{color:#fff;border-color:var(--af-1);background:linear-gradient(90deg,rgba(168,85,247,.3),rgba(34,211,238,.2));box-shadow:0 0 16px -4px var(--af-1)}
+.chip input:focus-visible + span{outline:2px solid var(--af-2);outline-offset:2px}
 
-/* ---------- Performance: seções abaixo da dobra ---------- */
-@media (prefers-reduced-motion:no-preference){
-  .below-fold{content-visibility:auto;contain-intrinsic-size:auto 400px}
-}
+/* IMPACTO */
+.impact{padding:32px;margin-bottom:28px}
+.impact h2{font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;color:var(--af-3);margin-bottom:24px}
+.stat{display:grid;grid-template-columns:110px 1fr 54px;align-items:center;gap:16px;margin-bottom:16px}
+.stat b{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--af-muted);font-weight:600}
+.stat .val{font-weight:700;color:var(--af-2);text-align:right}
+.bar{height:12px;border-radius:99px;background:rgba(0,0,0,.4);overflow:hidden;border:1px solid var(--af-glass-b)}
+.bar i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--af-1),var(--af-2),var(--af-3));background-size:200% 100%;box-shadow:0 0 14px rgba(34,211,238,.6);transition:width 1s cubic-bezier(.2,.8,.2,1);animation:afBar 3s linear infinite}
+@keyframes afBar{to{background-position:200% 0}}
 
-/* ---------- Responsivo ---------- */
-@media (max-width:900px){
-  .lab-glow{opacity:.3;filter:blur(60px)}
-}
+.btn-save{width:100%;padding:18px;border:none;border-radius:18px;cursor:pointer;font-weight:700;font-size:1rem;letter-spacing:.25em;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,var(--af-1),var(--af-3),var(--af-2));background-size:200% 100%;box-shadow:0 0 40px -10px var(--af-1);transition:all .3s;margin-top:12px}
+.btn-save:hover{background-position:100% 0;transform:translateY(-3px);box-shadow:0 0 60px -8px var(--af-3)}
+.btn-save:active{transform:translateY(0)}
 
+/* TOAST */
+.toast-region{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:100;display:flex;flex-direction:column;gap:10px}
+.toast{padding:14px 28px;border-radius:99px;background:rgba(10,10,25,.92);border:1px solid var(--af-2);color:var(--af-text);font-weight:600;letter-spacing:.05em;box-shadow:0 0 30px -6px var(--af-2);backdrop-filter:blur(10px);animation:afToastIn .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes afToastIn{from{opacity:0;transform:translateY(20px) scale(.95
+
+/* MODAIS */
+.af-backdrop{position:fixed;inset:0;z-index:80;background:rgba(3,3,10,.75);backdrop-filter:blur(6px)}
+.af-backdrop[hidden]{display:none}
+.af-modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:90;width:min(560px,92vw);max-height:80vh;display:flex;flex-direction:column}
+.af-modal[hidden]{display:none}
+.af-modal:not([hidden]){animation:afModalIn .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes afModalIn{from{opacity:0;transform:translate(-50%,-46%) scale(.94)}}
+.af-modal header{display:flex;justify-content:space-between;align-items:center;padding:22px 26px;border-bottom:1px solid var(--af-glass-b)}
+.af-modal header h2{font-size:.95rem;letter-spacing:.2em;text-transform:uppercase}
+.af-close{background:none;border:none;color:var(--af-muted);font-size:1.3rem;cursor:pointer;padding:6px 10px;border-radius:10px;transition:all .2s}
+.af-close:hover{color:#fff;background:rgba(255,255,255,.08)}
+
+/* FOCO & MOTION */
+:where(a,button,input,select,textarea):focus-visible{outline:2px solid var(--af-2);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+.ring3d{transform:rotateX(55deg)}
+.slot{transform:rotateZ(var(--a)) translateY(-190px) rotateX(-55deg)}
+}
+
+/* RESPONSIVO */
+@media (max-width:1000px){
+.af-page{grid-template-columns:1fr}
+.af-side{position:static;border-right:none;border-bottom:1px solid var(--af-glass-b)}
+.forge{grid-template-columns:1fr}
+.ring-wrap{min-height:420px}
+.ring3d{width:320px;height:320px}
+.slot{transform:rotateZ(var(--a)) translateY(-140px) rotateX(-58deg)}
 }
 </style>
-</head>
-<body>
-<div class="builder-page">
+</head<body>
 
-  <!-- Backdrop decorativo -->
-  <div class="lab-glow" aria-hidden="true"></div>
+<div class="af-sky" aria-hidden="true">
+  <div class="af-aurora"><i></i><i></i><i></i></div>
+  <div class="af-stars"></div>
+  <div class="af-grid"></div>
+</div>
 
-  <!-- ===== TOPO ===== -->
-  <header class="topbar">
-    <button class="menu-toggle" id="menu-toggle"
-            aria-label="Abrir menu de navegação" aria-expanded="false"
-            aria-controls="lab-sidebar">☰</button>
-
-    <a class="brand" href="/">ECHO<span>ARENA</span></a>
-
-    <form class="topbar-search" role="search" action="/busca" method="get">
-      <input type="search" name="q" placeholder="Buscar builds, heróis, itens…"
-             aria-label="Buscar no site" autocomplete="off">
-    </form>
-
-    <div class="topbar-actions">
-      <div class="user-menu" id="user-menu">
-        <button id="user-menu-btn" aria-expanded="false" aria-haspopup="true"
-                aria-label="Menu do usuário">👤</button>
-        <div class="user-menu-list" id="user-menu-list" hidden>
-          <a href="/perfil">Meu perfil</a>
-          <a href="/minhas-builds">Minhas builds</a>
-          <a href="/logout">Sair</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- ===== SIDEBAR ===== -->
-  <aside class="lab-sidebar" id="lab-sidebar" aria-label="Navegação principal">
-    <nav>
-      <a href="/criar-build" class="active" aria-current="page">Criar Build</a>
-      <a href="/minhas-builds">Minhas Builds</a>
-      <a href="/sinergias">Mesa de Sinergias</a>
-      <a href="/comunidade">Comunidade</a>
+<div class="af-page">
+  <aside class="af-side">
+    <div class="af-logo">AURORA<br>FORGE</div>
+    <nav class="af-nav">
+      <a href="#" class="active">⚡ Criar Build</a>
+      <a href="#">◈ Minhas Builds</a>
+      <a href="#">◎ Sinergias</a>
+      <a href="#">✦ Comunidade</a>
     </nav>
   </aside>
 
-  <!-- ===== CONTEÚDO ===== -->
-  <main class="workbench" id="workbench">
+  <main class="af-main">
+    <h1 class="af-title">FORJE SUA LENDA</h1>
+    <p class="af-sub">Combine herói e relíquias no anel de sinergia. O universo recompensa a precisão.</p>
 
-    <!-- Coluna 1: Herói -->
-    <section class="wb-hero lab-panel" aria-labelledby="hero-title">
-      <h2 id="hero-title" class="visually-hidden">Herói selecionado</h2>
+    <div class="forge">
+      <section class="hero-card glass" aria-labelledby="hero-h">
+        <h2 id="hero-h">Herói</h2>
+       <div class="hero-orb"><span id="hero-ph">⚔️</span></div>
+        <div class="hero-name" idhero-name">Vazio</div>
+        <div class="hero-role" id="hero-role">Selecione herói</div>
+        <button class="btn-forge" id="btn-hero" type="button">Forjar Herói</button>
+        <input type="hidden" id="hero-id" name="hero_id">
+      </section>
 
-      <div class="hero-portrait" id="hero-portrait">
-        <img id="hero-img" src="" alt="" width="240" height="240" loading="lazy" hidden>
-        <div class="hero-silhouette skeleton" aria-hidden="true"></div>
+      <section class="ring-wrap glass" aria-label="Anel de Sinergia">
+        <div class="ring3d">
+          <div class="ring-core">NÚCLEO</div>
+          <button class="slot" type="button" style="--a:0deg"   data-slot="1" aria-label="Slot 1">✦</button>
+          <button class="slot" type="button" style="--a:60deg"  data-slot="2" aria-label="Slot 2">✦</button>
+          <button class="slot" type="button"="--a:120deg" data-slot="3" aria-label="Slot 3">✦</button>
+          <button class="slot" type="button" style="--a:180deg" data-slot="4" aria-label="Slot 4">✦</button>
+          <button class="slot" type="button" style="--a:240deg" data-slot="5" aria-label="Slot 5">✦</button>
+          <button class="slot" type="button" style="--a:300deg" data-slot="6" aria-label="Slot 6">✦</button>
+        </div>
+      </section>
+    </div>
+
+    <section class="plan glass" aria-labelledby="plan-h">
+      <h2 id="plan-h">◆ Etiqueta da Build</h2>
+      <div class="af-field">
+        <label for="b-name">Nome da build</label>
+        <input type="text" id="b-name" placeholder="Ex.: Tempestade de Cristal" maxlength="80" required>
       </div>
-
-      <h3 class="hero-name skeleton" id="hero-name" aria-hidden="true">SLAYER</h3>
-      <p class="hero-role skeleton" id="hero-role" aria-hidden="true">FRANCO-ATIRADOR</p>
-
-      <button class="btn btn-primary" id="open-hero-picker"
-              aria-haspopup="dialog">Escolher herói</button>
-    </section>
-
-    <!-- Coluna 2: Palco / Anel de sinergia -->
-    <section class="wb-stage lab-panel" aria-labelledby="stage-title">
-      <h2 id="stage-title">Anel de Sinergia</h2>
-
-      <div class="synergy-ring" id="synergy-ring" role="img"
-           aria-label="Diagrama de sinergia entre equipamentos">
-        <div class="ring-center" id="ring-center"></div>
-        <!-- 6 slots gerados/preenchidos pelo JS -->
-        <button class="eq-slot" data-slot="1" aria-haspopup="dialog"
-                aria-label="Equipamento 1 — vazio">+</button>
-        <button class="eq-slot" data-slot="2" aria-haspopup="dialog"
-                aria-label="Equipamento 2 — vazio">+</button>
-        <button class="eq-slot" data-slot="3" aria-haspopup="dialog"
-                aria-label="Equipamento 3 — vazio">+</button>
-        <button class="eq-slot" data-slot="4" aria-haspopup="dialog"
-                aria-label="Equipamento 4 — vazio">+</button>
-        <button class="eq-slot" data-slot="5" aria-haspopup="dialog"
-                aria-label="Equipamento 5 — vazio">+</button>
-        <button class="eq-slot" data-slot="6" aria-haspopup="dialog"
-                aria-label="Equipamento 6 — vazio">+</button>
+      <div class="af-field">
+        <label for="b-desc">Descrição / rota</label>
+        <textarea id="b-desc" placeholder="Conte a história da sua build…"></textarea>
       </div>
-    </section>
-
-    <!-- Coluna 3: Plano da build -->
-    <section class="wb-plan lab-panel" aria-labelledby="plan-title">
-      <h2 id="plan-title">Plano da Build</h2>
-
-      <label for="b-name">Nome da build
-        <input id="b-name" name="buildName" type="text" maxlength="60"
-               required placeholder="Ex.: Sniper quebra-tanque" autocomplete="off">
-      </label>
-
-      <fieldset>
-        <legend>Tags</legend>
-        <label><input type="checkbox" name="tags" value="ranked"> Ranqueada</label>
-        <label><input type="checkbox" name="tags" value="casual"> Casual</label>
-        <label><input type="checkbox" name="tags" value="initiator"> Iniciadora</label>
-      </fieldset>
-
-      <!-- Fonte única de verdade para visibilidade -->
-      <label for="b-vis">Visibilidade
-        <select id="b-vis" name="visibility">
-          <option value="public" selected>Pública</option>
-          <option value="link">Quem tiver o link</option>
+      <div class="af-field">
+        <label for="b-vis">Visibilidade</label>
+        <select id="b-vis">
+          <option value="public">Pública</option>
+          <option value="unlisted">Não listada</option>
           <option value="private">Privada</option>
         </select>
-      </label>
-
-      <label for="b-desc">Descrição
-        <textarea id="b-desc" name="description" rows="4" maxlength="500"
-                  placeholder="Descreva a estratégia desta build…"></textarea>
-      </label>
-
-      <button class="btn btn-primary" id="save-build" type="button">Salvar build</button>
+      </div>
+      <div class="af-field">
+        <span class="af-label">Estilo de jogo</span>
+        <div class="chips" role="group" aria-label="Estilo de jogo">
+          <label class="chip"><input type="radio" name="style" value="aggressive"><span>🗡️ Agressiva</span></label>
+          <label class="chip"><input type="radio"="style" value="balanced" checked><span>⚖️ Balanceada</span></label>
+          <label class="chip"><input type="radio" name="style" value="defensive"><span>🛡️ Defensiva</span></label>
+          <label class="chip"><input type="radio" name="style" value="support"><span>💫 Suporte</span></label>
+        </div>
+      </div>
     </section>
 
-    <!-- Painel de impacto -->
-    <section class="lab-impact lab-panel below-fold" aria-labelledby="impact-title">
-      <h2 id="impact-title">Impacto</h2>
+    <section class="impact glass" aria-labelledby="impact-h">
+      <h2 id="impact-h">◈ Impacto da Build</h2>
+      <div class="stat"><b>ATQ</b><div class="bar"><i id="bar-atk"></i></div><span class="val" id="val-atk">—</span></div>
+      <div class="stat"><b>DEF</b><div class="bar"><i id="bar-def"></i></div><span class="val" id="val-def">—</span></div>
+      <div class="stat"><b>VEL</b><div class="bar"><i id="bar-spd"></i></div><span class="val" id="val-spd">—</span></div>
+      <div class="stat"><b>SINERGIA</b><div class="bar"><i id="bar-syn"></i></div><span class="val" id="val-syn">—</span></div>
+      <button type="button" class="btn-save" id="btn-save">✦ Salvar</button>
+    </section>
 
-      <div class="tabs" role="tablist" aria-label="Métricas da build">
-        <button role="tab" id="tab-impact" aria-selected="true"
-                aria-controls="panel-impact">Impacto</button>
-        <button role="tab" id="tab-details" aria-selected="false"
-                aria-controls="panel-details" tabindex="-1">Detalhes</button>
-        <button role="tab" id="tab-synergies" aria-selected="false"
-                aria-controls="panel-synergies" tabindex="-1">Sinergias</button>
-      </div>
+    <p style="color:var(--af-muted);font-size:.85rem;text-align:center;margin-top:30px">Aurora Forge · Echo Arena · forje com honra</p>
+  </main>
+</div>
 
-      <div role="tabpanel" id="panel-impact" aria-labelledby="tab-impact">
-        <!-- Valores preenchidos pelo JS; skeleton até lá -->
-        <div class="stat-row"><span>CC</span>
-          <div class="bar"><div class="bar-fill skeleton" data-stat="cc" style="width:0%"></div></div>
-          <span class="stat-val skeleton" aria-hidden="true">64%</span></div>
-        <div class="stat-row"><span>Dano</span>
-          <div class="bar"><div class="bar-fill skeleton" data-stat="dmg" style="width:0%"></div></div>
-          <span class="stat-val skeleton" aria-hidden="true">48%</span></div>
-        <div class="stat-row"><span>Utilidade</span>
-          <div class="bar"><div class="bar-fill skeleton" data-stat="util" style="width:0%"></div></div>
-          <span class="stat-val skeleton" aria-hidden="true">56%</span></div      <div role="tabpanel" id="panel-details" aria
+<div class="af-backdrop" id="af-backdrop" hidden></div>
 
-  <div="tabpanel" id="panel-synerg" aria-labelledby="tab-synergies" hidden>
-    <p class="muted" id="synergies-empty">As sinergias aparecem quando o anel estiver completo.</p>
-  </div>
-</section>
+<div class="af-modal glass" id="hero-picker" role="dialog" aria-modal="true" hidden>
+  <header><h2>Escolha seu Herói</h2><button class="af-close" type="button" data-close aria-label="Fechar">✕</button></header>
+  <div style="padding:20px 26px;overflow-y:auto" id="hero-list"></div>
+</div>
 
-<!-- Steps mobile -->
-<ol="lab-steps below-fold" aria-label="Passos para criar a build">
-  <li data-step="1" aria-current="step">Escolha o herói</li>
-  <li data-step="2">Monte o anel</li>
-  <li data-step="3">Descre a build</li>
-  <li data-step="4">Salve e compartilhe</li>
-</ol>
+<div class="af-modal glass" id="item-picker" role="dialog" aria-modal="true" hidden>
+  <header><h2>Forjar Equipamento <span id="item-slot-label"></span></h2><button class="af-close" type="button" data-close aria-label="Fechar">✕</button></header>
+  <div style="padding:20px 26px;overflow-y:auto" id="item-list"></div>
+</div>
+
+<div class="toast-region" id="toasts" aria-live="polite"></div>
+
+<script>
+'use strict';
+const $ = s => document.querySelector(s);
+const = s => [...document.querySelectorAll(s)];
+
+const HEROES = [
+  {id:'h1',name:'Kaelis, a Lâmina Aurora',role:'Assassina',icon:'⚔️',stats:{atk:88,def:35,spd:92}},
+  {id:'h2',name:'Torvalm',role:'Guardião',icon:'🛡️',stats:{atk:40,def:95,spd:30}},
+  {id:'h3',name:'Lyra, Voz do Vazio',role:'Suporte',icon:'💫',stats:{atk:50,def:45,spd:60}},
+  {id:'h4',name:'Dravok',role:'Bárbaro',icon:'🪓',stats:{atk:96,def:55,spd:40}},
+  {id:'h5',name:'Selene, Olho da Nebulosa',role:'Arqueira',icon:'🏹',stats:{atk:78,def:30,spd:85}},
+  {id:'h6',name:'Mystra, Tece Estrelas',role:'Magusa',icon:'🔮',stats:{atk:90,def:25,spd:55}}
+];
+
+const ITEMS = [
+  {id:'i1',name:'Lâmina Estelar',icon:'🗡️',mods:{atk:22}},
+  {id:'i2',name:'Égide Nebular',icon:'🛡️',mods:{def:24}},
+  {id:'i3',name:'Botas do Cometa',icon:'🥾',mods:{spd:20}},
+  {id:'i4',name:'Orbe de Plasma',icon:'🔮',mods:{atk:14,spd:8}},
+  {id:'i5',name:'Coração de Titânio',icon:'💠',mods:{def:16,atk:6}},
+  {id:'i6',name:'Pena do Vazio',icon:'🪶',mods:{spd:16,syn:10}},
+  {id:'i7',name:'Coroa Aurora',icon:'👑',mods:{atk:10,def:10,syn:15}},
+  {id:'i8',name:'Runa Fractal',icon:'✳️',mods:{syn:25}}
+];
+
+const state = {hero:null, slots:{1:null,2:null,3:null,4:null,5:null,6:null}};
+
+function toast(msg){
+  const t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  $('#toasts').appendChild(t);
+  setTimeout(() => t.remove(), 3200);
+}
+
+const backdrop = $('#af-backdrop');
+function openModal(m){ m.hidden = false; backdrop.hidden = false; }
+function closeModals(){('.af-modal').forEach(m => m.hidden = true);
+  backdrop.hidden = true;
+}
+backdrop.addEventListener('click', closeModals);
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModals(); });
+$$('[data-close]').forEach(b => b.addEventListener('click', closeModals));
+
+function renderHeroList(){
+  const box = $('#hero-list'); box.innerHTML = '';
+  HEROES.forEach(h => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.style.cssText = 'display:flex;gap:14px;align-items:center;width:100%;padding:14px;border-radius:14px;cursor:pointer;background:rgba(0,0,0,.3);border:1px solid var(--af-glass-b);color:var(--af-text);margin-bottom:10px;transition:border-color .25s;text-align:left;font:inherit';
+    b.innerHTML = `<span style="font-size:1.8rem">h.icon</span><span><strong>{h.icon}</span><span><strong>h.icon</span><span><strong>{h.name}</strong><br><small style="color:var(--af-muted)">${h.role}</small></span>`;
+    b.addEventListener('mouseenter', () => b.style.borderColor = 'var(--af-2)');
+    b.addEventListener('mouseleave', () => b.style.borderColor = 'var(--af-glass-b)');
+    b.addEventListener('click', () => { pickHero(h); closeModals(); });
+    box.appendChild(b);
+  });
+}
+
+function pickHero(h){
+  state.hero = h;
+  $('#hero-ph').textContent = h.icon;
+  $('#hero-name').textContent = h.name;
+  $('#hero-role').textContent = h.role;
+  $('#hero-id').value = h.id;
+  recalc();
+  toast(`
+
+✦ ${h.name} forjado!`);
+}
+
+let activeSlot = null;
+function openItemPicker(slot){
+  activeSlot = slot;
+  ('#item-slot-label').textContent = `· Slot{slot  const box = $('#item-list'); box.innerHTML = '';
+  ITEMS.forEach(it => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.style.cssText = 'display:flex;gap:14px;align-items:center;justify-content:space-between;width:100%;padding:14px;border-radius:14px;cursor:pointer;background:rgba(0,0,0,.3);border:1px solid var(--af-glass-b);color:var(--af-text);margin-bottom:10px;transition:border-color .25s;text-align:left;font:inherit';
+    const labels = {atk:'ATQ',def:'DEF',spd:'VEL',syn:'SIN'};
+    const mods = Object.entries(it.mods).map(([k,v]) => `<small style="color:var(--af-2);margin-left:10px">labels[k]+{labels[k]} +labels[k]+{v}</small>`).join('');
+    b.innerHTML = `<span style="display:flex;gap:12px;align-items:center"><span style="font-size:1.5rem">it.icon</span><strong>{it.icon}</span><strong>it.icon</span><strong>{it.name}</strong></span><span>${mods}</span>`;
+    b.addEventListener('mouseenter', () => b.style.borderColor = 'var(--af-3)');
+    b.addEventListener('mouseleave', () => b.style.borderColor = 'var(--af-glass-b)');
+    b.addEventListener('click', () => {
+      state.slots[slot] = it;
+      const slotBtn = (‘.slot[data−slot="(`.slot[data-slot="(‘.slot[data−slot="{slot}"]`);
+      slotBtn.textContent = it.icon;
+      slotBtn.classList.add('filled');
+      closeModals();
+      recalc();
+      toast(`◈ it.nameequipadanoslot{it.name} equipada no slotit.nameequipadanoslot{slot}`);
+    });
+    box.appendChild(b);
+  });
+  openModal($('#item-picker'));
+}
+
+function recalc(){
+  const totals = {atk:0,def:0,spd:0,syn:0};
+  if(state.hero) for(const k of ['atk','def','spd']) totals[k] += state.hero.stats[k];
+  const used = new Set();
+  let synPairs = 0;
+  for(const s of Object.values(state.slots)){
+    if(!s) continue;
+    for(const [k,v] of Object.entries(s.mods)) totals[k] += v;
+    if(used.has(s.id)) synPairs++; else used.add(s.id);
+  }
+  totals.syn += synPairs * 18;
+
+  const max = {atk:140,def:140,spd:140,syn:100};
+  for(const k of ['atk','def','spd','syn']){
+    const pct = Math.min(100, Math.round(totals[k] / max[k] * 100));
+    (`#bar-{k}`).style.width = pct + '%';
+    (`#val-{k}`).textContent = (state.hero || totals[k]) ? (totals[k] + (k==='syn' ? '%' : '')) : '—';
+  }
+}
+
+('#btn-hero').addEventListener('click', () => { renderHeroList(); openModal(('#hero-picker')); });
+$$('.slot').forEach(s => s.addEventListener('click', () => openItemPicker(+s.dataset.slot)));
+
+$('#btn-save').addEventListener('click', () => {
+  const name = $('#b-name').value.trim();
+  if(!state.hero) return toast('⚠️ Forje um herói primeiro!');
+  if(!name) return toast('⚠️ Dê um nome à sua build!');
+  const items = Object.values(state.slots).filter(Boolean);
+  if(items.length === 0) return toast('⚠️ Equipe pelo menos 1 relíquia!');
+  const build = {
+    name,
+    description: $('#b-desc').value.trim(),
+    visibility: $('#b-vis').value,
+    style: document.querySelector('input[name="style"]:checked').value,
+    hero: state.hero.id,
+    items: Object.entries(state.slots).map(([slot,it]) => ({slot, item: it ? it.id : null}))
+  };
+  try { localStorage.setItem('af-build-' + Date.now(), JSON.stringify(build)); } catch(e){}
+  toast(`✦ Build "${name}" salva com sucesso!`);
+});
+
+recalc();
+</script>
+</body>
+</html>

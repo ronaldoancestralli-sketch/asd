@@ -1,0 +1,16 @@
+-- Applied to production Supabase on 2026-08-26.
+-- Canonical migration: modular Founder/staff governance.
+-- Creates admin_modules, admin_capabilities, admin_staff_memberships,
+-- admin_staff_module_grants, append-only hash-chained admin_audit_events,
+-- admin_integrity_signals, Founder-only staff management RPCs and
+-- module-scoped table guards. The live database is the source of truth
+-- for the full DDL applied by Supabase migration founder_modular_admin_governance_v1.
+--
+-- Follow-up production migration founder_modular_admin_governance_v1_rpc_hardening
+-- revoked EXECUTE from public/anon/authenticated on trigger-only internals:
+-- echo_admin_table_guard, echo_guard_profile_authority_fields,
+-- echo_staff_public_activity_audit and echo_write_admin_audit.
+--
+-- This repository marker exists so deployment history records the schema
+-- generation alongside the UI commit. Future schema changes must be new
+-- migrations; do not edit the applied production migration in place.

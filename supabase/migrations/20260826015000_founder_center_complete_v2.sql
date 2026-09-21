@@ -1,0 +1,18 @@
+-- Applied to production Supabase on 2026-08-26.
+-- Founder Center Complete V2 production marker.
+--
+-- Production migrations applied through the authorized Supabase migration API:
+--   founder_center_complete_v2
+--   founder_center_integrity_review_v2
+--   founder_governance_non_delegable_v2
+--
+-- The deployed schema adds revocation metadata to admin_staff_memberships,
+-- Founder+AAL2-only account discovery, atomic staff onboarding/update,
+-- authority revocation preserving public identity/history, integrity signals
+-- for destructive activity, Founder-only signal review/resolution, and a
+-- database trigger that makes the governance module non-delegable to any
+-- identity other than the singleton Founder, including legacy RPC paths.
+--
+-- Privileged trigger functions remain outside authenticated/anon EXECUTE.
+-- Future changes must be additive migrations; do not weaken the Founder-only
+-- and AAL2 contracts recorded by these production migrations.

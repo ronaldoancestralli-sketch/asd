@@ -1,0 +1,5 @@
+-- Applied to production Supabase on 2026-08-26.
+-- Canonical production migration: my_identity_authority_v1.
+-- Adds echo_my_identity_authority_v1(), an authenticated self-only RPC that
+-- derives Founder/Admin/institutional identity without exposing the Founder
+-- authority table or another user's administrative state.

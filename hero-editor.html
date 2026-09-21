@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <script src="./js/guard.js?v=20260822-maintenance-2"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="refresh" content="0;url=./admin/hero-editor.html">
+  <title>Editor de Herói — Echo Arena Admin</title>
+</head>
+<body>
+  <p>
+    O editor de heróis foi consolidado no Admin.
+    <a href="./admin/hero-editor.html">Abrir o editor atual</a>.
+  </p>
+  <script>
+    const target = new URL('./admin/hero-editor.html', window.location.href);
+    target.search = window.location.search;
+    target.hash = window.location.hash;
+    window.location.replace(target);
+  </script>
+</body>
+</html>

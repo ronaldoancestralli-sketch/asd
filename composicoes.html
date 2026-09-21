@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <script src="./js/guard.js?v=20260822-maintenance-2"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#060910"><meta name="description" content="Monte trios e compare compatibilidade entre habilidades dos heróis do Echo Arena.">
+  <title>Composições — Echo Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/public-modules.css?v=1"><link rel="stylesheet" href="./css/public-modules-polish.css?v=1">
+  <link rel="stylesheet" href="./css/public-header-sync.css?v=20260822-drawer-unified-3"><link rel="stylesheet" href="./css/compositions-experience.css?v=20260821-synergy-1"><link rel="stylesheet" href="./css/compositions-readability.css?v=20260821-synergy-2"><link rel="stylesheet" href="./css/compositions-learning.css?v=20260821-learning-1"><link rel="stylesheet" href="./css/compositions-semantic-v4.css?v=20260827-brain-runtime-1">
+  <script type="importmap">
+    {"imports":{"./js/composition-adaptive-learning.js?v=20260822-null-safe-1":"./js/composition-adaptive-learning-public-bridge.js?v=20260823-server-authority-2"}}
+  </script>
+  <link rel="modulepreload" href="./js/compositions-experience.js?v=20260821-synergy-1&sb=20260823-security-supabase-pin-1">
+  <link rel="modulepreload" href="./js/compositions-experience-v2.js?v=20260821-synergy-2&sb=20260823-security-supabase-pin-1">
+  <link rel="modulepreload" href="./js/compositions-semantic-v4.js?v=20260827-brain-runtime-1&sb=20260823-security-supabase-pin-1">
+</head>
+<body class="module-page" data-public-module="composicoes" data-cms-page="compositions">
+  <header class="module-topbar"><a class="module-brand" href="./index.html"><span class="module-brand-mark"></span><b>ECHO</b><span>ARENA</span></a><nav class="module-nav"><a href="./herois.html">Heróis</a><a href="./criar-build.html">Builds</a><a class="active" href="./composicoes.html">Composições</a><a href="./tier-list.html">Tier List</a></nav><button id="sidebar-open" class="module-menu" type="button">☰</button></header>
+  <div id="sidebar-backdrop" class="module-sidebar-backdrop"></div><aside id="site-sidebar" class="module-sidebar" aria-hidden="true"><div class="module-sidebar-head"><strong>ECHO ARENA</strong><button id="sidebar-close" class="module-sidebar-close" type="button">×</button></div><div class="sidebar-scroll"></div></aside>
+
+  <main class="module-shell">
+    <section class="composition-explorer" aria-labelledby="composition-title">
+      <div class="composition-watermark" aria-hidden="true">3×3</div>
+      <div class="composition-copy">
+        <span class="composition-kicker">SALA DE ESTRATÉGIA</span>
+        <h1 class="composition-title" id="composition-title">Monte um trio<br><em>que faça sentido.</em></h1>
+        <p class="composition-sub">Escolha até três heróis e veja como as habilidades cadastradas se complementam. O motor começa pelas habilidades e só aprende com resultados reais quando houver amostra suficiente e validação segura.</p>
+        <div id="composition-data-status" class="composition-live empty"><i></i><span>Sincronizando heróis, habilidades e histórico</span></div>
+        <div class="composition-metrics" aria-label="Cobertura de dados">
+          <div class="composition-metric"><span>Composições públicas</span><strong id="composition-public-count">—</strong></div>
+          <div class="composition-metric"><span>Sinergias medidas</span><strong id="composition-synergy-count">—</strong></div>
+          <div class="composition-metric"><span>Heróis analisáveis</span><strong id="composition-hero-count">—</strong></div>
+        </div>
+        <div class="composition-actions"><button id="composition-create-cta" class="module-button" type="button">Começar análise</button><a class="module-button secondary" href="./herois.html">Revisar fichas dos heróis</a></div>
+      </div>
+
+      <div class="strategy-board" id="strategy-board" aria-label="Trio selecionado">
+        <div class="strategy-board-head"><span>SEU TRIO</span><small id="strategy-progress">0 de 3 selecionados</small></div>
+        <div class="strategy-ring">
+          <button id="strategy-slot-1" class="strategy-slot empty" type="button" data-position="1" aria-label="Escolher herói para a posição 1"><div class="slot-empty"><b>1</b><span>Escolher herói</span></div></button>
+          <button id="strategy-slot-2" class="strategy-slot empty" type="button" data-position="2" aria-label="Escolher herói para a posição 2"><div class="slot-empty"><b>2</b><span>Escolher herói</span></div></button>
+          <button id="strategy-slot-3" class="strategy-slot empty" type="button" data-position="3" aria-label="Escolher herói para a posição 3"><div class="slot-empty"><b>3</b><span>Escolher herói</span></div></button>
+        </div>
+        <div class="strategy-score" id="strategy-score"><span>Compatibilidade</span><strong>—</strong><small>Complete o trio para calcular</small></div>
+      </div>
+    </section>
+
+    <section class="composition-lab" id="composition-lab" aria-labelledby="composition-lab-title">
+      <header class="composition-lab-head">
+        <div><span class="composition-kicker">MOTOR DE COMPATIBILIDADE</span><h2 id="composition-lab-title">Escolha. Teste. Ajuste.</h2><p>Monte o trio e veja só o essencial: compatibilidade, pontos fortes, pontos fracos e o motivo principal. O histórico de partidas só altera a leitura quando o modelo tiver dados suficientes e passar na validação.</p></div>
+        <div class="calculation-notice"><strong>Compatibilidade adaptativa · Echo Brain Semantic v4</strong><span>Sinergia funcional, semântica de heróis/habilidades, potencial do catálogo atual, performance observada, dificuldade e confiança permanecem separadas. O catálogo nunca é tratado como uma build equipada, e histórico real só entra após validação. Não é win rate nem sinergia medida: a nota é compatibilidade calculada.</span></div>
+      </header>
+
+      <div class="composition-lab-grid">
+        <aside class="hero-picker" aria-label="Selecionar heróis">
+          <div class="hero-picker-head"><div><b>1 · Escolha os heróis</b><span>Toque para adicionar, remover ou substituir.</span></div><button id="composition-clear-team" type="button">Limpar</button></div>
+          <label class="composition-hero-search">⌕ <input id="composition-hero-search" type="search" placeholder="Buscar herói, classe ou habilidade" autocomplete="off"></label>
+          <div id="composition-class-filters" class="composition-class-filters" aria-label="Filtrar por classe"></div>
+          <div id="composition-hero-picker" class="composition-hero-picker" aria-live="polite"><div class="composition-engine-loading">Carregando heróis e habilidades…</div></div>
+        </aside>
+
+        <section class="composition-analysis" id="composition-analysis" aria-live="polite">
+          <div class="analysis-empty"><span>2 · ANÁLISE AO VIVO</span><strong>Selecione três heróis</strong><p>O motor vai destacar o que funciona, o que falta e por quê. Se existir histórico confiável, ele também mostra quanto esse comportamento alterou a leitura.</p></div>
+        </section>
+      </div>
+
+      <section class="composition-recommendations" aria-labelledby="composition-recommendations-title">
+        <header><div><b id="composition-recommendations-title">3 · Experimente outros trios</b><span id="composition-recommendations-copy">Escolha seus favoritos e deixe o motor completar os espaços.</span></div><small id="composition-recommendation-scope">Experimente livremente</small></header>
+        <div id="composition-recommendation-grid" class="composition-recommendation-grid"><div class="analysis-empty compact"><strong>Aguardando os dados</strong><p>As sugestões aparecem depois que as habilidades forem carregadas.</p></div></div>
+      </section>
+    </section>
+
+    <section class="module-section composition-save-section"><header class="module-section-head"><div><h2>Salvar esta composição</h2><p>Dê um nome ao trio escolhido. O salvamento continua transacional: composição e três membros só existem se tudo for gravado com sucesso.</p></div><span>3 heróis diferentes · salvamento atômico</span></header>
+      <form id="composition-form" class="composition-form">
+        <div class="composition-selected-fallback"><div><b>Heróis do trio</b><span>Os seletores abaixo ficam sincronizados com o laboratório e também funcionam como alternativa acessível.</span></div><button id="composition-back-to-lab" type="button">Alterar no laboratório</button></div>
+        <div class="composition-form-grid"><label class="module-field"><span>Posição 1</span><select class="composition-hero-select" required></select></label><label class="module-field"><span>Posição 2</span><select class="composition-hero-select" required></select></label><label class="module-field"><span>Posição 3</span><select class="composition-hero-select" required></select></label></div>
+        <div class="composition-form-copy"><div class="module-field"><span>Nome da composição</span><input name="title" maxlength="80" placeholder="Ex.: Controle de corredor" required></div><div class="module-field"><span>Descrição</span><textarea name="description" maxlength="400" placeholder="Explique como você pretende usar o trio."></textarea></div></div>
+        <label class="composition-public-toggle"><input name="is_public" type="checkbox"> <span><b>Tornar esta composição pública</b><small>Ela poderá aparecer na seção da comunidade abaixo.</small></span></label>
+        <div id="composition-form-message" class="module-form-message" role="status" aria-live="polite"></div><button class="module-button" type="submit">Salvar composição</button>
+      </form>
+    </section>
+
+    <section class="module-section"><header class="module-section-head"><div><h2 data-cms-text="public_title">Composições públicas</h2><p data-cms-text="public_description">Equipes criadas por usuários e marcadas como públicas. Ser salva ou popular não transforma uma composição em dado de desempenho.</p></div><span id="module-count"><strong>—</strong><small>composições públicas</small></span></header><div class="module-toolbar"><label class="module-search">⌕ <input id="module-search" type="search" placeholder="Buscar composição pública" data-cms-placeholder="search_placeholder"></label></div><div id="module-grid" class="module-grid"></div></section>
+
+    <section class="module-section measured-synergy-section"><header class="module-section-head"><div><h2 data-cms-text="synergy_title">Sinergias medidas</h2><p data-cms-text="synergy_description">Somente resultados registrados em partidas entram aqui. O motor pode aprender com esses resultados, mas nunca os substitui por estimativas.</p></div><span>Dados observados · sem estimativas</span></header><div id="synergy-grid" class="module-grid"></div></section>
+  </main>
+
+  <script type="module" src="./js/site-content.js?v=20260822-drawer-unified-1&sb=20260823-security-supabase-pin-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script><script type="module" src="./js/composition-transactional-save.js?v=1&sb=20260823-security-supabase-pin-1"></script><script type="module" src="./js/public-modules.js?v=20260822-composition-sync-1&sb=20260823-security-supabase-pin-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script><script type="module" src="./js/public-modules-polish.js?v=20260823-public-modules-freeze-hotfix-1"></script><script type="module" src="./js/compositions-experience-v3.js?v=20260827-brain-runtime-1&sb=20260823-security-supabase-pin-1"></script><script type="module" src="./js/compositions-semantic-v4.js?v=20260827-brain-runtime-1&sb=20260823-security-supabase-pin-1"></script><script type="module" src="./js/module-public-shell.js?v=20260822-beta-module-4&amp;active=composicoes&amp;sb=20260823-security-supabase-pin-1&amp;identity=20260825-v6-public-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/public-global-announcement.js?v=20260822-maintenance-2&sb=20260823-security-supabase-pin-1"></script>
+</body>
+</html>

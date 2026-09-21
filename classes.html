@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <script src="./js/guard.js?v=20260822-maintenance-2"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#060910">
+  <meta name="description" content="Entenda o papel das classes e funções de combate dos heróis do Echo Arena.">
+  <title>Classes — Echo Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/public-modules.css?v=1">
+  <link rel="stylesheet" href="./css/public-modules-polish.css?v=1">
+  <link rel="stylesheet" href="./css/public-header-sync.css?v=20260822-drawer-unified-3">
+  <link rel="stylesheet" href="./css/classes-experience.css?v=20260821-experience-1">
+  <link rel="stylesheet" href="./css/public-purpose-clarity.css?v=20260826-purpose-1">
+</head>
+<body class="module-page" data-public-module="classes" data-cms-page="classes">
+  <header class="module-topbar"><a class="module-brand" href="./index.html"><span class="module-brand-mark"></span><b>ECHO</b><span>ARENA</span></a><nav class="module-nav"><a href="./herois.html">Heróis</a><a class="active" href="./classes.html">Classes</a><a href="./equipamentos.html">Equipamentos</a><a href="./criar-build.html">Builds</a></nav><button id="sidebar-open" class="module-menu" type="button">☰</button></header>
+  <div id="sidebar-backdrop" class="module-sidebar-backdrop"></div>
+  <aside id="site-sidebar" class="module-sidebar" aria-hidden="true"><div class="module-sidebar-head"><strong>ECHO ARENA</strong><button id="sidebar-close" class="module-sidebar-close" type="button">×</button></div><div class="sidebar-scroll"></div></aside>
+
+  <main class="module-shell">
+    <section class="public-purpose-panel" aria-labelledby="classes-purpose-title">
+      <div class="public-purpose-head"><span class="public-purpose-kicker">ENTENDA ANTES DE ESCOLHER</span><h1 id="classes-purpose-title">Classes explicam o papel do herói — não se ele é melhor.</h1><p>Esta área agrupa heróis por função de combate. Ela serve para você descobrir personagens com estilos parecidos, entender o que cada papel entrega ao time e chegar às builds com mais contexto.</p></div>
+      <div class="public-purpose-grid">
+        <article class="public-purpose-card"><b>01</b><strong>Encontre seu estilo</strong><p>Procure heróis que cumprem funções semelhantes quando você gosta de um tipo específico de jogo.</p></article>
+        <article class="public-purpose-card"><b>02</b><strong>Monte funções complementares</strong><p>Use as classes para perceber quais papéis já existem no trio e quais funções ainda estão faltando.</p></article>
+        <article class="public-purpose-card"><b>03</b><strong>Chegue às builds com contexto</strong><p>Antes de montar equipamentos, entenda o papel base do herói que aquela build pretende reforçar.</p></article>
+      </div>
+      <div class="public-purpose-note"><strong>Diferença importante</strong><span>Classe = função do herói. Tier = posição em uma classificação publicada. Um herói pode pertencer a uma classe sem estar acima ou abaixo de outro por causa disso.</span></div>
+    </section>
+
+    <section class="class-explorer" id="class-explorer">
+      <div class="class-watermark" id="class-watermark">CLASSES</div>
+      <div class="class-copy">
+        <span class="class-kicker">EXPLORE UMA FUNÇÃO</span>
+        <div class="class-subtitle" id="class-feature-icon">◆</div>
+        <h1 class="class-title" id="class-feature-name">Carregando função</h1>
+        <div class="class-subtitle" id="class-feature-slug">Função de combate</div>
+        <p class="class-description" id="class-feature-description">Lendo classes e heróis ativos diretamente do banco.</p>
+        <div class="class-proof" id="class-feature-proof"><i></i><span>Dados sincronizados</span></div>
+        <div class="class-metrics">
+          <div class="class-metric"><span>Heróis da função</span><strong id="class-feature-count">—</strong></div>
+          <div class="class-metric"><span>Builds vinculadas</span><strong id="class-feature-builds">—</strong></div>
+          <div class="class-metric"><span>Visualizações</span><strong id="class-feature-views">—</strong></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+          <a id="class-feature-link" class="module-button" href="./herois.html">Explorar heróis desta função</a>
+          <button id="class-reset" class="module-button secondary" type="button">Ver todas</button>
+        </div>
+      </div>
+      <div class="class-showcase"><div class="class-hero-stack" id="class-hero-stack"><div class="class-hero-empty">Carregando heróis...</div></div></div>
+    </section>
+
+    <section class="class-browser">
+      <div class="class-browser-head"><div><h2>Escolha uma função</h2><p>Selecione uma classe para ver quais heróis exercem esse papel e use esse contexto antes de comparar ou montar builds.</p></div><div class="class-browser-count"><span id="class-total-exp">—</span> classes · <span id="class-hero-total-exp">—</span> heróis ativos</div></div>
+      <div class="class-pills" id="class-experience-pills"></div>
+    </section>
+
+    <div class="module-toolbar"><label class="module-search">⌕ <input id="module-search" type="search" placeholder="Buscar classe ou herói" data-cms-placeholder="search_placeholder"></label></div>
+
+    <section class="module-section">
+      <header class="module-section-head"><div><h2 data-cms-text="section_title">Mapa de funções</h2><p data-cms-text="section_description">Cada card mostra uma função e os heróis ativos ligados a ela no cadastro atual.</p></div><span id="module-count"><strong>—</strong><small>classes cadastradas</small></span></header>
+      <div id="module-grid" class="module-grid"></div>
+    </section>
+  </main>
+
+  <script type="module" src="./js/site-content.js?v=20260822-drawer-unified-1&sb=20260823-security-supabase-pin-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/public-modules.js?v=20260822-drawer-unified-1&sb=20260823-security-supabase-pin-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/classes.js?v=20260821-classes-2"></script>
+  <script type="module" src="./js/public-modules-polish.js?v=20260823-public-modules-freeze-hotfix-1"></script>
+  <script type="module" src="./js/classes-experience.js?v=20260821-experience-1&sb=20260823-security-supabase-pin-1"></script>
+  <script type="module" src="./js/module-public-shell.js?v=20260822-beta-module-4&amp;active=classes&amp;sb=20260823-security-supabase-pin-1&amp;identity=20260825-v6-public-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/public-global-announcement.js?v=20260822-maintenance-2&sb=20260823-security-supabase-pin-1"></script>
+</body>
+</html>

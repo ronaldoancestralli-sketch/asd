@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <script src="./js/guard.js?v=20260822-maintenance-2"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#060910">
+  <meta name="description" content="Builds públicas da comunidade com autoria destacada e acesso à Mesa de Builds do Echo Arena.">
+  <title>Builds — Echo Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/public-modules.css?v=1">
+  <link rel="stylesheet" href="./css/public-header-sync.css?v=20260822-drawer-unified-3">
+  <link rel="stylesheet" href="./css/builds-hub-experience.css?v=20260905-institutional-scout-exclusion-v2-1">
+  <link rel="stylesheet" href="./css/public-purpose-clarity.css?v=20260826-purpose-1">
+</head>
+<body class="module-page" data-public-module="builds" data-cms-page="builds">
+  <header class="module-topbar"><a class="module-brand" href="./index.html"><span class="module-brand-mark"></span><b>ECHO</b><span>ARENA</span></a><nav class="module-nav"><a href="./herois.html">Heróis</a><a class="active" href="./builds.html">Builds</a><a href="./equipamentos.html">Equipamentos</a><a href="./comparar-build.html">Comparar</a></nav><button id="sidebar-open" class="module-menu" type="button">☰</button></header>
+  <div id="sidebar-backdrop" class="module-sidebar-backdrop"></div>
+  <aside id="site-sidebar" class="module-sidebar" aria-hidden="true"><div class="module-sidebar-head"><strong>ECHO ARENA</strong><button id="sidebar-close" class="module-sidebar-close" type="button">×</button></div><div class="sidebar-scroll"></div></aside>
+
+  <main class="builds-shell">
+    <section class="builds-explorer">
+      <div class="builds-watermark" data-cms-text="watermark">BUILD</div>
+      <div class="builds-copy">
+        <span class="builds-kicker" data-cms-text="explorer_kicker">LABORATÓRIO DA COMUNIDADE</span>
+        <h1 class="builds-title" data-cms-text="explorer_title">Monte sua vantagem.</h1>
+        <p data-cms-text="explorer_description">Explore builds públicas criadas por jogadores ou abra a Mesa de Builds para montar a sua. Cada build mantém a autoria visível: a configuração não existe separada de quem a criou.</p>
+        <div id="builds-sync-status" class="builds-live partial"><i></i><span>Sincronizando builds públicas</span></div>
+        <div class="builds-metrics">
+          <div class="builds-metric"><span data-cms-text="metric_public_label">Builds públicas</span><strong id="builds-public-count">—</strong></div>
+          <div class="builds-metric"><span data-cms-text="metric_heroes_label">Heróis ativos</span><strong id="builds-hero-count">—</strong></div>
+          <div class="builds-metric"><span data-cms-text="metric_represented_label">Heróis representados</span><strong id="builds-represented-count">—</strong></div>
+        </div>
+        <div class="builds-actions"><a class="builds-button" href="./criar-build.html" data-cms-text="open_workbench_button">Abrir Mesa de Builds</a><a class="builds-button secondary" href="./comparar-build.html" data-cms-text="compare_button">Comparar builds</a></div>
+      </div>
+      <div class="builds-stage"><div id="builds-preview-stack" class="builds-stack"><div class="builds-preview-empty">Carregando builds públicas...</div></div></div>
+    </section>
+
+    <section class="builds-section">
+      <header class="builds-section-head"><div><h2 data-cms-text="public_title">Builds da comunidade</h2><p data-cms-text="public_description">Cada card destaca o criador da build junto do herói e da configuração. Autoria é parte central do conteúdo, não metadado escondido.</p></div><span data-cms-text="public_source_label">AUTORIA DA COMUNIDADE</span></header>
+      <div id="builds-grid" class="builds-grid"><div class="builds-empty">Carregando builds...</div></div>
+    </section>
+
+    <section class="builds-section">
+      <header class="builds-section-head"><div><h2 data-cms-text="flow_title">Fluxo da Mesa</h2><p data-cms-text="flow_description">Crie sua configuração, salve com sua identidade e compartilhe uma build que outras pessoas conseguem reconhecer como sua.</p></div><span data-cms-text="flow_source_label">Uma única fonte de cálculo</span></header>
+      <div class="builds-steps">
+        <article class="builds-step"><b>01</b><strong data-cms-text="step_one_title">Escolha o herói</strong><p data-cms-text="step_one_description">A Mesa carrega heróis e os dados-base cadastrados para iniciar a análise.</p></article>
+        <article class="builds-step"><b>02</b><strong data-cms-text="step_two_title">Monte o equipamento</strong><p data-cms-text="step_two_description">Os itens selecionados são avaliados pela mesma cadeia de análise já usada pelo projeto.</p></article>
+        <article class="builds-step"><b>03</b><strong data-cms-text="step_three_title">Salve com sua autoria</strong><p data-cms-text="step_three_description">Ao publicar, sua identidade acompanha a build para que a comunidade saiba quem criou aquela configuração.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./js/builds-hub-experience.js?v=20260905-institutional-scout-exclusion-v2-1&sb=20260823-security-supabase-pin-1"></script>
+  <script type="module" src="./js/site-content.js?v=20260822-drawer-unified-1&sb=20260823-security-supabase-pin-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/module-public-shell.js?v=20260822-beta-module-4&amp;active=builds&amp;sb=20260823-security-supabase-pin-1&amp;identity=20260825-v6-public-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/public-global-announcement.js?v=20260822-maintenance-2&sb=20260823-security-supabase-pin-1"></script>
+</body>
+</html>

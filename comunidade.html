@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <script src="./js/guard.js?v=20260822-maintenance-2"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#060910">
+  <meta name="description" content="Comunidade EchoArena: discussões espontâneas sobre Bullet Echo, heróis, builds, atualizações e estratégias.">
+  <title>Comunidade — Echo Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/public-modules.css?v=1">
+  <link rel="stylesheet" href="./css/public-modules-polish.css?v=1">
+  <link rel="stylesheet" href="./css/public-header-sync.css?v=20260822-drawer-unified-3">
+  <link rel="stylesheet" href="./css/community-experience.css?v=20260905-institutional-scout-exclusion-v2-1">
+</head>
+<body class="module-page community-page" data-public-module="community">
+  <header class="module-topbar"><a class="module-brand" href="./index.html"><span class="module-brand-mark"></span><b>ECHO</b><span>ARENA</span></a><nav class="module-nav"><a href="./herois.html">Heróis</a><a href="./builds.html">Builds</a><a href="./noticias.html">Echo Pulse</a><a class="active" href="./comunidade.html">Comunidade</a></nav><button id="sidebar-open" class="module-menu" type="button">☰</button></header>
+  <div id="sidebar-backdrop" class="module-sidebar-backdrop"></div><aside id="site-sidebar" class="module-sidebar" aria-hidden="true"><div class="module-sidebar-head"><strong>ECHO ARENA</strong><button id="sidebar-close" class="module-sidebar-close" type="button">×</button></div><div class="sidebar-scroll"></div></aside>
+
+  <main class="module-shell community-shell">
+    <section class="community-hero">
+      <div class="community-glow"></div>
+      <div class="community-copy">
+        <span class="community-kicker">A ARENA CONTINUA DEPOIS DA PARTIDA</span>
+        <h1>Jogue.<br><span>Descubra.</span><br>Converse.</h1>
+        <p>Um espaço para jogadores de Bullet Echo trocarem o que estão vendo no jogo — dúvidas, estratégias, builds, mudanças e descobertas. Sem placar de popularidade inventado, sem obrigação de postar.</p>
+        <div class="community-actions"><button id="community-compose-cta" class="community-primary" type="button">Iniciar uma conversa</button><a class="community-secondary" href="./noticias.html">Ver Echo Pulse</a></div>
+      </div>
+      <div class="community-live-board">
+        <span>ATIVIDADE REAL</span>
+        <div><strong id="community-post-count">—</strong><small>conversas</small></div>
+        <div><strong id="community-reply-count">—</strong><small>respostas</small></div>
+        <div><strong id="community-reaction-count">—</strong><small>reações</small></div>
+        <p>Os números acima vêm do banco. Se estiver vazio, fica vazio.</p>
+      </div>
+    </section>
+
+    <section id="community-composer" class="community-composer" hidden>
+      <header><div><span>NOVA CONVERSA</span><h2>Tem algo para compartilhar?</h2></div><button id="community-composer-close" type="button" aria-label="Fechar">×</button></header>
+      <div id="community-context" class="community-context" hidden></div>
+      <form id="community-form">
+        <div class="community-form-grid"><label><span>Tipo</span><select id="community-kind"><option value="discussion">Discussão</option><option value="question">Pergunta</option><option value="tip">Dica</option><option value="showcase">Showcase</option></select></label><label class="wide"><span>Título <small>opcional</small></span><input id="community-title" maxlength="140" placeholder="Dê contexto em uma frase"></label></div>
+        <label><span>Mensagem</span><textarea id="community-body" minlength="1" maxlength="4000" required placeholder="Escreva como você falaria com outro jogador. Dê contexto suficiente para a conversa fazer sentido."></textarea></label>
+        <div class="community-form-footer"><div id="community-form-message" role="status" aria-live="polite"></div><button class="community-primary" type="submit">Publicar conversa</button></div>
+      </form>
+    </section>
+
+    <section id="community-feed" class="community-feed">
+      <header class="community-section-head"><div><span>COMUNIDADE</span><h2>Conversas recentes</h2><p>Discussões criadas por jogadores autenticados.</p></div><label class="community-search">⌕ <input id="community-search" type="search" placeholder="Buscar conversa"></label></header>
+      <div id="community-filters" class="community-filters"><button class="is-active" type="button" data-community-kind="all">Tudo</button><button type="button" data-community-kind="discussion">Discussões</button><button type="button" data-community-kind="question">Perguntas</button><button type="button" data-community-kind="tip">Dicas</button><button type="button" data-community-kind="showcase">Showcase</button></div>
+      <div id="community-state" class="community-state" role="status">Sincronizando conversas…</div>
+      <div id="community-grid" class="community-grid"></div>
+    </section>
+
+    <section id="community-detail" class="community-detail" hidden></section>
+  </main>
+
+  <script type="module" src="./js/community.js?v=20260905-institutional-scout-exclusion-v2-1&sb=20260823-security-supabase-pin-1"></script>
+  <script type="module" src="./js/module-public-shell.js?v=20260822-beta-module-4&amp;active=community&amp;sb=20260823-security-supabase-pin-1&amp;identity=20260825-v6-public-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/public-global-announcement.js?v=20260822-maintenance-2&sb=20260823-security-supabase-pin-1"></script>
+</body>
+</html>

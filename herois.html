@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script src="./js/guard.js?v=20260822-maintenance-2"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#060910">
+  <meta name="description" content="Explore os heróis do Echo Arena, suas classes, habilidades, status e dados da comunidade.">
+  <title>Heróis — Echo Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/site.css">
+  <link rel="stylesheet" href="./css/echo-theme.css?v=1">
+  <link rel="stylesheet" href="./css/public-header-sync.css?v=20260822-drawer-unified-3">
+  <link rel="stylesheet" href="./css/herois-detail.css?v=20260821-experience-1&build=20260830-community-audit-1">
+  <link rel="stylesheet" href="./css/herois-experience.css?v=20260821-experience-1&build=20260830-class-cycle-1">
+  <link rel="stylesheet" href="./css/heroes-card-media-fix.css?v=20260821-media-3">
+  <link rel="stylesheet" href="./css/heroes-roster-responsive.css?v=20260821-microcards-1">
+</head>
+<body data-cms-page="heroes" data-cms-bg="page_background">
+  <div class="heroes-page" data-site-content>
+    <section class="hero-explorer" id="hero-explorer" aria-labelledby="heroes-explorer-title">
+      <div class="hero-explorer-bg" id="hero-explorer-bg" aria-hidden="true"></div>
+      <button class="class-cycle-control" id="class-cycle-control" type="button" aria-label="Ir para a próxima classe">
+        <span class="class-cycle-copy"><small>Próxima classe</small><strong id="class-cycle-name">—</strong></span>
+        <span class="class-cycle-index" id="class-cycle-index" aria-hidden="true">—</span>
+        <span class="class-cycle-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12h12M13 7l5 5-5 5"/></svg></span>
+      </button>
+      <div class="hero-explorer-inner">
+        <div class="hero-explorer-copy">
+          <div class="hero-explorer-kicker"><span data-cms-text="explorer_kicker">Arquivo de combate</span> <span data-cms-text="explorer_sync">dados sincronizados</span></div>
+          <h1 id="heroes-explorer-title"><span data-cms-text="explorer_title">Encontre o herói que</span> <em data-cms-text="explorer_accent">combina com você.</em></h1>
+          <p data-cms-text="explorer_description">Explore o roster por classe, compare informações cadastradas e abra a ficha completa para consultar habilidades, fontes, histórico e status-base.</p>
+          <div class="hero-explorer-numbers" aria-label="Resumo do roster">
+            <div class="hero-explorer-number"><strong id="hero-total">—</strong><span data-cms-text="metric_heroes_label">Heróis ativos</span></div>
+            <div class="hero-explorer-number"><strong id="class-total">—</strong><span data-cms-text="metric_classes_label">Classes</span></div>
+            <div class="hero-explorer-number"><strong id="skill-total">—</strong><span data-cms-text="metric_skills_label">Habilidades</span></div>
+          </div>
+        </div>
+
+        <div class="hero-featured-visual" aria-hidden="true">
+          <div class="hero-featured-name-watermark" id="featured-watermark"></div>
+          <div class="hero-featured-media empty" id="featured-media"></div>
+        </div>
+
+        <article class="hero-featured-intel" aria-live="polite">
+          <div class="featured-overline"><span data-cms-text="featured_label">Herói em foco</span><span class="featured-live" data-cms-text="featured_live_label">registro ativo</span></div>
+          <h2 id="featured-name">Carregando...</h2>
+          <div class="featured-role" id="featured-role">—</div>
+          <p class="featured-description" id="featured-description">Sincronizando informações cadastradas.</p>
+          <div class="featured-trust" id="featured-trust"><span class="featured-trust-dot"></span><span>Verificando evidências...</span></div>
+          <div class="featured-stats" id="featured-stats"></div>
+          <div class="featured-skills" id="featured-skills"></div>
+          <div class="featured-community" aria-label="Dados da comunidade">
+            <div><span data-cms-text="featured_builds_label">Builds</span><strong id="featured-builds">—</strong></div>
+            <div><span data-cms-text="featured_views_label">Views</span><strong id="featured-views">—</strong></div>
+            <div><span data-cms-text="featured_likes_label">Curtidas</span><strong id="featured-likes">—</strong></div>
+          </div>
+          <div class="featured-actions">
+            <button class="featured-action primary" id="featured-open" type="button"><span data-cms-text="featured_open_button">Ver ficha completa</span> <span>→</span></button>
+            <a class="featured-action" id="featured-build" href="./criar-build.html?nova=1"><span data-cms-text="featured_build_button">Criar build</span> <span>◇</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="class-intelligence" aria-labelledby="classes-title">
+      <div class="class-intelligence-head">
+        <div>
+          <div class="class-kicker" data-cms-text="classes_kicker">Escolha seu estilo</div>
+          <h2 id="classes-title" data-cms-text="classes_title">Navegue pelas classes</h2>
+        </div>
+        <p data-cms-text="classes_description">Cada filtro usa o cadastro real de classes e mostra quantos heróis ativos pertencem a cada função.</p>
+      </div>
+      <div class="class-showcase" id="class-showcase" aria-label="Classes de heróis"></div>
+    </section>
+
+    <section class="roster-section" aria-labelledby="roster-title">
+      <header class="roster-head">
+        <div>
+          <div class="roster-kicker" data-cms-text="roster_kicker">Roster completo</div>
+          <h2 id="roster-title" data-cms-text="title">Heróis</h2>
+          <p data-cms-text="subtitle">Conheça todos os heróis disponíveis e suas classes.</p>
+        </div>
+        <div class="roster-count"><strong id="count">—</strong></div>
+      </header>
+
+      <section class="tools" aria-label="Busca e ordenação">
+        <div>
+          <label for="search" data-cms-text="search_label">Buscar herói</label>
+          <input id="search" type="search" placeholder="Nome, classe ou função..." data-cms-placeholder="search_placeholder" autocomplete="off">
+        </div>
+        <div>
+          <label for="sort" data-cms-text="sort_label">Ordenar</label>
+          <select id="sort">
+            <option value="ordem">Ordem de exibição</option>
+            <option value="nome">Nome</option>
+            <option value="builds">Mais usados</option>
+          </select>
+        </div>
+      </section>
+
+      <div class="filters" id="class-filters" aria-label="Filtros de classe"></div>
+      <section class="grid" id="grid" aria-live="polite"><div class="loading-card">Carregando heróis...</div></section>
+    </section>
+
+    <div class="hd-backdrop" id="hd-backdrop"></div>
+    <aside class="hd" id="hero-detail" aria-hidden="true" aria-label="Ficha completa do herói">
+      <div class="hd-art"><div class="media empty" id="hd-media"></div><div class="veil"></div><button class="hd-close" id="hd-close" type="button" aria-label="Fechar">✕</button></div>
+      <div class="hd-body" id="hd-body"></div>
+    </aside>
+  </div>
+
+  <script type="module" src="./js/herois.js?v=20260822-drawer-unified-1&sb=20260823-security-supabase-pin-1&build=20260830-community-audit-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/herois-experience.js?v=20260822-drawer-unified-1&sb=20260823-security-supabase-pin-1&build=20260830-class-cycle-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/heroes-build-handoff.js?v=20260821-build-handoff-2"></script>
+  <script type="module" src="./js/heroes-media-compat.js?v=20260821-media-4&sb=20260823-security-supabase-pin-1"></script>
+  <script type="module" src="./js/site-content.js?v=20260822-drawer-unified-1&sb=20260823-security-supabase-pin-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/heroes-page-media.js?v=20260821-page-media-3&sb=20260823-security-supabase-pin-1"></script>
+  <script type="module" src="./js/public-header-sync.js?v=20260822-beta-nav-5&amp;active=herois&amp;mode=site-shell&amp;sb=20260823-security-supabase-pin-1&amp;identity=20260825-v6-public-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/public-global-announcement.js?v=20260822-maintenance-2&sb=20260823-security-supabase-pin-1"></script>
+</body>
+</html>

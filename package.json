@@ -1,0 +1,16 @@
+{
+  "name": "echoarena-browser-build",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build:neural-ocr": "node scripts/build-neural-ocr-vendor.mjs",
+    "prepare:neural-ocr-assets": "node scripts/prepare-neural-ocr-assets.mjs"
+  },
+  "dependencies": {
+    "onnxruntime-web": "1.22.0",
+    "paddleocr": "1.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.9"
+  }
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <script src="./js/guard.js?v=20260822-maintenance-2"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#060910">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Perfil público do Echo Arena.">
+  <title>Perfil — Echo Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/public-modules.css?v=1">
+  <link rel="stylesheet" href="./css/public-header-sync.css?v=20260822-drawer-unified-3">
+  <link rel="stylesheet" href="./css/profile-experience-v3.css?v=20260825-profile-v3-shadow-2">
+  <link rel="stylesheet" href="./css/echo-profile-dossier-v15.css?v=20260905-institutional-scout-exclusion-v15-3">
+</head>
+<body class="module-page profile-page" data-public-module="perfil" data-profile-shadow="true">
+  <header class="module-topbar"><a class="module-brand" href="./index.html"><span class="module-brand-mark"></span><b>ECHO</b><span>ARENA</span></a><nav class="module-nav"><a href="./herois.html">Heróis</a><a href="./builds.html">Builds</a><a href="./estatisticas.html">Estatísticas</a></nav><button id="sidebar-open" class="module-menu" type="button">☰</button></header>
+  <div id="sidebar-backdrop" class="module-sidebar-backdrop"></div><aside id="site-sidebar" class="module-sidebar" aria-hidden="true"><div class="module-sidebar-head"><strong>ECHO ARENA</strong><button id="sidebar-close" class="module-sidebar-close" type="button">×</button></div><div class="sidebar-scroll"></div></aside>
+
+  <main class="profile-shell">
+    <section id="profile-state" class="profile-state" aria-live="polite">
+      <span class="profile-kicker">ECHO IDENTITY</span>
+      <h1>Carregando perfil…</h1>
+      <p>A identidade pública só aparece quando os gates seguros estiverem habilitados.</p>
+    </section>
+
+    <section id="profile-card" class="profile-card" hidden>
+      <div class="profile-frame" id="profile-frame">
+        <div class="profile-avatar" id="profile-avatar"></div>
+        <div class="profile-heading">
+          <div class="profile-title-row">
+            <div>
+              <span class="profile-kicker">ECHO IDENTITY</span>
+              <h1 id="profile-name"></h1>
+              <p id="profile-handle" class="profile-handle"></p>
+              <span id="profile-personal-accent" class="profile-personal-accent"></span>
+            </div>
+            <div id="profile-authority" class="profile-authority"></div>
+          </div>
+          <p id="profile-bio" class="profile-bio"></p>
+          <div class="profile-badges" id="profile-badges"></div>
+        </div>
+      </div>
+
+      <section class="profile-progress">
+        <div class="profile-section-head"><div><span class="profile-kicker">ECHO SCOUTS</span><h2>Contribuição reconhecida</h2></div><p>Progressão comunitária e autoridade institucional são sistemas separados.</p></div>
+        <div class="profile-stats">
+          <article><small>NÍVEL</small><strong id="profile-tier">Member</strong></article>
+          <article><small>VERIFICADAS</small><strong id="profile-verified">0</strong></article>
+          <article><small>DESCOBERTAS</small><strong id="profile-first">0</strong></article>
+        </div>
+      </section>
+
+      <section class="profile-history">
+        <div class="profile-section-head"><div><span class="profile-kicker">HISTÓRICO</span><h2>Contribuições públicas</h2></div><p>Somente contribuições revisadas aparecem aqui. Evidências privadas e notas administrativas nunca são exibidas.</p></div>
+        <div id="profile-history" class="profile-history-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="./js/profile-experience-v3.js?v=20260905-institutional-scout-exclusion-v15-3&sb=20260823-security-supabase-pin-1"></script>
+  <script type="module" src="./js/module-public-shell.js?v=20260822-beta-module-4&amp;active=comunidade&amp;sb=20260823-security-supabase-pin-1&amp;identity=20260825-v6-public-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/public-global-announcement.js?v=20260822-maintenance-2&sb=20260823-security-supabase-pin-1"></script>
+</body>
+</html>

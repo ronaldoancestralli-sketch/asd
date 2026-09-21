@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script src="./js/guard.js?v=20260822-maintenance-2"></script>
+  <script src="./js/runtime-compat.js?v=3"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#060910">
+  <title>Equipamentos — Echo Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/site.css">
+  <link rel="stylesheet" href="./css/equipamentos-base.css?v=20260916-equipment-verification-v1">
+  <link rel="stylesheet" href="./css/echo-theme.css?v=1">
+  <link rel="stylesheet" href="./css/public-header-sync.css?v=20260822-drawer-unified-3">
+  <link rel="stylesheet" href="./css/equipments-experience.css?v=20260821-holographic-2">
+  <link rel="stylesheet" href="./css/equipments-showcase-data.css?v=20260821-divino-1">
+</head>
+<body data-cms-page="equipments" data-cms-bg="page_background">
+<div data-site-content>
+  <section class="equipment-explorer" id="equipment-explorer" aria-labelledby="equipment-name">
+    <div class="equipment-watermark" id="equipment-watermark" aria-hidden="true">ARSENAL</div>
+
+    <div class="equipment-copy">
+      <span class="equipment-kicker">LABORATÓRIO DE EQUIPAMENTO</span>
+      <h1 class="equipment-name" id="equipment-name">Carregando</h1>
+
+      <div class="equipment-meta">
+        <span class="equipment-tag equipment-tag-divino" id="equipment-rarity">—</span>
+        <span class="equipment-tag" id="equipment-slot">—</span>
+        <span class="equipment-tag" id="equipment-set">—</span>
+      </div>
+
+      <p class="equipment-description" id="equipment-description">Lendo equipamentos, atributos e restrições diretamente do banco.</p>
+
+      <div class="equipment-attribute-cards" id="equipment-attribute-cards" aria-label="Atributos do equipamento na raridade Divino">
+        <div class="equipment-attribute-card is-loading"><span>Atributos</span><strong>—</strong></div>
+      </div>
+
+      <div class="equipment-actions">
+        <button id="equipment-open-detail" class="equipment-action" type="button">Ver ficha completa</button>
+        <button id="equipment-browse" class="equipment-action secondary" type="button">Explorar arsenal</button>
+      </div>
+    </div>
+
+    <div class="equipment-stage" id="equipment-stage" aria-label="Mesa de inspeção tática">
+      <div class="equipment-depth-glow" aria-hidden="true"></div>
+      <div class="equipment-scan-frame" aria-hidden="true"></div>
+      <div class="equipment-platform" aria-hidden="true"></div>
+
+      <div class="equipment-orbit">
+        <div class="equipment-grid-plane" aria-hidden="true"></div>
+        <div class="equipment-rarity-ring" aria-hidden="true"></div>
+        <div class="equipment-ring equipment-ring-inner" aria-hidden="true"></div>
+        <div class="equipment-scanner" aria-hidden="true"></div>
+
+        <div class="equipment-art" id="equipment-feature-art">
+          <div class="media empty"></div>
+        </div>
+
+        <div class="equipment-callout callout-rarity">
+          <span>Raridade</span>
+          <strong id="equipment-hud-rarity">—</strong>
+        </div>
+        <div class="equipment-callout callout-slot">
+          <span>Slot</span>
+          <strong id="equipment-hud-slot">—</strong>
+        </div>
+        <div class="equipment-callout callout-set">
+          <span>Conjunto</span>
+          <strong id="equipment-hud-set">—</strong>
+        </div>
+        <div class="equipment-callout callout-levels callout-attributes">
+          <span>Atributos</span>
+          <div class="equipment-callout-values" id="equipment-hud-attributes">—</div>
+        </div>
+        <div class="equipment-callout callout-stats callout-class">
+          <span>Classe de herói</span>
+          <strong id="equipment-hud-class">—</strong>
+          <small id="equipment-hud-class-note"></small>
+        </div>
+      </div>
+
+      <div class="equipment-stage-status" aria-hidden="true">
+        <span>SISTEMA // INSPEÇÃO DIVINO</span><i></i><span>EA-TACTICAL</span>
+      </div>
+    </div>
+  </section>
+
+  <header class="page-head">
+    <div><h1 data-cms-text="title">Equipamentos</h1><p data-cms-text="subtitle">Atributos por raridade, conjuntos e bônus.</p></div>
+    <div class="page-count" id="count">—</div>
+  </header>
+
+  <section class="tools">
+    <div><label for="search">Buscar</label><input id="search" type="search" placeholder="Nome do equipamento..." data-cms-placeholder="search_placeholder" autocomplete="off"></div>
+    <div><label for="rarity">Raridade</label><select id="rarity"><option value="">Todas</option></select></div>
+    <div><label for="sort">Ordenar</label><select id="sort"><option value="ordem">Ordem de exibição</option><option value="nome">Nome</option><option value="raridade">Raridade</option></select></div>
+  </section>
+
+  <div class="filters" id="slot-filters"></div>
+  <section class="grid" id="grid"><div class="loading-card">Carregando equipamentos...</div></section>
+
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px" aria-label="Resumo do arsenal">
+    <div class="equipment-metric"><span>Equipamentos ativos</span><strong id="equipment-total">—</strong></div>
+    <div class="equipment-metric"><span>Slots cadastrados</span><strong id="equipment-slot-total">—</strong></div>
+    <div class="equipment-metric"><span>Conjuntos cadastrados</span><strong id="equipment-set-total">—</strong></div>
+  </div>
+</div>
+
+<div class="ed-backdrop" id="ed-backdrop"></div>
+<aside class="ed" id="eq-detail" aria-hidden="true">
+  <div class="ed-head"><div class="art"><div class="media empty" id="ed-media"></div></div><div><div class="set-name" id="ed-set">—</div><h2 id="ed-name">—</h2><div class="slot" id="ed-slot"></div></div><button class="ed-close" id="ed-close" aria-label="Fechar">✕</button></div>
+  <div class="ed-body" id="ed-body"></div>
+</aside>
+
+<script type="module" src="./js/equipamentos.js?v=20260916-equipment-verification-v1&sb=20260823-security-supabase-pin-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+<script type="module" src="./js/equipamentos-data-limits.js?v=4&sb=20260823-security-supabase-pin-1"></script>
+<script type="module" src="./js/site-content.js?v=20260822-drawer-unified-1&sb=20260823-security-supabase-pin-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+<script type="module" src="./js/equipments-experience.js?v=20260916-equipment-verification-v1&sb=20260823-security-supabase-pin-1"></script>
+<script type="module" src="./js/public-header-sync.js?v=20260822-beta-nav-5&amp;active=equipamentos&amp;mode=site-shell&amp;sb=20260823-security-supabase-pin-1&amp;identity=20260825-v6-public-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/public-global-announcement.js?v=20260822-maintenance-2&sb=20260823-security-supabase-pin-1"></script>
+</body>
+</html>

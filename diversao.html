@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script src="./js/guard.js?v=20260822-maintenance-2"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#07040e">
+  <meta name="description" content="Echo Arena — gire o tambor e descubra dois times aleatórios de três heróis.">
+  <title>Diversão — Echo Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/site.css">
+  <link rel="stylesheet" href="./css/echo-theme.css?v=1">
+  <link rel="stylesheet" href="./css/public-header-sync.css?v=20260822-drawer-unified-3">
+  <link rel="stylesheet" href="./css/diversao.css?v=20260821-diversao-2">
+  <link rel="stylesheet" href="./css/diversao-weapon.css?v=20260821-weapon-1">
+  <link rel="stylesheet" href="./css/diversao-clash.css?v=20260822-clash-1">
+  <link rel="stylesheet" href="./css/diversao-events.css?v=20260822-events-1">
+  <link rel="stylesheet" href="./css/diversao-captains.css?v=20260822-captains-1">
+  <link rel="stylesheet" href="./css/diversao-session.css?v=20260822-session-1">
+  <link rel="stylesheet" href="./css/diversao-golden.css?v=20260822-golden-1">
+  <link rel="stylesheet" href="./css/diversao-responsive.css?v=20260822-responsive-2">
+  <link rel="stylesheet" href="./css/diversao-audit-v19.css?v=20260827-diversao-audit-v19-1" data-diversao-audit-v19>
+  <link rel="stylesheet" href="./css/diversao-card-webkit-v24.css?v=20260827-diversao-predecode-v24-1">
+  <link rel="stylesheet" href="./css/diversao-webkit-shot-v25.css?v=20260827-diversao-shot-v25-1">
+  <link rel="stylesheet" href="./css/diversao-golden-geometry-v26.css?v=20260827-diversao-golden-geometry-v26-1">
+  <link rel="stylesheet" href="./css/diversao-golden-overlay-v28.css?v=20260827-diversao-golden-overlay-v28-1">
+  <link rel="stylesheet" href="./css/diversao-golden-card-v31.css?v=20260827-diversao-gold-card-v32-1">
+  <script src="./js/diversao-webkit-frame-barrier-v29.js?v=20260827-diversao-frame-barrier-v29-1"></script>
+</head>
+<body class="fun-body">
+  <div class="fun-page" data-site-content>
+    <section class="fun-hero" aria-labelledby="fun-title">
+      <div class="fun-grid" aria-hidden="true"></div>
+      <div class="fun-scan" aria-hidden="true"></div>
+      <div class="fun-orbit fun-orbit-a" aria-hidden="true"></div>
+      <div class="fun-orbit fun-orbit-b" aria-hidden="true"></div>
+      <div class="fun-copy">
+        <div class="fun-kicker"><span class="fun-kicker-dot"></span> Modo diversão <b>06 vagas · 01 destino</b></div>
+        <h1 id="fun-title">Deixe a arena <em>decidir.</em></h1>
+        <p>Gire o tambor. Três disparos revelam seu esquadrão; depois a arena responde com três adversários completamente aleatórios.</p>
+        <div class="fun-rules" aria-label="Regras rápidas">
+          <span>3 × 3</span><i></i><span>sem heróis repetidos</span><i></i><span>roster ativo</span>
+        </div>
+      </div>
+      <div class="fun-hero-mark" aria-hidden="true">LUCK<br>MODE</div>
+      <div class="fun-ticker" aria-hidden="true">
+        <div><span>ECHO RANDOMIZER</span><b>◆</b><span>ACTIVE ROSTER</span><b>◆</b><span>NO DUPLICATES</span><b>◆</b><span>3 VS 3</span><b>◆</b><span>ECHO RANDOMIZER</span><b>◆</b><span>ACTIVE ROSTER</span><b>◆</b><span>NO DUPLICATES</span><b>◆</b><span>3 VS 3</span></div>
+      </div>
+    </section>
+
+    <section class="duel-stage" id="duel-stage" data-phase="ready" aria-labelledby="duel-title">
+      <header class="duel-head">
+        <div>
+          <small id="duel-eyebrow">Sorteio de esquadrões</small>
+          <h2 id="duel-title">Seis heróis. Uma rodada.</h2>
+        </div>
+        <div class="sync-pill" id="sync-pill"><i></i><span id="sync-label">Sincronizando roster...</span></div>
+      </header>
+      <div class="duel-livebar" aria-label="Telemetria do sorteio">
+        <div><small>Rodada</small><strong id="live-round">00</strong></div>
+        <div><small>Pool ativo</small><strong id="live-pool">—</strong></div>
+        <div><small>Pulso atual</small><strong id="live-shot">Pronto</strong></div>
+        <div><small>Regra</small><strong>6 únicos</strong></div>
+      </div>
+      <div class="duel-layout">
+        <section class="team-zone team-you" aria-labelledby="your-team-title">
+          <div class="team-label"><span>01</span><div><small>lado esquerdo</small><h3 id="your-team-title">Seu time</h3></div></div>
+          <div class="team-cards" id="your-team" aria-live="polite">
+            <article class="hero-draw-card pending"><span class="draw-index">01</span><div class="pending-core">?</div><p>Aguardando</p></article>
+            <article class="hero-draw-card pending"><span class="draw-index">02</span><div class="pending-core">?</div><p>Aguardando</p></article>
+            <article class="hero-draw-card pending"><span class="draw-index">03</span><div class="pending-core">?</div><p>Aguardando</p></article>
+          </div>
+          <div class="team-readout" id="ally-readout"><div><small>Classes reveladas</small><strong id="ally-class-count">0 / 3</strong></div><p id="ally-class-list">Aguardando o primeiro disparo.</p></div>
+        </section>
+        <section class="roulette-zone" aria-label="Tambor do sorteio">
+          <div class="roulette-aura" aria-hidden="true"></div><div class="roulette-beam" aria-hidden="true"></div>
+          <div class="weapon-shell" id="revolver" aria-hidden="true">
+            <div class="weapon-shadow"></div>
+            <svg class="revolver-svg" viewBox="0 0 560 300" role="img" aria-label="Revólver estilizado do sorteio">
+              <defs><linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4b435c"/><stop offset=".42" stop-color="#211b2b"/><stop offset="1" stop-color="#0d0912"/></linearGradient><linearGradient id="steelEdge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#17111f"/><stop offset=".5" stop-color="#4b3d5e"/><stop offset="1" stop-color="#14101b"/></linearGradient><linearGradient id="grip" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#332342"/><stop offset="1" stop-color="#0b0810"/></linearGradient><filter id="softGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+              <path class="weapon-backplate" d="M129 103 C144 75 184 61 231 67 L304 70 C329 72 350 87 359 107 L377 151 C382 168 372 185 354 193 L278 219 C244 230 204 221 184 194 L150 151 C136 134 126 117 129 103Z" fill="url(#steel)"/><path class="weapon-barrel" d="M302 79 L515 79 Q536 80 541 95 L541 126 Q536 140 519 141 L330 143 L314 130 Z" fill="url(#steelEdge)"/><path class="weapon-underbarrel" d="M336 143 L507 143 Q520 144 522 155 L514 171 L351 171 L329 156 Z" fill="#17111f"/><rect class="weapon-muzzle" x="520" y="86" width="27" height="47" rx="10" fill="#09060d" stroke="#665778" stroke-opacity=".36"/><rect x="527" y="94" width="13" height="31" rx="6" fill="#020103"/><path class="weapon-sight" d="M461 72 h24 l7 8 h-37Z" fill="#211929" stroke="#76658a" stroke-opacity=".32"/><path class="weapon-hammer" d="M138 94 L111 72 L122 57 L164 78 L169 100Z" fill="#1b1423" stroke="#665776" stroke-opacity=".35"/>
+              <g id="cylinder" class="cylinder-svg"><circle cx="229" cy="132" r="68" fill="#100b16" stroke="#756487" stroke-opacity=".36" stroke-width="3"/><circle cx="229" cy="132" r="57" fill="#241b2e" stroke="#30263b" stroke-width="6"/><circle cx="229" cy="132" r="18" fill="#09060d" stroke="#71617f" stroke-opacity=".42"/><g class="chambers-svg" fill="#040206" stroke="#665574" stroke-opacity=".46" stroke-width="2"><circle cx="229" cy="89" r="14"/><circle cx="266" cy="110" r="14"/><circle cx="266" cy="154" r="14"/><circle cx="229" cy="175" r="14"/><circle cx="192" cy="154" r="14"/><circle cx="192" cy="110" r="14"/></g><circle cx="229" cy="132" r="8" fill="#81708f"/></g>
+              <path class="weapon-bridge" d="M282 105 C302 108 319 122 326 141 L319 179 L285 195 L267 181 C280 165 286 143 282 105Z" fill="#19121f" stroke="#6d5c7c" stroke-opacity=".28"/><path class="trigger-guard" d="M245 190 C274 183 310 190 323 215 C326 238 307 250 283 249 C255 248 231 231 228 209" fill="none" stroke="#35283f" stroke-width="15" stroke-linecap="round"/><path class="trigger" d="M277 197 C290 204 291 220 281 232" fill="none" stroke="#877495" stroke-opacity=".58" stroke-width="6" stroke-linecap="round"/><path class="weapon-grip" d="M176 188 C201 188 231 199 247 221 L226 286 L153 286 L140 258 L155 210Z" fill="url(#grip)" stroke="#564663" stroke-opacity=".38" stroke-width="3"/><path class="grip-texture" d="M158 220 L220 269 M153 238 L212 286 M175 207 L231 251" fill="none" stroke="#9a7cb6" stroke-opacity=".10" stroke-width="5"/><path class="weapon-accent" d="M325 99 H494" stroke="#55e9ff" stroke-opacity=".48" stroke-width="2" filter="url(#softGlow)"/><text x="368" y="121" class="weapon-serial">ECHO // RND-38</text>
+            </svg>
+            <div class="muzzle-flash" id="muzzle-flash"></div><div class="ejected-spark s1"></div><div class="ejected-spark s2"></div><div class="ejected-spark s3"></div>
+          </div>
+          <div class="roulette-copy"><div class="roulette-overline" id="roulette-overline">Tambor pronto</div><strong id="roulette-status">A arena escolhe. Você joga.</strong><p id="roulette-help">Toque para sortear os seis heróis da rodada.</p></div>
+          <div class="chamber-hud" aria-label="Estado do tambor"><span><small>Câmara</small><b id="chamber-index">—</b></span><span><small>Lado</small><b id="chamber-side">Neutro</b></span><span><small>Estado</small><b id="chamber-state">Pronto</b></span></div>
+          <div class="shot-track" id="shot-track" aria-label="Progresso dos disparos"><span data-shot="0"><b>1</b><small>seu time</small></span><span data-shot="1"><b>2</b><small>seu time</small></span><span data-shot="2"><b>3</b><small>seu time</small></span><i>VS</i><span data-shot="3"><b>1</b><small>inimigo</small></span><span data-shot="4"><b>2</b><small>inimigo</small></span><span data-shot="5"><b>3</b><small>inimigo</small></span></div>
+          <button class="spin-button" id="spin-button" type="button" disabled><span class="spin-button-shine" aria-hidden="true"></span><span class="spin-button-icon">↻</span><span id="spin-label">Carregando roster</span></button><p class="motion-note">Sem vantagem, ranking ou previsão: apenas um sorteio divertido entre heróis ativos.</p>
+        </section>
+        <section class="team-zone team-enemy" aria-labelledby="enemy-team-title"><div class="team-label"><span>02</span><div><small>lado direito</small><h3 id="enemy-team-title">Time inimigo</h3></div></div><div class="team-cards" id="enemy-team" aria-live="polite"><article class="hero-draw-card pending"><span class="draw-index">01</span><div class="pending-core">?</div><p>Aguardando</p></article><article class="hero-draw-card pending"><span class="draw-index">02</span><div class="pending-core">?</div><p>Aguardando</p></article><article class="hero-draw-card pending"><span class="draw-index">03</span><div class="pending-core">?</div><p>Aguardando</p></article></div><div class="team-readout enemy" id="enemy-readout"><div><small>Classes reveladas</small><strong id="enemy-class-count">0 / 3</strong></div><p id="enemy-class-list">Aguardando a resposta inimiga.</p></div></section>
+      </div>
+      <div class="round-result" id="round-result" aria-live="polite" aria-atomic="true"></div>
+      <section class="match-intel" id="match-intel" aria-labelledby="match-intel-title"><header><div><small>Leitura da rodada</small><h3 id="match-intel-title">O que o tambor montou</h3></div><span id="match-state">Aguardando sorteio</span></header><div class="match-intel-grid"><article><small>Rodada</small><strong id="intel-round">—</strong><p>Contador local desta sessão.</p></article><article><small>Classes no confronto</small><strong id="intel-class-count">—</strong><p id="intel-class-list">As classes aparecem após os seis disparos.</p></article><article class="ally"><small>Seu trio</small><strong id="intel-ally-diversity">—</strong><p id="intel-ally-classes">Composição ainda não sorteada.</p></article><article class="enemy"><small>Trio inimigo</small><strong id="intel-enemy-diversity">—</strong><p id="intel-enemy-classes">Composição ainda não sorteada.</p></article></div></section>
+    </section>
+    <section class="fun-explainer" aria-label="Como funciona"><div><span>01</span><strong>Gire</strong><p>O roster ativo é carregado uma vez e embaralhado localmente.</p></div><div><span>02</span><strong>Revele</strong><p>Cada pulso abre um herói até completar os dois trios.</p></div><div><span>03</span><strong>Jogue de novo</strong><p>Uma nova rodada refaz o embaralhamento sem recarregar a página.</p></div></section>
+  </div>
+  <script type="module" src="./js/diversao-shot.js?v=20260827-diversao-audit-v19-1&amp;wk=20260827-diversao-shot-v25-1"></script>
+  <script type="module" src="./js/diversao.js?v=20260827-diversao-shot-v25-1&sb=20260823-security-supabase-pin-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/diversao-golden.js?v=20260827-diversao-golden-once-v30-1"></script>
+  <script type="module" src="./js/diversao-golden-overlay-v28.js?v=20260827-diversao-golden-overlay-v30-1"></script>
+  <script type="module" src="./js/diversao-golden-lifecycle-v27.js?v=20260827-diversao-golden-lifecycle-v27-1"></script>
+  <script type="module" src="./js/diversao-clash.js?v=20260822-clash-3"></script>
+  <script type="module" src="./js/diversao-responsive.js?v=20260827-diversao-ios-isolation-v21-1&sb=20260823-security-supabase-pin-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/diversao-golden-diagnostic-v26.js?v=20260827-diversao-golden-diagnostic-v26-1"></script>
+  <script type="module" src="./js/diversao-session.js?v=20260822-session-1"></script>
+  <script type="module" src="./js/public-header-sync.js?v=20260822-beta-nav-5&amp;active=diversao&amp;mode=site-shell&amp;sb=20260823-security-supabase-pin-1&amp;identity=20260825-v6-public-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/public-global-announcement.js?v=20260822-maintenance-2&sb=20260823-security-supabase-pin-1"></script>
+</body>
+</html>

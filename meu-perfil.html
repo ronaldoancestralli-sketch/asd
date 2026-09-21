@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <script src="./js/guard.js?v=20260822-maintenance-2"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#060910">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Editor privado de perfil do Echo Arena.">
+  <title>Meu Perfil — Echo Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/public-modules.css?v=1">
+  <link rel="stylesheet" href="./css/public-header-sync.css?v=20260822-drawer-unified-3">
+  <link rel="stylesheet" href="./css/my-profile-v4.css?v=20260825-my-profile-v4-shadow-4&identity=20260825-v6-public-1">
+  <link rel="stylesheet" href="./css/my-profile-research-v4.css?v=20260825-research-shadow-2">
+  <link rel="stylesheet" href="./css/my-profile-reputation-v4.css?v=20260825-reputation-shadow-2">
+  <link rel="stylesheet" href="./css/my-profile-specialties-v4.css?v=20260825-specialties-shadow-1">
+  <link rel="stylesheet" href="./css/my-profile-progress-v5.css?v=20260825-progress-v5-shadow-1">
+  <link rel="stylesheet" href="./css/my-profile-confirmation-v5.css?v=20260825-confirmation-v5-shadow-1">
+  <link rel="stylesheet" href="./css/my-profile-experience-v7.css?v=20260825-identity-experience-v7-1">
+  <link rel="stylesheet" href="./css/my-profile-alive-v8.css?v=20260825-identity-alive-v8-1">
+  <link rel="stylesheet" href="./css/echo-profile-dossier-v15.css?v=20260905-institutional-scout-exclusion-v15-3">
+</head>
+<body class="module-page my-profile-page" data-my-profile-shadow="true" data-my-profile-launch="v6-public" data-my-profile-experience="v7" data-my-profile-alive="v8">
+  <header class="module-topbar">
+    <a class="module-brand" href="./index.html"><span class="module-brand-mark"></span><b>ECHO</b><span>ARENA</span></a>
+    <nav class="module-nav"><a href="./herois.html">Heróis</a><a href="./builds.html">Builds</a><a href="./estatisticas.html">Estatísticas</a></nav>
+    <button id="sidebar-open" class="module-menu" type="button">☰</button>
+  </header>
+  <div id="sidebar-backdrop" class="module-sidebar-backdrop"></div>
+  <aside id="site-sidebar" class="module-sidebar" aria-hidden="true"><div class="module-sidebar-head"><strong>ECHO ARENA</strong><button id="sidebar-close" class="module-sidebar-close" type="button">×</button></div><div class="sidebar-scroll"></div></aside>
+
+  <main class="my-profile-shell">
+    <section id="my-profile-state" class="my-profile-state" aria-live="polite">
+      <span class="my-profile-kicker">ECHO IDENTITY</span>
+      <h1>Carregando seu perfil…</h1>
+      <p>Esta é uma área protegida da sua conta. Seus dados públicos continuam sob seu controle.</p>
+    </section>
+
+    <template id="identity-v8-gateway-template">
+      <section class="identity-v8-gateway" data-accent="violet" aria-labelledby="identity-v8-gateway-title">
+        <div class="identity-v8-gateway-sky" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="identity-v8-gateway-copy">
+          <div class="identity-v8-gateway-eyebrow"><span>NOVIDADE</span><b>IDENTIDADE QUE EVOLUI COM VOCÊ</b></div>
+          <h1 id="identity-v8-gateway-title">Entre na Arena com um nome que <em>ganha história.</em></h1>
+          <p>Crie seu nick, monte um card vivo e transforme descobertas confirmadas sobre o jogo em uma coleção de insígnias.</p>
+          <div class="identity-v8-gateway-actions">
+            <button id="identity-v8-gateway-login" class="identity-v8-gateway-primary" type="button"><span>Começar minha identidade</span><b aria-hidden="true">↗</b></button>
+            <a href="#identity-v8-gateway-story">Descobrir como funciona</a>
+          </div>
+          <div id="identity-v8-gateway-story" class="identity-v8-gateway-story" aria-label="Como a Echo Identity funciona">
+            <article><small>01</small><strong>Escolha seu sinal</strong><span>Nick, nome, bio e cor reagem ao vivo.</span></article>
+            <article><small>02</small><strong>Ajude a mapear</strong><span>Documente dados reais com evidências.</span></article>
+            <article><small>03</small><strong>Deixe sua marca</strong><span>Revisões confirmadas fazem sua jornada evoluir.</span></article>
+          </div>
+        </div>
+
+        <div class="identity-v8-gateway-stage" aria-label="Demonstração visual de um card Echo Identity">
+          <span class="identity-v8-stage-chip is-live"><i aria-hidden="true"></i> CARD EM TEMPO REAL</span>
+          <span class="identity-v8-stage-chip is-rank">7 INSÍGNIAS</span>
+          <div class="identity-v8-demo-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+          <article id="identity-v8-demo-card" class="identity-v8-demo-card">
+            <div class="identity-v8-demo-card-top"><span>ECHO IDENTITY</span><small>PRÉVIA</small></div>
+            <div class="identity-v8-demo-avatar">EA</div>
+            <div class="identity-v8-demo-tier"><b>✦</b><span><small>INSÍGNIA INICIAL</small><strong>MEMBRO</strong></span></div>
+            <small>SEU NICK FICA ASSIM</small>
+            <h2>SEU NOME</h2>
+            <p>@seu-nick</p>
+            <div class="identity-v8-demo-scan" aria-hidden="true"></div>
+            <footer><span>VOCÊ CONTROLA A PRIVACIDADE</span><b>EA//ID</b></footer>
+          </article>
+          <div class="identity-v8-gateway-swatches" aria-label="Teste as cores do card demonstrativo">
+            <span>TESTE UMA COR</span>
+            <button type="button" data-gateway-accent="violet" aria-label="Usar violeta na prévia" aria-pressed="true"></button>
+            <button type="button" data-gateway-accent="cyan" aria-label="Usar ciano na prévia" aria-pressed="false"></button>
+            <button type="button" data-gateway-accent="gold" aria-label="Usar dourado na prévia" aria-pressed="false"></button>
+            <button type="button" data-gateway-accent="emerald" aria-label="Usar esmeralda na prévia" aria-pressed="false"></button>
+            <button type="button" data-gateway-accent="rose" aria-label="Usar rosa na prévia" aria-pressed="false"></button>
+          </div>
+        </div>
+
+        <div class="identity-v8-gateway-facts" aria-label="Princípios da Echo Identity">
+          <article><strong>7</strong><span>insígnias para colecionar</span></article>
+          <article><strong>2×</strong><span>revisões antes de pontuar</span></article>
+          <article><strong>+0</strong><span>por apenas enviar</span></article>
+          <article><strong>100%</strong><span>identidade sob seu controle</span></article>
+        </div>
+      </section>
+    </template>
+
+    <section id="my-profile-editor" class="my-profile-layout" hidden>
+      <section class="identity-v7-launch" aria-labelledby="identity-v7-launch-title">
+        <div class="identity-v7-launch-copy">
+          <div class="identity-v7-eyebrow"><span>NOVIDADE</span><b>ECHO IDENTITY · BETA</b></div>
+          <h1 id="identity-v7-launch-title">Seu nome agora <em>tem história.</em></h1>
+          <p>Monte seu card, escolha como aparecer e transforme descobertas confirmadas sobre o jogo em reputação. Cada nível registra o impacto real da sua pesquisa na Arena.</p>
+          <div class="identity-v7-launch-actions">
+            <a class="identity-v7-primary-action" href="#identity-v7-builder">Montar meu card</a>
+            <a class="identity-v7-ghost-action" href="#identity-v7-points">Como ganhar pontos</a>
+          </div>
+          <ol class="identity-v7-cycle" aria-label="Ciclo da reputação Echo Scouts">
+            <li><small>01</small><strong>Explore</strong><span>Encontre um dado</span></li>
+            <li><small>02</small><strong>Comprove</strong><span>Envie evidência</span></li>
+            <li><small>03</small><strong>Confirme</strong><span>Dois pareceres</span></li>
+            <li><small>04</small><strong>Evolua</strong><span>Ganhe reputação</span></li>
+          </ol>
+        </div>
+        <div class="identity-v7-launch-visual" aria-label="Resumo da pontuação confirmado pela política do servidor">
+          <div class="identity-v7-orbit" aria-hidden="true"><i></i><i></i><i></i><span>EA</span></div>
+          <div class="identity-v7-online"><i aria-hidden="true"></i><span>IDENTIDADE</span><strong>ONLINE</strong><small>Temporada Beta</small></div>
+          <div class="identity-v7-live-points">
+            <article><small>CORROBORADA</small><strong id="identity-v7-launch-corroborated">—</strong></article>
+            <article><small>VERIFICADA</small><strong id="identity-v7-launch-verified">—</strong></article>
+            <article class="is-first"><small>1ª DESCOBERTA</small><strong id="identity-v7-launch-first">—</strong></article>
+          </div>
+          <p id="identity-v7-launch-policy">Confirmando a política de pontos…</p>
+        </div>
+      </section>
+
+      <div class="my-profile-main">
+        <div id="identity-v7-builder" class="my-profile-heading">
+          <div><span class="my-profile-kicker">IDENTITY LAB</span><h1>Monte seu card</h1></div>
+          <span id="my-profile-privacy-pill" class="my-profile-pill">PRIVADO</span>
+        </div>
+        <p class="my-profile-intro">Experimente seu apelido, nome e cor: a prévia muda enquanto você digita. Seu e-mail não faz parte da identidade pública, nunca aparece no card e você decide se o resultado fica privado ou público.</p>
+
+        <form id="my-profile-form" class="my-profile-form" novalidate>
+          <div class="my-profile-grid">
+            <label class="my-profile-field">
+              <span>APELIDO PÚBLICO</span>
+              <div class="my-profile-handle-wrap"><b>@</b><input id="profile-handle-input" name="handle" type="text" inputmode="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="24" placeholder="seu-apelido" required></div>
+              <small>3–24 caracteres: letras minúsculas, números, ponto, hífen ou underline. Depois da primeira escolha, mudanças têm cooldown.</small>
+            </label>
+            <label class="my-profile-field">
+              <span>NOME DE EXIBIÇÃO</span>
+              <input id="profile-display-input" name="display_name" type="text" autocomplete="nickname" maxlength="40" placeholder="Como você quer aparecer" required>
+              <small>De 2 a 40 caracteres. E-mail e nomes reservados de Staff ou marcas oficiais são bloqueados pelo servidor.</small>
+            </label>
+          </div>
+
+          <label class="my-profile-field">
+            <span>BIO <b id="profile-bio-counter">0/240</b></span>
+            <textarea id="profile-bio-input" name="bio" maxlength="240" rows="5" placeholder="Conte algo sobre você no Echo Arena."></textarea>
+          </label>
+
+          <fieldset class="my-profile-fieldset">
+            <legend>ACENTO VISUAL</legend>
+            <p>É uma escolha estética. Molduras de Founder, Admin, Developer, Moderator, Partner e Creator são derivadas pelo servidor e não podem ser escolhidas aqui.</p>
+            <div id="profile-accent-options" class="my-profile-accents">
+              <label><input type="radio" name="accent" value="violet" checked><span class="accent-dot accent-violet"></span>Violeta</label>
+              <label><input type="radio" name="accent" value="cyan"><span class="accent-dot accent-cyan"></span>Ciano</label>
+              <label><input type="radio" name="accent" value="gold"><span class="accent-dot accent-gold"></span>Dourado</label>
+              <label><input type="radio" name="accent" value="emerald"><span class="accent-dot accent-emerald"></span>Esmeralda</label>
+              <label><input type="radio" name="accent" value="rose"><span class="accent-dot accent-rose"></span>Rosa</label>
+              <label><input type="radio" name="accent" value="steel"><span class="accent-dot accent-steel"></span>Aço</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="my-profile-fieldset">
+            <legend>PRIVACIDADE</legend>
+            <div class="my-profile-visibility">
+              <label><input type="radio" name="visibility" value="private" checked><span><strong>Privado</strong><small>Seu perfil não aparece publicamente.</small></span></label>
+              <label id="profile-public-option"><input id="profile-public-radio" type="radio" name="visibility" value="public"><span><strong>Público</strong><small id="profile-public-help">A publicação depende dos controles ativos de identidade e privacidade.</small></span></label>
+            </div>
+          </fieldset>
+
+          <div class="my-profile-messaging-lock"><strong>Mensagens privadas ainda não estão disponíveis.</strong><span>DM só será construída depois de bloqueio, denúncia, rate limit, moderação e exclusão segura.</span></div>
+
+          <div id="my-profile-message" class="my-profile-message" role="status" aria-live="polite"></div>
+          <div class="my-profile-actions">
+            <button id="my-profile-save" class="my-profile-save" type="submit">Salvar perfil</button>
+            <a id="my-profile-preview-link" class="my-profile-preview" hidden aria-disabled="true">Ver perfil público</a>
+          </div>
+        </form>
+
+        <section id="identity-v7-points" class="my-profile-section identity-v7-points" aria-labelledby="identity-v7-points-title">
+          <div class="my-profile-section-head"><div><span class="my-profile-kicker">COMO PONTUAR</span><h2 id="identity-v7-points-title">Seu impacto vira reputação</h2></div><p>Não existe ponto por clique ou volume. A qualidade precisa sobreviver a duas revisões independentes.</p></div>
+          <div class="identity-v7-proof-path" aria-label="Etapas necessárias para uma contribuição pontuar">
+            <article><span>1</span><div><strong>Observe</strong><p>Escolha um dado específico do jogo que você realmente encontrou.</p></div></article>
+            <article><span>2</span><div><strong>Documente</strong><p>Descreva números, condições e inclua a melhor evidência disponível.</p></div></article>
+            <article><span>3</span><div><strong>Aguarde a revisão</strong><p>Uma decisão primária ainda não pontua; outro Admin precisa confirmá-la.</p></div></article>
+            <article><span>4</span><div><strong>Veja seu card evoluir</strong><p>O servidor recalcula pontos, nível e insígnia usando o estado confirmado.</p></div></article>
+          </div>
+          <div class="identity-v7-zero-rule"><strong>+0 NO ENVIO</strong><span>Enviar, repetir ou deixar algo pendente não gera reputação. Pontos entram somente após a confirmação independente.</span></div>
+          <div id="my-reputation-points" class="my-reputation-points"><div class="my-reputation-loading">Carregando pesos da política…</div></div>
+
+          <section id="identity-v8-simulator" class="identity-v8-simulator" aria-labelledby="identity-v8-simulator-title" data-policy-ready="false">
+            <div class="identity-v8-simulator-head">
+              <div><small>LABORATÓRIO DE SINAIS</small><h3 id="identity-v8-simulator-title">Monte um cenário de contribuição</h3><p>Combine resultados confirmados e veja a pontuação projetada pela política ativa.</p></div>
+              <span>SIMULAÇÃO EDUCATIVA · NÃO ALTERA SUA CONTA</span>
+            </div>
+            <div class="identity-v8-simulator-body">
+              <div class="identity-v8-simulator-controls">
+                <article data-simulator-kind="corroborated">
+                  <div><i aria-hidden="true">⌁</i><span><small>CORROBORADAS</small><strong id="identity-v8-simulator-corroborated-value">1</strong></span></div>
+                  <div class="identity-v8-stepper"><button type="button" data-simulator-step="decrease" aria-label="Diminuir corroboradas">−</button><button type="button" data-simulator-step="increase" aria-label="Aumentar corroboradas">+</button></div>
+                </article>
+                <article data-simulator-kind="verified">
+                  <div><i aria-hidden="true">◇</i><span><small>VERIFICADAS</small><strong id="identity-v8-simulator-verified-value">1</strong></span></div>
+                  <div class="identity-v8-stepper"><button type="button" data-simulator-step="decrease" aria-label="Diminuir verificadas">−</button><button type="button" data-simulator-step="increase" aria-label="Aumentar verificadas">+</button></div>
+                </article>
+                <article data-simulator-kind="first">
+                  <div><i aria-hidden="true">★</i><span><small>1ª DESCOBERTA</small><strong id="identity-v8-simulator-first-value">1</strong></span></div>
+                  <div class="identity-v8-stepper"><button type="button" data-simulator-step="decrease" aria-label="Diminuir primeiras descobertas">−</button><button type="button" data-simulator-step="increase" aria-label="Aumentar primeiras descobertas">+</button></div>
+                </article>
+              </div>
+              <div class="identity-v8-simulator-result" aria-live="polite">
+                <small>CENÁRIO PROJETADO</small>
+                <strong id="identity-v8-simulator-total">—</strong>
+                <span>PONTOS</span>
+                <p id="identity-v8-simulator-breakdown">Confirmando os pesos reais do servidor…</p>
+                <button id="identity-v8-simulator-reset" type="button">Recomeçar cenário</button>
+              </div>
+            </div>
+            <p class="identity-v8-simulator-note">A simulação explica pesos; ela não prevê aprovação nem concede nível. Taxa de aceitação e requisitos mínimos continuam validados pelo servidor.</p>
+          </section>
+
+          <div class="identity-v7-points-cta"><div><small>PRÓXIMO PASSO</small><strong>Escolha uma operação de campo</strong><span>As missões mostram o que fazer usando apenas seu progresso real — sem recompensa paralela.</span></div><a href="#my-research-v5">Ver minhas missões</a></div>
+        </section>
+
+        <section class="my-profile-section identity-v7-journey" aria-labelledby="scout-title">
+          <div class="my-profile-section-head"><div><span class="my-profile-kicker">ECHO SCOUTS</span><h2 id="scout-title">Colecione suas insígnias</h2></div><p>Cada moldura comunitária acompanha seu nick e mostra o caminho percorrido. Reputação nunca concede poder administrativo.</p></div>
+          <div class="my-profile-stats">
+            <article><small>NÍVEL ATUAL</small><strong id="my-scout-tier">—</strong></article>
+            <article><small>PONTOS</small><strong id="my-scout-points">—</strong></article>
+            <article><small>TAXA DE ACEITAÇÃO</small><strong id="my-scout-acceptance">—</strong></article>
+            <article><small>VERIFICADAS</small><strong id="my-scout-verified">—</strong></article>
+            <article><small>CORROBORADAS</small><strong id="my-scout-corroborated">—</strong></article>
+            <article><small>DESCOBERTAS</small><strong id="my-scout-first">—</strong></article>
+          </div>
+          <div class="identity-v7-insignia-intro"><div><small>PRÉVIA DA COLEÇÃO</small><strong>Do primeiro sinal à Lenda da Arena</strong></div><span>CONQUISTADA · ATUAL · BLOQUEADA</span></div>
+          <div id="my-scout-track" class="my-scout-track" aria-label="Trilha de progressão Echo Scouts"></div>
+          <div id="my-scout-next" class="my-scout-next"></div>
+          <div class="my-profile-recognition"><strong>Reconhecimentos institucionais</strong><div id="my-institutional-badges" class="my-profile-badge-row"></div></div>
+
+          <details class="my-reputation-policy">
+            <summary><span>Ver requisitos completos dos 7 níveis</span><small id="my-reputation-policy-version">POLÍTICA INDISPONÍVEL</small></summary>
+            <div class="my-reputation-policy-body">
+              <p class="my-reputation-note">Enviar não vale pontos. A contribuição só passa a contar depois da revisão. O servidor recalcula a reputação a partir do estado atual de cada contribuição.</p>
+              <div class="my-reputation-table-wrap">
+                <table class="my-reputation-table">
+                  <thead><tr><th>Nível</th><th>Pontos mínimos</th><th>Verificadas mínimas</th><th>Primeiras descobertas</th><th>Taxa mínima</th></tr></thead>
+                  <tbody id="my-reputation-rules"><tr><td colspan="5">Carregando regras do servidor…</td></tr></tbody>
+                </table>
+              </div>
+              <p id="my-reputation-formula" class="my-reputation-formula">A taxa de aceitação será explicada quando a política versionada estiver disponível.</p>
+              <p id="my-reputation-current" class="my-reputation-current">O próximo nível será calculado usando exatamente a mesma política do servidor.</p>
+              <p class="my-reputation-note">Reputação comunitária nunca concede Creator, Partner, Moderator, Developer, Admin ou Founder.</p>
+            </div>
+          </details>
+        </section>
+
+        <section id="my-research-v5" class="my-profile-section research-v5" aria-labelledby="research-v5-title">
+          <div class="my-profile-section-head">
+            <div><span class="my-profile-kicker">ECHO FIELD OPS · MISSÕES DE PESQUISA</span><h2 id="research-v5-title">Escolha sua próxima operação</h2></div>
+            <p>Objetivos mostram o que fazer agora usando somente progresso confirmado. Missões não criam pontos, insígnias ou autoridade.</p>
+          </div>
+          <div class="research-v5-assurance">
+            <div class="research-v5-assurance-mark" aria-hidden="true">2×</div>
+            <div><strong>Decisão em duas etapas</strong><span>Uma revisão primária não pontua. Um segundo Admin independente precisa confirmar o mesmo evento.</span></div>
+            <small>ANTI-AUTOAVALIAÇÃO</small>
+          </div>
+          <div id="research-v5-state" class="research-v5-state" role="status" aria-live="polite">Confirmando política e progresso reais no servidor…</div>
+          <div id="research-v5-content" hidden>
+            <div id="research-v5-guardrails" class="research-v5-guardrails" aria-label="Limites pessoais do Echo Research"></div>
+            <div class="research-v5-mission-head"><strong>Operações de campo</strong><span id="research-v5-policy">POLÍTICA INDISPONÍVEL</span></div>
+            <div id="research-v5-missions" class="research-v5-missions"></div>
+            <p class="research-v5-footnote">O progresso é recalculado a partir do estado confirmado atual. Repetições do mesmo conhecimento não avançam a missão novamente.</p>
+          </div>
+        </section>
+
+        <section class="my-profile-section" aria-labelledby="contributions-title">
+          <div class="my-profile-section-head"><div><span class="my-profile-kicker">ECHO RESEARCH</span><h2 id="contributions-title">Minhas contribuições</h2></div><p>Ajude a mapear o jogo e acompanhe a revisão. Enviar informação não gera ponto: reputação só muda depois da confirmação independente.</p></div>
+          <div id="research-locked" class="my-profile-locked"><strong>Confirmando acesso ao Echo Research.</strong><span>O formulário só aparece depois que os controles seguros forem confirmados pelo SNV.</span></div>
+          <form id="research-form" class="research-form" hidden novalidate>
+            <div class="research-grid">
+              <label class="my-profile-field"><span>TIPO DE DADO</span><select id="research-type"><option value="hero_skill_level">Habilidade de herói</option><option value="hero_passive">Passiva de herói</option><option value="equipment_stat">Equipamento</option><option value="patch_change">Mudança de patch</option><option value="counter_evidence">Evidência de counter</option><option value="other">Outro dado</option></select></label>
+              <label class="my-profile-field"><span>PATCH / VERSÃO</span><input id="research-version" type="text" maxlength="80" placeholder="Opcional"></label>
+            </div>
+            <div id="research-catalog-context" class="research-grid" hidden>
+              <label class="my-profile-field"><span>HERÓI</span><select id="research-hero"><option value="">Selecionar herói</option></select><small id="research-hero-help">Use o herói real do catálogo.</small></label>
+              <label id="research-skill-field" class="my-profile-field"><span>HABILIDADE</span><select id="research-skill"><option value="">Selecionar habilidade</option></select><small>A lista mostra somente habilidades do herói selecionado.</small></label>
+            </div>
+            <div id="research-level-context" class="research-level-context" hidden>
+              <label class="my-profile-field"><span>NÍVEL DA HABILIDADE</span><input id="research-skill-level" type="number" inputmode="numeric" min="1" step="1" placeholder="Ex.: 18"></label>
+              <span id="research-level-help" class="research-level-help">O limite será carregado do `max_level` real da habilidade selecionada.</span>
+            </div>
+            <span id="research-catalog-status" class="research-catalog-status" aria-live="polite"></span>
+            <label id="research-subject-field" class="my-profile-field"><span>O QUE VOCÊ ESTÁ DOCUMENTANDO</span><input id="research-subject" type="text" maxlength="160" placeholder="Ex.: Visão Térmica nível 18 · herói X" required><small id="research-subject-help">Seja específico. Para níveis de habilidade, o assunto será montado a partir do catálogo e confirmado novamente pelo servidor.</small></label>
+            <label class="my-profile-field"><span>OBSERVAÇÃO</span><textarea id="research-observation" rows="5" maxlength="3000" placeholder="Transcreva os números, condições e efeitos que você observou." required></textarea><small>Não tente concluir counters ou inventar níveis intermediários: envie apenas o que você realmente observou.</small></label>
+            <div class="research-grid">
+              <label class="my-profile-field"><span>TIPO DE EVIDÊNCIA</span><select id="research-evidence-kind"><option value="text">Texto/transcrição</option><option value="screenshot">Screenshot</option><option value="video">Vídeo</option><option value="official_link">Link oficial</option><option value="community_link">Link da comunidade</option><option value="other">Outra</option></select></label>
+              <label class="my-profile-field"><span>LINK OU REFERÊNCIA</span><input id="research-evidence-reference" type="text" maxlength="1200" placeholder="Opcional · https://... ou referência"></label>
+            </div>
+            <div id="research-message" class="my-profile-message" role="status" aria-live="polite"></div>
+            <div class="research-actions"><button id="research-submit" class="my-profile-secondary-button" type="submit">Enviar para revisão</button><span>Todo envio nasce <b>pendente</b>. Nenhuma informação entra no Brain automaticamente.</span></div>
+          </form>
+          <div class="my-contribution-history-head"><strong>Histórico privado</strong><span>Evidências, payload e notas internas de revisão não são exibidos abaixo.</span></div>
+          <div id="my-contributions" class="my-contributions" aria-live="polite"><div class="my-contribution-empty">Carregando contribuições…</div></div>
+        </section>
+
+        <section class="my-profile-section" aria-labelledby="creator-title">
+          <div class="my-profile-section-head"><div><span class="my-profile-kicker">CREATOR VERIFICATION</span><h2 id="creator-title">Criador de conteúdo</h2></div><p>Creator prova a posse do canal. Partner é um reconhecimento separado e não pode ser solicitado aqui.</p></div>
+          <div id="creator-locked" class="my-profile-locked"><strong>Verificação Creator ainda bloqueada.</strong><span>O formulário só será habilitado quando o gate seguro de Creator Verification estiver ligado no SNV.</span></div>
+          <form id="creator-form" class="creator-form" hidden>
+            <label class="my-profile-field"><span>PLATAFORMA</span><select id="creator-platform"><option value="youtube">YouTube</option><option value="twitch">Twitch</option><option value="tiktok">TikTok</option><option value="instagram">Instagram</option><option value="facebook">Facebook</option><option value="x">X</option><option value="other">Outra</option></select></label>
+            <label class="my-profile-field"><span>URL OFICIAL DO CANAL</span><input id="creator-channel-url" type="url" inputmode="url" autocomplete="url" maxlength="1000" placeholder="https://..." required></label>
+            <button id="creator-request" class="my-profile-secondary-button" type="submit">Gerar prova de propriedade</button>
+          </form>
+          <div id="creator-message" class="my-profile-message" role="status" aria-live="polite"></div>
+          <div id="creator-claims" class="creator-claims"></div>
+        </section>
+      </div>
+
+      <aside id="identity-v7-preview" class="my-profile-preview-card identity-v7-preview" data-accent="violet" data-tier="unavailable" aria-label="Prévia ao vivo do card de perfil">
+        <div class="identity-v7-preview-top"><span>SEU CARD NA ARENA</span><small><i aria-hidden="true"></i> PRÉVIA AO VIVO</small></div>
+        <div id="identity-v8-showroom" class="identity-v8-showroom" hidden>
+          <span id="identity-v8-showroom-label">EXPLORANDO INSÍGNIA</span>
+          <button id="identity-v8-showroom-reset" type="button">Voltar ao meu nível</button>
+        </div>
+        <div class="identity-v7-preview-frame">
+          <span class="identity-v7-preview-corner" aria-hidden="true"></span>
+          <div id="preview-avatar" class="my-profile-avatar">EA</div>
+          <div class="identity-v7-preview-tier"><span id="preview-tier-glyph" aria-hidden="true">?</span><div><small>INSÍGNIA ATUAL</small><strong id="preview-tier">CONFIRMANDO…</strong></div></div>
+          <span class="identity-v7-nick-label">SEU NICK FICA ASSIM</span>
+          <h2 id="preview-name">Seu nome</h2>
+          <p id="preview-handle">@seu-apelido</p>
+          <p id="preview-bio">Sua bio aparecerá aqui.</p>
+          <div id="preview-institutional-badges" class="identity-v7-preview-badges" aria-label="Reconhecimentos institucionais confirmados"></div>
+          <span id="preview-accent" class="my-profile-preview-accent">VIOLETA</span>
+          <div class="identity-v7-preview-footer"><span id="preview-visibility">CARD PRIVADO</span><b>ECHO IDENTITY</b></div>
+        </div>
+        <small class="identity-v7-preview-note">Nome, nick, bio e cor mudam ao vivo. Nível e reconhecimentos aparecem somente quando confirmados pelo servidor.</small>
+      </aside>
+    </section>
+  </main>
+
+  <script type="module" src="./js/my-profile-v4.js?v=20260905-institutional-scout-exclusion-v15-3&sb=20260823-security-supabase-pin-1&identity=20260825-v6-public-1&experience=20260825-v7-1&alive=20260825-v8-1"></script>
+  <script type="module" src="./js/my-profile-specialties-v4.js?v=20260905-institutional-scout-exclusion-v15-3&sb=20260823-security-supabase-pin-1"></script>
+  <script type="module" src="./js/my-profile-progress-v5.js?v=20260825-progress-v5-shadow-1&sb=20260823-security-supabase-pin-1&experience=20260825-v7-1"></script>
+  <script type="module" src="./js/module-public-shell.js?v=20260822-beta-module-4&amp;active=comunidade&amp;sb=20260823-security-supabase-pin-1&amp;identity=20260825-v6-public-1&amp;ops=20260905&sc=20260906-1&eq=20260907-effects-1"></script>
+  <script type="module" src="./js/public-global-announcement.js?v=20260822-maintenance-2&sb=20260823-security-supabase-pin-1"></script>
+</body>
+</html>

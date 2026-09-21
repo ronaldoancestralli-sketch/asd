@@ -1,0 +1,236 @@
+/* Correções da evolução do Criar Build — distribuição mobile e legibilidade. */
+
+/* Status do slot: mantém a informação, mas sem competir com imagem e raridade. */
+.slot-impact{
+  display:block!important;
+  margin:3px auto 0!important;
+  max-width:132px!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+  font-size:7px!important;
+  line-height:1.1!important;
+  font-weight:800!important;
+  letter-spacing:0!important;
+}
+
+/* Tira superior do seletor: raridade permanece; atributo fica secundário. */
+.pop.equipment-window .pick-evolution-meta{
+  display:grid!important;
+  gap:2px!important;
+  width:62px!important;
+  margin:2px auto 0!important;
+  text-align:center!important;
+}
+.pop.equipment-window .pick-evolution-rarity{
+  display:block!important;
+  color:var(--rc,var(--violet))!important;
+  font-size:6.5px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  letter-spacing:.06em!important;
+  text-transform:uppercase!important;
+}
+.pop.equipment-window .pick-evolution-impact{
+  display:block!important;
+  max-width:62px!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+  color:#71dbaa!important;
+  font-size:5.8px!important;
+  font-weight:800!important;
+  line-height:1.05!important;
+}
+
+/* Os nomes dos atributos nunca devem ficar presos numa palavra gigante. */
+.pop.equipment-window .stat-label,
+.pop.equipment-window .stat-desc,
+.equipment-float .delta-list i{
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+}
+
+/* O status geral da build fica informativo sem virar um segundo cabeçalho. */
+.build-evolution-status{
+  margin-bottom:12px!important;
+  padding:10px 11px!important;
+}
+.build-evolution-status strong{font-size:18px!important}
+.build-evolution-status .progress{height:4px!important}
+
+@media(max-width:700px){
+  /* No carrossel superior do popup, o detalhe completo já existe abaixo.
+     Mantém somente a raridade para evitar aglomeração. */
+  .pop.equipment-window .pick-evolution-impact{display:none!important}
+  .pop.equipment-window .pick-evolution-meta{
+    width:50px!important;
+    margin-top:1px!important;
+  }
+  .pop.equipment-window .pick-evolution-rarity{font-size:6px!important}
+}
+
+@media(max-width:560px){
+  /* Mesa: imagem do herói no centro, seis itens ao redor e informação detalhada abaixo. */
+  .synergy-stage{
+    padding:10px 7px 12px!important;
+    min-height:auto!important;
+    overflow:hidden!important;
+  }
+  .ring{
+    height:510px!important;
+    min-height:510px!important;
+    margin:0!important;
+  }
+  .ring>.slot{display:block!important}
+  .slots-grid{display:none!important}
+
+  .hero{
+    width:210px!important;
+    height:315px!important;
+    top:49%!important;
+  }
+  .orbit-a{width:286px!important;height:286px!important}
+  .orbit-b{width:218px!important;height:218px!important}
+  .connector-lines{width:340px!important;height:300px!important;opacity:.42!important}
+
+  #ring>.slot{
+    width:68px!important;
+    z-index:9!important;
+  }
+  #ring>.slot .hex{
+    width:68px!important;
+    height:64px!important;
+  }
+  #ring>.slot .hex .media{inset:6px 9px 11px!important}
+  #ring>.slot .lb{
+    width:20px!important;
+    height:18px!important;
+    font-size:8px!important;
+  }
+  #ring>.slot .rm{
+    right:-4px!important;
+    top:-4px!important;
+    width:18px!important;
+    height:18px!important;
+    font-size:8px!important;
+    opacity:1!important;
+  }
+  #ring>.slot .in{
+    width:86px!important;
+    min-width:0!important;
+    max-width:86px!important;
+    margin-top:-6px!important;
+    padding:4px 4px 5px!important;
+    border-radius:6px!important;
+  }
+  #ring>.slot .in b{
+    max-width:76px!important;
+    font-size:7.2px!important;
+    line-height:1.05!important;
+    letter-spacing:.025em!important;
+  }
+  #ring>.slot .in i{
+    margin-top:2px!important;
+    font-size:6.3px!important;
+    line-height:1!important;
+    letter-spacing:.07em!important;
+  }
+  #ring>.slot .slot-impact{
+    max-width:76px!important;
+    margin-top:3px!important;
+    font-size:5.7px!important;
+    line-height:1!important;
+  }
+
+  /* O detalhe do item deixa de cobrir o personagem e os seis slots. */
+  .synergy-stage>.equipment-float{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    transform:none!important;
+    width:calc(100% - 22px)!important;
+    min-height:0!important;
+    margin:7px auto 4px!important;
+    padding:9px 10px!important;
+    gap:9px!important;
+    border-radius:10px!important;
+    pointer-events:none!important;
+  }
+  .synergy-stage>.equipment-float .equipment-float-icon{
+    width:27px!important;
+    height:27px!important;
+    flex-basis:27px!important;
+    font-size:15px!important;
+  }
+  .synergy-stage>.equipment-float strong{
+    font-size:11px!important;
+    line-height:1.05!important;
+  }
+  .synergy-stage>.equipment-float small{
+    margin-top:2px!important;
+    font-size:8px!important;
+  }
+  .synergy-stage>.equipment-float .delta-list{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    gap:3px 7px!important;
+    margin-top:5px!important;
+  }
+  .synergy-stage>.equipment-float .delta-list span{
+    max-width:100%!important;
+    font-size:7.5px!important;
+    line-height:1.15!important;
+  }
+  .synergy-stage>.equipment-float .delta-list i{
+    margin-left:2px!important;
+    font-size:7.5px!important;
+  }
+
+  .stage-count{
+    position:static!important;
+    left:auto!important;
+    bottom:auto!important;
+    transform:none!important;
+    margin:5px 0 2px!important;
+    text-align:center!important;
+  }
+
+  .build-evolution-status{
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:6px 10px!important;
+    margin-bottom:10px!important;
+    padding:9px 10px!important;
+    border-radius:10px!important;
+  }
+  .build-evolution-status small{font-size:6px!important}
+  .build-evolution-status strong{
+    margin-top:2px!important;
+    font-size:15px!important;
+    line-height:1!important;
+  }
+  .build-evolution-status em{font-size:7px!important}
+  .build-evolution-status .progress{height:3px!important}
+
+  /* Popup: preserva a hierarquia da imagem 2 e melhora a leitura dos atributos. */
+  .pop.equipment-window .stat-label{
+    font-size:7px!important;
+    line-height:1.15!important;
+  }
+  .pop.equipment-window .stat-desc{
+    font-size:10px!important;
+    line-height:1.25!important;
+  }
+}
+
+@media(max-width:390px){
+  .ring{height:490px!important;min-height:490px!important}
+  .hero{width:198px!important;height:300px!important}
+  #ring>.slot{width:64px!important}
+  #ring>.slot .hex{width:64px!important;height:60px!important}
+  #ring>.slot .in{width:80px!important;max-width:80px!important}
+  #ring>.slot .in b{max-width:70px!important;font-size:6.8px!important}
+  #ring>.slot .slot-impact{max-width:70px!important;font-size:5.4px!important}
+}

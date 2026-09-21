@@ -1,0 +1,112 @@
+/* Echo Arena — Composições: camada de legibilidade e diversão */
+body[data-public-module="composicoes"] .composition-lab{padding:30px}
+body[data-public-module="composicoes"] .composition-lab-head{padding-bottom:24px}
+body[data-public-module="composicoes"] .composition-lab-head p{max-width:760px;font-size:14px;line-height:1.65}
+body[data-public-module="composicoes"] .calculation-notice strong{font-size:10px}
+body[data-public-module="composicoes"] .calculation-notice span{font-size:9px}
+body[data-public-module="composicoes"] .composition-lab-grid{grid-template-columns:minmax(410px,.92fr) minmax(520px,1.08fr);gap:20px}
+
+/* Picker: menos ruído, leitura confortável sem zoom */
+body[data-public-module="composicoes"] .hero-picker{padding:20px}
+body[data-public-module="composicoes"] .hero-picker-head b{font-size:14px}
+body[data-public-module="composicoes"] .hero-picker-head span{font-size:11px}
+body[data-public-module="composicoes"] .hero-picker-head button{font-size:10px}
+body[data-public-module="composicoes"] .composition-hero-search{margin-top:16px}
+body[data-public-module="composicoes"] .composition-hero-search input{min-height:46px;font-size:13px}
+body[data-public-module="composicoes"] .composition-class-filters{gap:8px;margin-top:12px;margin-bottom:14px}
+body[data-public-module="composicoes"] .composition-class-filters button{min-height:36px;padding:7px 12px;font-size:9px}
+body[data-public-module="composicoes"] .composition-hero-picker{gap:10px;max-height:610px}
+body[data-public-module="composicoes"] .composition-hero-option{grid-template-columns:60px minmax(0,1fr);gap:11px;min-height:98px;padding:10px 10px 24px;border-radius:14px}
+body[data-public-module="composicoes"] .hero-option-media{width:60px;height:72px;border-radius:10px}
+body[data-public-module="composicoes"] .hero-option-copy>b{font-size:20px;line-height:1.05}
+body[data-public-module="composicoes"] .hero-option-copy>small{margin-top:3px;font-size:9px}
+body[data-public-module="composicoes"] .hero-option-copy>span{gap:5px;margin-top:9px}
+body[data-public-module="composicoes"] .hero-option-copy i{padding:3px 6px;font-size:8px;line-height:1.2}
+body[data-public-module="composicoes"] .composition-hero-option>em{right:10px;bottom:7px;font-size:8px}
+
+/* Análise principal: uma resposta rápida, depois fortes/fracos. */
+body[data-public-module="composicoes"] .composition-analysis{min-height:0;padding:22px}
+body[data-public-module="composicoes"] .analysis-score-head.compact{display:grid;grid-template-columns:minmax(170px,.55fr) minmax(0,1.45fr);align-items:center;gap:20px;padding-bottom:18px;border-bottom:1px solid var(--co-line)}
+body[data-public-module="composicoes"] .analysis-score-head.compact>div:first-child>span{display:block;color:#9b82e5;font-size:9px;font-weight:900;letter-spacing:.12em}
+body[data-public-module="composicoes"] .analysis-score-head.compact>div:first-child>strong{display:block;margin-top:3px;font:900 56px/.9 var(--co-display);color:#d8cdff}
+body[data-public-module="composicoes"] .analysis-score-head.compact>div:first-child>strong small{font-size:17px;color:#73829a}
+body[data-public-module="composicoes"] .analysis-score-head.compact>div:first-child>p{margin:7px 0 0;color:#aeb9ca;font-size:12px;font-weight:700}
+body[data-public-module="composicoes"] .analysis-verdict{padding:14px 16px;border:1px solid rgba(53,217,238,.14);border-radius:12px;background:rgba(53,217,238,.035)}
+body[data-public-module="composicoes"] .analysis-verdict b{color:#aeeef6;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+body[data-public-module="composicoes"] .analysis-verdict p{margin:6px 0 0;color:#b5c0d0;font-size:13px;line-height:1.6}
+body[data-public-module="composicoes"] .analysis-coverage{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+body[data-public-module="composicoes"] .analysis-coverage span{padding:5px 8px;border-radius:999px;background:rgba(147,103,255,.08);border:1px solid rgba(147,103,255,.14);color:#a99bc8;font-size:9px}
+body[data-public-module="composicoes"] .analysis-insights{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+body[data-public-module="composicoes"] .analysis-insights>div{display:flex;flex-direction:column;gap:9px}
+body[data-public-module="composicoes"] .analysis-insights h3{margin:0 0 2px;color:#eaf0fb;font-size:13px}
+body[data-public-module="composicoes"] .insight-card{padding:13px 14px;border:1px solid var(--co-line);border-radius:12px;background:#0c1523}
+body[data-public-module="composicoes"] .insight-card>span{font-size:8px;font-weight:900;letter-spacing:.1em}
+body[data-public-module="composicoes"] .insight-card>strong{display:block;margin-top:4px;color:#eef4ff;font-size:14px;line-height:1.25}
+body[data-public-module="composicoes"] .insight-card>p{margin:5px 0 0;color:#8e9db1;font-size:11px;line-height:1.55}
+body[data-public-module="composicoes"] .insight-card>small{display:block;margin-top:8px;color:#6f8199;font-size:9px}
+body[data-public-module="composicoes"] .insight-card.strength{border-color:rgba(72,225,164,.18);background:linear-gradient(145deg,rgba(72,225,164,.045),transparent 55%),#0c1523}
+body[data-public-module="composicoes"] .insight-card.strength>span{color:#73d9ac}
+body[data-public-module="composicoes"] .insight-card.weakness{border-color:rgba(244,196,81,.18);background:linear-gradient(145deg,rgba(244,196,81,.04),transparent 55%),#0c1523}
+body[data-public-module="composicoes"] .insight-card.weakness>span{color:#d9bd6f}
+body[data-public-module="composicoes"] .insight-card.neutral>span{color:#8fa0b8}
+body[data-public-module="composicoes"] .analysis-details{margin-top:14px;padding:11px 13px;border:1px solid rgba(145,162,204,.1);border-radius:11px;background:rgba(145,162,204,.025)}
+body[data-public-module="composicoes"] .analysis-details summary{cursor:pointer;color:#9aa9be;font-size:10px;font-weight:800}
+body[data-public-module="composicoes"] .analysis-details ul{display:grid;gap:6px;margin:11px 0 0;padding:0;list-style:none}
+body[data-public-module="composicoes"] .analysis-details li{display:flex;flex-direction:column;gap:2px;color:#95a4b8;font-size:10px}
+body[data-public-module="composicoes"] .analysis-details li small{color:#66788f;font-size:9px}
+body[data-public-module="composicoes"] .analysis-details>p{margin:10px 0 0;color:#64758c;font-size:9px;line-height:1.45}
+
+body[data-public-module="composicoes"] .analysis-step>span{font-size:9px}
+body[data-public-module="composicoes"] .analysis-step>strong{font-size:33px}
+body[data-public-module="composicoes"] .analysis-step>p{font-size:12px;line-height:1.6}
+body[data-public-module="composicoes"] .partial-profile{padding:13px}
+body[data-public-module="composicoes"] .partial-profile strong{font-size:19px}
+body[data-public-module="composicoes"] .partial-profile span{font-size:8px}
+body[data-public-module="composicoes"] .partial-profile i{font-size:8px}
+
+/* Recomendações: menos opções, mais convidativas para experimentar. */
+body[data-public-module="composicoes"] .composition-recommendations{margin-top:22px;padding-top:20px}
+body[data-public-module="composicoes"] .composition-recommendations>header b{font-size:14px}
+body[data-public-module="composicoes"] .composition-recommendations>header span{font-size:11px;line-height:1.55}
+body[data-public-module="composicoes"] .composition-recommendations>header>small{font-size:9px}
+body[data-public-module="composicoes"] .composition-recommendation-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+body[data-public-module="composicoes"] .recommendation-card{padding:14px;border-radius:14px}
+body[data-public-module="composicoes"] .recommendation-card>header>span{font-size:8px}
+body[data-public-module="composicoes"] .recommendation-card>header>strong{font-size:27px}
+body[data-public-module="composicoes"] .recommendation-team{gap:6px;margin-top:10px}
+body[data-public-module="composicoes"] .recommendation-team img,body[data-public-module="composicoes"] .recommendation-team>div>span{height:78px}
+body[data-public-module="composicoes"] .recommendation-team b{font-size:15px}
+body[data-public-module="composicoes"] .recommendation-reason{min-height:0;padding:10px}
+body[data-public-module="composicoes"] .recommendation-reason b{font-size:10px}
+body[data-public-module="composicoes"] .recommendation-reason p{font-size:9px}
+body[data-public-module="composicoes"] .recommendation-card>button{min-height:42px;font-size:10px}
+
+@media(max-width:1180px){
+  body[data-public-module="composicoes"] .composition-lab-grid{grid-template-columns:minmax(350px,.9fr) minmax(430px,1.1fr)}
+  body[data-public-module="composicoes"] .composition-hero-option{grid-template-columns:58px minmax(0,1fr);min-height:96px}
+  body[data-public-module="composicoes"] .analysis-score-head.compact{grid-template-columns:150px minmax(0,1fr)}
+}
+@media(max-width:900px){
+  body[data-public-module="composicoes"] .composition-lab{padding:22px}
+  body[data-public-module="composicoes"] .composition-lab-grid{grid-template-columns:1fr}
+  body[data-public-module="composicoes"] .composition-hero-picker{grid-template-columns:1fr 1fr;max-height:520px}
+  body[data-public-module="composicoes"] .composition-analysis{position:static}
+  body[data-public-module="composicoes"] .analysis-insights{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  body[data-public-module="composicoes"] .composition-lab{padding:15px}
+  body[data-public-module="composicoes"] .composition-lab-head p{font-size:12px}
+  body[data-public-module="composicoes"] .composition-hero-picker{grid-template-columns:1fr}
+  body[data-public-module="composicoes"] .composition-hero-option{grid-template-columns:58px minmax(0,1fr);min-height:92px}
+  body[data-public-module="composicoes"] .hero-option-copy>b{font-size:19px}
+  body[data-public-module="composicoes"] .analysis-score-head.compact{grid-template-columns:1fr;gap:12px}
+  body[data-public-module="composicoes"] .analysis-score-head.compact>div:first-child>strong{font-size:50px}
+  body[data-public-module="composicoes"] .analysis-insights{grid-template-columns:1fr}
+  body[data-public-module="composicoes"] .composition-recommendation-grid{grid-template-columns:1fr}
+}
+@media(pointer:coarse){
+  body[data-public-module="composicoes"] .composition-hero-option{min-height:100px}
+  body[data-public-module="composicoes"] .composition-class-filters button{min-height:40px}
+  body[data-public-module="composicoes"] .recommendation-card>button{min-height:46px}
+  body[data-public-module="composicoes"] .analysis-details summary{min-height:42px;display:flex;align-items:center}
+}

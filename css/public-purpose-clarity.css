@@ -1,0 +1,29 @@
+/* Echo Arena — clareza de propósito e autoria pública · 0.3.5 */
+:root{--pc-ink:#f6f8ff;--pc-muted:#95a1b7;--pc-line:rgba(145,162,204,.14);--pc-violet:#9367ff;--pc-cyan:#35d9ee;--pc-green:#48e1a4;--pc-display:'Barlow Condensed',Inter,sans-serif}
+.public-purpose-panel{position:relative;overflow:hidden;margin:24px 0;padding:26px;border:1px solid var(--pc-line);border-radius:20px;background:radial-gradient(circle at 88% 12%,rgba(147,103,255,.13),transparent 34%),linear-gradient(145deg,rgba(10,16,29,.97),rgba(7,12,22,.92));box-shadow:0 24px 70px rgba(0,0,0,.24)}
+.public-purpose-panel::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(145,162,204,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(145,162,204,.028) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(90deg,#000,transparent 86%)}
+.public-purpose-head,.public-purpose-grid,.public-purpose-note{position:relative;z-index:1}
+.public-purpose-kicker{display:block;color:#b59cff;font-size:8px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+.public-purpose-head h1,.public-purpose-head h2{max-width:900px;margin:8px 0 8px;color:var(--pc-ink);font:900 clamp(34px,5vw,62px)/.92 var(--pc-display);letter-spacing:-.025em;text-transform:uppercase}
+.public-purpose-head h2{font-size:clamp(30px,4vw,48px)}
+.public-purpose-head p{max-width:880px;margin:0;color:var(--pc-muted);font-size:12px;line-height:1.72}
+.public-purpose-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.public-purpose-card{min-height:148px;padding:17px;border:1px solid rgba(145,162,204,.12);border-radius:15px;background:rgba(5,10,19,.58)}
+.public-purpose-card b{display:grid;place-items:center;width:30px;height:30px;border:1px solid rgba(147,103,255,.3);border-radius:9px;color:#c2aeff;font:800 16px var(--pc-display)}
+.public-purpose-card strong{display:block;margin-top:13px;color:var(--pc-ink);font-size:11px;line-height:1.3}
+.public-purpose-card p{margin:6px 0 0;color:#8592a9;font-size:9px;line-height:1.6}
+.public-purpose-note{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:12px 14px;border:1px solid rgba(53,217,238,.14);border-radius:12px;background:rgba(53,217,238,.035);color:#8f9db4;font-size:9px;line-height:1.55}
+.public-purpose-note strong{flex:0 0 auto;color:#bcecf2;font-size:8px;letter-spacing:.08em;text-transform:uppercase}
+body[data-public-module="classes"] .class-explorer{margin-top:18px}
+body[data-public-module="tier-list"] .editorial-description{max-width:760px}
+body[data-public-module="estatisticas"] .stats-build-row{min-height:178px}
+body[data-public-module="estatisticas"] .stats-build-row p{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;margin:10px 0 0!important;padding:9px 11px;border:1px solid rgba(147,103,255,.2);border-radius:10px;background:rgba(147,103,255,.055);color:#f4f0ff!important;font-size:12px!important;font-weight:800!important;line-height:1.15!important;box-shadow:inset 2px 0 0 rgba(147,103,255,.62)}
+body[data-public-module="estatisticas"] .stats-build-row p::before{content:"CRIADOR DA BUILD";color:#a993ff;font-size:7px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+body[data-public-module="estatisticas"] .stats-build-row .meta{bottom:11px}
+body[data-public-module="builds"] .builds-author-line{display:flex!important;align-items:center!important;gap:7px!important;width:max-content;max-width:100%;margin-top:8px!important;padding:7px 9px!important;border:1px solid rgba(147,103,255,.18);border-radius:10px;background:rgba(147,103,255,.045);font-size:0!important;color:#eef1ff!important}
+body[data-public-module="builds"] .builds-author-line::before{content:"CRIADA POR";flex:0 0 auto;color:#9f8bf1;font-size:7px;font-weight:900;letter-spacing:.11em}
+body[data-public-module="builds"] .builds-author-line .echo-author-trust{display:inline-flex;align-items:center;gap:6px;min-width:0;font-size:10px}
+body[data-public-module="builds"] .builds-author-line .echo-author-trust__name{color:#fff;font-size:11px;font-weight:900}
+body[data-public-module="builds"] .builds-author-line .echo-author-trust__mark{font-size:7px}
+body[data-public-module="builds"] .build-card-hub .builds-author-line{margin-bottom:6px}
+@media(max-width:760px){.public-purpose-panel{margin:18px 0;padding:20px 18px;border-radius:17px}.public-purpose-grid{grid-template-columns:1fr}.public-purpose-card{min-height:0}.public-purpose-head h1{font-size:42px}.public-purpose-head h2{font-size:34px}.public-purpose-note{flex-direction:column}.stats-build-row p{max-width:100%}}

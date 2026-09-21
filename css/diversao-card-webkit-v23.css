@@ -1,0 +1,20 @@
+/* Diversão V23 — causa raiz do freeze na revelação do card em iPhone/iPad WebKit.
+   Mantém fade, deslocamento, escala, scan e Câmara Dourada. Retira apenas os
+   filtros que forçavam rasterização da imagem recém-inserida durante o reveal. */
+html[data-diversao-webkit-safe="v22"] .hero-draw-card.revealed{
+  filter:none!important;
+  animation:card-reveal-webkit-v23 .54s cubic-bezier(.18,.8,.18,1) both!important;
+}
+html[data-diversao-webkit-safe="v22"] .hero-draw-card.revealed .draw-index{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  background:rgba(8,5,15,.88);
+}
+html[data-diversao-webkit-safe="v22"] .hero-draw-card.revealed::before{
+  will-change:transform,opacity;
+}
+@keyframes card-reveal-webkit-v23{
+  0%{opacity:.15;transform:translate3d(0,16px,0) scale(.94)}
+  58%{opacity:1;transform:translate3d(0,-1px,0) scale(1.006)}
+  100%{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}

@@ -1,0 +1,182 @@
+@media (max-width: 900px) {
+  .identity-v7-editor-preview {
+    position: static !important;
+    z-index: auto;
+    order: initial !important;
+    display: block;
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 8px;
+    border-radius: 18px;
+    text-align: left;
+    pointer-events: none;
+  }
+
+  .my-profile-form > .my-profile-grid {
+    position: relative;
+    z-index: 1;
+  }
+
+  .my-profile-form > .identity-v7-editor-preview {
+    position: relative !important;
+    z-index: 0;
+    align-self: stretch;
+    justify-self: stretch;
+  }
+
+  .identity-v7-editor-preview::before {
+    display: block;
+    margin: 0 6px 8px;
+    content: "PRÉVIA ENQUANTO VOCÊ EDITA";
+    color: #7f8da2;
+    font: 800 7px/1 Inter, sans-serif;
+    letter-spacing: .14em;
+  }
+
+  .identity-v7-editor-preview .identity-v7-preview-top {
+    padding: 4px 6px 8px;
+  }
+
+  :is(.identity-v7-editor-preview, .identity-v7-journey > .identity-v7-preview) .identity-v7-preview-frame {
+    display: grid;
+    grid-template-columns: 82px minmax(0, 1fr);
+    grid-template-areas:
+      "banner banner"
+      "avatar tier"
+      "avatar nick"
+      "avatar name"
+      "avatar handle"
+      "bio bio"
+      "badges badges"
+      "accent accent";
+    align-content: start;
+    align-items: center;
+    column-gap: 14px;
+    min-height: 236px;
+    padding: 17px 15px 39px;
+    border-radius: 15px;
+    text-align: left;
+  }
+
+  :is(.identity-v7-editor-preview, .identity-v7-journey > .identity-v7-preview) .identity-authority-banner {
+    grid-area: banner;
+    justify-self: stretch;
+    width: 100%;
+    margin: 0 0 10px;
+  }
+
+  .identity-v7-editor-preview .my-profile-avatar {
+    grid-area: avatar;
+    width: 76px;
+    height: 76px;
+    margin: 0;
+    border-radius: 20px;
+    font-size: 29px;
+  }
+
+  .identity-v7-editor-preview .identity-v7-preview-tier {
+    grid-area: tier;
+    justify-self: start;
+    margin: 0 0 7px;
+    padding: 5px 8px 5px 5px;
+  }
+
+  .identity-v7-editor-preview .identity-v7-preview-tier > span {
+    width: 24px;
+    height: 27px;
+  }
+
+  .identity-v7-editor-preview .identity-v7-nick-label {
+    grid-area: nick;
+    font-size: 6px;
+  }
+
+  .identity-v7-editor-preview .identity-v7-preview-frame h2 {
+    grid-area: name;
+    margin: 5px 0 0;
+    font-size: clamp(26px, 8vw, 34px);
+    line-height: .9;
+  }
+
+  .identity-v7-editor-preview [data-preview-mirror-id="preview-handle"] {
+    position: relative;
+    z-index: 1;
+    grid-area: handle;
+    margin: 5px 0 0;
+    color: var(--identity-accent);
+    font-size: 10px;
+  }
+
+  .identity-v7-editor-preview [data-preview-mirror-id="preview-bio"] {
+    position: relative;
+    z-index: 1;
+    grid-area: bio;
+    min-height: 0;
+    margin: 13px 0 0;
+    color: #9cabbf;
+    font-size: 9px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  .identity-v7-editor-preview .identity-v7-preview-badges {
+    grid-area: badges;
+    justify-content: flex-start;
+    margin-top: 8px;
+  }
+
+  .identity-v7-editor-preview .my-profile-preview-accent {
+    grid-area: accent;
+    justify-self: start;
+    margin-top: 9px;
+    padding: 6px 8px;
+    font-size: 7px;
+  }
+
+  .identity-v7-editor-preview > .identity-v7-preview-note {
+    margin: 8px 6px 2px;
+    font-size: 7px;
+  }
+
+  .identity-v7-editor-preview .identity-v7-preview-footer {
+    right: 14px;
+    bottom: 11px;
+    left: 14px;
+  }
+
+  .identity-v7-editor-preview .identity-v7-preview-corner::before {
+    display: none;
+  }
+
+  .identity-v7-editor-preview[data-authority="founder"] [data-preview-mirror-id="preview-handle"] {
+    color: #f6d365;
+  }
+
+  .identity-v7-editor-preview[data-authority="admin"] [data-preview-mirror-id="preview-handle"] {
+    color: #73eaff;
+  }
+}
+
+@media (max-width: 390px) {
+  .identity-v7-editor-preview .identity-v7-preview-frame {
+    grid-template-columns: 70px minmax(0, 1fr);
+    column-gap: 11px;
+    min-height: 224px;
+    padding-inline: 13px;
+  }
+
+  .identity-v7-editor-preview .my-profile-avatar {
+    width: 66px;
+    height: 66px;
+    border-radius: 18px;
+    font-size: 26px;
+  }
+}
+
+@media (min-width: 901px) {
+  .identity-v7-editor-preview {
+    display: none !important;
+  }
+}

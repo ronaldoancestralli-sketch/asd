@@ -1,0 +1,70 @@
+/* Diversão V28 — no iPhone/iPad a Câmara Dourada não promove a textura do
+   hero card. O brilho, scan e selo vivem em uma camada filha independente. */
+html[data-diversao-golden-overlay="v28"] .golden-card-overlay-v28{
+  position:absolute;
+  inset:0;
+  z-index:7;
+  pointer-events:none;
+  overflow:hidden;
+  border:1px solid transparent;
+  border-radius:inherit;
+  opacity:0;
+  background:transparent;
+  box-shadow:none;
+}
+html[data-diversao-golden-overlay="v28"] .golden-card-overlay-v28.is-active{
+  opacity:1;
+  border-color:rgba(255,214,103,.58);
+  box-shadow:inset 0 0 0 1px rgba(255,224,135,.10),inset 0 0 22px rgba(255,202,73,.07);
+  animation:golden-overlay-shell-v28 .72s ease-out both;
+}
+html[data-diversao-golden-overlay="v28"] .golden-card-scan-v28{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  background:linear-gradient(105deg,transparent 18%,rgba(255,229,151,.17) 48%,transparent 74%);
+  transform:translate3d(-115%,0,0);
+}
+html[data-diversao-golden-overlay="v28"] .golden-card-overlay-v28.is-active .golden-card-scan-v28{
+  animation:golden-overlay-scan-v28 .78s ease-out both;
+}
+html[data-diversao-golden-overlay="v28"] .golden-card-badge-v28{
+  position:absolute;
+  top:5px;
+  left:50%;
+  width:max-content;
+  max-width:calc(100% - 10px);
+  padding:3px 5px;
+  border:1px solid rgba(255,220,119,.44);
+  border-radius:999px;
+  background:rgba(32,21,4,.88);
+  color:#ffe096;
+  font:900 5px/1 var(--fun-font,Inter,sans-serif);
+  letter-spacing:.1em;
+  white-space:nowrap;
+  text-transform:uppercase;
+  opacity:0;
+  transform:translate3d(-50%,-4px,0);
+}
+html[data-diversao-golden-overlay="v28"] .golden-card-overlay-v28.is-active .golden-card-badge-v28{
+  animation:golden-overlay-badge-v28 .42s ease-out .08s both;
+}
+@keyframes golden-overlay-shell-v28{
+  0%{opacity:0;border-color:rgba(255,214,103,0)}
+  34%{opacity:1;border-color:rgba(255,230,160,.72)}
+  100%{opacity:1;border-color:rgba(255,214,103,.58)}
+}
+@keyframes golden-overlay-scan-v28{
+  0%{opacity:0;transform:translate3d(-115%,0,0)}
+  28%{opacity:1}
+  100%{opacity:0;transform:translate3d(115%,0,0)}
+}
+@keyframes golden-overlay-badge-v28{
+  0%{opacity:0;transform:translate3d(-50%,-4px,0)}
+  100%{opacity:1;transform:translate3d(-50%,0,0)}
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-diversao-golden-overlay="v28"] .golden-card-overlay-v28.is-active,
+  html[data-diversao-golden-overlay="v28"] .golden-card-overlay-v28.is-active .golden-card-scan-v28,
+  html[data-diversao-golden-overlay="v28"] .golden-card-overlay-v28.is-active .golden-card-badge-v28{animation-duration:.01ms!important;animation-iteration-count:1!important}
+}

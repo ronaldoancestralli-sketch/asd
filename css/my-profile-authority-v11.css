@@ -1,0 +1,69 @@
+:root{--authority-founder:#f6d365;--authority-founder-soft:#fff2b2;--authority-admin:#5ee7ff;--authority-admin-soft:#b9f7ff}
+
+/* Institutional authority is intentionally a separate visual layer from Echo Scouts. */
+.identity-v7-preview[data-authority="founder"]{--authority-primary:var(--authority-founder);--authority-soft:var(--authority-founder-soft);border-color:rgba(246,211,101,.62);background:linear-gradient(155deg,rgba(246,211,101,.13),rgba(8,9,13,.98) 34%,rgba(18,13,4,.96));box-shadow:0 34px 110px rgba(0,0,0,.56),0 0 0 1px rgba(255,239,177,.1),0 0 58px rgba(246,211,101,.16)}
+.identity-v7-preview[data-authority="admin"]{--authority-primary:var(--authority-admin);--authority-soft:var(--authority-admin-soft);border-color:rgba(94,231,255,.5);background:linear-gradient(155deg,rgba(94,231,255,.09),rgba(5,12,19,.98) 34%,rgba(3,18,26,.97));box-shadow:0 32px 95px rgba(0,0,0,.5),0 0 46px rgba(94,231,255,.11)}
+
+.identity-v7-preview[data-authority="founder"] .identity-v7-preview-top,
+.identity-v7-preview[data-authority="admin"] .identity-v7-preview-top{color:var(--authority-soft)}
+.identity-v7-preview[data-authority="founder"] .identity-v7-preview-top small{color:#ffe9a3}
+.identity-v7-preview[data-authority="admin"] .identity-v7-preview-top small{color:#9ff3ff}
+
+.identity-v7-preview[data-authority="founder"] .identity-v7-preview-frame,
+.identity-v7-preview[data-authority="admin"] .identity-v7-preview-frame{isolation:isolate;border-radius:22px}
+.identity-v7-preview[data-authority="founder"] .identity-v7-preview-frame{border:1px solid rgba(246,211,101,.58);background:radial-gradient(circle at 50% 8%,rgba(255,235,151,.22),transparent 29%),linear-gradient(135deg,rgba(246,211,101,.06),transparent 34%),linear-gradient(165deg,rgba(255,255,255,.035),rgba(6,6,7,.68)),#090a0c;box-shadow:inset 0 0 0 1px rgba(255,246,213,.07),inset 0 0 42px rgba(246,211,101,.035)}
+.identity-v7-preview[data-authority="admin"] .identity-v7-preview-frame{border:1px solid rgba(94,231,255,.4);background:radial-gradient(circle at 50% 8%,rgba(94,231,255,.16),transparent 30%),linear-gradient(rgba(94,231,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(94,231,255,.03) 1px,transparent 1px),#071019;background-size:auto,24px 24px,24px 24px,auto;box-shadow:inset 0 0 0 1px rgba(180,247,255,.05),inset 0 0 34px rgba(94,231,255,.035)}
+
+.identity-v7-preview[data-authority="founder"] .identity-v7-preview-frame::after{opacity:.72;background:linear-gradient(rgba(246,211,101,.025) 1px,transparent 1px);background-size:100% 6px}
+.identity-v7-preview[data-authority="admin"] .identity-v7-preview-frame::after{opacity:.55;background:linear-gradient(rgba(94,231,255,.026) 1px,transparent 1px);background-size:100% 5px}
+
+.identity-authority-banner{position:relative;z-index:3;display:grid;grid-template-columns:42px 1fr;gap:10px;align-items:center;width:min(240px,100%);margin:0 auto 12px;padding:9px 11px;border-radius:13px;text-align:left;overflow:hidden}
+.identity-authority-banner::after{position:absolute;inset:0;content:"";pointer-events:none;opacity:.6}
+.identity-authority-emblem{display:grid;place-items:center;width:42px;height:42px;font:900 19px/1 "Barlow Condensed",sans-serif}
+.identity-authority-copy{display:grid;gap:3px;min-width:0}
+.identity-authority-copy small{font:900 6px/1 Inter,sans-serif;letter-spacing:.16em}
+.identity-authority-copy strong{font:900 18px/.92 "Barlow Condensed",sans-serif;letter-spacing:.05em}
+.identity-authority-copy span{font:800 6px/1.2 Inter,sans-serif;letter-spacing:.08em}
+
+.identity-v7-preview[data-authority="founder"] .identity-authority-banner{border:1px solid rgba(246,211,101,.52);background:linear-gradient(100deg,rgba(246,211,101,.14),rgba(246,211,101,.035));box-shadow:0 10px 32px rgba(0,0,0,.24),0 0 24px rgba(246,211,101,.08)}
+.identity-v7-preview[data-authority="founder"] .identity-authority-banner::after{background:linear-gradient(110deg,transparent 15%,rgba(255,255,255,.12) 46%,transparent 72%);transform:translateX(-120%)}
+.identity-v7-preview[data-authority="founder"] .identity-authority-emblem{color:#171006;background:linear-gradient(145deg,#fff3bd,#c99629);clip-path:polygon(50% 0,90% 18%,100% 60%,72% 100%,28% 100%,0 60%,10% 18%);filter:drop-shadow(0 0 10px rgba(246,211,101,.3))}
+.identity-v7-preview[data-authority="founder"] .identity-authority-copy small{color:#c9a84d}.identity-v7-preview[data-authority="founder"] .identity-authority-copy strong{color:#fff2b2;text-shadow:0 0 18px rgba(246,211,101,.24)}.identity-v7-preview[data-authority="founder"] .identity-authority-copy span{color:#9d874f}
+
+.identity-v7-preview[data-authority="admin"] .identity-authority-banner{border:1px solid rgba(94,231,255,.34);background:linear-gradient(100deg,rgba(94,231,255,.11),rgba(94,231,255,.025));box-shadow:0 10px 28px rgba(0,0,0,.22)}
+.identity-v7-preview[data-authority="admin"] .identity-authority-emblem{color:#041116;border:1px solid #aef5ff;background:linear-gradient(145deg,#bff7ff,#35bfd8);clip-path:polygon(16% 0,84% 0,100% 16%,100% 84%,84% 100%,16% 100%,0 84%,0 16%);box-shadow:0 0 18px rgba(94,231,255,.16)}
+.identity-v7-preview[data-authority="admin"] .identity-authority-copy small{color:#6edbea}.identity-v7-preview[data-authority="admin"] .identity-authority-copy strong{color:#c8f9ff;text-shadow:0 0 18px rgba(94,231,255,.18)}.identity-v7-preview[data-authority="admin"] .identity-authority-copy span{color:#6b9eaa}
+
+.identity-admin-function{position:relative;z-index:3;display:grid;grid-template-columns:42px minmax(0,1fr);gap:10px;align-items:center;width:min(240px,100%);margin:0 auto 14px;padding:10px 11px;border:1px solid rgba(94,231,255,.34);border-radius:12px;background:linear-gradient(100deg,rgba(94,231,255,.095),rgba(94,231,255,.018));text-align:left;box-shadow:inset 0 0 0 1px rgba(255,255,255,.025)}
+.identity-admin-function-mark{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(174,245,255,.7);clip-path:polygon(18% 0,82% 0,100% 18%,100% 82%,82% 100%,18% 100%,0 82%,0 18%);background:linear-gradient(145deg,#c9faff,#32bdd7);color:#041116;font:900 20px/1 "Barlow Condensed",sans-serif;box-shadow:0 0 22px rgba(94,231,255,.15)}
+.identity-admin-function>div{display:grid;gap:3px;min-width:0}.identity-admin-function small{color:#5d9aa7;font:900 6px/1 Inter,sans-serif;letter-spacing:.14em}.identity-admin-function strong{overflow:hidden;color:#d7fbff;font:900 15px/.95 "Barlow Condensed",sans-serif;letter-spacing:.045em;text-overflow:ellipsis}.identity-admin-function em{color:#63cddd;font:800 6px/1.2 Inter,sans-serif;font-style:normal;letter-spacing:.08em}
+
+.identity-v7-preview[data-authority="founder"] .my-profile-avatar{border-radius:32px;border-color:rgba(246,211,101,.72);background:radial-gradient(circle at 50% 30%,rgba(255,244,190,.2),transparent 55%),linear-gradient(145deg,rgba(246,211,101,.22),#141009);box-shadow:0 18px 38px rgba(0,0,0,.38),0 0 0 4px rgba(246,211,101,.045),0 0 36px rgba(246,211,101,.19)}
+.identity-v7-preview[data-authority="admin"] .my-profile-avatar{border-radius:22px;border-color:rgba(94,231,255,.62);background:linear-gradient(145deg,rgba(94,231,255,.18),#07131b);box-shadow:0 18px 34px rgba(0,0,0,.34),0 0 30px rgba(94,231,255,.13)}
+
+.identity-v7-preview[data-authority="founder"] .identity-v7-nick-label{color:#9f874d}.identity-v7-preview[data-authority="founder"] .identity-v7-preview-frame h2{color:#fff8df;text-shadow:0 0 30px rgba(246,211,101,.22)}.identity-v7-preview[data-authority="founder"] .identity-v7-preview-frame #preview-handle{color:#f6d365}
+.identity-v7-preview[data-authority="admin"] .identity-v7-nick-label{color:#568b98}.identity-v7-preview[data-authority="admin"] .identity-v7-preview-frame h2{color:#ecfdff;text-shadow:0 0 28px rgba(94,231,255,.18)}.identity-v7-preview[data-authority="admin"] .identity-v7-preview-frame #preview-handle{color:#73eaff}
+
+.identity-v7-preview[data-authority="founder"] .identity-v7-preview-badges span[data-institutional-authority="founder"],
+.identity-v7-preview[data-authority="admin"] .identity-v7-preview-badges span[data-institutional-authority="admin"]{display:none}
+
+.my-profile-badge.founder{color:#ffe59a;border-color:rgba(246,211,101,.38);background:linear-gradient(100deg,rgba(246,211,101,.13),rgba(246,211,101,.035));box-shadow:0 0 20px rgba(246,211,101,.07)}
+.my-profile-badge.admin{color:#a9f4ff;border-color:rgba(94,231,255,.32);background:rgba(94,231,255,.07)}
+.my-profile-badge.admin-function{color:#d2f9ff;border-color:rgba(94,231,255,.42);background:linear-gradient(100deg,rgba(94,231,255,.12),rgba(94,231,255,.035));box-shadow:0 0 22px rgba(94,231,255,.08)}
+.my-profile-badge.founder::before{width:9px;height:9px;border-radius:2px;transform:rotate(45deg);box-shadow:0 0 10px currentColor}.my-profile-badge.admin::before,.my-profile-badge.admin-function::before{box-shadow:0 0 10px currentColor}
+
+.identity-institutional-profile{display:grid;grid-template-columns:74px minmax(0,1fr);gap:18px;align-items:center;margin:0 0 24px;padding:20px;border:1px solid rgba(255,255,255,.09);border-radius:18px;background:rgba(255,255,255,.025);box-shadow:0 20px 55px rgba(0,0,0,.18)}
+.identity-institutional-profile-mark{display:grid;place-items:center;width:74px;height:74px;font:900 31px/1 "Barlow Condensed",sans-serif}.identity-institutional-profile>div:last-child{min-width:0}.identity-institutional-profile small{display:block;margin-bottom:5px;font:900 7px/1 Inter,sans-serif;letter-spacing:.16em}.identity-institutional-profile h1{margin:0;font:900 clamp(28px,5vw,44px)/.92 "Barlow Condensed",sans-serif;text-transform:uppercase}.identity-institutional-profile p{max-width:680px;margin:9px 0 12px;color:#8391a5;font:600 10px/1.55 Inter,sans-serif}.identity-institutional-profile span{display:inline-flex;padding:6px 9px;border-radius:999px;font:900 7px/1 Inter,sans-serif;letter-spacing:.11em}
+.identity-institutional-profile[data-role="founder"]{border-color:rgba(246,211,101,.28);background:linear-gradient(120deg,rgba(246,211,101,.09),rgba(255,255,255,.018));}.identity-institutional-profile[data-role="founder"] .identity-institutional-profile-mark{color:#1a1205;background:linear-gradient(145deg,#fff0af,#bd8c22);clip-path:polygon(50% 0,90% 18%,100% 60%,72% 100%,28% 100%,0 60%,10% 18%);filter:drop-shadow(0 0 17px rgba(246,211,101,.18))}.identity-institutional-profile[data-role="founder"] small,.identity-institutional-profile[data-role="founder"] h1{color:#ffeaa2}.identity-institutional-profile[data-role="founder"] span{color:#f5da7e;border:1px solid rgba(246,211,101,.26);background:rgba(246,211,101,.07)}
+.identity-institutional-profile[data-role="admin"]{border-color:rgba(94,231,255,.23);background:linear-gradient(120deg,rgba(94,231,255,.075),rgba(255,255,255,.015));}.identity-institutional-profile[data-role="admin"] .identity-institutional-profile-mark{color:#061319;border:1px solid #aef5ff;background:linear-gradient(145deg,#c8faff,#35bfd8);clip-path:polygon(16% 0,84% 0,100% 16%,100% 84%,84% 100%,16% 100%,0 84%,0 16%)}.identity-institutional-profile[data-role="admin"] small,.identity-institutional-profile[data-role="admin"] h1{color:#c9f9ff}.identity-institutional-profile[data-role="admin"] span{color:#8eefff;border:1px solid rgba(94,231,255,.25);background:rgba(94,231,255,.065)}
+
+body[data-identity-participation="institutional"] [data-member-only-hidden="true"]{display:none!important}
+body[data-identity-participation="institutional"] .identity-v7-preview-note{max-width:300px;margin-inline:auto}
+
+.identity-v7-preview[data-authority="founder"] .identity-v7-preview-footer{border-top-color:rgba(246,211,101,.16);color:#8b7848}.identity-v7-preview[data-authority="founder"] .identity-v7-preview-footer b{color:#d7b85d}.identity-v7-preview[data-authority="admin"] .identity-v7-preview-footer{border-top-color:rgba(94,231,255,.14);color:#527783}.identity-v7-preview[data-authority="admin"] .identity-v7-preview-footer b{color:#72dcec}
+
+@media(prefers-reduced-motion:no-preference){.identity-v7-preview[data-authority="founder"] .identity-authority-banner::after{animation:authority-founder-sweep 5.8s ease-in-out infinite}.identity-v7-preview[data-authority="founder"] .identity-authority-emblem{animation:authority-founder-pulse 3.2s ease-in-out infinite}.identity-v7-preview[data-authority="admin"] .identity-authority-emblem{animation:authority-admin-pulse 2.4s steps(2,end) infinite}@keyframes authority-founder-sweep{0%,65%{transform:translateX(-120%)}88%,100%{transform:translateX(120%)}}@keyframes authority-founder-pulse{50%{filter:drop-shadow(0 0 17px rgba(246,211,101,.52));transform:translateY(-1px)}}@keyframes authority-admin-pulse{50%{box-shadow:0 0 24px rgba(94,231,255,.25)}}}
+
+@media(max-width:900px){.identity-authority-banner,.identity-admin-function{width:min(270px,100%)}.identity-institutional-profile{grid-template-columns:58px minmax(0,1fr);gap:13px;padding:15px}.identity-institutional-profile-mark{width:58px;height:58px;font-size:25px}}
+@media(max-width:520px){.identity-institutional-profile{grid-template-columns:1fr}.identity-institutional-profile-mark{width:52px;height:52px}.identity-institutional-profile p{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.identity-authority-banner::after,.identity-authority-emblem{animation:none!important}}

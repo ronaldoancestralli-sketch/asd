@@ -1,0 +1,361 @@
+:root {
+  --identity-v9-panel: rgba(8, 13, 23, .92);
+  --identity-v9-line: rgba(255, 255, 255, .08);
+}
+
+/* V9: visual polish without changing the desktop information architecture. */
+.identity-v7-journey .my-scout-step {
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, currentColor 8%, transparent), transparent 46%),
+    linear-gradient(155deg, rgba(255,255,255,.032), rgba(255,255,255,.012));
+  box-shadow: inset 0 1px rgba(255,255,255,.025), 0 12px 28px rgba(0,0,0,.12);
+}
+
+.identity-v7-journey .my-scout-step::after {
+  position: absolute;
+  z-index: -1;
+  right: -28px;
+  bottom: -32px;
+  width: 82px;
+  height: 82px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: "";
+  opacity: .055;
+  box-shadow: 0 0 0 17px currentColor;
+  pointer-events: none;
+}
+
+.identity-v7-journey .my-scout-step.current {
+  box-shadow: inset 0 1px rgba(255,255,255,.04), 0 15px 34px rgba(0,0,0,.2), 0 0 24px rgba(34,211,238,.055);
+}
+
+.identity-v7-insignia-mark {
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.identity-v7-journey button.my-scout-step:hover .identity-v7-insignia-mark {
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* The live card follows the collection on phones/tablets, so the user sees
+   the result while exploring badges instead of finding a huge empty card at the top. */
+@media (max-width: 900px) {
+  .identity-v7-journey > .identity-v7-preview {
+    position: relative;
+    top: auto;
+    width: 100%;
+    margin: 13px 0 12px;
+    padding: 8px;
+    border-radius: 18px;
+    text-align: left;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .identity-v7-preview-top {
+    padding: 4px 6px 8px;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .identity-v7-preview-frame {
+    display: grid;
+    grid-template-columns: 82px minmax(0, 1fr);
+    grid-template-areas:
+      "avatar tier"
+      "avatar nick"
+      "avatar name"
+      "avatar handle"
+      "bio bio"
+      "badges badges"
+      "accent accent";
+    align-content: start;
+    align-items: center;
+    column-gap: 14px;
+    min-height: 236px;
+    padding: 17px 15px 39px;
+    border-radius: 15px;
+    text-align: left;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .my-profile-avatar {
+    grid-area: avatar;
+    width: 76px;
+    height: 76px;
+    margin: 0;
+    border-radius: 20px;
+    font-size: 29px;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .identity-v7-preview-tier {
+    grid-area: tier;
+    justify-self: start;
+    margin: 0 0 7px;
+    padding: 5px 8px 5px 5px;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .identity-v7-preview-tier > span {
+    width: 24px;
+    height: 27px;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .identity-v7-nick-label {
+    grid-area: nick;
+    font-size: 6px;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .identity-v7-preview-frame h2 {
+    grid-area: name;
+    margin: 5px 0 0;
+    font-size: clamp(26px, 8vw, 34px);
+    line-height: .9;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .identity-v7-preview-frame #preview-handle {
+    grid-area: handle;
+    margin: 5px 0 0;
+    font-size: 10px;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .identity-v7-preview-frame #preview-bio {
+    grid-area: bio;
+    min-height: 0;
+    margin: 13px 0 0;
+    font-size: 9px;
+    line-height: 1.45;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .identity-v7-preview-badges {
+    grid-area: badges;
+    justify-content: flex-start;
+    margin-top: 8px;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .my-profile-preview-accent {
+    grid-area: accent;
+    justify-self: start;
+    margin-top: 9px;
+    padding: 6px 8px;
+    font-size: 7px;
+  }
+
+  .identity-v7-journey > .identity-v7-preview > .identity-v7-preview-note {
+    margin: 8px 6px 2px;
+    font-size: 7px;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .identity-v7-preview-footer {
+    right: 14px;
+    bottom: 11px;
+    left: 14px;
+  }
+
+  .identity-v7-journey > .identity-v7-preview .identity-v7-preview-corner::before {
+    display: none;
+  }
+}
+
+/* Keep the collection compact on mobile. Desktop dimensions intentionally stay intact. */
+@media (max-width: 680px) {
+  .identity-v7-journey .my-scout-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .identity-v7-journey .my-scout-step {
+    min-height: 126px;
+    padding: 10px 7px 9px;
+    border-radius: 13px;
+  }
+
+  .identity-v7-insignia-mark {
+    width: 43px;
+    height: 48px;
+    margin-bottom: 7px;
+    font-size: 17px;
+  }
+
+  .identity-v7-journey .my-scout-step strong {
+    font-size: 8px;
+  }
+
+  .identity-v7-insignia-state {
+    margin-top: 5px;
+    padding: 4px 6px;
+    font-size: 6px;
+  }
+
+  .identity-v7-insignia-rule {
+    margin-top: 6px;
+    font-size: 6.2px;
+    line-height: 1.35;
+  }
+
+  .identity-v7-journey .my-scout-step[data-tier="arena_legend"] {
+    grid-column: 1 / -1;
+    min-height: 116px;
+  }
+}
+
+@media (max-width: 390px) {
+  .identity-v7-journey .my-scout-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .identity-v7-journey .my-scout-step {
+    min-height: 121px;
+    padding-inline: 6px;
+  }
+}
+
+/* Specialty explainer: removes jargon before showing numbers. */
+.my-specialties-guide {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
+  padding: 15px;
+  border: 1px solid rgba(34,211,238,.13);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(34,211,238,.075), transparent 30%),
+    linear-gradient(140deg, rgba(8,18,28,.78), rgba(13,10,27,.72));
+}
+
+.my-specialties-guide-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.my-specialties-guide-head > div { display: grid; gap: 5px; }
+.my-specialties-guide-head small { color: #67e8f9; font: 800 7px/1 Inter,sans-serif; letter-spacing: .14em; }
+.my-specialties-guide-head strong { color: #e8eef7; font: 800 13px/1.25 Inter,sans-serif; }
+.my-specialties-guide-head p { max-width: 520px; margin: 0; color: #8190a6; font: 500 9px/1.5 Inter,sans-serif; text-align: right; }
+
+.my-specialties-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.my-specialties-guide-item {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 12px;
+  background: rgba(255,255,255,.02);
+}
+
+.my-specialties-guide-item.is-counter {
+  border-color: rgba(34,211,238,.18);
+  background: rgba(34,211,238,.035);
+}
+
+.my-specialties-guide-item b,
+.my-specialties-guide-item span { display: block; }
+.my-specialties-guide-item b { color: #dce5f0; font: 800 9px/1.2 Inter,sans-serif; text-transform: uppercase; }
+.my-specialties-guide-item span { margin-top: 5px; color: #718198; font: 500 8px/1.45 Inter,sans-serif; }
+.my-specialties-guide-item.is-counter b { color: #a5f3fc; }
+
+.my-specialties-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.my-specialties-legend span {
+  padding: 6px 8px;
+  border: 1px solid rgba(255,255,255,.065);
+  border-radius: 999px;
+  background: rgba(0,0,0,.12);
+  color: #7f90a7;
+  font: 700 7px/1.25 Inter,sans-serif;
+}
+
+/* Stronger specialty cards, while preserving their server-backed metrics. */
+.my-specialty-card {
+  border-color: rgba(255,255,255,.085);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(139,92,246,.075), transparent 34%),
+    linear-gradient(150deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+  box-shadow: inset 0 1px rgba(255,255,255,.025), 0 14px 32px rgba(0,0,0,.12);
+}
+
+.my-specialty-title {
+  display: grid;
+  grid-template-columns: 38px minmax(0,1fr);
+  align-items: center;
+  gap: 9px;
+}
+
+.my-specialty-title-copy { display: grid; gap: 4px; }
+
+.my-specialty-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(139,92,246,.18);
+  border-radius: 12px;
+  background: rgba(139,92,246,.07);
+  color: #c4b5fd;
+  font: 900 18px/1 "Barlow Condensed",sans-serif;
+  box-shadow: inset 0 1px rgba(255,255,255,.03);
+}
+
+.my-specialty-card[data-specialty="arsenal"] .my-specialty-icon { color:#93c5fd; border-color:rgba(59,130,246,.18); background:rgba(59,130,246,.055); }
+.my-specialty-card[data-specialty="patch_hunter"] .my-specialty-icon { color:#fde68a; border-color:rgba(245,158,11,.18); background:rgba(245,158,11,.055); }
+.my-specialty-card[data-specialty="counter_research"] .my-specialty-icon { color:#67e8f9; border-color:rgba(34,211,238,.2); background:rgba(34,211,238,.055); }
+
+.my-specialty-description {
+  min-height: 0;
+  margin-bottom: 11px;
+}
+
+.my-specialty-progress {
+  position: relative;
+  z-index: 1;
+  margin: 1px 0 11px;
+}
+
+.my-specialty-progress-copy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+  color: #6f8198;
+  font: 800 7px/1 Inter,sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.my-specialty-progress-copy strong { color:#b7c4d5; font-size:8px; }
+.my-specialty-progress-track { height: 5px; overflow:hidden; border-radius:999px; background:rgba(255,255,255,.05); }
+.my-specialty-progress-track i { display:block; width:0; height:100%; border-radius:inherit; background:linear-gradient(90deg,#8b5cf6,#22d3ee); box-shadow:0 0 14px rgba(34,211,238,.18); }
+.rank-master .my-specialty-progress-track i { background:linear-gradient(90deg,#f59e0b,#fde047); }
+
+.my-specialty-next {
+  color: #93a2b7;
+}
+
+@media (max-width: 760px) {
+  .my-specialties-guide-head { display: grid; }
+  .my-specialties-guide-head p { text-align: left; }
+  .my-specialties-guide-grid { grid-template-columns: 1fr 1fr; }
+  .my-specialty-card { padding: 14px; }
+  .my-specialty-title { grid-template-columns: 34px minmax(0,1fr); }
+  .my-specialty-icon { width:34px; height:34px; border-radius:10px; font-size:16px; }
+  .my-specialty-top strong { font-size:17px; }
+}
+
+@media (max-width: 420px) {
+  .my-specialties-guide-grid { grid-template-columns: 1fr; }
+  .my-specialties-legend { display: grid; }
+  .my-specialties-legend span { border-radius:10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .identity-v7-insignia-mark { transition: none; }
+}

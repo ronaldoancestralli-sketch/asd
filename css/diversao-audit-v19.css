@@ -1,0 +1,112 @@
+/* Diversão V19 — estabilidade sem remover animações + hierarquia visual */
+.sealed-clash{
+  isolation:isolate;
+  transform:translateZ(0);
+  backface-visibility:hidden;
+}
+.sealed-clash::before,
+.sealed-impact,
+.sealed-portrait::after,
+.sealed-shards i{
+  backface-visibility:hidden;
+  transform-style:preserve-3d;
+}
+.sealed-clash.is-open::before,
+.sealed-clash.is-open .sealed-impact,
+.sealed-clash.is-open .sealed-portrait::after{
+  will-change:transform,opacity;
+}
+.sealed-clash:not(.is-open)::before,
+.sealed-clash:not(.is-open) .sealed-impact,
+.sealed-clash:not(.is-open) .sealed-portrait::after{
+  will-change:auto;
+}
+
+/* Caos Perfeito continua orbitando, porém a animação fica isolada em um halo
+   central menor em vez de rasterizar uma camada maior que a viewport inteira. */
+.sealed-clash[data-event="perfect-chaos"]::before{
+  inset:auto;
+  left:50%;
+  top:50%;
+  width:min(760px,86vmax);
+  height:min(760px,86vmax);
+  border-radius:50%;
+  background:conic-gradient(from 180deg at 50% 50%,transparent,rgba(85,233,255,.075),transparent,rgba(255,79,139,.075),transparent,rgba(121,255,217,.09),transparent);
+  animation:sealed-chaos-orbit-contained 8s linear infinite;
+  opacity:.72;
+}
+@keyframes sealed-chaos-orbit-contained{
+  from{transform:translate3d(-50%,-50%,0) rotate(0deg)}
+  to{transform:translate3d(-50%,-50%,0) rotate(360deg)}
+}
+
+/* O centro visual não depende mais da largura aparente das pilhas de cards. */
+.sealed-clash[data-responsive-layout="v2"] .sealed-center{
+  justify-self:center;
+  text-align:center;
+}
+@media(max-width:620px){
+  .sealed-clash[data-responsive-layout="v2"] .sealed-battle{position:relative}
+  .sealed-clash[data-responsive-layout="v2"] .sealed-center{
+    position:absolute;
+    z-index:20;
+    left:50%;
+    top:42px;
+    translate:-50% 0;
+    grid-column:auto;
+    grid-row:auto;
+    width:72px;
+    margin:0;
+    justify-self:auto;
+  }
+  .sealed-clash[data-responsive-layout="v2"] .sealed-vs{
+    margin-inline:auto;
+    transform-origin:50% 50%;
+  }
+}
+@media(max-width:390px){
+  .sealed-clash[data-responsive-layout="v2"] .sealed-center{top:36px;width:70px}
+}
+@media(max-width:620px) and (orientation:landscape){
+  .sealed-clash[data-responsive-layout="v2"] .sealed-center{top:24px}
+}
+
+/* Capitão: mantém a animação de entrada e ganha leitura instantânea de liderança. */
+.sealed-portrait.is-captain{
+  border-color:#9df5ff;
+  outline:1px solid rgba(157,245,255,.28);
+  outline-offset:3px;
+  filter:saturate(1.08) brightness(1.035);
+  box-shadow:0 32px 72px rgba(0,0,0,.58),0 0 22px rgba(85,233,255,.42),0 0 58px rgba(85,233,255,.23),inset 0 0 42px rgba(85,233,255,.09);
+}
+.enemy .sealed-portrait.is-captain{
+  border-color:#ff8fb7;
+  outline-color:rgba(255,143,183,.28);
+  box-shadow:0 32px 72px rgba(0,0,0,.58),0 0 22px rgba(255,79,139,.4),0 0 58px rgba(255,79,139,.22),inset 0 0 42px rgba(255,79,139,.085);
+}
+.sealed-captain-badge{
+  min-width:68px;
+  justify-content:center;
+  border-width:1.5px;
+  background:linear-gradient(180deg,rgba(9,27,34,.96),rgba(4,10,15,.94));
+  box-shadow:0 0 0 2px rgba(85,233,255,.06),0 0 24px rgba(85,233,255,.28);
+}
+.sealed-captain-badge::before{content:"◆";margin-right:5px;font-size:.8em}
+.enemy .sealed-captain-badge{
+  background:linear-gradient(180deg,rgba(42,10,25,.96),rgba(18,5,12,.94));
+  box-shadow:0 0 0 2px rgba(255,79,139,.055),0 0 24px rgba(255,79,139,.25);
+}
+.sealed-team-copy .sealed-captain-line{opacity:.92}
+.sealed-team-copy .sealed-captain-line b{text-shadow:0 0 12px rgba(85,233,255,.38)}
+.enemy .sealed-team-copy .sealed-captain-line b{text-shadow:0 0 12px rgba(255,79,139,.38)}
+
+/* Estados QA são deliberadamente visuais e nunca gravam dados. */
+.round-result.qa-ready::before{content:"QA · ";color:#ffd76c;font-weight:900}
+.qa-forced-card{contain:layout paint style}
+
+@media(max-width:620px){
+  .sealed-portrait.is-captain{outline-offset:2px}
+  .sealed-captain-badge{min-width:54px;box-shadow:0 0 18px rgba(85,233,255,.25)}
+  .enemy .sealed-captain-badge{box-shadow:0 0 18px rgba(255,79,139,.23)}
+  .sealed-clash[data-event="perfect-chaos"]::before{width:72vmax;height:72vmax;opacity:.68}
+}

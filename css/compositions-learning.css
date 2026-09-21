@@ -1,0 +1,55 @@
+/* Echo Arena — camada visual do aprendizado adaptativo de Composições */
+
+.analysis-learning-strip{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  margin:14px 0;padding:13px 15px;border:1px solid rgba(145,162,204,.16);
+  border-radius:12px;background:linear-gradient(100deg,rgba(147,103,255,.07),rgba(53,217,238,.025));
+}
+.analysis-learning-strip>div:first-child{min-width:0}
+.analysis-learning-strip span{display:block;color:#c9bcff;font-size:11px;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+.analysis-learning-strip p{margin:4px 0 0;color:#9aa9bf;font-size:11px;line-height:1.5}
+.analysis-learning-strip small{display:block;margin-top:5px;color:#c4cedd;font-size:10px;line-height:1.45}
+.analysis-learning-strip.active{border-color:rgba(72,225,164,.27);background:linear-gradient(100deg,rgba(72,225,164,.075),rgba(53,217,238,.025))}
+.analysis-learning-strip.active span{color:#83e5bb}
+.analysis-learning-strip.warn{border-color:rgba(244,196,81,.30);background:rgba(244,196,81,.045)}
+.analysis-learning-strip.warn span{color:#e8cb77}
+.analysis-learning-strip.idle{border-color:rgba(145,162,204,.16)}
+
+.learning-delta{flex:0 0 auto;display:grid;place-items:center;min-width:52px;height:44px;padding:0 9px;border-radius:10px;font:900 24px/1 'Barlow Condensed',Inter,sans-serif}
+.learning-delta.positive{color:#72e5b1;background:rgba(72,225,164,.10);border:1px solid rgba(72,225,164,.23)}
+.learning-delta.negative{color:#ff9e97;background:rgba(255,106,97,.08);border:1px solid rgba(255,106,97,.22)}
+
+.partial-learning-status{display:block;max-width:600px;margin:12px auto 0;padding:8px 10px;border:1px solid rgba(145,162,204,.13);border-radius:9px;background:rgba(145,162,204,.035);color:#8f9db1;font-size:10px;line-height:1.45}
+
+.analysis-model-audit{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding:9px 10px;border:1px solid rgba(145,162,204,.10);border-radius:8px;background:#08101c}
+.analysis-model-audit b{color:#aebcd0;font-size:10px;text-transform:uppercase;letter-spacing:.06em}
+.analysis-model-audit span{color:#7f8da1;font-size:10px;text-align:right}
+
+.recommendation-card>header>div{display:flex;align-items:flex-end;gap:7px}
+.recommendation-learning{display:inline-flex;margin-bottom:2px;padding:3px 5px;border:1px solid rgba(72,225,164,.18);border-radius:999px;background:rgba(72,225,164,.06);color:#78d7ac;font-size:8px;font-weight:800;white-space:nowrap}
+
+/* A camada adaptativa nunca deve encolher a leitura principal. */
+body[data-public-module="composicoes"] .analysis-details>p{font-size:10px;line-height:1.55}
+body[data-public-module="composicoes"] .analysis-details li small{font-size:9px;line-height:1.4}
+
+@media(max-width:1180px){
+  .analysis-learning-strip{gap:12px;padding:12px 13px}
+  .analysis-learning-strip span{font-size:10px}.analysis-learning-strip p{font-size:10px}.analysis-learning-strip small{font-size:9px}
+}
+
+@media(max-width:700px){
+  .analysis-learning-strip{align-items:flex-start;flex-direction:column}
+  .learning-delta{min-width:46px;height:38px;font-size:21px}
+  .analysis-model-audit{align-items:flex-start;flex-direction:column}.analysis-model-audit span{text-align:left}
+  .recommendation-card>header>div{align-items:flex-start;flex-direction:column;gap:2px}
+}
+
+@media(pointer:coarse){
+  .analysis-learning-strip{padding:14px}
+  .analysis-learning-strip span{font-size:12px}.analysis-learning-strip p{font-size:12px}.analysis-learning-strip small{font-size:11px}
+  .analysis-model-audit b,.analysis-model-audit span{font-size:11px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .analysis-learning-strip,.learning-delta{transition:none}
+}

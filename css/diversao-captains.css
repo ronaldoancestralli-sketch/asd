@@ -1,0 +1,35 @@
+/* Diversão — destaque visual de capitães */
+.sealed-captain-line{margin:7px 0 0;color:#7a7085;font:800 7px/1 var(--fun-font,Inter,sans-serif);letter-spacing:.12em;text-transform:uppercase}
+.sealed-captain-line b{color:#9bf4ff;font-weight:900}.enemy .sealed-captain-line b{color:#ff95bb}
+
+.sealed-portrait.is-captain{z-index:9;border-width:2px;box-shadow:0 30px 66px rgba(0,0,0,.52),0 0 42px rgba(85,233,255,.26),inset 0 0 34px rgba(85,233,255,.06)}
+.enemy .sealed-portrait.is-captain{box-shadow:0 30px 66px rgba(0,0,0,.52),0 0 42px rgba(255,79,139,.24),inset 0 0 34px rgba(255,79,139,.055)}
+.sealed-portrait:nth-child(1).is-captain{transform:translate(-112%,-51%) rotate(-4deg) scale(1.02)}
+.sealed-portrait:nth-child(2).is-captain{transform:translate(-50%,-55%) scale(1.17)}
+.sealed-portrait:nth-child(3).is-captain{transform:translate(12%,-51%) rotate(4deg) scale(1.02)}
+
+.sealed-captain-badge{position:absolute;z-index:8;top:11px;left:50%;transform:translateX(-50%);padding:5px 10px;border:1px solid rgba(149,242,255,.44);border-radius:999px;background:rgba(5,13,18,.82);color:#aaf5ff;font:900 7px/1 var(--fun-font,Inter,sans-serif);letter-spacing:.16em;text-transform:uppercase;box-shadow:0 0 18px rgba(85,233,255,.18);white-space:nowrap}
+.enemy .sealed-captain-badge{border-color:rgba(255,135,177,.44);background:rgba(20,7,15,.82);color:#ff9fc1;box-shadow:0 0 18px rgba(255,79,139,.16)}
+.is-open .sealed-portrait.is-captain .sealed-captain-badge{animation:sealed-captain-pop .48s .88s cubic-bezier(.18,.92,.2,1.16) both}
+
+.sealed-portrait.is-captain::before{background:linear-gradient(180deg,rgba(112,241,255,.035),transparent 35%,rgba(4,5,12,.16) 60%,rgba(3,4,10,.95) 100%)}
+.enemy .sealed-portrait.is-captain::before{background:linear-gradient(180deg,rgba(255,112,164,.035),transparent 35%,rgba(4,5,12,.16) 60%,rgba(3,4,10,.95) 100%)}
+
+@keyframes sealed-captain-pop{0%{opacity:0;transform:translateX(-50%) translateY(-7px) scale(.82)}100%{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+
+@media(max-width:900px){
+  .sealed-captain-line{font-size:6px;margin-top:5px}
+  .sealed-captain-badge{top:8px;padding:4px 7px;font-size:6px;letter-spacing:.11em}
+  .sealed-portrait:nth-child(1).is-captain{transform:translate(-108%,-50%) rotate(-3deg) scale(.98)}
+  .sealed-portrait:nth-child(2).is-captain{transform:translate(-50%,-54%) scale(1.11)}
+  .sealed-portrait:nth-child(3).is-captain{transform:translate(8%,-50%) rotate(3deg) scale(.98)}
+}
+
+@media(max-width:620px){
+  .sealed-captain-line{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sealed-captain-badge{top:6px;font-size:5px;padding:4px 6px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .is-open .sealed-portrait.is-captain .sealed-captain-badge{animation:none!important;opacity:1}
+}

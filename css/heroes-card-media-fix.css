@@ -1,0 +1,25 @@
+/* Correção estrutural do roster de Heróis.
+   Os filhos de .media são absolutos; portanto o host precisa ocupar a thumb inteira.
+   Sem isto o contêiner pode colapsar para altura zero mesmo com a URL correta. */
+body[data-cms-page="heroes"] .hc .thumb{position:relative;overflow:hidden}
+body[data-cms-page="heroes"] .hc .thumb .media{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  min-height:100%;
+}
+body[data-cms-page="heroes"] .hc .thumb .media>img,
+body[data-cms-page="heroes"] .hc .thumb .media>video{
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+/* O primeiro span virou um campo CMS, mas continua sendo a chamada principal.
+   Apenas o segundo span mantém o tratamento visual de sincronização. */
+body[data-cms-page="heroes"] .hero-explorer-kicker>span:first-child{
+  display:inline;
+  color:inherit;
+}
+body[data-cms-page="heroes"] .hero-explorer-kicker>span:first-child::before{display:none}

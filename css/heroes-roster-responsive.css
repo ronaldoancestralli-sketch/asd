@@ -1,0 +1,235 @@
+/* =========================================================
+   HERÓIS — roster em microcards responsivos
+   Pensado para catálogos grandes (50+ heróis): máxima densidade visual
+   sem perder legibilidade, toque ou identidade de classe.
+   ========================================================= */
+
+.heroes-page .roster-section{padding-inline:clamp(12px,1.5vw,24px)}
+
+.heroes-page #grid.grid{
+  display:grid;
+  grid-template-columns:repeat(8,minmax(0,1fr));
+  gap:8px;
+  align-items:stretch;
+}
+
+.heroes-page #grid .hc{
+  min-width:0;
+  min-height:98px;
+  overflow:hidden;
+  border-radius:11px;
+  box-shadow:0 10px 24px rgba(0,0,0,.14);
+  transition:transform .16s,border-color .16s,box-shadow .16s;
+}
+
+.heroes-page #grid .hc:hover,
+.heroes-page #grid .hc.is-featured{
+  transform:translateY(-2px);
+  box-shadow:0 14px 30px rgba(0,0,0,.22),0 0 22px color-mix(in srgb,var(--class-color) 8%,transparent);
+}
+
+/* A thumb vira uma faixa visual curta, mais próxima de tag ilustrada do que pôster. */
+.heroes-page #grid .hc .thumb{
+  position:relative;
+  height:70px;
+  min-height:70px;
+  max-height:70px;
+  aspect-ratio:auto!important;
+  overflow:hidden;
+  background:#0b111d;
+}
+
+.heroes-page #grid .hc .thumb .media{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%!important;
+  min-height:0!important;
+}
+
+.heroes-page #grid .hc .thumb .media>img,
+.heroes-page #grid .hc .thumb .media>video{
+  width:100%;
+  height:100%;
+  object-fit:var(--fit,cover);
+  object-position:var(--pos,50% 34%);
+}
+
+.heroes-page #grid .hc .thumb .fade{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:linear-gradient(180deg,rgba(6,9,16,.02) 24%,rgba(6,9,16,.18) 52%,rgba(6,9,16,.92) 100%);
+}
+
+.heroes-page #grid .hc .cap{
+  position:absolute;
+  z-index:4;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:18px 7px 6px;
+  text-align:left;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(6,9,16,.9));
+}
+
+.heroes-page #grid .hc .cap .n{
+  overflow:hidden;
+  color:#fff;
+  font:800 clamp(13px,.9vw,16px)/1 var(--hx-display);
+  letter-spacing:.01em;
+  text-overflow:ellipsis;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.heroes-page #grid .hc .cap .r{
+  margin-top:2px;
+  overflow:hidden;
+  color:color-mix(in srgb,var(--class-color) 76%,#fff);
+  font-size:clamp(6px,.44vw,7.5px);
+  font-weight:700;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.heroes-page #grid .hc .hc-proof{
+  top:5px;
+  right:5px;
+  gap:3px;
+  max-width:calc(100% - 10px);
+  padding:3px 5px;
+  overflow:hidden;
+  border-radius:999px;
+  font-size:clamp(5.5px,.38vw,6.5px);
+  line-height:1;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.heroes-page #grid .hc .hc-proof i{
+  width:4px;
+  height:4px;
+  flex:0 0 auto;
+}
+
+/* Os dados continuam presentes, mas viram uma faixa curta de apoio. */
+.heroes-page #grid .hc .hc-intel{
+  min-height:28px;
+  height:28px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  border-top:1px solid rgba(145,162,204,.1);
+}
+
+.heroes-page #grid .hc .hc-intel>div{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:4px;
+  padding:4px 6px;
+}
+
+.heroes-page #grid .hc .hc-intel span{
+  overflow:hidden;
+  color:#56637a;
+  font-size:clamp(5.2px,.34vw,6px);
+  font-weight:800;
+  letter-spacing:.04em;
+  text-overflow:ellipsis;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.heroes-page #grid .hc .hc-intel strong{
+  flex:0 0 auto;
+  margin:0;
+  color:#cfd6e4;
+  font-size:clamp(8px,.55vw,10px);
+  line-height:1;
+}
+
+.heroes-page .tools{gap:10px}
+
+/* Monitores grandes: o catálogo assume densidade máxima. */
+@media (min-width:1700px){
+  .heroes-page #grid.grid{grid-template-columns:repeat(10,minmax(0,1fr));gap:9px}
+  .heroes-page #grid .hc .thumb{height:74px;min-height:74px;max-height:74px}
+}
+
+/* Desktop largo. */
+@media (min-width:1400px) and (max-width:1699px){
+  .heroes-page #grid.grid{grid-template-columns:repeat(9,minmax(0,1fr))}
+}
+
+/* Desktop comum e iPad Pro landscape. */
+@media (min-width:1180px) and (max-width:1399px){
+  .heroes-page #grid.grid{grid-template-columns:repeat(8,minmax(0,1fr))}
+}
+
+/* iPad/tablet landscape e notebooks estreitos. */
+@media (min-width:900px) and (max-width:1179px){
+  .heroes-page #grid.grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
+  .heroes-page #grid .hc .thumb{height:68px;min-height:68px;max-height:68px}
+  .heroes-page #grid .hc .hc-proof span{display:none}
+  .heroes-page #grid .hc .hc-proof{width:14px;height:14px;padding:0;justify-content:center}
+}
+
+/* Tablet portrait. */
+@media (min-width:700px) and (max-width:899px){
+  .heroes-page #grid.grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+  .heroes-page #grid .hc .thumb{height:72px;min-height:72px;max-height:72px}
+  .heroes-page .tools{grid-template-columns:minmax(0,1fr) minmax(150px,.42fr)}
+}
+
+/* Tablets pequenos e celulares grandes. */
+@media (min-width:520px) and (max-width:699px){
+  .heroes-page #grid.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+  .heroes-page #grid .hc .thumb{height:74px;min-height:74px;max-height:74px}
+  .heroes-page #grid .hc .hc-proof span{display:none}
+  .heroes-page #grid .hc .hc-proof{width:14px;height:14px;padding:0;justify-content:center}
+  .heroes-page .tools{grid-template-columns:1fr}
+}
+
+/* Celulares médios/grandes: três microcards continuam confortáveis ao toque. */
+@media (min-width:390px) and (max-width:519px){
+  .heroes-page .roster-section{padding-inline:12px}
+  .heroes-page #grid.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+  .heroes-page #grid .hc{min-height:108px}
+  .heroes-page #grid .hc .thumb{height:78px;min-height:78px;max-height:78px}
+  .heroes-page #grid .hc .cap{padding:20px 6px 6px}
+  .heroes-page #grid .hc .cap .n{font-size:13px}
+  .heroes-page #grid .hc .cap .r{font-size:6px}
+  .heroes-page #grid .hc .hc-proof span{display:none}
+  .heroes-page #grid .hc .hc-proof{width:14px;height:14px;padding:0;justify-content:center}
+  .heroes-page #grid .hc .hc-intel{height:30px;min-height:30px}
+  .heroes-page #grid .hc .hc-intel>div{padding:4px 5px}
+  .heroes-page #grid .hc .hc-intel span{display:none}
+  .heroes-page .tools{grid-template-columns:1fr}
+}
+
+/* Telefones estreitos: duas colunas preservam legibilidade e alvo de toque. */
+@media (max-width:389px){
+  .heroes-page .roster-section{padding-inline:11px}
+  .heroes-page #grid.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .heroes-page #grid .hc{min-height:114px}
+  .heroes-page #grid .hc .thumb{height:82px;min-height:82px;max-height:82px}
+  .heroes-page #grid .hc .hc-proof span{display:none}
+  .heroes-page #grid .hc .hc-proof{width:15px;height:15px;padding:0;justify-content:center}
+  .heroes-page #grid .hc .hc-intel{height:32px;min-height:32px}
+  .heroes-page #grid .hc .hc-intel span{font-size:5.5px}
+  .heroes-page .tools{grid-template-columns:1fr}
+}
+
+@media (pointer:coarse){
+  .heroes-page #grid .hc{touch-action:manipulation}
+  .heroes-page #grid .hc:hover{transform:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .heroes-page #grid .hc,
+  .heroes-page #grid .hc .thumb .media img,
+  .heroes-page #grid .hc .thumb .media video{transition:none!important}
+}

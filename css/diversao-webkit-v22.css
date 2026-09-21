@@ -1,0 +1,51 @@
+/* Diversão V22 — perfil de composição para iPhone/iPad WebKit.
+   O evento e suas animações permanecem; apenas filtros/blend de alto custo são
+   substituídos durante o pulso dourado para evitar pico de rasterização/GPU. */
+html[data-diversao-webkit-safe="v22"] .duel-stage.golden-shot{
+  isolation:isolate;
+  contain:paint;
+}
+html[data-diversao-webkit-safe="v22"] .duel-stage.golden-armed .roulette-aura{
+  filter:none!important;
+}
+html[data-diversao-webkit-safe="v22"] .duel-stage.golden-shot::after{
+  mix-blend-mode:normal!important;
+  background:
+    radial-gradient(circle at 50% 44%,rgba(255,236,178,.24),transparent 25%),
+    linear-gradient(105deg,transparent 35%,rgba(255,211,101,.12) 49%,transparent 61%)!important;
+  will-change:opacity;
+  transform:translateZ(0);
+  animation:golden-stage-flash .62s ease-out both;
+}
+html[data-diversao-webkit-safe="v22"] .duel-stage.golden-shot .weapon-shell{
+  filter:none!important;
+}
+html[data-diversao-webkit-safe="v22"] .duel-stage.golden-shot .weapon-shell.user-weapon-ready::before{
+  opacity:.46;
+  filter:none!important;
+  background:
+    radial-gradient(circle at 58% 34%,rgba(255,219,111,.34),transparent 23%),
+    radial-gradient(ellipse at 52% 58%,rgba(255,193,49,.14),transparent 54%)!important;
+}
+html[data-diversao-webkit-safe="v22"] .duel-stage.golden-shot .weapon-shell .user-revolver-svg{
+  filter:none!important;
+}
+html[data-diversao-webkit-safe="v22"] .duel-stage.golden-shot .weapon-shell .weapon-shadow{
+  filter:none!important;
+  opacity:.76;
+  background:radial-gradient(ellipse,rgba(255,206,74,.18),rgba(74,39,119,.07) 42%,transparent 72%)!important;
+}
+html[data-diversao-webkit-safe="v22"] .duel-stage.golden-shot .muzzle-flash{
+  filter:none!important;
+  background:
+    radial-gradient(circle,#fff 0 4%,#fff8dc 5% 10%,#ffe38b 11% 17%,rgba(255,205,77,.72) 18% 28%,rgba(255,184,35,.18) 31% 49%,transparent 69%)!important;
+  box-shadow:0 0 18px rgba(255,210,83,.46);
+}
+html[data-diversao-webkit-safe="v22"] .user-revolver-svg .weapon-cylinder-motion,
+html[data-diversao-webkit-safe="v22"] .user-revolver-svg #weapon-hammer,
+html[data-diversao-webkit-safe="v22"] .user-revolver-svg #weapon-trigger{
+  will-change:auto!important;
+}
+html[data-diversao-webkit-safe="v22"] .hero-draw-card.golden-reveal .draw-media{
+  filter:none!important;
+}

@@ -1,0 +1,23 @@
+/* Diversão V26 — corrige a geometria do selo da Câmara Dourada.
+   O estado golden-reveal reutiliza o ::after do card, mas não pode herdar
+   right/bottom/height do gradiente base. Mantém o selo e os efeitos existentes. */
+.hero-draw-card.golden-reveal::after{
+  inset:auto!important;
+  top:8px!important;
+  left:50%!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:max-content!important;
+  max-width:calc(100% - 16px)!important;
+  min-width:0!important;
+  height:auto!important;
+  min-height:0!important;
+  box-sizing:border-box!important;
+  transform:translate3d(-50%,0,0)!important;
+}
+@media(max-width:620px){
+  .hero-draw-card.golden-reveal::after{
+    top:5px!important;
+    max-width:calc(100% - 10px)!important;
+  }
+}

@@ -1,0 +1,72 @@
+@media (max-width: 900px) {
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview {
+    position: static;
+    order: -1;
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border-radius: 18px;
+    text-align: left;
+  }
+
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .identity-v7-preview-top {
+    padding: 4px 6px 8px;
+  }
+
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .identity-v7-preview-frame {
+    display: grid;
+    grid-template-columns: 82px minmax(0, 1fr);
+    grid-template-areas:
+      "avatar tier"
+      "avatar nick"
+      "avatar name"
+      "avatar handle"
+      "bio bio"
+      "badges badges"
+      "accent accent";
+    align-content: start;
+    align-items: center;
+    column-gap: 14px;
+    min-height: 236px;
+    padding: 17px 15px 39px;
+    border-radius: 15px;
+    text-align: left;
+  }
+
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .my-profile-avatar {
+    grid-area: avatar;
+    width: 76px;
+    height: 76px;
+    margin: 0;
+    border-radius: 20px;
+    font-size: 29px;
+  }
+
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .identity-v7-preview-tier {
+    grid-area: tier;
+    justify-self: start;
+    margin: 0 0 7px;
+    padding: 5px 8px 5px 5px;
+  }
+
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .identity-v7-preview-tier > span { width: 24px; height: 27px; }
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .identity-v7-nick-label { grid-area: nick; font-size: 6px; }
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .identity-v7-preview-frame h2 { grid-area: name; margin: 5px 0 0; font-size: clamp(26px, 8vw, 34px); line-height: .9; }
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .identity-v7-preview-frame #preview-handle { grid-area: handle; margin: 5px 0 0; font-size: 10px; }
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .identity-v7-preview-frame #preview-bio { grid-area: bio; min-height: 0; margin: 13px 0 0; font-size: 9px; line-height: 1.45; }
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .identity-v7-preview-badges { grid-area: badges; justify-content: flex-start; margin-top: 8px; }
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .my-profile-preview-accent { grid-area: accent; justify-self: start; margin-top: 9px; padding: 6px 8px; font-size: 7px; }
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview > .identity-v7-preview-note { margin: 8px 6px 2px; font-size: 7px; }
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .identity-v7-preview-footer { right: 14px; bottom: 11px; left: 14px; }
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .identity-v7-preview-corner::before { display: none; }
+}
+
+@media (max-width: 390px) {
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .identity-v7-preview-frame {
+    grid-template-columns: 70px minmax(0, 1fr);
+    column-gap: 11px;
+    min-height: 224px;
+    padding-inline: 13px;
+  }
+  :is(.my-profile-layout, .identity-v7-journey) > .identity-v7-preview .my-profile-avatar { width: 66px; height: 66px; border-radius: 18px; font-size: 26px; }
+}

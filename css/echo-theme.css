@@ -1,0 +1,148 @@
+/* =========================================================
+   ECHO ARENA — ASSINATURA VISUAL GLOBAL
+
+   Este arquivo deve ser carregado por último em toda página
+   nova. Use .echo-gradient-text para palavras de
+   destaque e .echo-gradient-surface para ações primárias.
+   ========================================================= */
+
+:root{
+  --echo-gradient-text:linear-gradient(90deg,#bba5ff 0%,#7d5de5 72%);
+  --echo-gradient-surface:linear-gradient(135deg,#9b6cff 0%,#7c4dff 52%,#6d3ce0 100%);
+  --echo-gradient-surface-hover:linear-gradient(135deg,#aa82ff 0%,#895bff 52%,#7545e8 100%);
+  --echo-gradient-fallback:#9b72f1;
+
+  /* Compatibilidade com os nomes usados nas páginas legadas. */
+  --violet:#9b6cff;
+  --violet-2:#6d3ce0;
+  --purple:#9b6cff;
+  --purple2:#6d3ce0;
+  --admin-purple:#9b6cff;
+  --admin-purple-dark:#6d3ce0;
+  --admin-purple-light:#bba5ff;
+}
+
+[hidden]{display:none!important}
+
+/* Destaques existentes + utilitário oficial para páginas futuras. */
+.echo-gradient-text,
+[data-echo-accent="text"],
+.brand > span > b,
+.brand > b > span,
+.brand > .mk ~ span:last-child,
+.equipment-page .brand span,
+.admin-shell-brand strong,
+.logo span,
+.hero-class,
+.section-head h1 > span,
+.section-head h2 > span,
+.section-head h3 > span,
+.section-title h1 > span,
+.section-title h2 > span,
+.page-heading h1 > span,
+.page-head h1 > span,
+.sh h2 > span,
+.panel-head h3 > span,
+.final-cta h2 > span{
+  color:var(--echo-gradient-fallback);
+}
+
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .echo-gradient-text,
+  [data-echo-accent="text"],
+  .brand > span > b,
+  .brand > b > span,
+  .brand > .mk ~ span:last-child,
+  .equipment-page .brand span,
+  .admin-shell-brand strong,
+  .logo span,
+  .hero-class,
+  .section-head h1 > span,
+  .section-head h2 > span,
+  .section-head h3 > span,
+  .section-title h1 > span,
+  .section-title h2 > span,
+  .page-heading h1 > span,
+  .page-head h1 > span,
+  .sh h2 > span,
+  .panel-head h3 > span,
+  .final-cta h2 > span{
+    background-image:var(--echo-gradient-text);
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+  }
+}
+
+/* Ações primárias existentes + utilitário oficial para páginas futuras. */
+.echo-gradient-surface,
+[data-echo-accent="surface"],
+.primary:not(.saved):not(.success):not(.danger),
+.account-btn,
+.auth-submit,
+.btn-o,
+.promo .cta,
+.mode button.on,
+.btn.primary,
+.eq-btn.primary,
+.admin-button.primary,
+.equipment-flow-btn.primary,
+.equipment-save-feedback-button.primary,
+.btn-edit-local,
+.impact-actions .save-build,
+.pop.equipment-window .btn-eq,
+.hd-cta,
+#login{
+  background-color:#7c4dff;
+  background-image:var(--echo-gradient-surface)!important;
+}
+
+.echo-gradient-surface:hover,
+[data-echo-accent="surface"]:hover,
+.primary:not(.saved):not(.success):not(.danger):hover,
+.account-btn:hover,
+.auth-submit:hover,
+.btn-o:hover,
+.promo .cta:hover,
+.mode button.on:hover,
+.btn.primary:hover,
+.eq-btn.primary:hover,
+.admin-button.primary:hover,
+.equipment-flow-btn.primary:hover,
+.equipment-save-feedback-button.primary:hover,
+.btn-edit-local:hover,
+.impact-actions .save-build:hover,
+.pop.equipment-window .btn-eq:hover,
+.hd-cta:hover,
+#login:hover:not(:disabled){
+  background-image:var(--echo-gradient-surface-hover)!important;
+}
+
+@media(forced-colors:active){
+  .echo-gradient-text,
+  [data-echo-accent="text"],
+  .brand > span > b,
+  .brand > b > span,
+  .brand > .mk ~ span:last-child,
+  .equipment-page .brand span,
+  .admin-shell-brand strong,
+  .logo span,
+  .hero-class,
+  .section-head h1 > span,
+  .section-head h2 > span,
+  .section-head h3 > span,
+  .section-title h1 > span,
+  .section-title h2 > span,
+  .page-heading h1 > span,
+  .page-head h1 > span,
+  .sh h2 > span,
+  .panel-head h3 > span,
+  .final-cta h2 > span{
+    background:none;
+    -webkit-text-fill-color:currentColor;
+    color:Highlight;
+  }
+}

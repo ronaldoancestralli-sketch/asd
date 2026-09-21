@@ -1,0 +1,35 @@
+/* Diversão V25 — perfil permanente de baixo custo para o disparo em iPhone/iPad WebKit.
+   Mantém recoil, gatilho, muzzle, scan e Câmara Dourada, mas evita que o início do
+   tiro troque filtros caros ou promova o palco inteiro para uma nova camada de paint. */
+html[data-diversao-webkit-safe="v22"] .weapon-shell.user-weapon-ready{
+  filter:none!important;
+}
+html[data-diversao-webkit-safe="v22"] .weapon-shell.user-weapon-ready::before{
+  filter:none!important;
+  transition:opacity .25s ease!important;
+}
+html[data-diversao-webkit-safe="v22"] .weapon-shell.user-weapon-ready .weapon-shadow{
+  filter:none!important;
+}
+html[data-diversao-webkit-safe="v22"] .weapon-shell .user-revolver-svg{
+  filter:none!important;
+  transition:opacity .2s ease!important;
+}
+html[data-diversao-webkit-safe="v22"] .weapon-shell.user-weapon-ready .muzzle-flash{
+  filter:none!important;
+  box-shadow:0 0 18px rgba(var(--weapon-rgb),.34);
+}
+html[data-diversao-webkit-safe="v22"] .duel-stage.golden-shot{
+  contain:none!important;
+  isolation:isolate;
+}
+html[data-diversao-webkit-safe="v22"] .duel-stage.golden-shot::after{
+  inset:14% 8% 18%!important;
+  border-radius:28px;
+}
+@media(max-width:620px){
+  html[data-diversao-webkit-safe="v22"] .duel-stage.golden-shot::after{
+    inset:22% 4% 24%!important;
+    border-radius:20px;
+  }
+}

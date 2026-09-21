@@ -1,0 +1,51 @@
+/* Diversão V24 — prepara os seis cards e suas mídias antes do primeiro disparo.
+   No frame do tiro a superfície apenas libera uma máscara já renderizada: não
+   há inserção de imagem, decode tardio ou transform da textura inteira no WebKit. */
+.hero-draw-card.prepared{contain:paint}
+.hero-draw-card.prepared .prepared-mask{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(circle,rgba(157,105,255,.05),transparent 57%),#0b0713;
+  opacity:.999;
+  transform:translateZ(0);
+  will-change:opacity;
+}
+.hero-draw-card.prepared .prepared-mask p{
+  margin-top:20px;
+  color:#4e435e;
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.hero-draw-card.prepared.revealed .prepared-mask{
+  pointer-events:none;
+  animation:prepared-mask-release-v24 .34s ease-out both;
+}
+html[data-diversao-webkit-safe="v22"] .hero-draw-card.revealed{
+  filter:none!important;
+  animation:none!important;
+  transform:translateZ(0)!important;
+  opacity:1!important;
+}
+html[data-diversao-webkit-safe="v22"] .hero-draw-card.revealed .draw-index{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  background:rgba(8,5,15,.88);
+}
+html[data-diversao-webkit-safe="v22"] .hero-draw-card.revealed::before{
+  will-change:transform,opacity;
+}
+@keyframes prepared-mask-release-v24{
+  0%{opacity:.999}
+  72%{opacity:.08}
+  100%{opacity:0;visibility:hidden}
+}
+@media(max-width:620px){
+  .hero-draw-card.prepared .prepared-mask p{margin-top:8px}
+}

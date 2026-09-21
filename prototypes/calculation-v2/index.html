@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Echo Arena — novo simulador</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div id="ea-engine-lab">
+  <header class="ea-top"><div class="ea-brand">ECHO <span>ARENA</span><small>Laboratório de builds</small></div><span class="ea-label">PROTÓTIPO FUNCIONAL</span></header>
+  <nav class="ea-tabs" aria-label="Área do simulador"><button type="button" data-view="build" aria-pressed="true">Mesa de builds</button><button type="button" data-view="edit" aria-pressed="false">Ajustar efeitos</button></nav>
+  <div class="ea-provenance">Bases de Slayer, Bastion e Freddie: cadastro atual. Vínculos e itens de teste: demonstração, sem publicação.</div>
+  <section class="ea-workspace" data-panel="build">
+    <div class="ea-heading"><div><span class="ea-eyebrow">COMPOSIÇÃO</span><h1>Monte. Ajuste. Confira.</h1></div><span class="ea-local">Cálculos em tempo real</span></div>
+    <div class="ea-roster" id="ea-roster" aria-label="Herói em edição"></div>
+    <div class="ea-scenario"><label>Movimento<select id="ea-movement"><option value="false">Parado</option><option value="true">Em movimento</option><option value="unknown">Não informado</option></select></label><label>Mira<select id="ea-aiming"><option value="true">Com mira</option><option value="false">Sem mira</option><option value="unknown">Não informado</option></select></label><label>Raridade dos seis slots<select id="ea-rarity"></select></label></div>
+    <div class="ea-board"><section class="ea-loadout"><div class="ea-section-title"><h2>Equipamentos</h2><span id="ea-slot-count"></span></div><div id="ea-slots" class="ea-slots"></div></section><section class="ea-results"><div class="ea-section-title"><h2>Resultado da build</h2><span id="ea-status"></span></div><div id="ea-errors" role="alert"></div><div id="ea-results" aria-live="polite"></div></section></div>
+    <section class="ea-trace"><div class="ea-section-title"><h2>Memória de cálculo</h2><span id="ea-trace-label"></span></div><div id="ea-trace"></div></section>
+    <section class="ea-team"><div class="ea-section-title"><h2>Resultado por herói</h2><span>Efeitos de equipe incluídos</span></div><div id="ea-team"></div></section>
+  </section>
+  <section class="ea-workspace" data-panel="edit" hidden>
+    <div class="ea-heading"><div><span class="ea-eyebrow">CONFIGURAÇÃO DO EFEITO</span><h1>Uma descrição. Onze valores.</h1></div><span class="ea-local">Alterações locais</span></div>
+    <label class="ea-item-picker">Equipamento<select id="ea-edit-item"></select></label>
+    <div class="ea-editor"><section class="ea-effect-config"><div id="ea-effect-picker" class="ea-effect-picker" aria-label="Efeito em edição"></div><div id="ea-effect-fields"></div></section><section class="ea-values"><div class="ea-section-title"><h2>Valores por raridade</h2><span>Vazio = não informado</span></div><div id="ea-rarity-table"></div></section></div>
+    <section class="ea-test"><div class="ea-section-title"><h2>Teste imediato</h2><span id="ea-test-context"></span></div><div id="ea-test-result" aria-live="polite"></div><button type="button" class="ea-primary" id="ea-return-build">Ver na mesa de builds</button></section>
+  </section>
+  <footer>Rascunho de uma nova implementação · nenhum dado do site é alterado</footer>
+</div>
+<script type="module" src="demo.mjs"></script>
+</body>
+</html>

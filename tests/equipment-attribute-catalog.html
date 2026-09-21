@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Testes do catálogo de atributos — Echo Arena</title>
+  <style>
+    :root{color-scheme:dark}body{margin:0;background:#050912;color:#e8edf6;font:14px/1.5 Inter,Arial,sans-serif}.wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}.head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}.head h1{margin:0;font-size:24px}.head p{margin:6px 0 0;color:#91a0b5}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.card,.panel{border:1px solid #223149;border-radius:12px;background:#0a1322}.card{padding:14px}.card small{display:block;color:#8190a6;font-size:10px;font-weight:800;text-transform:uppercase}.card strong{display:block;margin-top:5px;font-size:25px}.ok strong{color:#4ade80}.bad strong{color:#fb7185}.panel{overflow:hidden}.panel h2{margin:0;padding:14px 16px;border-bottom:1px solid #223149;font-size:14px}.tests{list-style:none;margin:0;padding:0}.tests li{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:12px 16px;border-bottom:1px solid #17263b}.tests li:last-child{border-bottom:0}.tests strong{display:block}.tests small{display:block;margin-top:3px;color:#8795aa}.badge{min-width:52px;padding:3px 7px;border-radius:999px;font-size:9px;font-weight:900;text-align:center}.pass{color:#86efac;border:1px solid #225d49}.fail{color:#fecdd3;border:1px solid #7f1d1d}@media(max-width:600px){.summary{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="head"><div><h1>Catálogo tolerante de atributos</h1><p>Confere aliases, pequenos erros de escrita e preservação do cálculo sequencial.</p></div><a href="../admin/equipment-audit.html" style="color:#c4b5fd">Voltar à auditoria</a></header>
+    <section class="summary"><article class="card"><small>Total</small><strong id="total">—</strong></article><article class="card ok"><small>Aprovados</small><strong id="passed">—</strong></article><article class="card bad"><small>Falhas</small><strong id="failed">—</strong></article></section>
+    <section class="panel"><h2>Casos do catálogo</h2><ul id="results" class="tests"><li>Executando...</li></ul></section>
+  </main>
+  <script type="module" src="./equipment-attribute-catalog.test.js?v=2"></script>
+</body>
+</html>

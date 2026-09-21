@@ -1,0 +1,16 @@
+name = "echo-arena-media-api"
+main = "media-worker/src/index.js"
+compatibility_date = "2026-08-28"
+workers_dev = true
+preview_urls = false
+
+[[r2_buckets]]
+binding = "MEDIA_BUCKET"
+bucket_name = "echo-arena-media"
+
+[vars]
+SUPABASE_URL = "https://nqklhsfaqpbjqmfzjzxk.supabase.co"
+SUPABASE_ANON_KEY = "COLE_A_CHAVE_PUBLICAVEL_DO_SUPABASE"
+MEDIA_PUBLIC_URL = "https://echo-arena-media-api.echo-arena-midia-20c30ea6.workers.dev/files"
+ALLOWED_ORIGINS = "https://echoarena.com.br,https://www.echoarena.com.br,https://echo-arena-restaurado-7201c6.gitlab.io"
+ADMIN_USER_IDS = "UUID_DO_ADMINISTRADOR"

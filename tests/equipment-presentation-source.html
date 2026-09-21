@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Testes — fonte de apresentação de atributos</title>
+  <style>
+    body{font-family:system-ui,sans-serif;background:#07101d;color:#eef2f7;padding:24px}.fixture{position:absolute;left:-10000px;top:0}.test{padding:10px 12px;margin:7px 0;border:1px solid #334155;border-radius:8px}.ok{border-color:#166534;color:#86efac}.bad{border-color:#991b1b;color:#fecaca}code{color:#c4b5fd}
+  </style>
+</head>
+<body>
+  <h1>Fonte de apresentação dos atributos</h1>
+  <p>Regressão para impedir que uma palavra genérica troque a mecânica real de um equipamento.</p>
+  <div id="results">Executando…</div>
+
+  <div class="fixture" id="equipment-detail">
+    <div class="stat" id="case-pickup">
+      <span class="stat-label">VelocidadeParaPegarMelhoriasPercentual</span>
+      <span class="stat-val">-39</span>
+      <span class="stat-desc">VelocidadeParaPegarMelhoriasPercentual</span>
+    </div>
+    <div class="stat" id="case-movement">
+      <span class="stat-label">Velocidade de movimento percentual</span>
+      <span class="stat-val">-5</span>
+      <span class="stat-desc">Velocidade de movimento percentual</span>
+    </div>
+  </div>
+
+  <script src="../js/runtime-compat.js?v=3"></script>
+  <script type="module">
+    import { runPresentationSourceTests } from './equipment-presentation-source.test.js?v=1';
+    const results = await runPresentationSourceTests();
+    const host = document.getElementById('results');
+    const passed = results.filter(item => item.ok).length;
+    host.innerHTML = `<p>${passed}/${results.length} testes aprovados.</p>` + results.map(item => `
+      <div class="test ${item.ok ? 'ok' : 'bad'}">
+        <strong>${item.ok ? '✓' : '✕'} ${item.name}</strong>
+        ${item.error ? `<br><code>${item.error}</code>` : ''}
+      </div>`).join('');
+  </script>
+</body>
+</html>

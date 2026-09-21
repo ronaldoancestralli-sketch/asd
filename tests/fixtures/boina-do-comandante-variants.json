@@ -1,0 +1,83 @@
+{
+  "name": "BOINA DO COMANDANTE",
+  "slug": "boina-do-comandante",
+  "variants": {
+    "comum": [
+      {
+        "label": "AO BARULHO DA CORRIDA DO HERÓI",
+        "value": "-5",
+        "operator": "decrease_percent"
+      }
+    ],
+    "raro": [
+      {
+        "label": "AO BARULHO DA CORRIDA DO HERÓI",
+        "value": "-8",
+        "operator": "decrease_percent"
+      }
+    ],
+    "epico": [
+      {
+        "label": "AO BARULHO DA CORRIDA DO HERÓI",
+        "value": "-11",
+        "operator": "decrease_percent"
+      }
+    ],
+    "lendario": [
+      {
+        "label": "AO BARULHO DA CORRIDA DO HERÓI",
+        "value": "-14",
+        "operator": "decrease_percent"
+      }
+    ],
+    "mitico": [
+      {
+        "label": "AO BARULHO DA CORRIDA DO HERÓI",
+        "value": "-17",
+        "operator": "decrease_percent"
+      }
+    ],
+    "supremo": [
+      {
+        "label": "AO BARULHO DA CORRIDA DO HERÓI",
+        "value": "-20",
+        "operator": "decrease_percent"
+      }
+    ],
+    "grandioso": [
+      {
+        "label": "AO BARULHO DA CORRIDA DO HERÓI",
+        "value": "-23",
+        "operator": "decrease_percent"
+      }
+    ],
+    "celestial": [
+      {
+        "label": "AO BARULHO DA CORRIDA DO HERÓI",
+        "value": "-24",
+        "operator": "decrease_percent"
+      }
+    ],
+    "estelar": [
+      {
+        "label": "AO BARULHO DA CORRIDA DO HERÓI",
+        "value": "-25",
+        "operator": "decrease_percent"
+      }
+    ],
+    "imortal": [
+      {
+        "label": "AO BARULHO DA CORRIDA DO HERÓI",
+        "value": "-26",
+        "operator": "decrease_percent"
+      }
+    ],
+    "divino": [
+      {
+        "label": "AO BARULHO DA CORRIDA DO HERÓI",
+        "value": "-27",
+        "operator": "decrease_percent"
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 2,
+  "hero": {
+    "name": "Slayer",
+    "class": "Franco-atirador"
+  },
+  "status": {
+    "power": 2096,
+    "health": 811,
+    "damage": 2555,
+    "armor": 811,
+    "visionRange": 600,
+    "movementNoiseRadius": 300,
+    "maxMovementSpeed": 171,
+    "aimedMovementSpeed": 51,
+    "penetrationResistance": 4,
+    "armorValue": 811,
+    "armorResistance": 6
+  },
+  "weaponSummary": {
+    "name": "RIFLE DE PRECISÃO DE SLAYER",
+    "firepower": 1518,
+    "armorBreak": 1981,
+    "fireRate": 183,
+    "magazineCapacity": 38,
+    "effectiveRange": 1500,
+    "aimingStability": 374
+  },
+  "weaponDetails": {
+    "damagePerShot": 2555,
+    "healthDamageMultiplier": 1,
+    "armorPenetration": 85,
+    "penetrationPower": 22,
+    "armorDroneMultiplier": 2,
+    "shotsPerSecond": 0.3,
+    "reloadTime": 5,
+    "magazineSize": 5,
+    "hipFireRange": 430,
+    "aimedRange": 430,
+    "dispersion": 50,
+    "movingDispersion": 5,
+    "aimedDispersion": 5,
+    "aimTime": 1.7,
+    "dispersionFactor": 1.3
+  }
+}

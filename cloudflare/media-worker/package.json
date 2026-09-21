@@ -1,0 +1,5 @@
+{
+  "name": "echo-arena-media-worker",
+  "private": true,
+  "type": "module"
+}

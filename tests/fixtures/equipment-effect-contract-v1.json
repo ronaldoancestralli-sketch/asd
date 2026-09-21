@@ -1,0 +1,1001 @@
+{
+  "valid_distinct_dimensions": {
+    "contract_version": "echo-equipment-effects/v1",
+    "document_id": "fixture:distinct-capacity-and-rate",
+    "data_revision": "audit-fixture-2026-09-01",
+    "ruleset_revision": "phase2b-contract-only",
+    "subject": {
+      "kind": "fixture",
+      "id": "fixture:heart-common"
+    },
+    "expected_effect_count": 2,
+    "effects": [
+      {
+        "effect_id": "fixture:heart-common:armor-rate",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "equipment_variant",
+          "id": "fixture-origin:heart-common",
+          "equipment_id": "fixture-equipment:heart",
+          "variant_id": "fixture-variant:heart-common",
+          "set_id": null,
+          "required_pieces": null
+        },
+        "target": "armor_regeneration_rate",
+        "operation": "add",
+        "value": 3,
+        "unit": "armor_point_per_second",
+        "condition": {
+          "kind": "always",
+          "ability_id": null,
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "not_applicable",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "global",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:armor-regeneration",
+          "rule": "additive",
+          "tier_semantics": "not_applicable",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "Auditoria_EchoArena_2026-09-01.md#F04",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "+3 armadura/s",
+        "support": {
+          "status": "supported",
+          "reason_code": null,
+          "details": "Grandeza e unidade representáveis; execução permanece desativada."
+        }
+      },
+      {
+        "effect_id": "fixture:heart-common:armor-capacity",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "equipment_variant",
+          "id": "fixture-origin:heart-common",
+          "equipment_id": "fixture-equipment:heart",
+          "variant_id": "fixture-variant:heart-common",
+          "set_id": null,
+          "required_pieces": null
+        },
+        "target": "armor_capacity",
+        "operation": "relative_percent",
+        "value": 3,
+        "unit": "percent",
+        "condition": {
+          "kind": "always",
+          "ability_id": null,
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "not_applicable",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "global",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:armor-capacity",
+          "rule": "additive",
+          "tier_semantics": "not_applicable",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "Auditoria_EchoArena_2026-09-01.md#F04",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "+3% armadura máxima",
+        "support": {
+          "status": "supported",
+          "reason_code": null,
+          "details": "Grandeza e unidade representáveis; execução permanece desativada."
+        }
+      }
+    ]
+  },
+  "valid_conditional_ability_effects": {
+    "contract_version": "echo-equipment-effects/v1",
+    "document_id": "fixture:conditional-ability-effects",
+    "data_revision": "audit-fixture-2026-09-01",
+    "ruleset_revision": "phase2b-contract-only",
+    "subject": {
+      "kind": "fixture",
+      "id": "fixture:slayer-ability-semantics"
+    },
+    "expected_effect_count": 2,
+    "effects": [
+      {
+        "effect_id": "fixture:bandage-heal",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "fixture",
+          "id": "fixture-origin:bandage-heal",
+          "equipment_id": null,
+          "variant_id": null,
+          "set_id": null,
+          "required_pieces": null
+        },
+        "target": "ability_heal_amount",
+        "operation": "add",
+        "value": 10,
+        "unit": "health_point",
+        "condition": {
+          "kind": "ability_active",
+          "ability_id": "ability:bandage",
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "while_condition",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "restricted",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [
+            "ability:bandage"
+          ],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:bandage-heal",
+          "rule": "additive",
+          "tier_semantics": "not_applicable",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "Auditoria_EchoArena_2026-09-01.md#F07",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "+10 de restauração de vida com Bandagem ativada",
+        "support": {
+          "status": "supported",
+          "reason_code": null,
+          "details": "Representação contratual apenas; não altera vida máxima."
+        }
+      },
+      {
+        "effect_id": "fixture:thermal-penetration-power",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "fixture",
+          "id": "fixture-origin:thermal-penetration",
+          "equipment_id": null,
+          "variant_id": null,
+          "set_id": null,
+          "required_pieces": null
+        },
+        "target": "penetration_power",
+        "operation": "add",
+        "value": 2,
+        "unit": "penetration_point",
+        "condition": {
+          "kind": "ability_active",
+          "ability_id": "ability:thermal-vision",
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "while_condition",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "restricted",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [
+            "ability:thermal-vision"
+          ],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:thermal-penetration-power",
+          "rule": "additive",
+          "tier_semantics": "not_applicable",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "Auditoria_EchoArena_2026-09-01.md#F07",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "+2 de poder de perfuração com Visão Térmica ativada",
+        "support": {
+          "status": "supported",
+          "reason_code": null,
+          "details": "Representação contratual apenas; não é armor_penetration."
+        }
+      }
+    ]
+  },
+  "valid_lynx_effect_scope": {
+    "contract_version": "echo-equipment-effects/v1",
+    "document_id": "fixture:lynx-effect-scope",
+    "data_revision": "audit-fixture-2026-09-01",
+    "ruleset_revision": "phase2b-contract-only",
+    "subject": {
+      "kind": "fixture",
+      "id": "fixture:class-set-with-hero-effect"
+    },
+    "expected_effect_count": 1,
+    "effects": [
+      {
+        "effect_id": "fixture:lynx-mode-switch-duration",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "set_bonus",
+          "id": "fixture-origin:predator-tier-6",
+          "equipment_id": null,
+          "variant_id": null,
+          "set_id": "fixture-set:predator",
+          "required_pieces": 6
+        },
+        "target": "weapon_mode_switch_duration",
+        "operation": "relative_percent",
+        "value": -10,
+        "unit": "percent",
+        "condition": {
+          "kind": "always",
+          "ability_id": null,
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "not_applicable",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "restricted",
+          "hero_ids": [
+            "hero:lynx"
+          ],
+          "class_ids": [],
+          "ability_ids": [],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:predator:mode-switch",
+          "rule": "additive",
+          "tier_semantics": "incremental",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "Auditoria_EchoArena_2026-09-01.md#F09",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "-10% do tempo de troca de modo da arma primária da Lince",
+        "support": {
+          "status": "supported",
+          "reason_code": null,
+          "details": "Escopo do efeito é mais estreito que a elegibilidade da peça."
+        }
+      }
+    ]
+  },
+  "pending_ambiguous_aim_time": {
+    "contract_version": "echo-equipment-effects/v1",
+    "document_id": "fixture:ambiguous-aim-time",
+    "data_revision": "audit-fixture-2026-09-01",
+    "ruleset_revision": "phase2b-contract-only",
+    "subject": {
+      "kind": "fixture",
+      "id": "fixture:aim-time-without-unit"
+    },
+    "expected_effect_count": 1,
+    "effects": [
+      {
+        "effect_id": "fixture:ambiguous-aim-time:value-minus-10",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "fixture",
+          "id": "fixture-origin:ambiguous-aim-time",
+          "equipment_id": null,
+          "variant_id": null,
+          "set_id": null,
+          "required_pieces": null
+        },
+        "target": "aim_duration",
+        "operation": null,
+        "value": -10,
+        "unit": null,
+        "condition": {
+          "kind": "always",
+          "ability_id": null,
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "not_applicable",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "global",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:ambiguous-aim-time",
+          "rule": "unknown",
+          "tier_semantics": "not_applicable",
+          "max_stacks": null
+        },
+        "provenance": {
+          "verification_status": "partially_confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "Auditoria_EchoArena_2026-09-01.md#F05",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "-10 ao tempo de mira da arma; unidade ausente",
+        "support": {
+          "status": "pending",
+          "reason_code": "unit_unconfirmed",
+          "details": "Não decidir entre segundos e percentual pelo texto."
+        }
+      }
+    ]
+  },
+  "pending_unknown_duration": {
+    "contract_version": "echo-equipment-effects/v1",
+    "document_id": "fixture:unknown-duration-after-bandage",
+    "data_revision": "audit-fixture-2026-09-01",
+    "ruleset_revision": "phase2b-contract-only",
+    "subject": {
+      "kind": "fixture",
+      "id": "fixture:movement-noise-after-event"
+    },
+    "expected_effect_count": 1,
+    "effects": [
+      {
+        "effect_id": "fixture:movement-noise-after-bandage",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "set_bonus",
+          "id": "fixture-origin:slayer-tier-2",
+          "equipment_id": null,
+          "variant_id": null,
+          "set_id": "fixture-set:slayer",
+          "required_pieces": 2
+        },
+        "target": "movement_noise",
+        "operation": "relative_percent",
+        "value": -20,
+        "unit": "percent",
+        "condition": {
+          "kind": "after_event",
+          "ability_id": null,
+          "event_id": "event:bandage-used",
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "unknown",
+          "value": null,
+          "unit": null,
+          "raw_text": "A duração não está confirmada na evidência disponível."
+        },
+        "scope": {
+          "kind": "restricted",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [
+            "ability:bandage"
+          ],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:slayer:movement-noise",
+          "rule": "additive",
+          "tier_semantics": "incremental",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "partially_confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "Auditoria_EchoArena_2026-09-01.md#F01",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "-20% de barulho de movimentação após Bandagem",
+        "support": {
+          "status": "pending",
+          "reason_code": "duration_unconfirmed",
+          "details": "Não aplicar como bônus permanente."
+        }
+      }
+    ]
+  },
+  "partial_inventory": {
+    "contract_version": "echo-equipment-effects/v1",
+    "document_id": "fixture:five-expected-four-represented",
+    "data_revision": "synthetic-acceptance-fixture",
+    "ruleset_revision": "phase2b-contract-only",
+    "subject": {
+      "kind": "fixture",
+      "id": "fixture:partial-inventory"
+    },
+    "expected_effect_count": 5,
+    "effects": [
+      {
+        "effect_id": "fixture:partial:1",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "fixture",
+          "id": "fixture-origin:partial",
+          "equipment_id": null,
+          "variant_id": null,
+          "set_id": null,
+          "required_pieces": null
+        },
+        "target": "reload_duration",
+        "operation": "relative_percent",
+        "value": -1,
+        "unit": "percent",
+        "condition": {
+          "kind": "always",
+          "ability_id": null,
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "not_applicable",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "global",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:partial:1",
+          "rule": "additive",
+          "tier_semantics": "not_applicable",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "synthetic-acceptance-fixture",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "efeito 1",
+        "support": {
+          "status": "supported",
+          "reason_code": null,
+          "details": null
+        }
+      },
+      {
+        "effect_id": "fixture:partial:2",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "fixture",
+          "id": "fixture-origin:partial",
+          "equipment_id": null,
+          "variant_id": null,
+          "set_id": null,
+          "required_pieces": null
+        },
+        "target": "aim_duration",
+        "operation": "relative_percent",
+        "value": -2,
+        "unit": "percent",
+        "condition": {
+          "kind": "always",
+          "ability_id": null,
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "not_applicable",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "global",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:partial:2",
+          "rule": "additive",
+          "tier_semantics": "not_applicable",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "synthetic-acceptance-fixture",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "efeito 2",
+        "support": {
+          "status": "supported",
+          "reason_code": null,
+          "details": null
+        }
+      },
+      {
+        "effect_id": "fixture:partial:3",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "fixture",
+          "id": "fixture-origin:partial",
+          "equipment_id": null,
+          "variant_id": null,
+          "set_id": null,
+          "required_pieces": null
+        },
+        "target": "crate_open_duration",
+        "operation": "relative_percent",
+        "value": -3,
+        "unit": "percent",
+        "condition": {
+          "kind": "always",
+          "ability_id": null,
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "not_applicable",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "global",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:partial:3",
+          "rule": "additive",
+          "tier_semantics": "not_applicable",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "synthetic-acceptance-fixture",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "efeito 3",
+        "support": {
+          "status": "supported",
+          "reason_code": null,
+          "details": null
+        }
+      },
+      {
+        "effect_id": "fixture:partial:4",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "fixture",
+          "id": "fixture-origin:partial",
+          "equipment_id": null,
+          "variant_id": null,
+          "set_id": null,
+          "required_pieces": null
+        },
+        "target": "aimed_range",
+        "operation": "add",
+        "value": 4,
+        "unit": "distance_unit",
+        "condition": {
+          "kind": "always",
+          "ability_id": null,
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "not_applicable",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "global",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:partial:4",
+          "rule": "additive",
+          "tier_semantics": "not_applicable",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "synthetic-acceptance-fixture",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "efeito 4",
+        "support": {
+          "status": "supported",
+          "reason_code": null,
+          "details": null
+        }
+      }
+    ]
+  },
+  "invalid_numeric_string": {
+    "contract_version": "echo-equipment-effects/v1",
+    "document_id": "fixture:invalid-numeric-string",
+    "data_revision": "synthetic-acceptance-fixture",
+    "ruleset_revision": "phase2b-contract-only",
+    "subject": {
+      "kind": "fixture",
+      "id": "fixture:invalid-numeric-string"
+    },
+    "expected_effect_count": 1,
+    "effects": [
+      {
+        "effect_id": "fixture:value-comma-string",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "fixture",
+          "id": "fixture-origin:value-comma-string",
+          "equipment_id": null,
+          "variant_id": null,
+          "set_id": null,
+          "required_pieces": null
+        },
+        "target": "armor_capacity",
+        "operation": "relative_percent",
+        "value": "3,5",
+        "unit": "percent",
+        "condition": {
+          "kind": "always",
+          "ability_id": null,
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "not_applicable",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "global",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:invalid-value",
+          "rule": "additive",
+          "tier_semantics": "not_applicable",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "Auditoria_EchoArena_2026-09-01.md#F12",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "armor_max_pct: 3,5",
+        "support": {
+          "status": "supported",
+          "reason_code": null,
+          "details": null
+        }
+      }
+    ]
+  },
+  "invalid_percentage_unit": {
+    "contract_version": "echo-equipment-effects/v1",
+    "document_id": "fixture:invalid-percentage-unit",
+    "data_revision": "synthetic-acceptance-fixture",
+    "ruleset_revision": "phase2b-contract-only",
+    "subject": {
+      "kind": "fixture",
+      "id": "fixture:relative-vs-points"
+    },
+    "expected_effect_count": 1,
+    "effects": [
+      {
+        "effect_id": "fixture:relative-vs-points",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "fixture",
+          "id": "fixture-origin:relative-vs-points",
+          "equipment_id": null,
+          "variant_id": null,
+          "set_id": null,
+          "required_pieces": null
+        },
+        "target": "armor_penetration",
+        "operation": "relative_percent",
+        "value": 10,
+        "unit": "percentage_point",
+        "condition": {
+          "kind": "always",
+          "ability_id": null,
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "not_applicable",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "global",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:relative-vs-points",
+          "rule": "additive",
+          "tier_semantics": "not_applicable",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "synthetic-acceptance-fixture",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "+10 relativo ou +10 pontos percentuais",
+        "support": {
+          "status": "supported",
+          "reason_code": null,
+          "details": null
+        }
+      }
+    ]
+  },
+  "invalid_shots_interval_alias": {
+    "contract_version": "echo-equipment-effects/v1",
+    "document_id": "fixture:invalid-shots-interval-alias",
+    "data_revision": "synthetic-acceptance-fixture",
+    "ruleset_revision": "phase2b-contract-only",
+    "subject": {
+      "kind": "fixture",
+      "id": "fixture:shots-vs-interval"
+    },
+    "expected_effect_count": 1,
+    "effects": [
+      {
+        "effect_id": "fixture:shots-unit-on-interval",
+        "effect_revision": 1,
+        "origin": {
+          "kind": "fixture",
+          "id": "fixture-origin:shots-vs-interval",
+          "equipment_id": null,
+          "variant_id": null,
+          "set_id": null,
+          "required_pieces": null
+        },
+        "target": "fire_interval",
+        "operation": "add",
+        "value": 2,
+        "unit": "shot_per_second",
+        "condition": {
+          "kind": "always",
+          "ability_id": null,
+          "event_id": null,
+          "mode_id": null,
+          "state_id": null,
+          "raw_text": null
+        },
+        "duration": {
+          "kind": "not_applicable",
+          "value": null,
+          "unit": null,
+          "raw_text": null
+        },
+        "scope": {
+          "kind": "global",
+          "hero_ids": [],
+          "class_ids": [],
+          "ability_ids": [],
+          "mode_ids": []
+        },
+        "stacking": {
+          "group": "fixture:shots-vs-interval",
+          "rule": "additive",
+          "tier_semantics": "not_applicable",
+          "max_stacks": 1
+        },
+        "provenance": {
+          "verification_status": "confirmed",
+          "verified_at": "2026-09-01",
+          "sources": [
+            {
+              "kind": "historical_audit",
+              "reference": "Auditoria_EchoArena_2026-09-01.md#F14",
+              "observed_at": "2026-09-01",
+              "game_revision": null
+            }
+          ]
+        },
+        "original_text": "shots_per_second não é fire_interval",
+        "support": {
+          "status": "supported",
+          "reason_code": null,
+          "details": null
+        }
+      }
+    ]
+  },
+  "future_version": {
+    "contract_version": "echo-equipment-effects/v2",
+    "document_id": "fixture:future-version",
+    "data_revision": "future-data",
+    "ruleset_revision": "future-rules",
+    "subject": {
+      "kind": "fixture",
+      "id": "fixture:future-version"
+    },
+    "expected_effect_count": 1,
+    "future_extension": {
+      "must_survive": true
+    },
+    "effects": [
+      {
+        "effect_id": "fixture:future-effect",
+        "future_operation": "future-only"
+      }
+    ]
+  }
+}

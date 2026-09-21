@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Testes — fila de auditoria de equipamentos</title>
+  <style>body{font-family:system-ui,sans-serif;background:#07101d;color:#eef2f7;padding:24px}.test{padding:10px 12px;margin:7px 0;border:1px solid #334155;border-radius:8px}.ok{border-color:#166534;color:#86efac}.bad{border-color:#991b1b;color:#fecaca}code{color:#c4b5fd}</style>
+</head>
+<body>
+  <h1>Classificação automática da auditoria</h1>
+  <p>Valida regras calculáveis, dados oficiais pendentes e erros reais. Efeitos informativos usam as classificações persistentes cadastradas pela Auditoria e não entram na fila de correções.</p>
+  <div id="results"></div>
+  <script type="module">
+    import { classifyDraftVariants } from '../admin/js/equipment-audit-queue.js?v=8&sb=20260823-security-supabase-pin-1&eq=20260907-effects-1';
+
+    const cases = [
+      {
+        name:'Recarga com escrita equivalente é reconhecida',
+        variants:{comum:[{label:'Tempo de recarga da arma',value:'-5'}]},
+        expect: result => result.blocking === 0 && result.recognized === 1
+      },
+      {
+        name:'Pequeno erro de escrita reconhecido pelo catálogo não vira bloqueio',
+        variants:{raro:[{label:'Velocidade de recagra',value:'-8'}]},
+        expect: result => result.blocking === 0 && result.recognized === 1
+      },
+      {
+        name:'Coleta de melhorias conhecida aguarda dado oficial e não vira erro',
+        variants:{epico:[{label:'Velocidade para pegar melhorias percentual',value:'10'}]},
+        expect: result => result.blocking === 0 && result.awaitingOfficial === 1 && result.issues[0]?.issue_type === 'external_data_required'
+      },
+      {
+        name:'Tempo de abertura de caixas aguarda base oficial',
+        variants:{divino:[{label:'crate_opening_cooldown_pct',value:'-15'}]},
+        expect: result => result.blocking === 0 && result.awaitingOfficial === 1 && result.issues[0]?.issue_type === 'external_data_required'
+      },
+      {
+        name:'Mecânica realmente desconhecida continua exigindo correção',
+        variants:{epico:[{label:'Atributo experimental do equipamento',value:'10'}]},
+        expect: result => result.blocking === 1 && result.issues[0]?.issue_type === 'unknown_attribute'
+      },
+      {
+        name:'Valor não numérico entra como pendência mesmo em regra conhecida',
+        variants:{lendario:[{label:'Tempo de recarga da arma',value:'rápido'}]},
+        expect: result => result.blocking === 1 && result.issues[0]?.issue_type === 'invalid_value'
+      },
+      {
+        name:'Dispersão com mira percentual usa regra oficial',
+        variants:{mitico:[{label:'DispersaoTiroComMiraArmaPercentual',value:'-5'}]},
+        expect: result => result.blocking === 0 && result.recognized === 1
+      }
+    ];
+
+    const host=document.getElementById('results');
+    let passed=0;
+    for(const test of cases){
+      const result=classifyDraftVariants(test.variants,{equipmentName:'Teste'});
+      const ok=Boolean(test.expect(result));
+      if(ok) passed+=1;
+      const node=document.createElement('div');
+      node.className=`test ${ok?'ok':'bad'}`;
+      node.innerHTML=`<strong>${ok?'✓':'✕'} ${test.name}</strong><br><code>${JSON.stringify({recognized:result.recognized,awaitingOfficial:result.awaitingOfficial,informationalEffects:result.informationalEffects,blocking:result.blocking,issues:result.issues.map(i=>i.issue_type)})}</code>`;
+      host.appendChild(node);
+    }
+    const summary=document.createElement('p');
+    summary.textContent=`${passed}/${cases.length} testes aprovados.`;
+    host.prepend(summary);
+  </script>
+</body>
+</html>

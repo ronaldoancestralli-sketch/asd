@@ -1,0 +1,1017 @@
+{
+  "definitions": [
+    {
+      "id": "hero.health",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "hero.armor",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "hero.power",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "hero.movement_speed",
+      "context": "moving",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "hero.aimed_movement_speed",
+      "context": "aiming",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "hero.movement_noise_radius",
+      "context": "moving",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "hero.penetration_resistance",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "hero.armor_resistance",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "hero.vision_range",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.damage",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.fire_rate",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.fire_interval",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "second"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.magazine",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.reload_time",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "second"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.range",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.aimed_range",
+      "context": "aiming",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.aim_time",
+      "context": "aiming",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "second"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.spread",
+      "context": "hip_fire",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "degree"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.aimed_spread",
+      "context": "aiming",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "degree"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.spread_factor",
+      "context": "spread_factor",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "factor"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.moving_spread_modifier",
+      "context": "moving",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "factor"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.armor_penetration",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    },
+    {
+      "id": "weapon.armor_penetration_power",
+      "context": "general",
+      "acceptedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "state": "published",
+      "formulaState": "published",
+      "version": 1,
+      "policy": {
+        "id": "additive-base-v1",
+        "state": "published"
+      }
+    }
+  ],
+  "aliases": [
+    {
+      "id": "00000000-0000-4000-9000-000000000001",
+      "rawAlias": "armadura maxima",
+      "normalizedAlias": "armadura maxima",
+      "target": "hero.armor",
+      "context": "general",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000002",
+      "rawAlias": "a armadura maxima",
+      "normalizedAlias": "a armadura maxima",
+      "target": "hero.armor",
+      "context": "general",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000003",
+      "rawAlias": "armadura maxima do heroi",
+      "normalizedAlias": "armadura maxima do heroi",
+      "target": "hero.armor",
+      "context": "general",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000004",
+      "rawAlias": "a armadura maxima do heroi",
+      "normalizedAlias": "a armadura maxima do heroi",
+      "target": "hero.armor",
+      "context": "general",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000005",
+      "rawAlias": "velocidade do heroi ao mirar",
+      "normalizedAlias": "velocidade do heroi ao mirar",
+      "target": "hero.aimed_movement_speed",
+      "context": "aiming",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000006",
+      "rawAlias": "a velocidade do heroi ao mirar",
+      "normalizedAlias": "a velocidade do heroi ao mirar",
+      "target": "hero.aimed_movement_speed",
+      "context": "aiming",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000007",
+      "rawAlias": "resistencia de armadura do heroi",
+      "normalizedAlias": "resistencia de armadura do heroi",
+      "target": "hero.armor_resistance",
+      "context": "general",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000008",
+      "rawAlias": "a resistencia de armadura do heroi",
+      "normalizedAlias": "a resistencia de armadura do heroi",
+      "target": "hero.armor_resistance",
+      "context": "general",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000009",
+      "rawAlias": "barulho da corrida do heroi",
+      "normalizedAlias": "barulho da corrida do heroi",
+      "target": "hero.movement_noise_radius",
+      "context": "moving",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000010",
+      "rawAlias": "ao barulho da corrida do heroi",
+      "normalizedAlias": "ao barulho da corrida do heroi",
+      "target": "hero.movement_noise_radius",
+      "context": "moving",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000011",
+      "rawAlias": "tempo de recarga",
+      "normalizedAlias": "tempo de recarga",
+      "target": "weapon.reload_time",
+      "context": "general",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "second"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000012",
+      "rawAlias": "tempo de recarregamento da arma",
+      "normalizedAlias": "tempo de recarregamento da arma",
+      "target": "weapon.reload_time",
+      "context": "general",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "second"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000013",
+      "rawAlias": "cadencia de tiro da arma do heroi",
+      "normalizedAlias": "cadencia de tiro da arma do heroi",
+      "target": "weapon.fire_rate",
+      "context": "general",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000014",
+      "rawAlias": "ao alcance do tiro com mira do heroi",
+      "normalizedAlias": "ao alcance do tiro com mira do heroi",
+      "target": "weapon.aimed_range",
+      "context": "aiming",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000015",
+      "rawAlias": "alcance de tiro com mira do heroi",
+      "normalizedAlias": "alcance de tiro com mira do heroi",
+      "target": "weapon.aimed_range",
+      "context": "aiming",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000016",
+      "rawAlias": "alcance do tiro com mira do heroi",
+      "normalizedAlias": "alcance do tiro com mira do heroi",
+      "target": "weapon.aimed_range",
+      "context": "aiming",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "point"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000017",
+      "rawAlias": "ao recuo da arma do heroi",
+      "normalizedAlias": "ao recuo da arma do heroi",
+      "target": "weapon.spread_factor",
+      "context": "spread_factor",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "factor"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000018",
+      "rawAlias": "recuo do armamento",
+      "normalizedAlias": "recuo do armamento",
+      "target": "weapon.spread_factor",
+      "context": "spread_factor",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "factor"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000019",
+      "rawAlias": "fator de dispersao",
+      "normalizedAlias": "fator de dispersao",
+      "target": "weapon.spread_factor",
+      "context": "spread_factor",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "factor"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000020",
+      "rawAlias": "dispersao parado",
+      "normalizedAlias": "dispersao parado",
+      "target": "weapon.spread",
+      "context": "hip_fire",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "degree"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000021",
+      "rawAlias": "dispersao da mira parado",
+      "normalizedAlias": "dispersao da mira parado",
+      "target": "weapon.spread",
+      "context": "hip_fire",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "degree"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000022",
+      "rawAlias": "dispersao sem mira",
+      "normalizedAlias": "dispersao sem mira",
+      "target": "weapon.spread",
+      "context": "hip_fire",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "degree"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000023",
+      "rawAlias": "dispersao de tiro da arma sem mirar",
+      "normalizedAlias": "dispersao de tiro da arma sem mirar",
+      "target": "weapon.spread",
+      "context": "hip_fire",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "degree"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000024",
+      "rawAlias": "a dispersao de tiro da arma sem mirar",
+      "normalizedAlias": "a dispersao de tiro da arma sem mirar",
+      "target": "weapon.spread",
+      "context": "hip_fire",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "degree"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000025",
+      "rawAlias": "dispersao ao mirar",
+      "normalizedAlias": "dispersao ao mirar",
+      "target": "weapon.aimed_spread",
+      "context": "aiming",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "degree"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000026",
+      "rawAlias": "dispersao da arma ao mirar",
+      "normalizedAlias": "dispersao da arma ao mirar",
+      "target": "weapon.aimed_spread",
+      "context": "aiming",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "degree"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000027",
+      "rawAlias": "dispersao em movimento",
+      "normalizedAlias": "dispersao em movimento",
+      "target": "weapon.moving_spread_modifier",
+      "context": "moving",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "factor"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000028",
+      "rawAlias": "dispersao da mira em movimento",
+      "normalizedAlias": "dispersao da mira em movimento",
+      "target": "weapon.moving_spread_modifier",
+      "context": "moving",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "factor"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    },
+    {
+      "id": "00000000-0000-4000-9000-000000000029",
+      "rawAlias": "dispersao da arma em movimento",
+      "normalizedAlias": "dispersao da arma em movimento",
+      "target": "weapon.moving_spread_modifier",
+      "context": "moving",
+      "allowedUnits": [
+        "implicit",
+        "percent",
+        "factor"
+      ],
+      "allowedOperations": [
+        "flat",
+        "percent"
+      ],
+      "definitionVersion": 1,
+      "version": 1,
+      "state": "published"
+    }
+  ]
+}

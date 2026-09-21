@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Importar equipamento por print — Echo Arena Admin</title>
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/equipments.css?v=20260821-admin-polish-1">
+  <link rel="stylesheet" href="./css/admin-polish.css?v=20260821-admin-polish-1">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=1">
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+</head>
+<body>
+  <div data-admin-content>
+    <main class="equipment-main ocr-import-page">
+      <header class="ocr-import-hero">
+        <div>
+          <small>Equipamentos · OCR com revisão</small>
+          <h2>Importar por print</h2>
+          <p>Selecione os prints das raridades, processe a leitura e revise o resultado antes de enviá-lo ao editor. O motor OCR existente foi preservado; esta atualização organiza o fluxo dentro do mesmo Admin Shell usado pelo restante do painel.</p>
+        </div>
+        <div class="ocr-import-hero-actions">
+          <a class="admin-button" href="./equipment-ai-import.html">Importar por JSON</a>
+          <a class="admin-button" href="./equipment-audit.html">Abrir auditoria</a>
+          <a class="admin-button primary" href="./equipments.html">Voltar aos equipamentos</a>
+        </div>
+      </header>
+
+      <div class="ocr-import-note">
+        <strong>Nenhum dado é salvo automaticamente.</strong> A leitura é montada nesta tela, revisada por você e enviada como rascunho temporário ao editor. A gravação continua acontecendo apenas pelo fluxo normal do editor.
+      </div>
+
+      <section class="import-layout">
+        <div class="eq-panel">
+          <h2>1. Prints do jogo</h2>
+          <label>Selecione uma ou várias imagens
+            <input id="screenshot" type="file" accept="image/*" multiple>
+          </label>
+          <div id="dropzone" class="dropzone">Selecione os prints para iniciar.</div>
+          <button id="extract" class="eq-btn primary" type="button" style="margin-top:12px">Extrair dados dos prints</button>
+          <div id="ocr-status" class="ocr-status" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="eq-panel">
+          <h2>2. Dados reconhecidos</h2>
+          <label>Texto extraído / revisão manual
+            <textarea id="raw-text" rows="18"></textarea>
+          </label>
+          <button id="review" class="eq-btn" type="button" style="margin-top:12px">Montar revisão</button>
+        </div>
+      </section>
+
+      <section class="eq-panel">
+        <h2>3. Revisão antes do editor</h2>
+        <p class="eq-muted">Confira nome, raridades, atributos e bônus. O botão abaixo não salva no banco; ele transfere o rascunho revisado para o editor de equipamentos.</p>
+        <div id="review-area"></div>
+        <button id="send-editor" class="eq-btn primary" type="button" disabled>Enviar dados revisados ao editor</button>
+      </section>
+    </main>
+  </div>
+
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell = await initAdminShell({
+      activeId: 'equipment-ocr-import',
+      pageTitle: 'Importar equipamento por print',
+      pageSubtitle: 'Equipamentos · OCR com revisão'
+    });
+    if (shell) await import('./js/equipment-import.js?v=20260821-admin-polish-1&sb=20260823-security-supabase-pin-1');
+  </script>
+</body>
+</html>

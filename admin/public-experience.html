@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#060910">
+  <title>Experiência pública — Echo Arena Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/admin-public-experience.css?v=20260821-admin-experience-1">
+</head>
+<body data-admin-experience="true">
+  <div data-admin-content>
+    <main class="ax-page">
+      <section class="ax-hero">
+        <div>
+          <div class="ax-kicker">Experiência pública · controle editorial</div>
+          <h2>Admin e site <em>na mesma fonte.</em></h2>
+          <p>Esta central acompanha exatamente as superfícies públicas repaginadas. Ela não cria métricas paralelas: consulta os mesmos registros de Heróis, Builds, Equipamentos, Composições, Guias, Notícias e Tier Lists e leva ao editor responsável por cada dado.</p>
+          <div class="ax-hero-actions">
+            <a class="ax-button primary" href="./heroes.html">Gerenciar heróis</a>
+            <a class="ax-button" href="../herois.html" target="_blank" rel="noopener">Abrir página pública</a>
+            <a class="ax-button" href="./site-content.html">CMS / SEO</a>
+            <a class="ax-button" href="./content-modules.html">Conteúdo editorial</a>
+            <a class="ax-button" href="../builds.html" target="_blank" rel="noopener">Abrir Hub de Builds</a>
+          </div>
+        </div>
+        <aside class="ax-status-card">
+          <small>Estado desta leitura</small>
+          <strong>Paridade operacional</strong>
+          <p id="ax-sync-summary">Sincronizando Supabase e superfícies públicas…</p>
+          <span class="ax-live">Dados reais · sem preenchimento fictício</span>
+        </aside>
+      </section>
+
+      <section class="ax-metrics" aria-label="Indicadores públicos">
+        <article class="ax-metric"><span>Heróis ativos</span><strong id="ax-active-heroes">—</strong><small>Tabela heroes</small></article>
+        <article class="ax-metric"><span>Mídia pronta</span><strong id="ax-media-ready">—</strong><small>Main + card públicos</small></article>
+        <article class="ax-metric"><span>Habilidades</span><strong id="ax-skills">—</strong><small>Registros ativos</small></article>
+        <article class="ax-metric"><span>Builds públicas</span><strong id="ax-public-builds">—</strong><small>Publicadas e visíveis</small></article>
+        <article class="ax-metric"><span>Equipamentos ativos</span><strong id="ax-active-equipments">—</strong><small>Catálogo público</small></article>
+        <article class="ax-metric"><span>Composições públicas</span><strong id="ax-public-compositions">—</strong><small>Sem trio inventado</small></article>
+      </section>
+
+      <section class="ax-section">
+        <header class="ax-section-head"><div><div class="ax-kicker">Mapa operacional</div><h3>Páginas públicas ↔ Admin</h3></div><p>Cada cartão aponta para o editor que controla os dados realmente consumidos pela experiência pública.</p></header>
+        <div class="ax-module-grid">
+          <article class="ax-module" id="ax-module-heroes"><div class="ax-module-head"><h4>Heróis</h4><span class="ax-chip" data-module-state>Carregando</span></div><p data-module-copy>Validando publicação, mídia e habilidades.</p><div class="ax-module-actions"><a href="./heroes.html">Lista Admin</a><a href="./hero-editor.html">Novo/editar</a><a href="./hero-skill-audit.html">Auditar skills</a><a href="../herois.html" target="_blank" rel="noopener">Ver público</a></div></article>
+          <article class="ax-module" id="ax-module-builds"><div class="ax-module-head"><h4>Builds</h4><span class="ax-chip" data-module-state>Carregando</span></div><p data-module-copy>Validando registros públicos e fluxo transacional.</p><div class="ax-module-actions"><a href="./builds.html">Moderação</a><a href="../builds.html" target="_blank" rel="noopener">Hub público</a><a href="../criar-build.html" target="_blank" rel="noopener">Mesa</a><a href="../comparar-build.html" target="_blank" rel="noopener">Comparar</a></div></article>
+          <article class="ax-module" id="ax-module-equipments"><div class="ax-module-head"><h4>Equipamentos</h4><span class="ax-chip" data-module-state>Carregando</span></div><p data-module-copy>Validando catálogo ativo.</p><div class="ax-module-actions"><a href="./equipments.html">Lista Admin</a><a href="./equipment-editor.html">Novo/editar</a><a href="./equipment-audit.html">Auditoria</a><a href="../equipamentos.html" target="_blank" rel="noopener">Ver público</a></div></article>
+          <article class="ax-module" id="ax-module-compositions"><div class="ax-module-head"><h4>Composições</h4><span class="ax-chip" data-module-state>Carregando</span></div><p data-module-copy>Validando composições públicas.</p><div class="ax-module-actions"><a href="../composicoes.html" target="_blank" rel="noopener">Ver público</a><a href="./data-health.html">Saúde dos dados</a></div></article>
+          <article class="ax-module" id="ax-module-cms"><div class="ax-module-head"><h4>CMS / SEO</h4><span class="ax-chip" data-module-state>Carregando</span></div><p data-module-copy>Validando páginas e campos editoriais. O CMS controla textos, metadados e SEO; dados dinâmicos continuam nos módulos próprios.</p><div class="ax-module-actions"><a href="./site-content.html">Editar textos / SEO</a><a href="./content-modules.html">Conteúdo modular</a><a href="../index.html" target="_blank" rel="noopener">Ver site</a></div></article>
+          <article class="ax-module" id="ax-module-editorial"><div class="ax-module-head"><h4>Guias, Notícias e Tier Lists</h4><span class="ax-chip" data-module-state>Carregando</span></div><p data-module-copy>Validando publicações dinâmicas dos módulos próprios — não conteúdo estrutural do CMS.</p><div class="ax-module-actions"><a href="./content-modules.html">Editar módulos</a><a href="../guias.html" target="_blank" rel="noopener">Guias</a><a href="../noticias.html" target="_blank" rel="noopener">Notícias</a><a href="../tier-list.html" target="_blank" rel="noopener">Tier List</a></div></article>
+          <article class="ax-module" id="ax-module-compare"><div class="ax-module-head"><h4>Comparar</h4><span class="ax-chip" data-module-state>Protegido</span></div><p data-module-copy>Motor e persistência preservados.</p><div class="ax-module-actions"><a href="./builds.html">Origem das builds</a><a href="../comparar-build.html" target="_blank" rel="noopener">Ver comparação</a><a href="./data-health.html">Saúde dos dados</a></div></article>
+        </div>
+      </section>
+
+      <section class="ax-section">
+        <header class="ax-section-head"><div><div class="ax-kicker">Paridade de Heróis</div><h3>O que o público realmente recebe</h3></div><p>Mídia principal/card e quantidade de habilidades são confrontadas com os heróis ativos. Clique para editar ou abrir a ficha pública correspondente.</p></header>
+        <div id="ax-hero-list" class="ax-hero-list"><div class="ax-note">Carregando heróis…</div></div>
+      </section>
+
+      <section class="ax-section">
+        <header class="ax-section-head"><div><div class="ax-kicker">Diagnóstico</div><h3>Pontos que exigem atenção</h3></div><p>Este bloco não transforma falha de consulta em zero. Problemas de fonte ou requisitos ausentes aparecem explicitamente.</p></header>
+        <div id="ax-issues"><div class="ax-note">Verificando paridade…</div></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell = await initAdminShell({ activeId:'public-experience', pageTitle:'Experiência pública', pageSubtitle:'Paridade Admin ↔ Site' });
+    if (shell) {
+      await import('./js/site-content-premium-schema.js?v=20260829-schema-reconcile-1&sb=20260823-security-supabase-pin-1');
+      await import('./js/public-experience.js?v=20260821-admin-experience-2&sb=20260823-security-supabase-pin-1');
+      await import('./js/public-experience-sync-audit.js?v=20260822-admin-public-sync-2&sb=20260823-security-supabase-pin-1');
+    }
+  </script>
+</body>
+</html>

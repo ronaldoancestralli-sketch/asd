@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#060910">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Destaque da home — Echo Arena Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/home-featured.css?v=20260906-home-featured-phase-f-1">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=2">
+</head>
+<body data-admin-experience="true">
+  <div data-admin-content>
+    <section class="hf-admin" data-home-featured-admin-phase="F">
+      <header class="hf-hero">
+        <div class="hf-hero-copy">
+          <span class="hf-kicker">Curadoria da página inicial</span>
+          <h2>Herói em <em>destaque</em></h2>
+          <p>Escolha a identidade principal da home, teste o próximo ciclo sem publicar e controle a rotação diária ou semanal por uma única autoridade editorial.</p>
+        </div>
+        <div class="hf-hero-actions">
+          <span class="hf-phase" id="hf-phase-state"><i aria-hidden="true"></i> Autoridade canônica ativa</span>
+          <a class="admin-button" href="../index.html" target="_blank" rel="noopener">Abrir página inicial ↗</a>
+        </div>
+      </header>
+
+      <div id="hf-message" class="hf-message" role="status" aria-live="polite">Carregando autoridade editorial…</div>
+
+      <section class="hf-metrics" aria-label="Estado do destaque">
+        <article class="hf-metric hf-metric-current">
+          <span>Destaque atual</span>
+          <strong id="hf-current-hero">—</strong>
+          <small id="hf-current-slug">Aguardando sincronização</small>
+        </article>
+        <article class="hf-metric">
+          <span>Modo editorial</span>
+          <strong id="hf-current-mode">Manual</strong>
+          <small>Trocas exigem publicação autorizada</small>
+        </article>
+        <article class="hf-metric">
+          <span>Revisão sincronizada</span>
+          <strong id="hf-current-revision">—</strong>
+          <small>Protege contra edições concorrentes</small>
+        </article>
+        <article class="hf-metric hf-metric-locked">
+          <span>Rotação automática</span>
+          <strong id="hf-automation-state">Desligada</strong>
+          <small id="hf-automation-next">Aguardando estado do agendador</small>
+        </article>
+      </section>
+
+      <div class="hf-main-grid">
+        <section class="hf-panel hf-selection-panel" aria-labelledby="hf-selection-title">
+          <header class="hf-panel-head">
+            <div>
+              <span>Seleção editorial</span>
+              <h3 id="hf-selection-title">Escolher destaque manual</h3>
+              <p>A escolha fica preparada até a confirmação final com motivo.</p>
+            </div>
+            <label class="hf-search" for="hf-hero-search">
+              <span>Buscar herói</span>
+              <input id="hf-hero-search" type="search" autocomplete="off" placeholder="Nome ou identificador">
+            </label>
+          </header>
+
+          <div id="hf-hero-options" class="hf-hero-options" aria-label="Heróis disponíveis">
+            <div class="hf-loading">Carregando heróis…</div>
+          </div>
+
+          <div class="hf-publish-bar">
+            <label for="hf-publish-reason">
+              <span>Motivo da troca</span>
+              <input id="hf-publish-reason" maxlength="240" placeholder="Ex.: destaque editorial da semana">
+              <small>Mínimo de 4 caracteres. O motivo entra na auditoria.</small>
+            </label>
+            <button id="hf-prepare-publish" class="admin-button primary" type="button" disabled>Revisar troca</button>
+          </div>
+          <p id="hf-publish-permission" class="hf-permission-note"></p>
+        </section>
+
+        <aside class="hf-panel hf-plan-panel" aria-labelledby="hf-plan-title">
+          <header class="hf-panel-head compact">
+            <div>
+              <span>Planejamento da rotação</span>
+              <h3 id="hf-plan-title">Frequência e calendário</h3>
+              <p>O calendário define a virada real. Alterações exigem pausar a automação antes.</p>
+            </div>
+            <span id="hf-dirty-badge" class="hf-dirty" hidden>Não salvo</span>
+          </header>
+
+          <fieldset class="hf-cadence">
+            <legend>Frequência</legend>
+            <label><input type="radio" name="hf-cadence" value="daily"><span><strong>Diária</strong><small>Um período por dia</small></span></label>
+            <label><input type="radio" name="hf-cadence" value="weekly"><span><strong>Semanal</strong><small>Um período por semana</small></span></label>
+          </fieldset>
+
+          <div class="hf-plan-fields">
+            <label class="hf-field">
+              <span>Horário local</span>
+              <input id="hf-local-time" type="time" step="60" required>
+            </label>
+            <label id="hf-weekday-field" class="hf-field">
+              <span>Dia da semana</span>
+              <select id="hf-weekday">
+                <option value="1">Segunda-feira</option>
+                <option value="2">Terça-feira</option>
+                <option value="3">Quarta-feira</option>
+                <option value="4">Quinta-feira</option>
+                <option value="5">Sexta-feira</option>
+                <option value="6">Sábado</option>
+                <option value="0">Domingo</option>
+              </select>
+            </label>
+            <label class="hf-field full">
+              <span>Fuso horário IANA</span>
+              <input id="hf-timezone" list="hf-timezones" autocomplete="off" spellcheck="false" placeholder="America/Sao_Paulo" required>
+              <datalist id="hf-timezones"></datalist>
+            </label>
+          </div>
+
+          <div class="hf-plan-summary" id="hf-plan-summary">Aguardando configuração…</div>
+          <div class="hf-plan-actions">
+            <button id="hf-discard-plan" class="admin-button" type="button" disabled>Descartar</button>
+            <button id="hf-save-plan" class="admin-button primary" type="button" disabled>Salvar planejamento</button>
+          </div>
+          <p id="hf-edit-permission" class="hf-permission-note"></p>
+
+          <section class="hf-automation-control" id="hf-automation-control" aria-labelledby="hf-automation-title">
+            <div class="hf-automation-icon" aria-hidden="true"><i></i></div>
+            <div class="hf-automation-copy">
+              <span>Execução automática</span>
+              <strong id="hf-automation-title">Rotação pronta para ativar</strong>
+              <p id="hf-automation-description">O destaque atual vira a âncora; o próximo herói entra somente no fim do período configurado.</p>
+              <label for="hf-automation-reason"><span>Motivo da ação</span><input id="hf-automation-reason" maxlength="240" placeholder="Ex.: iniciar ciclo editorial diário"></label>
+            </div>
+            <button id="hf-prepare-automation" class="admin-button primary" type="button" disabled>Ativar rotação</button>
+          </section>
+
+          <section class="hf-preview-control" aria-labelledby="hf-preview-title">
+            <div class="hf-preview-sigil" aria-hidden="true">✦</div>
+            <div class="hf-preview-copy"><span>Laboratório sem publicação</span><strong id="hf-preview-title">Testar o próximo destaque agora</strong><p><b id="hf-preview-hero">Calculando próximo herói…</b><small id="hf-preview-time">Nenhum estado será alterado.</small></p></div>
+            <a id="hf-open-preview" class="admin-button" href="../index.html?previewDestaque=proximo" target="_blank" rel="noopener" aria-disabled="true">Abrir prévia ↗</a>
+          </section>
+        </aside>
+      </div>
+
+      <section class="hf-panel hf-queue-panel" aria-labelledby="hf-queue-title">
+        <header class="hf-panel-head">
+          <div>
+            <span>Ordem editorial</span>
+            <h3 id="hf-queue-title">Fila de rotação</h3>
+            <p>As setas alteram a sequência futura. O destaque atual não pode ser removido.</p>
+          </div>
+          <div class="hf-queue-add">
+            <label for="hf-queue-add-select">Adicionar herói</label>
+            <div><select id="hf-queue-add-select"><option value="">Todos já estão na fila</option></select><button id="hf-queue-add" class="admin-button" type="button" disabled>Adicionar</button></div>
+          </div>
+        </header>
+        <div class="hf-queue-meta"><span id="hf-queue-count">—</span><small>A posição inicial será a próxima âncora quando a automação for ativada.</small></div>
+        <ol id="hf-queue" class="hf-queue"><li class="hf-loading">Carregando fila…</li></ol>
+      </section>
+
+      <section class="hf-panel hf-history-panel" aria-labelledby="hf-history-title">
+        <header class="hf-panel-head compact">
+          <div><span>Rastro editorial</span><h3 id="hf-history-title">Histórico recente</h3><p>Registro imutável das configurações e trocas do destaque.</p></div>
+          <button id="hf-refresh" class="admin-button" type="button">Atualizar</button>
+        </header>
+        <div id="hf-history" class="hf-history"><div class="hf-loading">Carregando histórico…</div></div>
+      </section>
+
+      <section id="hf-publish-review" class="hf-review" hidden aria-labelledby="hf-review-title">
+        <button class="hf-review-backdrop" data-review-cancel type="button" aria-label="Cancelar revisão"></button>
+        <article role="dialog" aria-modal="true">
+          <span class="hf-kicker">Confirmação editorial</span>
+          <h3 id="hf-review-title">Publicar novo destaque manual?</h3>
+          <div class="hf-review-route"><strong id="hf-review-from">—</strong><span aria-hidden="true">→</span><strong id="hf-review-to">—</strong></div>
+          <p id="hf-review-reason">—</p>
+          <div class="hf-review-note">A revisão será incrementada e a mudança ficará registrada no histórico do destaque e na auditoria central.</div>
+          <div class="hf-review-actions"><button class="admin-button" data-review-cancel type="button">Voltar</button><button id="hf-confirm-publish" class="admin-button primary" type="button">Confirmar destaque</button></div>
+        </article>
+      </section>
+
+      <section id="hf-automation-review" class="hf-review" hidden aria-labelledby="hf-automation-review-title">
+        <button class="hf-review-backdrop" data-automation-review-cancel type="button" aria-label="Cancelar revisão"></button>
+        <article role="dialog" aria-modal="true">
+          <span class="hf-kicker">Confirmação do agendador</span>
+          <h3 id="hf-automation-review-title">Ativar rotação automática?</h3>
+          <div class="hf-review-route"><strong id="hf-automation-review-from">Manual</strong><span aria-hidden="true">→</span><strong id="hf-automation-review-to">Automática</strong></div>
+          <p id="hf-automation-review-reason">—</p>
+          <div class="hf-review-note" id="hf-automation-review-note">A fila, o horário e o destaque atual serão usados como âncora. A prévia continua sem alterar o estado público.</div>
+          <div class="hf-review-actions"><button class="admin-button" data-automation-review-cancel type="button">Voltar</button><button id="hf-confirm-automation" class="admin-button primary" type="button">Confirmar ativação</button></div>
+        </article>
+      </section>
+    </section>
+  </div>
+
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell = await initAdminShell({
+      activeId: 'home-featured',
+      pageTitle: 'Destaque da home',
+      pageSubtitle: 'Destaque, prévia e rotação automática'
+    });
+    if (shell) {
+      const module = await import('./js/home-featured.js?v=20260906-home-featured-phase-f-1&sb=20260823-security-supabase-pin-1');
+      await module.initHomeFeaturedAdmin({ shell });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auditoria de equipamentos — Echo Arena Admin</title>
+  <link rel="stylesheet" href="./css/admin.css">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=1">
+  <link rel="stylesheet" href="./css/equipment-audit-v3.css?v=1">
+</head>
+<body>
+  <div data-admin-content>
+    <p><a class="admin-button" href="./equipments.html">Equipamentos e catálogo semântico ↗</a></p>
+    <section class="audit-page" id="audit-page">
+      <header class="audit-toolbar">
+        <div class="audit-toolbar-copy">
+          <strong>Auditoria de equipamentos</strong>
+          <span>Usa o catálogo semântico para distinguir reconhecimento, pendências reais e estado de publicação sem confundir rascunho com atributo desconhecido.</span>
+        </div>
+        <div class="audit-actions">
+          <button class="admin-button" type="button" id="audit-reload">Recarregar auditoria</button>
+          <a class="admin-button" href="./equipments.html">Voltar</a>
+        </div>
+      </header>
+
+      <div id="audit-message" class="audit-message" role="status" aria-live="polite">Carregando dados reais...</div>
+
+      <section class="audit-guide">
+        <div class="audit-guide-head">
+          <div>
+            <h2>Como usar esta auditoria</h2>
+            <p>Vermelho exige ação da equipe; amarelo significa dado oficial ausente; azul identifica efeito informativo sem cálculo. Somente o vermelho representa uma pendência de correção.</p>
+          </div>
+          <button class="admin-button audit-primary" type="button" id="start-pending">Começar pelas pendências</button>
+        </div>
+        <div class="audit-steps">
+          <div class="audit-step"><b>1</b><strong>Veja o status</strong><span>Identifique as regras reconhecidas e o que precisa de revisão.</span></div>
+          <div class="audit-step"><b>2</b><strong>Leia o motivo</strong><span>Cada cartão explica se há erro, limitação externa ou apenas um efeito informativo.</span></div>
+          <div class="audit-step"><b>3</b><strong>Classifique sem adivinhar</strong><span>Uma regra nova pode ser calculável, informativa ou depender de dado oficial.</span></div>
+          <div class="audit-step"><b>4</b><strong>Não invente bases</strong><span>Se o jogo não fornece a base necessária, preserve o efeito e deixe o resultado final como indisponível.</span></div>
+        </div>
+      </section>
+
+      <section class="audit-summary" aria-label="Saúde dos dados auditados">
+        <article class="audit-summary-card ok"><small>Reconhecidos / informativos</small><strong id="sum-working">—</strong><span>Classificação estrutural; não comprova o cálculo ao herói.</span></article>
+        <article class="audit-summary-card warn"><small>Precisa de atenção</small><strong id="sum-attention">—</strong><span>Itens que merecem revisão ou atualização.</span></article>
+        <article class="audit-summary-card bad"><small>Não entra no cálculo</small><strong id="sum-not-calculated">—</strong><span>Erros ou regras sem definição que exigem ação da equipe.</span></article>
+        <article class="audit-summary-card external-data"><small>Aguardando dado oficial</small><strong id="sum-external-data">0</strong><span>Regras únicas de efeitos reais sem base pública suficiente para cálculo. Não contam como erro.</span></article>
+        <article class="audit-summary-card info"><small>Bônus antigos para atualizar</small><strong id="sum-old-bonuses">—</strong><span>Descrições antigas que ainda precisam de regra matemática explícita.</span></article>
+      </section>
+
+      <nav class="audit-nav" aria-label="Áreas da auditoria">
+        <button class="is-active" type="button" data-audit-tab="pending">Pendências</button>
+        <button type="button" data-audit-tab="healthy">Regras reconhecidas</button>
+        <button type="button" data-audit-tab="help">Ajuda e glossário</button>
+      </nav>
+
+      <section class="audit-panel" id="pending-panel" data-audit-view="pending">
+        <div class="audit-panel-head">
+          <div>
+            <h2>Pendências</h2>
+            <p>Somente situações que exigem decisão ou correção ficam aqui. Efeitos informativos e efeitos aguardando dados oficiais são separados dos erros.</p>
+          </div>
+        </div>
+        <div id="pending-results" class="audit-list"></div>
+      </section>
+
+      <section class="audit-panel" data-audit-view="healthy" hidden>
+        <div class="audit-panel-head">
+          <div>
+            <h2>Regras reconhecidas</h2>
+            <p>Regras reconhecidas, bônus estruturados e efeitos informativos ficam separados das pendências para não poluir o trabalho diário.</p>
+          </div>
+        </div>
+        <div id="healthy-results" class="audit-list"></div>
+      </section>
+
+      <section class="audit-panel" data-audit-view="help" hidden>
+        <div class="audit-panel-head">
+          <div>
+            <h2>Ajuda e glossário</h2>
+            <p>Termos usados pela ferramenta, orientações de decisão e histórico da equipe ficam concentrados nesta área.</p>
+          </div>
+        </div>
+        <div class="audit-list">
+          <details class="audit-help" open>
+            <summary>Como decidir quando aparece uma regra desconhecida</summary>
+            <div class="audit-help-body">
+              Use esta ordem: <b>1)</b> confira se é apenas outra escrita de um atributo já existente; <b>2)</b> se a mecânica é real mas falta uma base pública do jogo, use <b>“É efeito real, mas falta dado oficial”</b>; <b>3)</b> se a mecânica é real mas não representa um status matemático, use <b>“É efeito informativo / sem cálculo”</b>; <b>4)</b> se houver uma base real calculável, ela precisa de regra própria. Nunca associe uma mecânica a outro atributo só porque os nomes parecem parecidos.
+            </div>
+          </details>
+
+          <details class="audit-help" open>
+            <summary>Glossário</summary>
+            <div class="audit-help-body">
+              <div class="audit-glossary">
+                <div><strong>Valor-base</strong><span>Valor original necessário para transformar um modificador em resultado final.</span></div>
+                <div><strong>Aguardando dado oficial</strong><span>O efeito é conhecido e o cadastro pode estar correto, mas o jogo não fornece publicamente a base necessária para um cálculo confiável.</span></div>
+                <div><strong>Efeito informativo</strong><span>Mecânica real preservada para exibição, mas que por definição não representa um atributo matemático da build.</span></div>
+                <div><strong>Percentual sequencial</strong><span>Cada percentual é aplicado sobre o valor já atualizado pelo efeito anterior.</span></div>
+                <div><strong>Pontos percentuais</strong><span>Soma direta em um atributo que já é percentual, como 85% + 6 p.p. = 91%.</span></div>
+                <div><strong>Regra de cálculo</strong><span>Informação explícita dizendo qual atributo deve mudar e como o valor deve ser aplicado.</span></div>
+                <div><strong>Alias publicado</strong><span>Uma frase exata foi revisada e vinculada centralmente a atributo, contexto, unidade e operação.</span></div>
+              </div>
+            </div>
+          </details>
+
+          <details class="audit-help">
+            <summary>Alterações feitas nesta sessão</summary>
+            <div class="audit-help-body">
+              <p>Este histórico rápido serve para desfazer alterações feitas nesta tela enquanto ela estiver aberta. O histórico permanente da equipe é salvo separadamente no banco.</p>
+              <div id="session-history" class="audit-session-history"></div>
+            </div>
+          </details>
+
+          <details class="audit-help">
+            <summary>Ferramentas para desenvolvedores</summary>
+            <div class="audit-help-body">
+              <p>Use apenas para diagnóstico técnico ou manutenção do projeto.</p>
+              <div class="audit-dev-links">
+                <a class="admin-button" href="../tests/game-stat-engine.html" target="_blank" rel="noopener">Testes matemáticos</a>
+                <a class="admin-button" href="../tests/equipment-bonus-migration.html" target="_blank" rel="noopener">Testes de bônus 2/4/6</a>
+                <a class="admin-button" href="../tests/equipment-attribute-catalog.html" target="_blank" rel="noopener">Testes do catálogo de atributos</a>
+                <a class="admin-button" href="../tests/equipment-audit-queue.html" target="_blank" rel="noopener">Testes da fila de auditoria</a>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <div class="audit-modal" id="audit-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <section class="audit-modal-card">
+      <header class="audit-modal-head">
+        <small>CONFIRMAR ALTERAÇÃO</small>
+        <h3 id="confirm-title">Registrar regra de cálculo</h3>
+      </header>
+      <div class="audit-modal-body" id="confirm-body"></div>
+      <footer class="audit-modal-actions">
+        <button class="admin-button" type="button" id="confirm-cancel">Cancelar</button>
+        <button class="admin-button audit-primary" type="button" id="confirm-apply">Confirmar e registrar</button>
+      </footer>
+    </section>
+  </div>
+
+  <script type="module">
+    function fatal(title,error){document.body.innerHTML=`<main style="max-width:900px;margin:40px auto;padding:24px;font-family:Arial,sans-serif;color:#fff;background:#111a2e;border:1px solid #33415f;border-radius:14px"><h1>${title}</h1><pre style="white-space:pre-wrap;color:#ffb4bd"></pre></main>`;document.querySelector('pre').textContent=error?.stack||error?.message||String(error)}
+    try{
+      const shellModule=await import('./js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1');
+      const shell=await shellModule.initAdminShell({activeId:'equipment-audit',pageTitle:'Auditoria de equipamentos',pageSubtitle:'Saúde dos dados e regras de cálculo'});
+      if(!shell) throw new Error('O Admin Shell não foi inicializado.');
+      await import('./js/equipment-audit-v4.js?v=20260920-resolution-authority-1&sb=20260823-security-supabase-pin-1&sc=20260906-1&eq=20260907-effects-1');
+      await import('./js/equipment-audit-external-data-ui.js?v=5&sb=20260823-security-supabase-pin-1');
+      await import('./js/equipment-audit-queue-ui.js?v=7&sb=20260823-security-supabase-pin-1&eq=20260907-effects-1');
+      await import('./js/equipment-audit-informational-ui.js?v=2&sb=20260823-security-supabase-pin-1&eq=20260907-effects-1');
+      await import('./js/equipment-audit-history.js?v=3&sb=20260823-security-supabase-pin-1');
+    }catch(error){fatal('Erro ao carregar a auditoria',error)}
+  </script>
+</body>
+</html>

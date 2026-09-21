@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; frame-src 'none'; script-src 'self' https://esm.sh; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://nqklhsfaqpbjqmfzjzxk.supabase.co wss://nqklhsfaqpbjqmfzjzxk.supabase.co; img-src 'self' data: blob:; manifest-src 'self'; media-src 'none'; upgrade-insecure-requests">
+<title>Echo Arena Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/admin-login.css?v=20260823-security-mfa-1">
+<link rel="stylesheet" href="../css/echo-theme.css?v=1">
+</head>
+<body>
+<div class="card">
+  <div class="logo">ECHO <span>ARENA</span></div>
+  <div class="sub">Painel Administrativo · acesso por responsabilidade</div>
+  <label for="email">Email</label>
+  <input type="email" id="email" placeholder="admin@email.com" autocomplete="username">
+  <label for="password">Senha</label>
+  <input type="password" id="password" placeholder="********" autocomplete="current-password">
+  <button id="login" type="button">Entrar</button>
+  <div id="msg" role="status" aria-live="polite"></div>
+</div>
+<script type="module" src="./js/admin-login.js?v=20260904-persistent-aal2-1&sb=20260823-security-supabase-pin-1"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validador de Heróis — Echo Arena Admin</title>
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/admin-polish.css?v=20260821-admin-polish-1">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=1">
+  <style>
+    .hero-import-page{display:grid;gap:18px}.hero-import-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:end;padding:22px;border:1px solid rgba(130,151,190,.18);border-radius:17px;background:radial-gradient(circle at 88% 12%,rgba(139,92,246,.16),transparent 25rem),linear-gradient(145deg,#10192c,#09111e)}.hero-import-toolbar-copy small{display:block;color:#b99eff;font-size:9px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.hero-import-toolbar-copy strong{display:block;margin-top:7px;font-size:30px}.hero-import-toolbar-copy span{display:block;max-width:760px;margin-top:8px;color:var(--admin-muted);font-size:11.5px;line-height:1.6}.hero-import-toolbar-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.hero-import-safe-note{padding:13px 14px;border:1px solid #28583a;border-radius:11px;background:#0c1c14;color:#8fd3a6;font-size:11px;line-height:1.6}.hero-import-safe-note strong{color:#c7f5d6}.hero-import-progress{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.hero-import-step{min-width:0;padding:13px;border:1px solid var(--admin-line);border-radius:12px;background:var(--admin-panel)}.hero-import-step small{display:block;color:var(--admin-muted);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.hero-import-step strong{display:block;margin-top:5px;color:#dbe3f2;font-size:13px}.hero-import-step.is-active{border-color:#7656d8;background:#130e27}.hero-import-step.is-complete{border-color:#28583a;background:#0c1c14}.hero-import-grid{display:grid;grid-template-columns:minmax(330px,.9fr) minmax(0,1.1fr);gap:18px;align-items:start}.hero-import-card{min-width:0;padding:18px;border:1px solid rgba(130,151,190,.18);border-radius:14px;background:linear-gradient(145deg,rgba(18,29,49,.96),rgba(9,16,29,.98));box-shadow:0 16px 42px rgba(0,0,0,.12)}.hero-import-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:15px}.hero-import-heading h2{margin:0;font-size:18px}.hero-import-heading p{margin:6px 0 0;color:var(--admin-muted);font-size:11px;line-height:1.55}.hero-import-badge{flex:0 0 auto;padding:5px 8px;border:1px solid #28583a;border-radius:999px;background:#0c1c14;color:#8fd3a6;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}.hero-import-textarea{width:100%;min-height:370px;resize:vertical;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.hero-import-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.hero-import-hint{margin-top:12px;padding:11px 12px;border:1px solid var(--admin-line);border-radius:10px;background:#09111f;color:var(--admin-muted);font-size:10.5px;line-height:1.6}.hero-import-status{display:none;margin-bottom:12px;padding:11px 12px;border:1px solid var(--admin-line);border-radius:10px;background:#09111f;color:#c8cfdd;font-size:11px;line-height:1.55}.hero-import-status.is-visible{display:block}.hero-import-status.ok{border-color:#28583a;color:#8fd3a6;background:#0c1c14}.hero-import-status.warn{border-color:#6f5618;color:#ffd76d;background:#2a2009}.hero-import-status.error{border-color:#75353d;color:#ff9da5;background:#210d12}.hero-import-empty{padding:36px 18px;border:1px dashed var(--admin-line);border-radius:12px;background:#09111f;color:var(--admin-muted);text-align:center;font-size:12px;line-height:1.6}.hero-import-review{display:none;gap:14px}.hero-import-review.is-visible{display:grid}.hero-import-overview{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(180px,.8fr);gap:12px}.hero-import-identity,.hero-import-completion{padding:14px;border:1px solid var(--admin-line);border-radius:12px;background:#09111f}.hero-import-identity small,.hero-import-completion small{display:block;color:var(--admin-muted);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.hero-import-identity h3{margin:7px 0 0;font-size:24px}.hero-import-identity p{margin:6px 0 0;color:#aeb8ca;font-size:11px;line-height:1.5}.hero-import-completion strong{display:block;margin-top:7px;font-size:24px}.hero-import-bar{height:9px;margin-top:10px;overflow:hidden;border:1px solid var(--admin-line);border-radius:999px;background:#050a12}.hero-import-bar>span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#6d4aff,#a78bfa);transition:width .25s ease}.hero-import-section{padding:14px;border:1px solid var(--admin-line);border-radius:12px;background:#09111f}.hero-import-section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:11px}.hero-import-section-head h3{margin:0;font-size:14px}.hero-import-section-head span{color:var(--admin-muted);font-size:10px}.hero-import-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.hero-import-field{min-width:0;padding:10px;border:1px solid #1e2a40;border-radius:9px;background:#07101d}.hero-import-field.is-missing{border-style:dashed;border-color:#5f4e20}.hero-import-field small{display:block;color:#748097;font-size:8.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.hero-import-field strong{display:block;margin-top:4px;color:#dce3ef;font-size:12px;line-height:1.45;word-break:break-word}.hero-import-field.is-missing strong{color:#c8a954}.hero-import-warnings{display:grid;gap:7px}.hero-import-warning{padding:10px 11px;border:1px solid #6f5618;border-radius:9px;background:#2a2009;color:#ffd76d;font-size:10.5px;line-height:1.5}@media(max-width:980px){.hero-import-toolbar,.hero-import-grid{grid-template-columns:1fr}.hero-import-toolbar-actions{justify-content:flex-start}.hero-import-textarea{min-height:300px}}@media(max-width:760px){.hero-import-progress{grid-template-columns:1fr}.hero-import-overview,.hero-import-fields{grid-template-columns:1fr}}@media(max-width:460px){.hero-import-toolbar-actions,.hero-import-actions{width:100%}.hero-import-toolbar-actions .admin-button,.hero-import-actions .admin-button{width:100%}}
+  </style>
+</head>
+<body>
+  <div data-admin-content>
+    <main class="hero-import-page">
+      <header class="hero-import-toolbar">
+        <div class="hero-import-toolbar-copy">
+          <small>Heróis · validação assistida</small>
+          <strong>Validador JSON de Heróis</strong>
+          <span>Esta ferramenta valida e revisa o JSON no navegador. Ela não cria, atualiza nem publica heróis no Supabase.</span>
+        </div>
+        <div class="hero-import-toolbar-actions"><a class="admin-button" href="./hero-stats.html">Status</a><a class="admin-button" href="./hero-editor.html">Abrir editor</a><a class="admin-button primary" href="./heroes.html">Voltar para heróis</a></div>
+      </header>
+
+      <div class="hero-import-safe-note"><strong>Somente leitura.</strong> Validar um JSON nesta tela não altera dados reais. Para cadastrar ou editar um herói, use o editor operacional.</div>
+
+      <section class="hero-import-progress" aria-label="Fluxo real do validador">
+        <div class="hero-import-step is-active" data-step="json"><small>Etapa 1</small><strong>Colar JSON</strong></div>
+        <div class="hero-import-step" data-step="validate"><small>Etapa 2</small><strong>Validar dados</strong></div>
+        <div class="hero-import-step" data-step="review"><small>Etapa 3</small><strong>Revisar resultado</strong></div>
+      </section>
+
+      <section class="hero-import-grid">
+        <article class="hero-import-card">
+          <div class="hero-import-heading"><div><h2>Dados para validação</h2><p>Cole o objeto JSON completo. O validador aceita JSON puro ou envolvido por bloco de código.</p></div><span class="hero-import-badge">Somente leitura</span></div>
+          <textarea id="hero-import-json" class="admin-textarea hero-import-textarea" spellcheck="false" placeholder="Cole aqui o JSON do herói..."></textarea>
+          <div class="hero-import-actions"><button id="hero-import-validate" type="button" class="admin-button primary">Validar JSON</button><button id="hero-import-example" type="button" class="admin-button">Carregar exemplo</button><button id="hero-import-clear" type="button" class="admin-button">Limpar</button></div>
+          <div class="hero-import-hint">Nenhum botão desta tela grava dados. O exemplo serve apenas para testar o formato aceito pelo validador.</div>
+        </article>
+
+        <article class="hero-import-card">
+          <div class="hero-import-heading"><div><h2>Revisão da validação</h2><p>Campos reconhecidos, ausentes e inválidos aparecem aqui antes de qualquer uso no editor real.</p></div><span id="hero-import-review-badge" class="hero-import-badge">Aguardando</span></div>
+          <div id="hero-import-status" class="hero-import-status" role="status" aria-live="polite"></div>
+          <div id="hero-import-empty" class="hero-import-empty">Cole um JSON e toque em <strong>Validar JSON</strong>.</div>
+          <div id="hero-import-review" class="hero-import-review">
+            <div class="hero-import-overview">
+              <div class="hero-import-identity"><small>Herói reconhecido</small><h3 id="review-name">—</h3><p id="review-meta">—</p></div>
+              <div class="hero-import-completion"><small>Completude</small><strong id="review-completion">0%</strong><div class="hero-import-bar"><span id="review-completion-bar"></span></div></div>
+            </div>
+            <section class="hero-import-section"><div class="hero-import-section-head"><h3>Informações gerais</h3><span id="review-general-count">0 campos</span></div><div id="review-general" class="hero-import-fields"></div></section>
+            <section class="hero-import-section"><div class="hero-import-section-head"><h3>Status do herói</h3><span id="review-status-count">0 campos</span></div><div id="review-status-fields" class="hero-import-fields"></div></section>
+            <section class="hero-import-section"><div class="hero-import-section-head"><h3>Resumo da arma</h3><span id="review-weapon-summary-count">0 campos</span></div><div id="review-weapon-summary" class="hero-import-fields"></div></section>
+            <section class="hero-import-section"><div class="hero-import-section-head"><h3>Detalhes da arma</h3><span id="review-weapon-details-count">0 campos</span></div><div id="review-weapon-details" class="hero-import-fields"></div></section>
+            <section id="review-warnings-section" class="hero-import-section"><div class="hero-import-section-head"><h3>Avisos</h3><span id="review-warning-count">0</span></div><div id="review-warnings" class="hero-import-warnings"></div></section>
+            <div class="hero-import-safe-note">Validação concluída localmente no navegador. Nenhum dado foi enviado ou salvo.</div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="./js/hero-import.js?v=20260822-admin-nav-1&sb=20260823-security-supabase-pin-1&sc=20260906-1"></script>
+</body>
+</html>

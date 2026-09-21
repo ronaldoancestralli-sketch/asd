@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Códigos promocionais — Echo Arena Admin</title>
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/admin-polish.css?v=20260821-admin-polish-1">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=1">
+  <style>
+    .promo-admin{display:grid;gap:16px;max-width:1220px;margin:0 auto}
+    .promo-hero,.promo-panel{border:1px solid var(--admin-line);border-radius:18px;background:var(--admin-panel);box-shadow:0 18px 46px #0002}
+    .promo-hero{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;padding:22px}
+    .promo-eyebrow{display:block;color:#b99cff;font-size:10px;font-weight:900;letter-spacing:.14em}
+    .promo-hero h2{margin:5px 0 0;font:900 clamp(30px,5vw,42px)/.98 var(--ax-display,"Barlow Condensed",sans-serif);text-transform:uppercase}
+    .promo-hero p{max-width:720px;margin:9px 0 0;color:var(--admin-muted);font-size:11px;line-height:1.65}
+    .promo-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .promo-quick-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .promo-quick-fact{display:flex;align-items:center;gap:10px;min-height:54px;padding:11px 13px;border:1px solid #26334a;border-radius:13px;background:#09111e;color:#cdd6e6;font-size:10px;line-height:1.4}
+    .promo-quick-fact b{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;border-radius:9px;background:#1c1834;color:#c7aaff;font-size:14px}
+    .promo-layout{display:grid;grid-template-columns:minmax(300px,.82fr) minmax(0,1.18fr);gap:14px;align-items:start}
+    .promo-panel{padding:20px}
+    .promo-panel-header{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:16px}
+    .promo-panel-header h3{margin:0;font-size:15px}
+    .promo-panel-header p{margin:5px 0 0;color:var(--admin-muted);font-size:9px;line-height:1.55}
+    .promo-compose{position:sticky;top:16px}
+    .promo-form{display:grid;gap:14px}
+    .promo-field{display:grid;gap:7px}
+    .promo-field span{font-size:10px;font-weight:800;color:#cbd3e3}
+    .promo-field small{color:var(--admin-muted);font-size:8px;line-height:1.5}
+    .promo-field input{width:100%;min-height:46px;border:1px solid var(--admin-line);border-radius:11px;background:#07101d;color:#f2f5ff;padding:11px 12px;font:inherit}
+    .promo-field input:focus{border-color:#8168d6;outline:2px solid #8168d633;outline-offset:2px}
+    .promo-code-input{min-height:58px!important;font:800 19px/1 ui-monospace,SFMono-Regular,Menlo,monospace!important;letter-spacing:.08em}
+    .promo-form-status,.promo-status{min-height:20px;color:var(--admin-muted);font-size:10px;line-height:1.5}
+    .promo-status.error,.promo-form-status.error{color:#ff9ca7}
+    .promo-status.ok,.promo-form-status.ok{color:#69e2b1}
+    .promo-submit{min-width:176px}
+    .promo-admin-note{display:flex;gap:9px;padding:11px;border:1px solid #284259;border-radius:11px;background:#091824;color:#a9d6ec;font-size:9px;line-height:1.55}
+    .promo-admin-note strong{color:#d7effa}
+    .promo-options{border:1px solid #253149;border-radius:12px;background:#09111e}
+    .promo-options summary{display:flex;align-items:center;justify-content:space-between;min-height:46px;padding:0 13px;list-style:none;cursor:pointer;color:#cbd3e3;font-size:10px;font-weight:800}
+    .promo-options summary::-webkit-details-marker{display:none}
+    .promo-options summary::after{content:"+";color:#b99cff;font-size:20px}
+    .promo-options[open] summary::after{content:"−"}
+    .promo-options-grid{display:grid;gap:12px;padding:0 13px 13px}
+    .promo-list{display:grid;gap:10px;max-height:760px;overflow:auto;overscroll-behavior:contain;padding-right:2px}
+    .promo-item{border:1px solid var(--admin-line);border-radius:13px;background:#09111e;overflow:hidden}
+    .promo-item.active{border-color:#7456c7;background:#15122b}
+    .promo-item-main{display:block;width:100%;padding:14px;border:0;background:transparent;color:inherit;text-align:left;cursor:pointer}
+    .promo-item-main:hover{background:#ffffff05}
+    .promo-item-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+    .promo-item strong{display:block;min-width:0;overflow-wrap:anywhere}
+    .promo-item-meta{display:flex;flex-wrap:wrap;gap:5px 10px;margin-top:8px;color:var(--admin-muted);font-size:9px;line-height:1.45}
+    .promo-author{color:#c4b6e8}
+    .promo-pill{display:inline-flex;width:max-content;margin:0;padding:4px 7px;border:1px solid #324158;border-radius:999px;color:#9dacbf;font-size:7px;font-weight:900;text-transform:uppercase;white-space:nowrap}
+    .promo-pill.live{border-color:#235a48;color:#64e0ad;background:#0e251f}
+    .promo-pill.removed{border-color:#5d3540;color:#ff9aa8;background:#231116}
+    .promo-pill.expired{border-color:#62502a;color:#f0ca70;background:#211b0d}
+    .promo-item-actions{display:flex;justify-content:flex-end;gap:8px;padding:9px 12px;border-top:1px solid #202c40;background:#070e19}
+    .promo-inline-button{min-height:36px;border:1px solid #344158;border-radius:9px;background:#111b2a;color:#dce4f2;padding:7px 10px;font:700 9px/1.2 inherit;cursor:pointer}
+    .promo-inline-button.remove{border-color:#603744;color:#ffb0ba;background:#211218}
+    .promo-inline-button:hover{filter:brightness(1.12)}
+    .promo-empty{padding:26px 12px;text-align:center;color:var(--admin-muted);font-size:10px}
+    [hidden]{display:none!important}
+    @media(max-width:900px){
+      .promo-layout{grid-template-columns:1fr}
+      .promo-compose{position:static}
+      .promo-history{order:2}
+      .promo-quick-facts{grid-template-columns:1fr}
+      .promo-list{max-height:none}
+    }
+    @media(max-width:520px){
+      .promo-hero,.promo-panel{padding:16px}
+      .promo-actions,.promo-actions .admin-button{width:100%}
+      .promo-actions .admin-button{justify-content:center}
+      .promo-item-actions{justify-content:stretch}
+      .promo-inline-button{flex:1}
+    }
+    @media(pointer:coarse){
+      .promo-field input,.admin-button,.promo-item-main,.promo-inline-button,.promo-options summary{min-height:44px}
+    }
+  </style>
+</head>
+<body>
+  <div data-admin-content>
+    <section class="promo-admin">
+      <header class="promo-hero">
+        <div>
+          <span class="promo-eyebrow">PUBLICAÇÃO RÁPIDA</span>
+          <h2>Códigos promocionais</h2>
+          <p>Cole o código e publique. Fonte, validade e detalhes ajudam, mas são opcionais. O administrador e o horário ficam registrados automaticamente.</p>
+        </div>
+        <div class="promo-actions">
+          <button id="promo-new" class="admin-button primary" type="button">Novo promocode</button>
+          <button id="promo-preview" class="admin-button" type="button">Ver presente</button>
+        </div>
+      </header>
+
+      <div class="promo-quick-facts" aria-label="Resumo do fluxo">
+        <div class="promo-quick-fact"><b aria-hidden="true">1</b><span><strong>Um campo obrigatório:</strong> o código.</span></div>
+        <div class="promo-quick-fact"><b aria-hidden="true">✓</b><span><strong>Publicação imediata:</strong> ativo e confirmado automaticamente.</span></div>
+        <div class="promo-quick-fact"><b aria-hidden="true">↺</b><span><strong>Remoção reversível:</strong> sai do site sem apagar o histórico.</span></div>
+      </div>
+
+      <div id="promo-message" class="promo-status" role="status" aria-live="polite"></div>
+
+      <div class="promo-layout">
+        <article class="promo-panel promo-compose">
+          <header class="promo-panel-header">
+            <div>
+              <h3 id="promo-editor-title">Publicar agora</h3>
+              <p id="promo-editor-subtitle">O presente entra no site assim que o banco confirmar.</p>
+            </div>
+          </header>
+
+          <form id="promo-form" class="promo-form">
+            <input type="hidden" name="id">
+
+            <label class="promo-field">
+              <span>Código *</span>
+              <input class="promo-code-input" name="code" maxlength="160" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="COLE-O-CÓDIGO" required autofocus>
+              <small>O código continua protegido e só aparece ao jogador após curtir.</small>
+            </label>
+
+            <label class="promo-field">
+              <span>Recompensa <small>(opcional)</small></span>
+              <input name="reward" maxlength="240" placeholder="Ex.: moedas, baú ou skin">
+            </label>
+
+            <details class="promo-options">
+              <summary>Adicionar fonte, título ou validade</summary>
+              <div class="promo-options-grid">
+                <label class="promo-field">
+                  <span>Link da fonte <small>(opcional)</small></span>
+                  <input name="source_url" type="url" inputmode="url" maxlength="1000" placeholder="https://...">
+                  <small>Se houver, o link aparecerá nos detalhes do presente.</small>
+                </label>
+                <label class="promo-field">
+                  <span>Título <small>(opcional)</small></span>
+                  <input name="title" maxlength="140" placeholder="Novo código promocional de Bullet Echo">
+                </label>
+                <label class="promo-field">
+                  <span>Expira em <small>(opcional)</small></span>
+                  <input name="expires_at" type="datetime-local">
+                </label>
+              </div>
+            </details>
+
+            <div class="promo-admin-note">
+              <span aria-hidden="true">●</span>
+              <span><strong>Autoria automática.</strong> A conta administrativa conectada será registrada como responsável pela publicação ou atualização.</span>
+            </div>
+
+            <div id="promo-form-status" class="promo-form-status" role="status" aria-live="polite"></div>
+
+            <div class="promo-actions">
+              <button id="promo-submit" class="admin-button primary promo-submit" type="submit">Publicar agora</button>
+              <button id="promo-reset" class="admin-button" type="button">Cancelar</button>
+              <button id="promo-remove" class="admin-button danger" type="button" hidden>Remover do site</button>
+            </div>
+          </form>
+        </article>
+
+        <aside class="promo-panel promo-history">
+          <header class="promo-panel-header">
+            <div>
+              <h3>Publicados e removidos</h3>
+              <p>Selecione uma campanha para editar ou republicar. O autor original permanece visível.</p>
+            </div>
+          </header>
+          <div id="promo-list" class="promo-list">
+            <div class="promo-status">Carregando…</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell=await initAdminShell({
+      activeId:'promo-codes',
+      pageTitle:'Códigos promocionais',
+      pageSubtitle:'Cole, publique e remova sem etapas desnecessárias'
+    });
+    if(shell)await import('./js/promo-codes.js?v=20260831-promo-admin-fast-1&sb=20260823-security-supabase-pin-1');
+  </script>
+</body>
+</html>

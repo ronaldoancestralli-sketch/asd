@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Status dos heróis — Echo Arena Admin</title>
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/admin-polish.css?v=20260821-admin-polish-1">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=1">
+</head>
+<body>
+  <div data-admin-content>
+    <p><a class="admin-button" href="./status-central.html">Central de Status · vincular e provar cálculos ↗</a></p>
+    <section class="hero-status-page">
+      <header class="hero-status-hero">
+        <div>
+          <small>Heróis · visão operacional</small>
+          <h2>Status dos heróis</h2>
+          <p>Esta área substitui o antigo redirecionamento sem destino. Os números abaixo são lidos no momento da abertura a partir da view canônica de heróis e da tabela de habilidades; falhas de consulta aparecem como indisponíveis, nunca como zero inventado.</p>
+        </div>
+        <div class="hero-status-actions">
+          <button id="hero-status-refresh" class="admin-button" type="button">Atualizar leitura</button>
+          <a class="admin-button primary" href="./heroes.html">Abrir lista de heróis</a>
+        </div>
+      </header>
+
+      <section class="hero-status-grid" aria-label="Resumo operacional dos heróis">
+        <article class="hero-status-card">
+          <span>Total na view</span>
+          <strong id="hero-status-total">—</strong>
+          <small>Carregando estado real…</small>
+        </article>
+        <article class="hero-status-card">
+          <span>Heróis ativos</span>
+          <strong id="hero-status-active">—</strong>
+          <small>Carregando estado real…</small>
+        </article>
+        <article class="hero-status-card">
+          <span>Habilidades ativas</span>
+          <strong id="hero-status-skills">—</strong>
+          <small>Carregando estado real…</small>
+        </article>
+        <article class="hero-status-card">
+          <span>Mídia completa</span>
+          <strong id="hero-status-media">—</strong>
+          <small>Carregando estado real…</small>
+        </article>
+      </section>
+
+      <div id="hero-status-message" class="hero-status-message" role="status" aria-live="polite">Preparando leitura…</div>
+
+      <section class="hero-status-tools" aria-label="Ferramentas de heróis">
+        <a class="hero-status-tool" href="./hero-skill-audit.html">
+          <strong>Auditoria de habilidades</strong>
+          <span>Revise proveniência, histórico, confiança e pendências reais das habilidades cadastradas.</span>
+          <b>Abrir auditoria →</b>
+        </a>
+        <a class="hero-status-tool" href="./hero-editor.html">
+          <strong>Novo herói / editor</strong>
+          <span>Entre no fluxo operacional existente para cadastrar um novo herói ou editar os dados suportados.</span>
+          <b>Abrir editor →</b>
+        </a>
+        <a class="hero-status-tool" href="./hero-import.html">
+          <strong>Validador JSON</strong>
+          <span>Ferramenta de revisão em modo leitura. Ela valida a estrutura do JSON, mas não grava heróis automaticamente no Supabase.</span>
+          <b>Abrir validador →</b>
+        </a>
+      </section>
+    </section>
+  </div>
+
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell = await initAdminShell({
+      activeId: 'hero-stats',
+      pageTitle: 'Status dos heróis',
+      pageSubtitle: 'Heróis · visão operacional'
+    });
+    if (shell) await import('./js/hero-status-overview.js?v=20260821-admin-polish-1&sb=20260823-security-supabase-pin-1');
+  </script>
+</body>
+</html>

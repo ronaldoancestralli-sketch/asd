@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#060910">
+  <title>Laboratório Diversão — Echo Arena Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/diversao-lab.css?v=20260827-diversao-audit-v19-1">
+</head>
+<body>
+  <div data-admin-content>
+    <main class="fun-lab">
+      <section class="fun-lab-hero">
+        <div><div class="fun-lab-kicker">Qualidade · eventos determinísticos</div><h2>Laboratório da Diversão</h2><p>Dispare cada apresentação visual sem depender da probabilidade. Os cenários usam o roster atual sempre que a composição é possível e não gravam heróis, eventos, partidas ou métricas no banco.</p></div>
+        <span class="fun-lab-badge">Somente QA</span>
+      </section>
+
+      <section class="fun-lab-grid">
+        <aside class="fun-lab-controls">
+          <section class="fun-lab-panel">
+            <h3>Eventos do confronto</h3>
+            <p>Os eventos usam o runtime real da Diversão. No iPhone/WebKit, o teste abre a página pública em modo isolado para não manter Admin + iframe disputando memória/GPU; nenhuma animação, áudio ou arquivo do evento é removido.</p>
+            <div class="fun-lab-actions">
+              <button class="primary" type="button" data-lab-command="event" data-event-id="complete">Formação Completa</button>
+              <button type="button" data-lab-command="event" data-event-id="mirror">Confronto Espelho</button>
+              <button class="gold" type="button" data-lab-command="event" data-event-id="triple">Trinca Selada</button>
+              <button type="button" data-lab-command="event" data-event-id="perfect-chaos">Caos Perfeito</button>
+              <button type="button" data-lab-command="event" data-event-id="standard">Confronto padrão</button>
+              <button class="gold" type="button" data-lab-command="golden">Câmara Dourada</button>
+            </div>
+            <div id="diversao-lab-fixture-note" class="fun-lab-note" hidden><strong>Caos Perfeito:</strong> o roster cadastrado possui menos de seis classes distintas. Para testar apenas a apresentação visual desse evento, o laboratório cria nomes de classe temporários dentro do preview. Nada é salvo nem apresentado como dado real do jogo.</div>
+          </section>
+
+          <section class="fun-lab-panel">
+            <h3>Fluxo e recuperação</h3>
+            <p>No desktop, o preview continua embutido. No iPhone, cada teste usa uma execução isolada em tela cheia e retorna ao laboratório sem deixar o iframe pesado residente.</p>
+            <div class="fun-lab-actions">
+              <button class="primary" type="button" data-lab-command="random">Rodada aleatória real</button>
+              <button type="button" data-lab-command="reset">Limpar overlays</button>
+              <button id="diversao-lab-reload" type="button">Recarregar preview</button>
+              <a href="../diversao.html?v=20260827-diversao-ios-isolation-v21-1" target="_blank" rel="noopener">Abrir página pública ↗</a>
+            </div>
+          </section>
+
+          <section class="fun-lab-panel">
+            <h3>Telemetria desta sessão</h3>
+            <div class="fun-lab-status">
+              <article><span>Ponte QA</span><strong id="diversao-lab-status">Carregando</strong></article>
+              <article><span>Roster do preview</span><strong id="diversao-lab-roster">—</strong></article>
+              <article><span>Classes disponíveis</span><strong id="diversao-lab-classes">—</strong></article>
+              <article><span>Overlay</span><strong id="diversao-lab-overlay">Fechado</strong></article>
+            </div>
+            <div id="diversao-lab-log" class="fun-lab-log" aria-live="polite">Aguardando preview…</div>
+          </section>
+        </aside>
+
+        <section class="fun-lab-panel fun-lab-preview">
+          <header><strong>Preview real da página</strong><span>desktop: iframe same-origin · iPhone: runner isolado</span></header>
+          <iframe id="diversao-lab-frame" data-src="../diversao.html?qa=embedded-v21" title="Preview administrativo da página Diversão" hidden></iframe>
+        </section>
+      </section>
+      <p class="fun-lab-footer">O laboratório não substitui QA em dispositivo real. No iPhone, a própria execução isolada é o teste em dispositivo real: a página Diversão roda sem o peso concorrente do Admin e preserva integralmente o evento.</p>
+    </main>
+  </div>
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell = await initAdminShell({ activeId:'diversao-lab', pageTitle:'Laboratório Diversão', pageSubtitle:'Eventos, estabilidade e QA visual' });
+    if (shell) await import('./js/diversao-lab-mobile-v21.js?v=20260827-diversao-ios-isolation-v21-1');
+  </script>
+</body>
+</html>

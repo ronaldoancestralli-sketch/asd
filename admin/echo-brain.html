@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#060910">
+  <title>Echo Brain — Echo Arena Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/echo-brain.css?v=20260821-brain-2">
+  <link rel="stylesheet" href="./css/echo-brain-runtime.css?v=20260821-brain-3">
+  <link rel="stylesheet" href="./css/echo-brain-intelligence.css?v=20260821-brain-1">
+  <link rel="stylesheet" href="./css/echo-brain-emergency.css?v=20260821-brain-1">
+  <link rel="stylesheet" href="./css/echo-brain-final.css?v=20260822-brain-final-1">
+  <link rel="stylesheet" href="./css/echo-brain-seasons.css?v=20260822-brain-seasons-1">
+  <link rel="stylesheet" href="./css/echo-brain-equipment.css?v=20260823-brain-equipment-1">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=1">
+</head>
+<body data-admin-experience="true" data-echo-brain="true" data-brain-emergency="false">
+  <div data-admin-content>
+    <p><a class="admin-button" href="./status-central.html">Central de Status · vincular e provar cálculos ↗</a></p>
+    <section class="brain-page">
+      <section class="brain-hero">
+        <div class="brain-copy">
+          <span class="brain-kicker">CENTRO DE INTELIGÊNCIA · MEMÓRIA AUDITÁVEL</span>
+          <h2>Echo <em>Brain</em></h2>
+          <p>O Brain observa resultados verificáveis, treina candidatos fora da amostra de validação e exige Replay + Shadow prospectivo antes de qualquer influência pública. Promoção, drift, rollback e emergência continuam sob governança explícita.</p>
+          <div class="brain-state-row"><span id="brain-state-pill" class="brain-state-pill" data-tone="idle">SINCRONIZANDO</span><span id="brain-state-copy" class="brain-state-copy">Lendo pipeline, memória, runtime, saúde e confiança das fontes…</span></div>
+          <div class="brain-hero-metrics" aria-label="Resumo do Echo Brain">
+            <div class="brain-hero-metric"><span>Influência aprendida</span><strong id="brain-influence">—</strong><small>efetiva no score</small></div>
+            <div class="brain-hero-metric"><span>Partidas verificadas</span><strong id="brain-total-matches">—</strong><small>orgânicas elegíveis</small></div>
+            <div class="brain-hero-metric"><span>Trios conhecidos</span><strong id="brain-team-count">—</strong><small>orgânicos distintos</small></div>
+            <div class="brain-hero-metric"><span>Conhecimento-base</span><strong id="brain-skill-count">—</strong><small>habilidades ativas</small></div>
+          </div>
+        </div>
+        <div class="brain-core-wrap" aria-label="Mapa das fontes do Echo Brain">
+          <div id="brain-core" class="brain-core">
+            <div class="brain-core-center"><div><b>ECHO</b><small>BRAIN CORE</small></div></div>
+            <div class="brain-node" data-source="skills"><strong>Habilidades</strong><small id="brain-node-skills">—</small></div>
+            <div class="brain-node" data-source="trios"><strong>Trios</strong><small id="brain-node-trios">—</small></div>
+            <div class="brain-node" data-source="pairs"><strong>Pares</strong><small id="brain-node-pairs">—</small></div>
+            <div class="brain-node" data-source="metrics"><strong>Métricas</strong><small id="brain-node-metrics">—</small></div>
+            <div class="brain-node" data-source="matchups"><strong>Matchups</strong><small id="brain-node-matchups">—</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="brain-emergency-panel" class="brain-emergency-panel" data-active="false" aria-label="Modo de emergência do Echo Brain">
+        <div class="brain-emergency-copy">
+          <span class="brain-emergency-kicker">RECUPERAÇÃO · ISOLAMENTO IMEDIATO</span>
+          <h3>Modo de emergência</h3>
+          <p id="brain-emergency-copy">Use somente quando houver risco de o Brain afetar a operação. Acionar não apaga modelos, pesos, avaliações ou histórico.</p>
+          <span id="brain-emergency-state" class="brain-emergency-state">SINCRONIZANDO</span>
+        </div>
+        <div class="brain-emergency-control">
+          <strong id="brain-emergency-reason">Verificando estado da trava…</strong>
+          <small id="brain-emergency-time">Aguardando runtime</small>
+          <button id="brain-emergency-toggle" class="admin-button" type="button">Carregando proteção</button>
+          <span id="brain-emergency-message" class="brain-emergency-message" role="status" aria-live="polite"></span>
+        </div>
+      </section>
+
+      <section class="brain-section brain-runtime-section">
+        <header class="brain-section-head"><div><span>CONTROLE OPERACIONAL</span><h3>O cérebro nunca assume o controle sozinho</h3><p>O kill switch define se um modelo validado pode influenciar o site. A liberação agora também exige Replay e evidência Shadow suficiente.</p></div><small id="brain-runtime-updated">Runtime sincronizando</small></header>
+        <div class="brain-runtime-grid">
+          <article class="brain-runtime-card"><span>Kill switch</span><strong id="brain-runtime-learning">—</strong><small id="brain-runtime-learning-copy">Aguardando estado</small></article>
+          <article class="brain-runtime-card"><span>Teto de influência</span><strong id="brain-runtime-max">—</strong><small>limite absoluto do histórico</small></article>
+          <article class="brain-runtime-card"><span>Modelo ativo</span><strong id="brain-runtime-model">—</strong><small id="brain-runtime-model-copy">Nenhum modelo selecionado</small></article>
+          <article class="brain-runtime-card"><span>Automações</span><strong id="brain-runtime-auto">—</strong><small>treino e promoção</small></article>
+        </div>
+        <div class="brain-runtime-actions">
+          <label><span>Limite de influência</span><input id="brain-runtime-range" type="range" min="0" max="55" step="1" value="35"><b id="brain-runtime-range-value">35%</b></label>
+          <button id="brain-runtime-save" class="admin-button" type="button">Salvar limite</button>
+          <button id="brain-kill-switch" class="admin-button danger" type="button" disabled>Kill switch indisponível sem modelo ativo</button>
+          <span id="brain-runtime-message" role="status" aria-live="polite"></span>
+        </div>
+      </section>
+
+      <section class="brain-section brain-health-section">
+        <div class="brain-health-head">
+          <div><span class="brain-kicker">SAÚDE PÓS-ATIVAÇÃO</span><h3>Drift é medido só com comportamento novo</h3><p class="brain-health-copy" id="brain-health-copy">Aguardando modelo ativo.</p></div>
+          <span id="brain-health-pill" class="brain-health-pill" data-tone="idle">SEM MODELO</span>
+        </div>
+        <div class="brain-health-grid">
+          <article class="brain-health-card"><span>Partidas novas</span><strong id="brain-health-matches">—</strong><small>somente após a ativação</small></article>
+          <article class="brain-health-card"><span>Brier modelo / baseline</span><strong id="brain-health-brier">—</strong><small>menor é melhor</small></article>
+          <article class="brain-health-card"><span>Drift funcional</span><strong id="brain-health-feature">—</strong><small>mudança média nas features</small></article>
+          <article class="brain-health-card"><span>Gap de performance</span><strong id="brain-health-gap">—</strong><small>positivo indica piora vs baseline</small></article>
+        </div>
+        <div id="brain-drift-features" class="brain-drift-features"><div class="dashboard-empty">Sem janela pós-ativação suficiente para apontar mudanças funcionais.</div></div>
+        <div class="brain-health-actions"><button id="brain-evaluate-model" class="admin-button" type="button" disabled>Reavaliação indisponível sem modelo</button><span id="brain-health-meta">A primeira avaliação exige novas partidas verificadas após a ativação.</span></div>
+        <div id="brain-intelligence-message" class="brain-learning-note" role="status" aria-live="polite"></div>
+      </section>
+
+      <section class="brain-section brain-equipment-panel" id="brain-equipment-panel">
+        <div class="brain-equipment-head">
+          <div><span class="brain-kicker">MEMÓRIA DE EQUIPAMENTOS · PATCH AWARE</span><h3>Buffs, nerfs e mudanças de comportamento não sobrescrevem o passado</h3><p id="brain-equipment-copy">Sincronizando versões dos equipamentos.</p></div>
+          <span id="brain-equipment-state" class="brain-equipment-state" data-tone="warning">SINCRONIZANDO</span>
+        </div>
+        <div class="brain-equipment-grid">
+          <article class="brain-equipment-card"><span>Versões registradas</span><strong id="brain-equipment-versions">—</strong><small>estados imutáveis por item</small></article>
+          <article class="brain-equipment-card"><span>Itens alterados</span><strong id="brain-equipment-dirty">—</strong><small>fila de reconciliação</small></article>
+          <article class="brain-equipment-card"><span>Recomendações obsoletas</span><strong id="brain-equipment-invalidations">—</strong><small>aguardando reavaliação</small></article>
+          <article class="brain-equipment-card"><span>Mudanças de comportamento</span><strong id="brain-equipment-training">—</strong><small>exigem novo aprendizado</small></article>
+        </div>
+        <div class="brain-equipment-actions">
+          <button id="brain-equipment-bootstrap" class="admin-button" type="button">Criar baseline dos itens atuais</button>
+          <button id="brain-equipment-reconcile" class="admin-button" type="button">Reconciliar itens alterados</button>
+          <span id="brain-equipment-message" class="brain-equipment-message" role="status" aria-live="polite"></span>
+        </div>
+        <div class="brain-equipment-rule"><b>Regra:</b> mudança numérica conhecida pode ser classificada como buff/nerf; mudança sem direção comprovável fica como alteração numérica. Troca de gatilho, alvo, efeito, duração, atributo, raridade ou bônus de conjunto invalida o conhecimento afetado até nova avaliação. Edição apenas editorial não altera a confiança de combate.</div>
+      </section>
+
+      <section class="brain-section">
+        <header class="brain-section-head"><div><span>EXPLICABILIDADE</span><h3>O que o Brain aprendeu</h3><p>Os pesos abaixo são associações do modelo com desempenho observado. Eles ajudam a auditar a decisão; não são tratados como prova causal.</p></div><small id="brain-learning-model">Nenhum modelo</small></header>
+        <div class="brain-learning-grid">
+          <div class="brain-learning-column"><div class="brain-learning-title"><b>Ganhou peso</b><span>associação positiva</span></div><div id="brain-learning-positive" class="brain-learning-list"><div class="dashboard-empty">Aguardando modelo.</div></div></div>
+          <div class="brain-learning-column"><div class="brain-learning-title"><b>Perdeu peso</b><span>associação negativa</span></div><div id="brain-learning-negative" class="brain-learning-list"><div class="dashboard-empty">Aguardando modelo.</div></div></div>
+          <div class="brain-learning-column"><div class="brain-learning-title"><b>Mudou</b><span>vs versão anterior</span></div><div id="brain-learning-delta" class="brain-learning-list"><div class="dashboard-empty">Aguardando versões comparáveis.</div></div></div>
+        </div>
+        <p class="brain-learning-note">O Brain nunca deve transformar um coeficiente isolado em recomendação absoluta. A leitura pública continua combinando habilidades, evidência histórica e limites de influência.</p>
+      </section>
+
+      <section class="brain-section">
+        <header class="brain-section-head"><div><span>MEMÓRIA OBSERVACIONAL</span><h3>O que o cérebro realmente sabe</h3><p>O pipeline individual verificado é a fonte de treino. Agregados legados, composições salvas, cliques, views e popularidade não são tratados como labels de desempenho.</p></div><small id="brain-last-sync">Aguardando leitura</small></header>
+        <div id="brain-memory-grid" class="brain-memory-grid"><div class="dashboard-empty">Sincronizando memória…</div></div>
+      </section>
+
+      <section class="brain-section brain-readiness">
+        <div>
+          <header class="brain-section-head"><div><span>PRONTIDÃO DE TREINO</span><h3>Quando aprender é estatisticamente aceitável</h3><p>Os mínimos abaixo agora contam apenas observações verificadas e orgânicas elegíveis ao treino.</p></div></header>
+          <div class="brain-readiness-list">
+            <article class="brain-readiness-row"><header><b>Trios distintos verificados</b><span id="brain-ready-trios-label">—</span></header><div class="brain-progress"><i id="brain-ready-trios"></i></div></article>
+            <article class="brain-readiness-row"><header><b>Partidas orgânicas verificadas</b><span id="brain-ready-matches-label">—</span></header><div class="brain-progress"><i id="brain-ready-matches"></i></div></article>
+            <article class="brain-readiness-row"><header><b>Janela mínima de validação</b><span id="brain-ready-validation-label">—</span></header><div class="brain-progress"><i id="brain-ready-validation"></i></div></article>
+          </div>
+        </div>
+        <aside class="brain-readiness-note"><span class="brain-kicker">GOVERNANÇA PRIMEIRO</span><strong id="brain-readiness-title">Aguardando memória</strong><p id="brain-readiness-copy">O aprendizado permanece com 0% de influência até existir base real suficiente e um candidato validado.</p><button type="button" disabled>Aguardando dados para treinamento</button></aside>
+      </section>
+
+      <section class="brain-section">
+        <header class="brain-section-head"><div><span>MEMÓRIA DE MODELOS</span><h3>Versões, treino e rollback ficam rastreáveis</h3><p>Uma versão só pode voltar por rollback se já tiver sido ativa e validada. Toda troca força o kill switch novamente para 0%.</p></div></header>
+        <div class="brain-registry-grid">
+          <div><div class="brain-registry-title"><b>Modelos</b><span id="brain-model-count">—</span></div><div id="brain-model-list" class="brain-registry-list"><div class="dashboard-empty">Carregando versões…</div></div></div>
+          <div><div class="brain-registry-title"><b>Treinamentos</b><span id="brain-training-count">—</span></div><div id="brain-training-list" class="brain-registry-list"><div class="dashboard-empty">Carregando histórico…</div></div></div>
+        </div>
+      </section>
+
+      <section class="brain-section">
+        <header class="brain-section-head"><div><span>HISTÓRICO OPERACIONAL</span><h3>As decisões do Brain deixam rastro</h3><p>Ingestões, Shadow, Backtests, promoções, rollbacks, emergências, runtime e avaliações ficam separados da memória competitiva.</p></div></header>
+        <div id="brain-operation-history" class="brain-history-list"><div class="dashboard-empty">Nenhuma ação operacional registrada.</div></div>
+      </section>
+
+      <section class="brain-section">
+        <header class="brain-section-head"><div><span>GOVERNANÇA</span><h3>Quem controla o cérebro</h3><p>Treino, Replay, Shadow, promoção, avaliação, rollback e emergência precisam ser rastreáveis. O Data API não possui grants genéricos para as tabelas internas do Brain.</p></div></header>
+        <div class="brain-governance-grid">
+          <article id="brain-model-registry" class="brain-governance-card" data-state="pending"><span>Registro de modelos</span><strong>Verificando…</strong><p>Versiona pesos, dataset, algoritmo, validação e status.</p></article>
+          <article id="brain-training-registry" class="brain-governance-card" data-state="pending"><span>Histórico de treino</span><strong>Verificando…</strong><p>Registra tentativas aprovadas, rejeitadas e suspensas.</p></article>
+          <article class="brain-governance-card" data-state="ok"><span>Drift</span><strong>Pós-ativação</strong><p>Usa partidas verificadas ocorridas depois que a versão entrou em operação.</p></article>
+          <article class="brain-governance-card" data-state="ok"><span>Rollback</span><strong>Manual + kill switch</strong><p>Exige versão previamente ativa, motivo operacional e volta com influência desligada.</p></article>
+          <article class="brain-governance-card" data-state="ok"><span>Emergência</span><strong>Isolamento sem perda</strong><p>Força 0%, bloqueia processamento de aprendizado e preserva toda a memória para investigação.</p></article>
+        </div>
+      </section>
+
+      <section class="brain-section">
+        <header class="brain-section-head"><div><span>CICLO DE VIDA</span><h3>Como um modelo chega — e sai — do site</h3><p>O caminho final é conservador: dados verificados → treino → Replay → Shadow → promoção → liberação explícita. Drift e emergência nunca trocam modelo automaticamente.</p></div></header>
+        <div id="brain-lifecycle" class="brain-lifecycle">
+          <article class="brain-life-step" data-step="cold-start"><b>Cold start</b><span>Sem observações verificadas suficientes. O motor funcional continua soberano.</span></article>
+          <article class="brain-life-step" data-step="observing"><b>Observando</b><span>Dados reais chegaram, mas ainda não sustentam uma decisão.</span></article>
+          <article class="brain-life-step" data-step="candidate"><b>Candidato</b><span>Treino temporal, Replay auditável e Shadow antes da influência.</span></article>
+          <article class="brain-life-step" data-step="active"><b>Ativo</b><span>Modelo aprovado só influencia após a barreira final de Replay + Shadow.</span></article>
+          <article class="brain-life-step" data-step="suspended"><b>Suspenso</b><span>Kill switch ou decisão humana devolvem a influência a 0%.</span></article>
+          <article class="brain-life-step" data-step="emergency"><b>Emergência</b><span>Brain isolado: 0% de influência, processamento congelado e memória preservada.</span></article>
+        </div>
+      </section>
+
+      <div class="brain-audit-note"><strong>Escopo concluído:</strong> o Echo Brain possui pipeline auditável, treino temporal, Replay/Backtest, Shadow Champion vs Challenger, explicabilidade, drift, rollback, emergência e memória versionada de equipamentos. Mudanças de item entram por baseline + diff semântico e ficam pendentes até reconciliação quando necessário.</div>
+    </section>
+  </div>
+
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell = await initAdminShell({ activeId:'echo-brain', pageTitle:'Echo Brain', pageSubtitle:'Pipeline, Shadow, Replay, aprendizado e recuperação' });
+    if (shell) {
+      await import('./js/echo-brain.js?v=20260822-brain-final-1&sb=20260823-security-supabase-pin-1');
+      await import('./js/echo-brain-training-ui.js?v=20260822-brain-final-1&sb=20260823-security-supabase-pin-1');
+      await import('./js/echo-brain-intelligence-ui.js?v=20260822-brain-final-1&sb=20260823-security-supabase-pin-1');
+      await import('./js/echo-brain-emergency-ui.js?v=20260822-brain-final-1&sb=20260823-security-supabase-pin-1');
+      await import('./js/echo-brain-final-ui.js?v=20260822-brain-final-1&sb=20260823-security-supabase-pin-1');
+      await import('./js/echo-brain-seasons-ui.js?v=20260822-brain-seasons-1&sb=20260823-security-supabase-pin-1');
+      await import('./js/echo-brain-equipment-ui.js?v=20260905-operator-consistency-1&sb=20260823-security-supabase-pin-1&sc=20260906-1&eq=20260907-effects-1');
+    }
+  </script>
+</body>
+</html>

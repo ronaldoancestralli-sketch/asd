@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#060910">
+  <title>Counter Knowledge V5 — Echo Arena Admin</title>
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/hero-counter-lab.css?v=20260825-counter-v5-shadow-1">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=1">
+</head>
+<body data-admin-experience="true" data-counter-shadow="true">
+  <div data-admin-content>
+    <section class="counter-lab">
+      <header class="counter-hero">
+        <div>
+          <span class="counter-shadow">SHADOW · NÃO PÚBLICO</span>
+          <h2>Counter Knowledge V5</h2>
+          <p>Cadastre passivas, transforme descrições em fatos semânticos revisáveis e compare heróis por cadeia causal. Sugestões automáticas nunca entram no cálculo até serem confirmadas por um administrador.</p>
+        </div>
+        <div class="counter-actions"><a class="admin-button" href="./echo-brain.html">← Echo Brain</a><button id="counter-refresh" class="admin-button primary" type="button">Recarregar</button></div>
+      </header>
+
+      <div id="counter-schema-message" class="counter-message" role="status" aria-live="polite"></div>
+
+      <section class="counter-grid">
+        <div class="counter-panel">
+          <h3>1. Coleta de conhecimento</h3>
+          <p>Escolha um herói. As quatro habilidades existentes continuam intactas; passivas são cadastradas separadamente.</p>
+          <div class="counter-fields">
+            <div class="counter-field full"><label for="knowledge-hero">Herói</label><select id="knowledge-hero" class="admin-select"><option value="">Selecione</option></select></div>
+          </div>
+          <div id="knowledge-summary" class="counter-list"></div>
+          <div id="skills-list" class="counter-list"></div>
+          <div id="passives-list" class="counter-list"></div>
+        </div>
+
+        <div class="counter-panel">
+          <h3>2. Cadastrar passiva</h3>
+          <p>Transcreva somente o que o jogo ou uma fonte verificável informa. Valores ausentes permanecem vazios.</p>
+          <form id="passive-form">
+            <input type="hidden" name="id">
+            <div class="counter-fields">
+              <div class="counter-field"><label>Nome</label><input class="admin-input" name="name" maxlength="160" required></div>
+              <div class="counter-field"><label>Tipo</label><select class="admin-select" name="passive_type"><option value="always_on">Sempre ativa</option><option value="active_linked">Ligada a habilidade ativa</option><option value="conditional" selected>Condicional</option><option value="aura">Aura</option><option value="team">Equipe</option><option value="other">Outro</option></select></div>
+              <div class="counter-field"><label>Gatilho</label><select class="admin-select" name="trigger_type"><option value="always">Sempre</option><option value="on_activate">Ao ativar</option><option value="on_hit">Ao acertar</option><option value="on_kill">Ao eliminar</option><option value="on_damage_taken">Ao receber dano</option><option value="after_invisibility">Após invisibilidade</option><option value="while_invisible">Durante invisibilidade</option><option value="low_health">Vida baixa</option><option value="target_revealed">Alvo revelado</option><option value="near_enemy">Inimigo próximo</option><option value="team_nearby">Equipe próxima</option><option value="conditional" selected>Condicional</option><option value="other">Outro</option></select></div>
+              <div class="counter-field"><label>Patch</label><input class="admin-input" name="verified_patch" maxlength="120" placeholder="Ex.: 6.4.0"></div>
+              <div class="counter-field full"><label>Descrição / transcrição fiel</label><textarea class="admin-input" name="description" rows="5" maxlength="6000" required></textarea></div>
+              <div class="counter-field full"><label>Condição explícita</label><textarea class="admin-input" name="condition_text" rows="2" maxlength="1200"></textarea></div>
+              <div class="counter-field"><label>Duração (s)</label><input class="admin-input" name="duration_seconds" type="number" min="0" step="0.01"></div>
+              <div class="counter-field"><label>Cooldown (s)</label><input class="admin-input" name="cooldown_seconds" type="number" min="0" step="0.01"></div>
+              <div class="counter-field"><label>Verificação</label><select class="admin-select" name="verification_status"><option value="unverified">Não verificado</option><option value="corroborated">Corroborado</option><option value="verified">Verificado</option></select></div>
+              <div class="counter-field"><label>Fonte</label><select class="admin-select" name="source_id"><option value="">Sem vínculo</option></select></div>
+              <div class="counter-field full"><label><input name="needs_recheck" type="checkbox" checked> Precisa rechecagem antes de participar de análise confiável</label></div>
+              <div class="counter-field full"><label>Nota de verificação</label><textarea class="admin-input" name="verification_note" rows="2" maxlength="1600"></textarea></div>
+            </div>
+            <div class="counter-actions"><button class="admin-button primary" type="submit">Salvar passiva</button><button id="passive-reset" class="admin-button" type="button">Nova passiva</button></div>
+          </form>
+          <div id="passive-message" class="counter-message" role="status" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="counter-grid">
+        <div class="counter-panel">
+          <h3>3. Interpretador semântico</h3>
+          <p>Ele propõe fatos e deixa todos desmarcados por padrão; você decide quais são realmente sustentados pela descrição e pela fonte.</p>
+          <input id="analyzer-hero-id" type="hidden"><input id="analyzer-source-kind" type="hidden"><input id="analyzer-source-id" type="hidden">
+          <div class="counter-fields">
+            <div class="counter-field full"><label for="analyzer-title">Origem</label><input id="analyzer-title" class="admin-input" readonly></div>
+            <div class="counter-field full"><label for="analyzer-text">Texto analisado</label><textarea id="analyzer-text" class="admin-input" rows="5" maxlength="6000"></textarea></div>
+          </div>
+          <div class="counter-actions"><button id="analyzer-run" class="admin-button" type="button">Analisar texto</button><button id="analyzer-save" class="admin-button primary" type="button" disabled>Confirmar fatos selecionados</button></div>
+          <div id="analyzer-message" class="counter-message"></div>
+          <div id="analyzer-suggestions" class="counter-suggestions"></div>
+        </div>
+
+        <div class="counter-panel">
+          <h3>Fatos confirmados do herói</h3>
+          <p>Somente fatos confirmados, corroborados/verificados e sem rechecagem pendente podem influenciar o Counter Engine.</p>
+          <div id="facts-list" class="counter-list"></div>
+        </div>
+      </section>
+
+      <section class="counter-grid">
+        <div class="counter-panel">
+          <h3>4. Comparação Shadow</h3>
+          <p>O resultado mede interação direta de mecanismos. Não representa chance de vitória.</p>
+          <div class="counter-fields">
+            <div class="counter-field"><label for="counter-a">Herói A</label><select id="counter-a" class="admin-select"><option value="">Selecione</option></select></div>
+            <div class="counter-field"><label for="counter-b">Herói B</label><select id="counter-b" class="admin-select"><option value="">Selecione</option></select></div>
+          </div>
+          <div class="counter-actions"><button id="counter-compare" class="admin-button primary" type="button">Comparar</button><button id="counter-matrix-run" class="admin-button" type="button">Gerar matriz Shadow</button></div>
+          <div id="counter-result" class="counter-result"><h4>Aguardando comparação</h4><p>Selecione dois heróis com fatos confirmados.</p></div>
+        </div>
+
+        <div class="counter-panel">
+          <h3>5. Revisão humana</h3>
+          <p>Salve sua avaliação para calibrar o motor. Isso não é tratado como resultado de partida.</p>
+          <form id="review-form">
+            <div class="counter-fields">
+              <div class="counter-field"><label>Veredito</label><select class="admin-select" name="verdict"><option value="uncertain">Incerto</option><option value="a_strong_counter">A counter forte</option><option value="a_counter">A counter</option><option value="a_slight">Leve vantagem A</option><option value="no_direct_counter">Sem counter direto</option><option value="b_slight">Leve vantagem B</option><option value="b_counter">B counter</option><option value="b_strong_counter">B counter forte</option></select></div>
+              <div class="counter-field"><label>Confiança da revisão</label><input class="admin-input" name="reviewer_confidence" type="number" min="0" max="1" step="0.05" value="0.8"></div>
+              <div class="counter-field"><label>Patch</label><input class="admin-input" name="patch" maxlength="120"></div>
+              <div class="counter-field full"><label>Observação</label><textarea class="admin-input" name="notes" rows="4" maxlength="2400"></textarea></div>
+            </div>
+            <div class="counter-actions"><button class="admin-button primary" type="submit">Salvar revisão</button></div>
+          </form>
+          <div id="review-message" class="counter-message"></div>
+          <h3 style="margin-top:16px">Matriz com evidência</h3>
+          <div id="counter-matrix" class="counter-matrix"></div>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell=await initAdminShell({activeId:'echo-brain',pageTitle:'Counter Knowledge V5',pageSubtitle:'Passivas, fatos e counters em Shadow'});
+    if(shell) await import('./js/hero-counter-lab.js?v=20260825-counter-v5-shadow-2&sb=20260823-security-supabase-pin-1');
+  </script>
+</body>
+</html>

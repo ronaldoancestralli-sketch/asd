@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Echo Pulse — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/admin-polish.css?v=20260821-admin-polish-1">
+  <link rel="stylesheet" href="./css/echo-pulse.css?v=20260821-pulse-admin-2">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=1">
+</head>
+<body>
+  <div data-admin-content>
+  <section class="pulse-admin-page">
+    <section class="pulse-admin-hero">
+      <div><span class="pulse-admin-kicker">ACESSO INTERNO · SOMENTE ADMIN</span><h2>Echo Pulse</h2><p>A coleta encontra. A Inbox organiza. O Admin revisa e prepara. Enquanto o módulo estiver “Em breve”, nenhuma publicação é liberada para visitantes ou contas cadastradas.</p></div>
+      <div class="pulse-admin-hero-actions"><button id="pulse-refresh-now" class="admin-button primary" type="button">Atualizar agora</button><a class="admin-button" href="../noticias.html" target="_blank" rel="noopener noreferrer">Abrir prévia privada ↗</a></div>
+    </section>
+
+    <div id="pulse-admin-message" class="pulse-admin-message" role="status" aria-live="polite"></div>
+
+    <section class="pulse-admin-metrics">
+      <article><span>Inbox</span><strong id="pulse-metric-inbox">—</strong><small>Aguardando triagem</small></article>
+      <article><span>Em revisão</span><strong id="pulse-metric-review">—</strong><small>Curadoria iniciada</small></article>
+      <article><span>Aprovados</span><strong id="pulse-metric-approved">—</strong><small>Prontos para preparação</small></article>
+      <article><span>Preparados</span><strong id="pulse-metric-published">—</strong><small>Estado interno; público bloqueado</small></article>
+      <article><span>Fontes automáticas</span><strong id="pulse-metric-sources">—</strong><small>Coleta habilitada</small></article>
+    </section>
+
+    <section class="pulse-admin-controlbar">
+      <div id="pulse-status-tabs" class="pulse-admin-tabs"><button class="is-active" data-status="inbox" type="button">Inbox</button><button data-status="review" type="button">Revisão</button><button data-status="approved" type="button">Aprovados</button><button data-status="published" type="button">Preparados</button><button data-status="ignored" type="button">Ignorados</button><button data-status="all" type="button">Tudo</button></div>
+      <label class="pulse-admin-search">⌕ <input id="pulse-admin-search" type="search" placeholder="Buscar título ou fonte"></label>
+    </section>
+
+    <section class="pulse-admin-layout">
+      <div>
+        <div id="pulse-inbox-state" class="pulse-admin-empty">Carregando Inbox…</div>
+        <div id="pulse-inbox" class="pulse-admin-list"></div>
+      </div>
+      <aside class="pulse-admin-side">
+        <section><header><span>COLETA</span><h3>Fontes registradas</h3></header><div id="pulse-source-list" class="pulse-source-list"></div></section>
+        <section><header><span>EXECUÇÕES</span><h3>Histórico recente</h3></header><div id="pulse-run-list" class="pulse-run-list"></div></section>
+        <div class="pulse-admin-safety"><strong>Modo privado ativo</strong><p><code>auto_publish=false</code> continua obrigatório, e as policies públicas de <code>pulse_items</code> e <code>pulse_item_heroes</code> foram removidas. Usuários comuns não leem o Pulse pela Data API.</p></div>
+      </aside>
+    </section>
+  </section>
+  </div>
+  <script type="module" src="./js/echo-pulse.js?v=20260822-admin-nav-1&sb=20260823-security-supabase-pin-1&sc=20260906-1"></script>
+</body>
+</html>

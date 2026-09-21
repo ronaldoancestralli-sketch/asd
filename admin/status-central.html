@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Central de Status — Echo Arena Brain</title>
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=1">
+  <link rel="stylesheet" href="./css/status-central.css?v=20260906-1&sc=20260906-1&eq=20260907-effects-1&ux=20260908-1">
+</head>
+<body>
+<div data-admin-content>
+<main class="sc" id="status-central">
+  <header class="sc-hero">
+    <div><span class="sc-eyebrow">EQUIPAMENTOS E CÁLCULO</span><h1>Central de Status</h1><p>Escolha o efeito, ajuste onde ele atua e veja o resultado.</p></div>
+    <div class="sc-hero-actions"><a href="./equipment-audit.html" class="admin-button">Abrir Auditoria ↗</a><button type="button" id="sc-refresh" class="admin-button">Atualizar leitura</button><span id="sc-revision">Consultando registro…</span></div>
+  </header>
+  <div id="sc-message" class="sc-message" role="status" aria-live="polite">Carregando dados reais do catálogo e dos heróis…</div>
+  <div class="sc-workspace-nav">
+    <button type="button" class="admin-button primary" data-sc-tab="guided" aria-pressed="true">Configurar equipamento</button>
+    <details id="sc-advanced-tools"><summary>Ferramentas avançadas</summary>
+  <nav class="sc-tabs" aria-label="Ferramentas avançadas da Central">
+    <button type="button" data-sc-tab="overview" aria-pressed="false">Diagnóstico</button>
+    <button type="button" data-sc-tab="stats" aria-pressed="false">Status e bases</button>
+    <button type="button" data-sc-tab="bindings" aria-pressed="false">Vincular efeitos</button>
+    <button type="button" data-sc-tab="proof" aria-pressed="false">Prova do cálculo</button>
+    <button type="button" data-sc-tab="history" aria-pressed="false">Revisões</button>
+  </nav>
+    </details>
+  </div>
+  <section data-sc-view="guided" id="sc-guided">
+    <article class="sc-panel scg-picker">
+      <div class="sc-section-title"><div><h2>Qual equipamento vamos ajustar?</h2><p>Escolha a raridade e o herói que vai usar no teste.</p></div><a id="scg-edit-equipment" class="sc-link" href="./equipments.html">Abrir equipamentos ↗</a></div>
+      <label>Buscar equipamento<input id="scg-search" type="search" placeholder="Digite parte do nome…" autocomplete="off"></label>
+      <div class="scg-selection-grid">
+        <label class="scg-item-select">Equipamento<select id="scg-equipment"><option value="">Carregando equipamentos…</option></select></label>
+        <label>Raridade<select id="scg-variant"><option value="">Escolha o equipamento</option></select></label>
+        <label>Testar com qual herói?<select id="scg-hero"><option value="">Escolha o equipamento</option></select></label>
+      </div>
+      <p id="scg-item-name" class="scg-item-name"></p>
+      <p id="scg-selection-help" class="sc-note">O teste usa os valores cadastrados do herói e desta raridade.</p>
+    </article>
+    <div id="scg-workspace" hidden>
+      <div class="scg-editor-grid">
+        <aside class="sc-panel scg-effect-panel"><h2>Efeitos desta raridade</h2><p>Selecione um efeito para ajustar.</p><div id="scg-effects" class="scg-effects" aria-label="Efeitos do equipamento"></div><p class="sc-note">Cada efeito tem seu próprio destino e condição.</p></aside>
+        <article class="sc-panel">
+          <span class="sc-eyebrow">EFEITO SELECIONADO</span><p id="scg-source-text" class="sc-effect-text"></p>
+          <p id="scg-source-note" class="sc-note"></p>
+          <form id="scg-form" class="sc-form">
+            <label>Onde ele atua?<select id="scg-scope" required><option value="">Escolha</option><option value="hero">No herói</option><option value="weapon">Na arma</option></select></label>
+            <label>Qual status ele altera?<select id="scg-target" required><option value="">Escolha onde o efeito atua</option></select><span id="scg-target-help" class="sc-note"></span></label>
+            <div id="scg-new-target" class="scg-new-target sc-wide" hidden><p>Este status precisa ter sua unidade confirmada uma vez.</p><div class="sc-form"><label>Nome do status<input id="scg-target-name" maxlength="160"></label><label>Unidade do status<select id="scg-unit"></select></label></div></div>
+            <label>O que o efeito faz?<select id="scg-operator" required></select></label>
+            <label>Quando funciona?<select id="scg-condition" required></select></label>
+            <label id="scg-ability-label" class="sc-wide" hidden>Qual habilidade precisa estar ativa?<select id="scg-ability"></select></label>
+            <p id="scg-rule-sentence" class="sc-formula sc-wide">Escolha o destino, a operação e a condição.</p>
+          </form>
+        </article>
+      </div>
+      <article class="sc-panel scg-test-panel">
+        <div class="sc-section-title"><div><h2>Veja o efeito na prática</h2><p id="scg-test-caption">Configure o efeito acima e teste antes de aplicar.</p></div><span id="scg-test-state" class="sc-badge">Ainda não testado</span></div>
+        <div class="sc-form scg-scenario"><label>No teste, o herói está…<select id="scg-moving"><option value="">Movimento não informado</option><option value="false">Parado</option><option value="true">Em movimento</option></select></label><label>E está atirando…<select id="scg-aiming"><option value="">Mira não informada</option><option value="false">Sem mirar</option><option value="true">Mirando</option></select></label><label id="scg-active-label" hidden>Habilidade escolhida no teste<select id="scg-active"><option value="">Ativação não informada</option><option value="true">Ativa</option><option value="false">Inativa</option></select></label></div>
+        <div class="sc-actions"><button id="scg-test" type="submit" form="scg-form" class="admin-button primary">Testar este efeito</button><button id="scg-verify" type="button" class="admin-button">Verificar no site</button></div>
+        <div id="scg-feedback" class="scg-feedback" role="status" aria-live="polite">O teste é uma prévia. Use “Aplicar no site” quando conferir o resultado.</div>
+        <div id="scg-result"></div>
+        <div id="scg-apply-area" class="scg-apply-area" hidden><div><strong id="scg-apply-title">Resultado pronto para revisão</strong><p id="scg-apply-help" class="sc-note"></p></div><button id="scg-apply" type="button" class="admin-button primary" disabled>Aplicar no site</button></div>
+      </article>
+    </div>
+  </section>
+  <section data-sc-view="overview" hidden>
+    <div class="sc-metrics" id="sc-metrics"><article><span>Campos encontrados</span><strong>—</strong></article><article><span>Vínculos publicados</span><strong>—</strong></article><article><span>Efeitos sem regra</span><strong>—</strong></article><article><span>Fontes alteradas</span><strong>—</strong></article></div>
+    <div class="sc-grid"><article class="sc-panel"><h2>O que precisa de atenção</h2><p>Diagnóstico feito sobre os dados atuais. Uma fila vazia não confirma que o cálculo esteja correto.</p><div id="sc-issues" class="sc-list"></div></article><article class="sc-panel"><h2>Registro, site e Brain</h2><div id="sc-system" class="sc-list"></div><a href="./echo-brain.html" class="sc-link">Abrir operação do Brain ↗</a><p class="sc-note">“Publicado” confirma a regra salva. Use a prova para verificar aplicação e comparar a resposta do Brain.</p></article></div>
+  </section>
+  <section data-sc-view="stats" hidden>
+    <div class="sc-section-title"><div><h2>Status encontrados nos heróis</h2><p>Revise o significado e a unidade. Pontuação de resumo, segundos e tiros/s têm papéis diferentes.</p></div><button id="sc-new-stat" type="button" class="admin-button primary">+ Novo status</button></div>
+    <label class="sc-search">Buscar status ou habilidade<input id="sc-search" type="search" placeholder="Dispersão, cadência, recarga…"></label>
+    <div id="sc-fields" class="sc-list"></div><button id="sc-more-fields" class="admin-button" type="button" hidden>Mostrar mais campos</button>
+    <article class="sc-panel" id="sc-stat-editor" hidden><h2 id="sc-stat-title">Registrar status</h2>
+      <form id="sc-stat-form" class="sc-form">
+        <label>Nome do status<input name="name" required maxlength="160"></label>
+        <label>Origem<select name="scope"><option value="hero">Herói</option><option value="weapon">Arma</option><option value="skill">Habilidade</option><option value="skill_level">Nível de habilidade</option></select></label>
+        <label>Campo de origem<input name="source_key" required pattern="[a-z][a-z0-9_]{1,79}" placeholder="Ex.: weapon_spread"></label>
+        <label>Habilidade de origem<select name="skill_id"><option value="">Não se aplica</option></select></label>
+        <label>Nível de origem<select name="level_id"><option value="">Não se aplica</option></select></label>
+        <label>Unidade<select name="unit" id="sc-unit"></select></label>
+        <label>Tipo de dado<select name="kind"><option value="scalar">Status calculável</option><option value="summary">Pontuação de resumo</option></select></label>
+        <label>Direção benéfica<select name="direction"><option value="neutral">Sem direção definida</option><option value="higher">Maior é melhor</option><option value="lower">Menor é melhor</option></select></label>
+        <label>Valor mínimo permitido<input name="minimum" type="text" inputmode="decimal" placeholder="Opcional"></label>
+        <label>Valor máximo permitido<input name="maximum" type="text" inputmode="decimal" placeholder="Opcional"></label>
+        <details class="sc-wide"><summary>Adicionar referência (opcional)</summary><label>Fonte ou nota<textarea name="evidence" maxlength="2000" placeholder="Captura ou referência, se disponível."></textarea></label></details>
+        <details class="sc-wide"><summary>Identidade estável do status</summary><label>Código<input name="id" required pattern="[a-z][a-z0-9_]{1,79}"></label><p>O nome pode mudar. O código mantém os vínculos com o mesmo status.</p></details>
+        <div class="sc-actions sc-wide"><button class="admin-button primary" type="submit">Adicionar ao rascunho</button><button class="admin-button" type="button" id="sc-stat-cancel">Fechar</button></div>
+      </form>
+    </article>
+    <article class="sc-panel"><h2>Conferir ou corrigir uma base</h2><p>O número vem do cadastro do herói. O histórico registra automaticamente o campo, o valor anterior e o novo valor.</p><form id="sc-base-form" class="sc-form">
+      <label>Herói<select name="hero_id" id="sc-base-hero" required></select></label><label>Origem<select name="scope"><option value="hero">Herói</option><option value="weapon">Arma</option></select></label>
+      <label>Campo<input name="source_key" required pattern="[a-z][a-z0-9_]{1,79}" list="sc-source-keys"></label><datalist id="sc-source-keys"></datalist>
+      <label>Valor atual<input id="sc-base-current" readonly value="Selecione o campo"></label>
+      <label>Novo valor<input name="value" inputmode="decimal" required></label><label>Referência (opcional)<input name="evidence" maxlength="2000"></label>
+      <div class="sc-wide"><button type="submit" class="admin-button" id="sc-save-base">Salvar e conferir no banco</button></div>
+    </form></article>
+    <article class="sc-panel"><h2>Habilidades e níveis</h2><p>As habilidades cadastradas alimentam esta Central. A criação mantém os controles de fonte e confiança do editor de heróis.</p><label>Herói<select id="sc-skills-hero"></select></label><div id="sc-skills" class="sc-list"></div><a id="sc-new-skill" class="admin-button" href="./hero-editor.html">Criar ou editar habilidade ↗</a></article>
+  </section>
+  <section data-sc-view="bindings" hidden>
+    <div class="sc-section-title"><div><h2>Vincular um efeito ao status certo</h2><p>A escolha fica ligada à linha e à raridade. A descrição permanece preservada.</p></div></div>
+    <article class="sc-panel"><div class="sc-form"><label>Fonte<select id="sc-binding-kind"><option value="equipment_variant">Equipamento</option><option value="set_bonus">Bônus de conjunto</option><option value="hero_skill">Habilidade ativa</option><option value="hero_skill_level">Nível de habilidade</option></select></label><label>Escolha a fonte<select id="sc-binding-item"></select></label><label class="sc-wide">Efeito ou campo<select id="sc-binding-line"></select></label></div><p class="sc-effect-text" id="sc-effect-text"></p><a class="sc-link" id="sc-edit-equipment" href="./equipments.html" hidden>Corrigir texto ou valor do equipamento ↗</a><div id="sc-binding-rows" class="sc-table-wrap"></div></article>
+    <form id="sc-binding-form" class="sc-panel sc-form">
+      <label>Status de destino<select name="target" id="sc-binding-target" required></select><span class="sc-note" id="sc-target-help"></span><button type="button" class="admin-button" id="sc-register-target">+ Cadastrar outro destino</button></label><label>Como o efeito será aplicado<select name="operator" id="sc-operator" required></select></label>
+      <label>Quando aplicar<select name="condition" id="sc-condition"></select></label><label>Habilidade exigida<select name="ability_id" id="sc-condition-ability"><option value="">Não se aplica</option></select></label>
+      <p id="sc-binding-formula" class="sc-formula sc-wide">Escolha um status e um operador.</p>
+      <details class="sc-wide"><summary>Adicionar referência ao vínculo (opcional)</summary><label>Fonte ou nota<textarea name="evidence" maxlength="2000"></textarea></label></details>
+      <div class="sc-wide sc-actions"><button type="submit" class="admin-button primary">Vincular linhas selecionadas ao rascunho</button><button type="button" id="sc-remove-bindings" class="admin-button">Retirar vínculos selecionados</button></div>
+    </form>
+    <article class="sc-panel"><h2>Vínculos no rascunho</h2><div id="sc-current-bindings" class="sc-list"></div></article>
+  </section>
+  <section data-sc-view="proof" hidden>
+    <div class="sc-section-title"><div><h2>Veja o cálculo real, etapa por etapa</h2><p>Escolha dados do cadastro. Compare a regra publicada com o rascunho antes de ativá-lo.</p></div></div>
+    <article class="sc-panel"><label>Herói da prova<select id="sc-proof-hero"></select></label><div class="sc-form"><label>Equipamento<select id="sc-proof-item"></select></label><label>Raridade<select id="sc-proof-variant"></select></label><div class="sc-actions"><button type="button" id="sc-proof-add" class="admin-button">Adicionar à prova</button></div></div><details><summary>Condições do cenário</summary><div class="sc-form"><label>Mira<select id="sc-proof-aiming"><option value="">Não informada</option><option value="true">Mirando</option><option value="false">Sem mirar</option></select></label><label>Movimento<select id="sc-proof-moving"><option value="">Não informado</option><option value="true">Em movimento</option><option value="false">Parado</option></select></label><label>Habilidade ativa<select id="sc-proof-ability"><option value="">Não informada</option><option value="none">Nenhuma ativa</option></select></label><label>Nível ativo da habilidade<select id="sc-proof-level"><option value="">Não informado</option></select></label></div></details><div id="sc-proof-loadout" class="sc-list"></div><div class="sc-actions"><button type="button" id="sc-run-proof" class="admin-button primary">Calcular publicado e rascunho</button><button type="button" id="sc-brain-proof" class="admin-button">Conferir com o Brain</button></div><p id="sc-parity" class="sc-note" role="status">Brain ainda não consultado para esta seleção.</p></article>
+    <div id="sc-proof-result"></div>
+  </section>
+  <section data-sc-view="history" hidden><article class="sc-panel"><h2>Histórico de revisões</h2><p>Restaurar traz uma revisão para um novo rascunho. A publicação continua exigindo conferência das fontes atuais.</p><div id="sc-history" class="sc-list"></div><a href="./equipment-audit.html" class="sc-link">Abrir Auditoria ↗</a></article></section>
+  <footer class="sc-savebar" id="sc-advanced-savebar" hidden><div><strong id="sc-dirty">Rascunho sem alterações locais</strong><small>Salvar preserva a revisão. Publicar ativa o registro para os próximos cálculos.</small></div><div class="sc-actions"><button id="sc-save" type="button" class="admin-button">Salvar rascunho</button><button id="sc-publish" type="button" class="admin-button primary">Revisar publicação</button></div></footer>
+  <dialog id="scg-publish-dialog" class="sc-dialog" aria-labelledby="scg-publish-title"><form method="dialog"><h2 id="scg-publish-title">Aplicar este efeito no site?</h2><div id="scg-publish-summary"></div><p>Esta regra passa a valer para esta raridade nos próximos cálculos. O histórico da alteração é registrado automaticamente.</p><div class="sc-actions"><button class="admin-button" value="cancel">Voltar ao teste</button><button id="scg-confirm" type="button" class="admin-button primary">Confirmar e aplicar</button></div></form></dialog>
+  <dialog id="sc-publish-dialog" class="sc-dialog"><form method="dialog"><h2>Revisar publicação</h2><div id="sc-publish-summary"></div><p>A publicação altera os próximos cálculos que carregarem este registro. Confira o destino, a unidade e a prova dos efeitos alterados.</p><label><input id="sc-publish-check" type="checkbox"> Conferi o significado dos status, as fontes e os resultados da prova.</label><div class="sc-actions"><button class="admin-button" value="cancel">Voltar à revisão</button><button class="admin-button primary" id="sc-confirm-publish" value="publish">Publicar registro</button></div></form></dialog>
+</main>
+</div>
+<script type="module">
+  try {
+    const { initAdminShell } = await import('./js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1');
+    const shell = await initAdminShell({ activeId: 'status-central', pageTitle: 'Central de Status', pageSubtitle: 'Brain · vínculos e prova do cálculo' });
+    if (shell?.access?.modules?.includes('equipment')) await import('./js/status-central.js?v=20260906-1&sc=20260906-1&sb=20260823-security-supabase-pin-1&eq=20260907-effects-1&ux=20260908-1');
+  } catch (error) { const host = document.getElementById('sc-message'); if (host) { host.textContent = `Não foi possível abrir a Central: ${error.message}`; host.classList.add('is-error'); } }
+</script>
+</body>
+</html>

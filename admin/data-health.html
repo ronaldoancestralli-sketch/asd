@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Saúde dos dados — Echo Arena Admin</title>
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1"><link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1"><link rel="stylesheet" href="./css/admin-polish.css?v=20260821-admin-polish-1"><link rel="stylesheet" href="../css/echo-theme.css?v=1">
+  <style>
+    .health-page{display:grid;gap:18px}.health-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:end;padding:22px;border:1px solid var(--admin-line);border-radius:16px;background:radial-gradient(circle at 90% 0,rgba(139,92,246,.18),transparent 40%),var(--admin-panel)}
+    .health-hero small,.health-section small{color:#a982ff;font-size:9px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.health-hero h2{margin:6px 0 7px;font-size:28px}.health-hero p{max-width:760px;margin:0;color:var(--admin-muted);font-size:12px;line-height:1.65}.health-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .health-message{display:none;padding:12px 14px;border:1px solid var(--admin-line);border-radius:10px;background:#09111f;color:var(--admin-muted);font-size:11px}.health-message.show{display:block}.health-message.error{border-color:#71303b;background:#2a1016;color:#ffb4bd}
+    .health-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:11px}.health-card{min-width:0;padding:16px;border:1px solid var(--admin-line);border-radius:13px;background:var(--admin-panel)}.health-card.attention{border-color:#6f5618;background:linear-gradient(145deg,rgba(245,196,81,.07),transparent),var(--admin-panel)}.health-card.ok{border-color:#285b44;background:linear-gradient(145deg,rgba(66,227,154,.05),transparent),var(--admin-panel)}.health-card strong{display:block;margin-top:8px;font-size:28px;line-height:1}.health-card span{display:block;margin-top:5px;color:var(--admin-muted);font-size:9px;line-height:1.45}
+    .health-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.health-section{min-width:0;padding:17px;border:1px solid var(--admin-line);border-radius:14px;background:var(--admin-panel)}.health-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}.health-section h3{margin:5px 0 0;font-size:17px}.health-list{display:grid;gap:8px}.health-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px;border:1px solid #22304a;border-radius:10px;background:#09111f}.health-row-copy{min-width:0}.health-row-copy strong{display:block;overflow:hidden;font-size:11px;white-space:nowrap;text-overflow:ellipsis}.health-row-copy span{display:block;margin-top:3px;color:var(--admin-muted);font-size:8.5px;line-height:1.45}.health-row-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.health-row-actions .admin-button{min-height:32px;padding:6px 9px;font-size:9px}.health-badge{display:inline-flex;padding:3px 6px;border:1px solid #6f5618;border-radius:999px;background:#2a2009;color:#ffd76d;font-size:7px;font-weight:900;text-transform:uppercase}.health-badge.red{border-color:#71303b;background:#2a1016;color:#ff9aaa}.health-badge.green{border-color:#28613c;background:#0c2918;color:#8bf0aa}.health-empty{padding:18px;border:1px dashed var(--admin-line);border-radius:10px;color:var(--admin-muted);font-size:10px;text-align:center;line-height:1.6}.health-note{padding:13px;border:1px solid #314666;border-radius:11px;background:#08111f;color:#93a1b8;font-size:10px;line-height:1.6}.health-note strong{color:#dce3ee}.health-legacy{border-color:#71303b;background:linear-gradient(145deg,rgba(255,111,130,.05),transparent),var(--admin-panel)}.health-modules-section{grid-column:1/-1}.health-modules-section .health-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media(max-width:1280px){.health-summary{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:1050px){.health-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.health-grid{grid-template-columns:1fr}.health-hero{grid-template-columns:1fr}.health-actions{justify-content:flex-start}.health-modules-section .health-list{grid-template-columns:1fr}}@media(max-width:560px){.health-summary{grid-template-columns:1fr}.health-row{grid-template-columns:1fr}.health-row-actions{justify-content:flex-start}}
+  </style>
+</head>
+<body>
+  <div data-admin-content>
+    <section class="health-page">
+      <header class="health-hero"><div><small>Integridade operacional</small><h2>Saúde dos dados</h2><p>Centraliza problemas reais do banco e o estado de cada módulo do site sem apagar, adivinhar ou corrigir automaticamente informações. Cada pendência aponta para o painel responsável.</p></div><div class="health-actions"><button id="health-refresh" class="admin-button" type="button">Atualizar diagnóstico</button><a class="admin-button primary" href="./equipment-audit.html">Abrir Auditoria</a></div></header>
+      <div id="health-message" class="health-message" role="status" aria-live="polite"></div>
+      <section id="health-summary" class="health-summary"><div class="health-card"><small>Carregando</small><strong>—</strong><span>Consultando o banco.</span></div></section>
+      <div class="health-grid">
+        <article class="health-section health-modules-section"><header class="health-section-head"><div><small>Site completo</small><h3>Prontidão dos módulos</h3></div><a class="admin-button" href="./content-modules.html">Conteúdo público</a></header><div id="health-modules" class="health-list"><div class="health-empty">Carregando módulos…</div></div></article>
+        <article class="health-section"><header class="health-section-head"><div><small>Heróis</small><h3>Cadastros incompletos</h3></div><a class="admin-button" href="./heroes.html">Ver heróis</a></header><div id="health-heroes" class="health-list"><div class="health-empty">Carregando…</div></div></article>
+        <article class="health-section"><header class="health-section-head"><div><small>Equipamentos</small><h3>Pendências da Auditoria</h3></div><a class="admin-button" href="./equipment-audit.html">Resolver</a></header><div id="health-audit" class="health-list"><div class="health-empty">Carregando…</div></div></article>
+        <article class="health-section"><header class="health-section-head"><div><small>Builds</small><h3>Integridade referencial</h3></div><a class="admin-button" href="./builds.html">Ver builds</a></header><div id="health-builds" class="health-list"><div class="health-empty">Carregando…</div></div></article>
+        <article class="health-section health-legacy"><header class="health-section-head"><div><small>Compatibilidade</small><h3>Estruturas legadas</h3></div></header><div id="health-legacy" class="health-list"><div class="health-empty">Carregando…</div></div></article>
+      </div>
+      <div class="health-note"><strong>Regra desta central:</strong> ausência de conteúdo publicado não é falha estrutural. Um módulo pode estar tecnicamente pronto e ainda aguardar publicações. Da mesma forma, um efeito real sem base oficial não é erro de cadastro: ele permanece preservado e fora do cálculo.</div>
+    </section>
+  </div>
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell=await initAdminShell({activeId:'data-health',pageTitle:'Saúde dos dados',pageSubtitle:'Integridade e sincronização do banco'});
+    if(shell) await import('./js/data-health.js?v=2&sb=20260823-security-supabase-pin-1');
+  </script>
+</body>
+</html>

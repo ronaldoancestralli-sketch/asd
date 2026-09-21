@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#060910">
+  <title>Echo Identity — Echo Arena Admin</title>
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+    <link rel="stylesheet" href="./css/identity-lab.css?v=20260825-identity-shadow-1">
+    <link rel="stylesheet" href="./css/identity-lab-v5.css?v=20260825-identity-v5-hardening-1">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=1">
+</head>
+<body data-admin-experience="true" data-identity-shadow="true">
+  <div data-admin-content>
+    <main class="identity-lab">
+      <header class="identity-hero">
+        <div>
+          <span class="identity-shadow">SHADOW · NÃO PÚBLICO</span>
+          <h2>Echo Identity</h2>
+          <p>Governança de identidade, Echo Scouts e reconhecimentos institucionais. Reputação conquistada nunca concede autoridade. Founder permanece fora de qualquer fluxo administrativo normal.</p>
+        </div>
+        <div class="identity-actions">
+          <a class="admin-button" href="./users.html">← Usuários</a>
+          <button id="identity-refresh" class="admin-button primary" type="button">Recarregar</button>
+        </div>
+      </header>
+
+      <div id="identity-schema-status" class="identity-message" role="status" aria-live="polite"></div>
+
+      <section class="identity-principles">
+        <article><small>IDENTIDADE PÚBLICA</small><strong>Sem e-mail</strong><p>Handle, nome, avatar, bio e aparência são separados do Auth.</p></article>
+        <article><small>REPUTAÇÃO</small><strong>Dupla revisão</strong><p>Echo Scout só progride após decisão primária e confirmação por outro Admin independente.</p></article>
+        <article><small>INSTITUCIONAL</small><strong>Concedida</strong><p>Creator exige claim verificado; Partner, Moderator e Developer exigem ação administrativa AAL2.</p></article>
+        <article class="founder"><small>FOUNDER</small><strong>Server-only</strong><p>O Admin pode consultar o estado, mas não criar nem transferir esta autoridade.</p></article>
+      </section>
+
+      <section class="identity-grid">
+        <article class="identity-panel identity-users-panel">
+          <header><div><small>CONTAS</small><h3>Localizar usuário</h3></div></header>
+          <label class="identity-search"><span>Buscar apelido/nome</span><input id="identity-user-search" class="admin-input" type="search" maxlength="80" placeholder="Buscar usuário"></label>
+          <div id="identity-users" class="identity-users"><p class="identity-empty">Carregando…</p></div>
+        </article>
+
+        <article class="identity-panel">
+          <header><div><small>IDENTIDADE + REPUTAÇÃO</small><h3>Perfil selecionado</h3></div><span>Política server-side</span></header>
+          <div id="identity-selected" class="identity-selected"><p class="identity-empty">Selecione um usuário.</p></div>
+          <div id="identity-reputation" class="identity-reputation"></div>
+        </article>
+      </section>
+
+      <section class="identity-grid">
+        <article class="identity-panel">
+          <header><div><small>RECONHECIMENTO OFICIAL</small><h3>Insígnias institucionais</h3></div><span>Admin AAL2</span></header>
+          <p class="identity-help">Creator só nasce da fila de verificação abaixo. Partner, Moderator e Developer são nomeações institucionais separadas. ADMIN é derivado da autoridade técnica real e não aparece aqui como botão.</p>
+          <div id="identity-badges" class="identity-badges"><p class="identity-empty">Selecione um usuário.</p></div>
+          <div id="identity-badge-message" class="identity-message"></div>
+        </article>
+
+        <article class="identity-panel founder-panel">
+          <header><div><small>AUTORIDADE MÁXIMA</small><h3>Founder</h3></div><span>Somente leitura</span></header>
+          <div id="identity-founder" class="identity-founder"><p class="identity-empty">Consultando…</p></div>
+          <div class="identity-lock-note"><strong>Sem ação disponível neste painel.</strong><p>A transferência exige uma operação privilegiada e deliberada do backend, e a conta alvo precisa já possuir autoridade administrativa válida. Isto impede que um Admin comprometido crie outro Founder.</p></div>
+        </article>
+      </section>
+
+      <section class="identity-grid">
+        <article class="identity-panel">
+          <header><div><small>CREATOR VERIFICATION</small><h3>Pedidos pendentes</h3></div><span id="identity-creator-count">0</span></header>
+          <p class="identity-help">Confirme a posse do canal verificando o desafio temporário na URL canônica. Claims sem canonicalização ou expirados não podem ser aprovados.</p>
+          <div id="identity-creator-claims" class="identity-queue"></div>
+        </article>
+
+        <article class="identity-panel">
+          <header><div><small>ECHO RESEARCH</small><h3>Evidências pendentes</h3></div><span id="identity-research-count">0</span></header>
+          <p class="identity-help">Todo envio nasce pendente. A decisão abaixo é apenas o primeiro parecer e ainda não pontua. A observação sanitizada fica visível somente para Admin durante a revisão. Primeira descoberta é exclusiva por conhecimento/patch verificado.</p>
+          <div id="identity-research-queue" class="identity-queue"></div>
+        </article>
+      </section>
+
+      <section class="identity-panel identity-confirmations-panel">
+        <header><div><small>ECHO RESEARCH · SEGUNDO PARECER</small><h3>Decisões aguardando confirmação</h3></div><span id="identity-confirmation-count">0</span></header>
+        <div class="identity-confirmation-rule"><strong>Separação de função obrigatória</strong><span>O autor, o revisor primário e o confirmador precisam ser pessoas distintas. Divergência encerra o evento sem pontos e exige uma nova decisão primária auditada.</span></div>
+        <div id="identity-review-confirmations" class="identity-queue identity-confirmation-queue"><p class="identity-empty">Carregando segundo parecer…</p></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell=await initAdminShell({activeId:'users',pageTitle:'Echo Identity',pageSubtitle:'Identidade, Echo Scouts e autoridade institucional · Shadow'});
+    if(shell) await import('./js/identity-lab.js?v=20260825-identity-shadow-5-v5-hardening-1&sb=20260823-security-supabase-pin-1');
+  </script>
+</body>
+</html>

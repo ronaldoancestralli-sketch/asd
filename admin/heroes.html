@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#060910">
+  <title>Heróis — Echo Arena Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/admin-public-experience.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=1">
+  <style>
+    .heroes-page{display:grid;gap:13px}
+    .heroes-toolbar{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+    .heroes-toolbar-copy{position:relative;z-index:1;max-width:680px}
+    .heroes-toolbar-copy small{display:block;margin-bottom:6px;color:#baa7ff;font-size:7px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    .heroes-toolbar-copy strong{display:block}
+    .heroes-toolbar-copy span{display:block}
+    .heroes-toolbar-actions{position:relative;z-index:1;display:flex;gap:6px;flex-wrap:wrap}
+    .heroes-parity-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+    .heroes-parity-card{padding:11px;border:1px solid var(--ax-line);border-radius:10px;background:#0b1321}
+    .heroes-parity-card span{display:block;color:#68758d;font-size:6px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+    .heroes-parity-card strong{display:block;margin-top:5px;font:900 23px/1 var(--ax-display)}
+    .heroes-parity-card small{display:block;margin-top:3px;color:#8290a7;font-size:7px}
+    .heroes-filters{display:grid;grid-template-columns:minmax(230px,1fr) minmax(150px,200px) minmax(150px,200px);gap:7px;padding:10px;border:1px solid var(--ax-line);border-radius:11px;background:#0a1220}
+    .heroes-filter-field{display:grid;gap:4px}
+    .heroes-filter-field label{color:#8694aa;font-size:7px;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+    .heroes-message{min-height:14px;color:#8896ad;font-size:9px}
+    .heroes-message.error{color:#ff4057}.heroes-message.ok{color:#7fe6b1}
+    body[data-admin-experience="true"] .heroes-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(224px,1fr));gap:9px;align-items:start}
+    body[data-admin-experience="true"] .hero-card{min-width:0;overflow:hidden;display:grid;grid-template-rows:132px minmax(0,1fr);border:1px solid var(--ax-line);border-radius:12px;background:#0b1321;transition:.16s}
+    body[data-admin-experience="true"] .hero-card:hover{transform:translateY(-1px);border-color:var(--ax-line-strong);box-shadow:0 12px 28px rgba(0,0,0,.22)}
+    body[data-admin-experience="true"] .hero-card-media{position:relative;height:132px;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--ax-line);background:radial-gradient(circle at 50% 25%,rgba(143,92,255,.16),transparent 60%),#08101b}
+    body[data-admin-experience="true"] .hero-card-media img{width:100%;height:100%;padding:0;object-fit:cover}
+    .hero-card-media-empty{color:#6b7890;font-size:7px;text-transform:uppercase}
+    .hero-card-status{position:absolute;top:7px;right:7px;display:inline-flex;align-items:center;min-height:19px;padding:3px 6px;border:1px solid #285f43;border-radius:999px;background:rgba(11,42,28,.92);color:#8df0bc;font-size:5.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+    .hero-card-status.is-inactive{border-color:#b52339;background:rgba(91,8,22,.94);color:#ff4057}
+    body[data-admin-experience="true"] .hero-card-body{min-width:0;display:grid;gap:7px;align-content:start;padding:10px}
+    body[data-admin-experience="true"] .hero-card-heading h2{margin:0;font:900 20px/1 var(--ax-display);text-transform:uppercase}
+    .hero-card-heading p{margin:3px 0 0;color:#6f7d94;font-size:7px}
+    .hero-readiness{display:flex;align-items:center;gap:4px;margin-top:6px;flex-wrap:wrap}
+    .hero-readiness-badge{display:inline-flex;align-items:center;min-height:18px;padding:2px 6px;border:1px solid #285f43;border-radius:999px;background:#0b2518;color:#86efac;font-size:5.5px;font-weight:900;letter-spacing:.05em;text-transform:uppercase}
+    .hero-readiness-badge.warn{border-color:#70571e;background:#2b210d;color:#f5d276}
+    .hero-readiness-badge.block{border-color:#b52339;background:#490b16;color:#ff4057}
+    .hero-readiness-note{color:#718099;font-size:6.5px}
+    .hero-public-parity{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}
+    .hero-public-parity span{padding:3px 5px;border:1px solid var(--ax-line);border-radius:999px;color:#7e8ba2;font-size:5.5px;font-weight:900;text-transform:uppercase}
+    .hero-public-parity span.ok{border-color:#285f43;color:#7ee5b1}
+    .hero-public-parity span.warn{border-color:#6d5725;color:#efc96f}
+    body[data-admin-experience="true"] .hero-card-meta{display:grid;grid-template-columns:minmax(0,1fr) 52px;gap:4px}
+    body[data-admin-experience="true"] .hero-card-meta-item{min-width:0;padding:5px 6px;border:1px solid var(--ax-line);border-radius:7px;background:#08101b}
+    .hero-card-meta-item span{display:block;color:#65728a;font-size:5.5px;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+    .hero-card-meta-item strong{display:block;margin-top:2px;overflow:hidden;color:#dce3f0;font-size:8px;text-overflow:ellipsis;white-space:nowrap}
+    body[data-admin-experience="true"] .hero-card-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+    body[data-admin-experience="true"] .hero-card-actions .admin-button{min-width:0;min-height:30px;justify-content:center;padding:5px 3px;border-radius:7px;font-size:6.5px;line-height:1.1;text-align:center;white-space:nowrap}
+    .hero-card-actions .danger{border-color:#c92840;background:linear-gradient(180deg,#8c1024,#610a18);color:#fff}
+    .hero-card-actions .danger:hover{border-color:#ff4057;background:linear-gradient(180deg,#a9152d,#760d1d)}
+    .hero-card-actions .public-preview{border-color:#315866;background:#0b2630;color:#8fe9ff}
+    .heroes-empty{grid-column:1/-1;padding:26px;border:1px dashed var(--ax-line);border-radius:11px;background:#0a1220;color:#7d8aa1;text-align:center;font-size:9px}
+    #hero-parity-status{padding:8px 10px;border:1px solid var(--ax-line);border-radius:9px;background:#09111e;color:#8997ae;font-size:8px}
+    #hero-parity-status.error{color:#ff4057;border-color:#b52339}
+    @media(max-width:1000px){
+      .heroes-parity-strip{grid-template-columns:repeat(2,1fr)}
+      .heroes-filters{grid-template-columns:1fr 1fr}
+      .heroes-filter-field:first-child{grid-column:1/-1}
+    }
+    @media(max-width:700px){
+      .heroes-toolbar{align-items:flex-start}
+      .heroes-toolbar-actions{width:100%;display:grid;grid-template-columns:1fr 1fr}
+      .heroes-toolbar-actions .admin-button{min-height:33px;justify-content:center}
+      .heroes-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:500px){
+      body[data-admin-experience="true"] .heroes-page{gap:10px}
+      body[data-admin-experience="true"] .heroes-toolbar{min-height:0;gap:10px;padding:13px;border-radius:13px}
+      body[data-admin-experience="true"] .heroes-toolbar::after{display:none}
+      body[data-admin-experience="true"] .heroes-toolbar-copy strong{font-size:24px}
+      body[data-admin-experience="true"] .heroes-toolbar-copy span{display:none}
+      .heroes-parity-strip{grid-template-columns:1fr 1fr;gap:5px}
+      .heroes-parity-card{padding:8px}
+      .heroes-parity-card strong{font-size:20px}
+      .heroes-parity-card small{display:none}
+      .heroes-filters{grid-template-columns:1fr 1fr;gap:6px;padding:8px}
+      .heroes-filter-field:first-child{grid-column:1/-1}
+      body[data-admin-experience="true"] .heroes-list{grid-template-columns:1fr;gap:8px}
+      body[data-admin-experience="true"] .hero-card{grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto;align-items:stretch}
+      body[data-admin-experience="true"] .hero-card-media{height:auto;min-height:100%;border-right:1px solid var(--ax-line);border-bottom:0}
+      body[data-admin-experience="true"] .hero-card-media img{object-position:center}
+      body[data-admin-experience="true"] .hero-card-body{gap:6px;padding:9px}
+      body[data-admin-experience="true"] .hero-card-heading h2{font-size:18px}
+      body[data-admin-experience="true"] .hero-card-actions{grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+      body[data-admin-experience="true"] .hero-card-actions .admin-button{min-height:28px;padding:4px 2px;font-size:6px}
+      .hero-readiness-note{font-size:6px}
+      .hero-public-parity span{padding:2px 4px}
+      #hero-parity-status{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    }
+  </style>
+</head>
+<body data-admin-experience="true">
+  <div data-admin-content>
+    <section class="heroes-page">
+      <header class="heroes-toolbar">
+        <div class="heroes-toolbar-copy">
+          <small>Heróis · fonte pública controlada</small>
+          <strong>Gerencie o roster que o site realmente exibe</strong>
+          <span>O Admin agora confronta publicação, mídia principal/card e habilidades com a mesma superfície pública usada pela nova página de Heróis.</span>
+        </div>
+        <div class="heroes-toolbar-actions">
+          <a class="admin-button" href="./public-experience.html">Central pública</a>
+          <a class="admin-button" href="./hero-skill-audit.html">Auditoria de habilidades</a>
+          <a class="admin-button" href="../herois.html" target="_blank" rel="noopener">Ver página pública</a>
+          <a class="admin-button primary" href="./hero-editor.html">Novo herói</a>
+        </div>
+      </header>
+
+      <section class="heroes-parity-strip" aria-label="Paridade pública">
+        <article class="heroes-parity-card"><span>Heróis ativos</span><strong id="hero-admin-active">—</strong><small>Mesma base do site</small></article>
+        <article class="heroes-parity-card"><span>Mídia pública pronta</span><strong id="hero-admin-media">—</strong><small>Main + card</small></article>
+        <article class="heroes-parity-card"><span>Habilidades ativas</span><strong id="hero-admin-skills">—</strong><small>Contrato atual 4/herói</small></article>
+        <article class="heroes-parity-card"><span>Bloqueados p/ publicação</span><strong id="hero-admin-blocked">—</strong><small>Requisitos ausentes</small></article>
+      </section>
+
+      <div id="hero-parity-status">Validando leitura direta da mesma mídia pública usada pelos cards do site.</div>
+
+      <section class="heroes-filters">
+        <div class="heroes-filter-field"><label for="search">Buscar</label><input id="search" class="admin-input" type="search" placeholder="Nome ou identificador..." autocomplete="off"></div>
+        <div class="heroes-filter-field"><label for="status-filter">Publicação</label><select id="status-filter" class="admin-select"><option value="all">Todos</option><option value="active">Ativos</option><option value="inactive">Inativos</option></select></div>
+        <div class="heroes-filter-field"><label for="sort-filter">Ordenar</label><select id="sort-filter" class="admin-select"><option value="display_order">Ordem de exibição</option><option value="name">Nome</option><option value="status">Status</option></select></div>
+      </section>
+
+      <div id="message" class="heroes-message" role="status" aria-live="polite"></div>
+      <section id="heroes-list" class="heroes-list"><div class="heroes-empty">Carregando heróis...</div></section>
+    </section>
+  </div>
+
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell = await initAdminShell({ activeId:'heroes-list', pageTitle:'Heróis', pageSubtitle:'Paridade pública e publicação' });
+    if (shell) {
+      await import('./js/heroes.js?v=20260830-compact-roster-1&sb=20260823-security-supabase-pin-1');
+    }
+  </script>
+</body>
+</html>

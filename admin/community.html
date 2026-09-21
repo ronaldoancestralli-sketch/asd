@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Comunidade — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1"><link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1"><link rel="stylesheet" href="./css/admin-polish.css?v=20260821-admin-polish-1"><link rel="stylesheet" href="./css/community.css?v=20260821-community-admin-1"><link rel="stylesheet" href="../css/echo-theme.css?v=1">
+</head>
+<body data-admin-experience="true">
+  <div data-admin-content>
+    <section class="community-admin-page">
+      <section class="community-admin-hero"><div><span>CENTRAL DA COMUNIDADE</span><h2>Conversa saudável sem engessamento</h2><p>Moderamos o que precisa de intervenção, sem transformar cada conversa em um fluxo burocrático.</p></div><a class="admin-button" href="../comunidade.html" target="_blank" rel="noopener noreferrer">Ver comunidade ↗</a></section>
+      <div id="community-admin-message" class="community-admin-message" role="status" aria-live="polite"></div>
+      <section class="community-admin-metrics"><article><span>Ativas</span><strong id="community-admin-active">—</strong><small>Visíveis ao público</small></article><article><span>Ocultas</span><strong id="community-admin-hidden">—</strong><small>Intervenções</small></article><article><span>Respostas</span><strong id="community-admin-replies">—</strong><small>Contador real</small></article><article><span>Reações</span><strong id="community-admin-reactions">—</strong><small>Contador real</small></article></section>
+      <section class="community-admin-toolbar"><div class="community-admin-tabs"><button class="is-active" data-filter="active" type="button">Ativas</button><button data-filter="hidden" type="button">Ocultas</button><button data-filter="deleted" type="button">Excluídas</button><button data-filter="all" type="button">Tudo</button></div><label>⌕ <input id="community-admin-search" type="search" placeholder="Buscar conversa ou jogador"></label></section>
+      <div id="community-admin-state" class="community-admin-empty">Carregando comunidade…</div><section id="community-admin-list" class="community-admin-list"></section>
+    </section>
+  </div>
+  <script type="module" src="./js/community.js?v=20260822-admin-nav-1&sb=20260823-security-supabase-pin-1&sc=20260906-1"></script>
+</body>
+</html>

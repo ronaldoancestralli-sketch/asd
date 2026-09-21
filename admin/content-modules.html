@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Conteúdo público — Echo Arena Admin</title>
+  <link rel="stylesheet" href="./css/admin.css"><link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1"><link rel="stylesheet" href="./css/content-modules.css?v=1"><link rel="stylesheet" href="./css/content-modules-polish.css?v=1"><link rel="stylesheet" href="./css/admin-polish.css?v=20260821-admin-polish-1"><link rel="stylesheet" href="../css/echo-theme.css?v=1">
+</head>
+<body>
+  <div data-admin-content>
+    <section class="content-hub">
+      <header class="content-hub-hero">
+        <div><small>Publicação e comunidade</small><h2>Conteúdo público</h2><p>Gerencie os módulos que aparecem no site sem editar código. Rascunhos permanecem privados; somente registros publicados ou públicos são exibidos aos usuários.</p></div>
+        <div class="content-hub-hero-actions"><a class="admin-button primary" href="./site-content.html">Editar textos e aparência</a><a class="admin-button" href="./promo-codes.html">Códigos promocionais</a><a class="admin-button" href="../guias.html" target="_blank" rel="noopener">Ver Guias ↗</a><a class="admin-button" href="../noticias.html" target="_blank" rel="noopener">Ver Notícias ↗</a><a class="admin-button" href="../tier-list.html" target="_blank" rel="noopener">Ver Tier List ↗</a><a class="admin-button" href="../composicoes.html" target="_blank" rel="noopener">Ver Composições ↗</a></div>
+      </header>
+      <div id="content-hub-message" class="content-hub-message" role="status" aria-live="polite"></div>
+      <nav class="content-hub-tabs" aria-label="Módulos de conteúdo">
+        <button class="content-hub-tab active" type="button" data-hub-tab="guides">Guias</button><button class="content-hub-tab" type="button" data-hub-tab="news">Notícias</button><button class="content-hub-tab" type="button" data-hub-tab="tier">Tier List</button><button class="content-hub-tab" type="button" data-hub-tab="compositions">Composições</button>
+      </nav>
+
+      <section class="content-hub-view active" data-hub-view="guides">
+        <div class="content-module-layout">
+          <aside class="content-module-panel"><header class="content-module-panel-head"><div><small>Guias</small><h3>Publicações</h3></div><button class="admin-button primary" type="button" data-new-editorial="guides">Novo guia</button></header><div id="guides-list" class="content-module-list"></div></aside>
+          <article class="content-module-panel"><header class="content-module-panel-head"><div><small>Editor</small><h3 id="guides-editor-title">Novo guia</h3></div></header><form id="guides-form" class="content-editor" data-editorial-form="guides"><input type="hidden" name="id"><div class="content-form-grid"><label class="content-field"><span>Título</span><input name="title" maxlength="120" required></label><label class="content-field"><span>Slug</span><input name="slug" maxlength="140" placeholder="gerado-a-partir-do-titulo" required></label><label class="content-field"><span>Herói relacionado</span><select name="hero_id" data-hero-select><option value="">Nenhum</option></select></label><label class="content-field"><span>Imagem de capa</span><select name="cover_media_id" data-media-select><option value="">Sem capa</option></select></label><label class="content-field full"><span>Resumo</span><textarea name="summary" maxlength="360"></textarea></label><label class="content-field full"><span>Conteúdo</span><textarea class="content-body" name="content" placeholder="Use ## para subtítulos e - para listas. O site escapa HTML por segurança."></textarea><small class="content-help">O texto é publicado como conteúdo seguro; HTML digitado não é executado.</small></label><label class="content-check"><input name="published" type="checkbox"> Publicado no site</label><label class="content-field"><span>Título SEO</span><input name="meta_title" maxlength="70"></label><label class="content-field full"><span>Descrição SEO</span><textarea name="meta_description" maxlength="180"></textarea></label></div><div class="content-editor-status" data-editor-status></div><div class="content-editor-actions"><button class="admin-button primary" type="submit">Salvar guia</button><button class="admin-button" type="button" data-reset-editorial="guides">Limpar editor</button><button class="admin-button danger" type="button" data-delete-editorial="guides" hidden>Excluir guia</button></div></form></article>
+        </div>
+      </section>
+
+      <section class="content-hub-view" data-hub-view="news">
+        <div class="content-module-layout">
+          <aside class="content-module-panel"><header class="content-module-panel-head"><div><small>Notícias</small><h3>Publicações</h3></div><button class="admin-button primary" type="button" data-new-editorial="news">Nova notícia</button></header><div id="news-list" class="content-module-list"></div></aside>
+          <article class="content-module-panel"><header class="content-module-panel-head"><div><small>Editor</small><h3 id="news-editor-title">Nova notícia</h3></div></header><form id="news-form" class="content-editor" data-editorial-form="news"><input type="hidden" name="id"><div class="content-form-grid"><label class="content-field"><span>Título</span><input name="title" maxlength="120" required></label><label class="content-field"><span>Slug</span><input name="slug" maxlength="140" placeholder="gerado-a-partir-do-titulo" required></label><label class="content-field full"><span>Imagem de capa</span><select name="cover_media_id" data-media-select><option value="">Sem capa</option></select></label><label class="content-field full"><span>Resumo</span><textarea name="summary" maxlength="360"></textarea></label><label class="content-field full"><span>Conteúdo</span><textarea class="content-body" name="content" placeholder="Use ## para subtítulos e - para listas."></textarea></label><label class="content-check"><input name="published" type="checkbox"> Publicada no site</label><label class="content-field"><span>Título SEO</span><input name="meta_title" maxlength="70"></label><label class="content-field full"><span>Descrição SEO</span><textarea name="meta_description" maxlength="180"></textarea></label></div><div class="content-editor-status" data-editor-status></div><div class="content-editor-actions"><button class="admin-button primary" type="submit">Salvar notícia</button><button class="admin-button" type="button" data-reset-editorial="news">Limpar editor</button><button class="admin-button danger" type="button" data-delete-editorial="news" hidden>Excluir notícia</button></div></form></article>
+        </div>
+      </section>
+
+      <section class="content-hub-view" data-hub-view="tier">
+        <div class="content-module-layout">
+          <aside class="content-module-panel"><header class="content-module-panel-head"><div><small>Tier List</small><h3>Listas</h3></div><button id="tier-new" class="admin-button primary" type="button">Nova lista</button></header><div id="tier-list-admin" class="content-module-list"></div></aside>
+          <article class="content-module-panel"><header class="content-module-panel-head"><div><small>Editor</small><h3 id="tier-editor-title">Nova Tier List</h3></div></header><form id="tier-form" class="content-editor"><input type="hidden" name="id"><div class="content-form-grid"><label class="content-field"><span>Título</span><input name="title" maxlength="100" required></label><label class="content-field"><span>Slug</span><input name="slug" maxlength="120" required></label><label class="content-field full"><span>Descrição</span><textarea name="description" maxlength="500"></textarea></label><label class="content-check"><input name="published" type="checkbox"> Publicada no site</label></div><div class="content-editor-status" id="tier-status"></div><div class="content-editor-actions"><button class="admin-button primary" type="submit">Salvar lista</button><button class="admin-button" type="button" id="tier-reset">Limpar editor</button><button class="admin-button danger" type="button" id="tier-delete" hidden>Excluir lista</button></div></form><div id="tier-entries-wrap" style="margin-top:16px" hidden><header class="content-module-panel-head"><div><small>Classificação</small><h3>Heróis da lista</h3></div></header><div id="tier-entry-list" class="tier-entry-list"></div><div class="tier-add"><select id="tier-add-hero"></select><input id="tier-add-tier" maxlength="8" placeholder="Tier (S/A/B)"><input id="tier-add-score" inputmode="decimal" placeholder="Score"><input id="tier-add-notes" class="tier-add-notes" maxlength="180" placeholder="Observação opcional"><button id="tier-add-button" class="admin-button primary" type="button">Adicionar</button></div></div></article>
+        </div>
+      </section>
+
+      <section class="content-hub-view" data-hub-view="compositions">
+        <div class="content-module-layout" style="grid-template-columns:1fr">
+          <article class="content-module-panel"><header class="content-module-panel-head"><div><small>Composições</small><h3>Moderação e visibilidade</h3></div><a class="admin-button" href="../composicoes.html" target="_blank" rel="noopener">Abrir site ↗</a></header><div id="composition-admin-list" class="content-module-list" style="max-height:none"></div></article>
+        </div>
+      </section>
+    </section>
+  </div>
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell=await initAdminShell({activeId:'content-modules',pageTitle:'Conteúdo público',pageSubtitle:'Guias, notícias, Tier List e composições'});
+    if(shell){
+      await import('./js/content-modules.js?v=20260822-editorial-freeze-hotfix-1&sb=20260823-security-supabase-pin-1');
+      await import('./js/content-modules-polish.js?v=20260822-editorial-freeze-hotfix-1&sb=20260823-security-supabase-pin-1');
+      await import('./js/content-modules-safety.js?v=1&sb=20260823-security-supabase-pin-1');
+    }
+  </script>
+</body>
+</html>

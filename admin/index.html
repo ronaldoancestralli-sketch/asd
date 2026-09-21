@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#060910">
+  <title>Dashboard — Echo Arena Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/admin.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-shell.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/admin-public-experience.css?v=20260821-admin-experience-1">
+  <link rel="stylesheet" href="./css/admin-dashboard-experience.css?v=20260822-admin-nav-1">
+  <link rel="stylesheet" href="./css/echo-brain.css?v=20260821-brain-1">
+  <link rel="stylesheet" href="../css/echo-theme.css?v=1">
+</head>
+<body data-admin-experience="true">
+  <div data-admin-content>
+    <section class="dashboard-page">
+      <section class="dashboard-welcome">
+        <div class="dashboard-welcome-copy">
+          <span class="dashboard-eyebrow">Central administrativa · operação real</span>
+          <h2>Controle o site <em>pela mesma fonte.</em></h2>
+          <p>O Dashboard agora prioriza publicação, paridade com as páginas públicas e saúde dos módulos. Heróis, mídia, Builds, Equipamentos, Composições e conteúdo editorial continuam usando as rotas e RPCs existentes — o redesign não cria uma segunda fonte de verdade.</p>
+        </div>
+        <div class="dashboard-welcome-actions">
+          <a class="admin-button primary" href="./echo-pulse.html">Echo Pulse</a>
+          <a class="admin-button" href="./echo-brain.html">Echo Brain</a>
+          <a class="admin-button" href="./public-experience.html">Experiência pública</a>
+          <a class="admin-button" href="./heroes.html">Gerenciar heróis</a>
+          <a class="admin-button" href="./equipment-editor.html">Novo equipamento</a>
+          <a id="dashboard-audit-button" class="admin-button dashboard-audit-button" href="./data-health.html">Saúde dos dados</a>
+        </div>
+      </section>
+
+      <a class="dashboard-announcement-card" href="./site-content.html?page=global_announcement">
+        <div class="dashboard-announcement-icon" aria-hidden="true">!</div>
+        <div class="dashboard-announcement-copy">
+          <span>Comunicação global</span>
+          <h3>Central de Avisos</h3>
+          <p>Crie banners ou programe uma manutenção completa que bloqueia visitantes e preserva o acesso dos administradores.</p>
+        </div>
+        <strong>Gerenciar avisos →</strong>
+      </a>
+
+      <section class="dashboard-public-bridge">
+        <div><span class="dashboard-eyebrow">Admin ↔ Público</span><h3>Veja o que o usuário realmente recebe</h3><p>A nova central de paridade confronta mídia, publicação e contagens com as superfícies públicas e leva diretamente ao editor que controla cada informação.</p></div>
+        <div class="dashboard-public-actions"><a href="./echo-pulse.html">Echo Pulse interno</a><a href="./public-experience.html">Abrir central pública</a><a href="../herois.html" target="_blank" rel="noopener">Abrir site</a><a href="../builds.html" target="_blank" rel="noopener">Hub de Builds</a><a href="../comparar-build.html" target="_blank" rel="noopener">Comparar</a></div>
+      </section>
+
+      <a id="dashboard-brain-card" class="dashboard-brain-card" href="./echo-brain.html" data-tone="idle" data-emergency="false">
+        <div class="dashboard-brain-copy"><span>Echo Brain · aprendizado controlado</span><h3 data-brain-dashboard-state>Sincronizando</h3><p data-brain-dashboard-detail>Consultando pipeline verificado, Shadow, saúde e prontidão do Brain.</p></div>
+        <div class="dashboard-brain-state"><strong data-brain-dashboard-meta>—</strong><small>Abrir centro de inteligência →</small></div>
+      </a>
+
+      <div id="dashboard-message" class="dashboard-message" role="status" aria-live="polite"></div>
+
+      <section class="dashboard-metrics">
+        <a class="dashboard-metric" href="./heroes.html"><span class="dashboard-metric-label">Heróis</span><strong id="metric-heroes">—</strong><small>cadastrados</small></a>
+        <a class="dashboard-metric" href="./equipments.html"><span class="dashboard-metric-label">Equipamentos</span><strong id="metric-equipments">—</strong><small>cadastrados</small></a>
+        <a class="dashboard-metric" href="./builds.html"><span class="dashboard-metric-label">Builds</span><strong id="metric-builds">—</strong><small>registros</small></a>
+        <a class="dashboard-metric" href="./users.html"><span class="dashboard-metric-label">Usuários</span><strong id="metric-users">—</strong><small>perfis</small></a>
+        <a class="dashboard-metric" href="./comments.html"><span class="dashboard-metric-label">Comentários</span><strong id="metric-comments">—</strong><small>registros</small></a>
+        <a class="dashboard-metric" href="./users.html"><span class="dashboard-metric-label">Bloqueados</span><strong id="metric-blocked">—</strong><small>moderação</small></a>
+      </section>
+
+      <section class="dashboard-content-grid">
+        <div class="dashboard-column">
+          <section class="dashboard-panel"><header class="dashboard-panel-header"><div><span>Publicação</span><h3>Heróis recentes</h3></div><a href="./heroes.html">Ver todos →</a></header><div id="recent-heroes" class="dashboard-list"><div class="dashboard-empty">Carregando heróis…</div></div></section>
+          <section class="dashboard-panel"><header class="dashboard-panel-header"><div><span>Catálogo</span><h3>Equipamentos recentes</h3></div><a href="./equipments.html">Ver todos →</a></header><div id="recent-equipments" class="dashboard-list"><div class="dashboard-empty">Carregando equipamentos…</div></div></section>
+          <section class="dashboard-panel"><header class="dashboard-panel-header"><div><span>Comunidade</span><h3>Builds recentes</h3></div><a href="./builds.html">Moderar →</a></header><div id="recent-builds" class="dashboard-list"><div class="dashboard-empty">Carregando builds…</div></div></section>
+        </div>
+        <div class="dashboard-column">
+          <section class="dashboard-panel"><header class="dashboard-panel-header"><div><span>Operação</span><h3>Saúde dos módulos</h3></div><a href="./data-health.html">Diagnóstico →</a></header><div class="dashboard-status-list"><div class="dashboard-empty">Consultando módulos…</div></div></section>
+          <section class="dashboard-panel">
+            <header class="dashboard-panel-header"><div><span>Acesso rápido</span><h3>Ferramentas</h3></div></header>
+            <div class="dashboard-quick-grid">
+              <a class="dashboard-quick-card dashboard-announcement-quick" href="./site-content.html?page=global_announcement"><div><strong>Avisos e Manutenção</strong><span>Banners globais e bloqueio programado dos visitantes.</span></div><small>Gerenciar operação</small></a>
+              <a class="dashboard-quick-card" href="./echo-brain.html"><div><strong>Echo Brain</strong><span>Pipeline verificado, treino, Replay, Shadow, drift, rollback e emergência.</span></div><small>Abrir Brain</small></a>
+              <a class="dashboard-quick-card" href="./echo-pulse.html"><div><strong>Echo Pulse · interno</strong><span>Inbox automática, fontes, histórico e curadoria em PT-BR. O módulo público continua bloqueado.</span></div><small>Abrir Pulse</small></a>
+              <a class="dashboard-quick-card" href="./public-experience.html"><div><strong>Experiência pública</strong><span>Paridade de Heróis, Builds, Equipamentos, Composições e editorial.</span></div><small>Abrir central</small></a>
+              <a class="dashboard-quick-card" href="./hero-skill-audit.html"><div><strong>Auditoria de habilidades</strong><span>Fontes, trust, histórico e verificação do roster.</span></div><small>Auditar</small></a>
+              <a class="dashboard-quick-card" href="./content-modules.html"><div><strong>Conteúdo público</strong><span>Guias, notícias, Tier List e módulos editoriais.</span></div><small>Editar conteúdo</small></a>
+              <a class="dashboard-quick-card" href="./equipment-audit.html"><div><strong>Equipamentos</strong><span>Classificação, dados oficiais e pendências de cálculo.</span></div><small>Auditar catálogo</small></a>
+            </div>
+          </section>
+          <section class="dashboard-panel"><header class="dashboard-panel-header"><div><span>Moderação</span><h3>Comentários recentes</h3></div><a href="./comments.html">Moderar →</a></header><div id="recent-comments" class="dashboard-list"><div class="dashboard-empty">Carregando comentários…</div></div></section>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <script type="module">
+    import { initAdminShell } from './js/admin-shell.js?v=20260906-home-featured-phase-e-1&sb=20260823-security-supabase-pin-1&sc=20260906-1';
+    const shell = await initAdminShell({ activeId:'dashboard', pageTitle:'Dashboard', pageSubtitle:'Operação, publicação e paridade pública' });
+    if (shell) {
+      await import('./js/dashboard.js?v=20260821-profiles-1&sb=20260823-security-supabase-pin-1');
+      await import('./js/dashboard-brain.js?v=20260822-brain-final-1&sb=20260823-security-supabase-pin-1');
+    }
+  </script>
+</body>
+</html>
